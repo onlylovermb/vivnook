@@ -1,0 +1,22 @@
+{%- comment -%}
+  Normalized preview provider. Future product-specific metafields should be
+  resolved here before theme defaults. JS consumes only the resolved scene map.
+  Resolution order: product override -> theme default -> active variant image.
+{%- endcomment -%}
+{
+  "black": {
+    "overview": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_black_overview -%},
+    "text": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_black_text -%},
+    "iconLogo": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_black_icon_logo -%}
+  },
+  "navy-blue": {
+    "overview": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_navy_overview -%},
+    "text": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_navy_text -%},
+    "iconLogo": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_navy_icon_logo -%}
+  },
+  "burgundy": {
+    "overview": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_burgundy_overview -%},
+    "text": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_burgundy_text -%},
+    "iconLogo": {%- render 'vivnook-embroidery-preview-image-json', image: settings.vivnook_embroidery_preview_burgundy_icon_logo -%}
+  }
+}

@@ -1,0 +1,102 @@
+{%- liquid
+  assign expand_product = false
+  assign color_option_index = blank
+
+  if settings.vivnook_enable_color_expanded_cards and product.metafields.vivnook.expand_color_variants.value == true
+    for option in product.options_with_values
+      assign option_name = option.name | downcase | strip
+      if option_name == 'color' or option_name == 'colour'
+        assign expand_product = true
+        assign color_option = option
+        assign color_option_index = forloop.index0
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{%- if expand_product -%}
+  {%- for color_value in color_option.values -%}
+    {%- liquid
+      assign representative_variant = blank
+      assign first_color_variant = blank
+      assign color_featured_media = blank
+      assign color_second_image = blank
+
+      for candidate_variant in product.variants
+        if candidate_variant.options[color_option_index] == color_value
+          if first_color_variant == blank
+            assign first_color_variant = candidate_variant
+          endif
+          if representative_variant == blank and candidate_variant.available
+            assign representative_variant = candidate_variant
+          endif
+        endif
+      endfor
+
+      if representative_variant == blank
+        assign representative_variant = first_color_variant
+      endif
+      if representative_variant.featured_media != blank
+        assign color_featured_media = representative_variant.featured_media
+      endif
+      for candidate_variant in product.variants
+        if candidate_variant.options[color_option_index] == color_value and candidate_variant.featured_media != blank
+          if color_featured_media == blank
+            assign color_featured_media = candidate_variant.featured_media
+          elsif color_second_image == blank and candidate_variant.featured_media.id != color_featured_media.id
+            assign color_second_image = candidate_variant.featured_media.preview_image
+          endif
+        endif
+      endfor
+      if color_featured_media == blank
+        assign color_featured_media = product.featured_media
+      endif
+
+      assign color_title = product.title | append: ' — ' | append: color_value
+      assign product_url = product.url | split: '?' | first
+      assign color_url = product_url | append: '?variant=' | append: representative_variant.id
+      assign card_suffix = '-vivnook-color-' | append: forloop.index
+      assign render_index = index
+      if forloop.index > 1
+        assign render_index = 0
+      endif
+    -%}
+    <div
+      class="f-column card"
+      data-vivnook-expanded-color="{{ color_value | escape }}"
+      data-vivnook-parent-product-id="{{ product.id }}"
+    >
+      {%- render 'card-product',
+        product: product,
+        image_sizes: image_sizes,
+        section_id: section_id,
+        section_index: section_index,
+        index: render_index,
+        card_variant: representative_variant,
+        card_title: color_title,
+        card_url: color_url,
+        card_featured_media: color_featured_media,
+        card_second_image: color_second_image,
+        card_available: representative_variant.available,
+        selected_card_color: color_value,
+        card_color_option: color_option,
+        card_color_option_index: color_option_index,
+        expanded_card: true,
+        enable_quick_add: false,
+        enable_quick_view: false,
+        quick_view_suffix: card_suffix
+      -%}
+    </div>
+  {%- endfor -%}
+{%- else -%}
+  <div class="f-column card">
+    {%- render 'card-product',
+      product: product,
+      image_sizes: image_sizes,
+      section_id: section_id,
+      section_index: section_index,
+      index: index
+    -%}
+  </div>
+{%- endif -%}

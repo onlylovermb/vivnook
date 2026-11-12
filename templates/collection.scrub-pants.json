@@ -1,0 +1,233 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_Gxg9wp": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "collection_info_zUNyKV": {
+          "type": "collection_info",
+          "settings": {
+            "heading_size": "hd2",
+            "heading_tag": "h1",
+            "show_description": true,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "collection_info_zUNyKV"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "text_alignment": "center",
+        "show_collection_image": false,
+        "image_overlay_opacity": 0,
+        "image_position": "top",
+        "image_height": "extra-small",
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "image_height_mobile": "auto",
+        "padding_top": 38,
+        "padding_bottom": 60
+      }
+    },
+    "custom_content_RecVe9": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_3BJ74T": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "heading": "Eye care",
+            "heading_size": "h4",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "color_scheme_mobile": "",
+            "show_text_below": true,
+            "content_alignment_mobile": "left",
+            "width": "20%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_GRXz6y": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "heading": "Accessories",
+            "heading_size": "h4",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "color_scheme_mobile": "",
+            "show_text_below": true,
+            "content_alignment_mobile": "left",
+            "width": "20%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_BAAmnt": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "heading": "Moisturizers",
+            "heading_size": "h4",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "color_scheme_mobile": "",
+            "show_text_below": true,
+            "content_alignment_mobile": "left",
+            "width": "20%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_EA8TmL": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "heading": "Treatments",
+            "heading_size": "h4",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "color_scheme_mobile": "",
+            "show_text_below": true,
+            "content_alignment_mobile": "left",
+            "width": "20%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_Cab8TR": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "heading": "Cleansers",
+            "heading_size": "h4",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "color_scheme_mobile": "",
+            "show_text_below": true,
+            "content_alignment_mobile": "left",
+            "width": "20%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_3BJ74T",
+        "image_card_GRXz6y",
+        "image_card_BAAmnt",
+        "image_card_EA8TmL",
+        "image_card_Cab8TR"
+      ],
+      "custom_css": [
+        ".card-media {--padding-y-mobile: 1.2rem;}",
+        "@media (max-width: 767px) {.card-media--mobile-content-below .bg-overlay {display: none !important; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "column_gap": "extra-small",
+        "row_gap": "none",
+        "swipe_on_mobile": true,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-9",
+        "products_per_page": 15,
+        "columns_desktop": 3,
+        "grid_layout": "standard",
+        "pagination": "number",
+        "enable_color_swatch": true,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "expand_filter_groups": "Availability, Price, Color, Size, Product type",
+        "columns_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "show_section_divider": true,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_Gxg9wp",
+    "banner",
+    "custom_content_RecVe9",
+    "product-grid"
+  ]
+}

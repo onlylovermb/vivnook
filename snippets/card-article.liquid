@@ -1,0 +1,75 @@
+{% comment %}
+  Renders an article card for a given blog with settings to either show the image or not.
+
+  Accepts:
+  - article: {Object} Article object
+  - show_date: {String} The setting either show the article date or not.
+  - show_author: {String} The setting either show the article author or not.
+  - show_button: {String} The setting either show the learn more button or not.
+  - title_size: {String} Example: h1,h2,h3,h4,h5,h6
+
+  Usage:
+  {% render 'card-article' article: article %}
+{% endcomment %}
+
+{%- if article and article != empty -%}
+  <div class="article-card">
+    {% if article.image != blank %}
+      {% liquid
+        assign alt = article.image.alt | default: article.title | escape
+        assign aspect_ratio = settings.blog_cards_image_ratio
+        if aspect_ratio == 'adapt'
+          assign aspect_ratio = article.image.aspect_ratio
+        endif
+      %}
+      {%- capture sizes -%}
+      (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw
+      {%- endcapture -%}
+      <div class="article-card__media blocks-radius">
+        <a
+          href="{{ article.url }}"
+          class="block media-wrapper hover-wrapper"
+        >
+          <motion-element class="block" data-motion="zoom-out-sm" style="--aspect-ratio: {{ aspect_ratio }};">
+            {{
+              article.image
+              | image_url: width: 1100
+              | image_tag:
+                width: article.image.width,
+                height: article.image.height,
+                loading: 'lazy',
+                fetchpriority: 'auto',
+                class: 'motion-reduce hover-scale-up',
+                widths: '165, 360, 535, 750, 940, 1100',
+                sizes: sizes,
+                alt: alt,
+                is: 'image-lazy'
+            }}
+          </motion-element>
+        </a>
+      </div>
+    {% endif %}
+    <div class="article-card__content">
+      {% if show_date %}
+        <div class="article-card__date text-sm">{{ article.published_at | time_tag: format: 'date' }}</div>
+      {% endif %}
+      <h3 class="article-card__title{% if title_size %} {{ title_size }}{% endif %}">
+        <a class="reversed-link" href="{{ article.url }}">{{ article.title }}</a>
+      </h3>
+      {%- if show_excerpt and article.excerpt.size > 0 or article.content.size > 0 -%}
+        <p class="article-card__excerpt text-limit-2-lines">
+          {%- if article.excerpt.size > 0 -%}
+            {{ article.excerpt | strip_html }}
+          {%- else -%}
+            {{ article.content | strip_html }}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+      {% if show_button %}
+        <a href="{{ article.url }}" class="btn btn--underline article-card__button">
+          {{- 'blogs.article.article_button_label' | t -}}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{%- endif -%}

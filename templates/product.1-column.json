@@ -1,0 +1,743 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 20,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "text_MBp89E": {
+          "type": "text",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": "product-size-chart"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "package",
+            "heading_1": "Orders over $500 ship free",
+            "icon_2": "arrow-up-left",
+            "heading_2": "30 day returns",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "You may also like",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Care",
+            "icon": "none",
+            "content": "<p>High-Quality Material & Care Products for Your Everyday Needs.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fit & Sizing",
+            "icon": "none",
+            "content": "<p>Enhance Your Style with our Perfect Fit Clothing Range.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "none",
+            "content": "<p>Effortless Shipping & Hassle-Free Returns for Your Convenience.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "text_MBp89E",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text",
+        "pickup_availability",
+        "complementary",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "addons"
+      ],
+      "custom_css": [
+        ".f-price-item--sale {order: 0;}",
+        ".f-price__sale {column-gap: 1.6rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "enable_image_zoom": false,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "testimonials_8JHr3L": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_FcWQfX": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant.”</p>",
+            "author": "Sophia Turner.",
+            "bio": "Verified Buyer"
+          }
+        },
+        "testimonial_6iRHQL": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Perfect fit, quality felt great, stylish lightweight jacket. Unfortunately I now want one in every color!”</p>",
+            "author": "Melissa H.",
+            "bio": "Verified Buyer"
+          }
+        },
+        "testimonial_WjkVJg": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>\"Such a nice piece! Looks good and feels good.But be prepared that it is not windstopping.100% wool would be even better, but it is anyway a nice product!\"</p>",
+            "author": "James Carter.",
+            "bio": "Verified Buyer"
+          }
+        },
+        "testimonial_ypLUpJ": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant.”</p>",
+            "author": "Sophia Turner.",
+            "bio": "Verified Buyer"
+          }
+        },
+        "testimonial_wWEETq": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Perfect fit, quality felt great, stylish lightweight jacket. Unfortunately I now want one in every color!”</p>",
+            "author": "Melissa H.",
+            "bio": "Verified Buyer"
+          }
+        },
+        "testimonial_DVfnxR": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>\"Such a nice piece! Looks good and feels good.But be prepared that it is not windstopping.100% wool would be even better, but it is anyway a nice product!\"</p>",
+            "author": "James Carter.",
+            "bio": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FcWQfX",
+        "testimonial_6iRHQL",
+        "testimonial_WjkVJg",
+        "testimonial_ypLUpJ",
+        "testimonial_wWEETq",
+        "testimonial_DVfnxR"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "People are talking",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "card_color_scheme": "",
+        "card_layout": "2",
+        "card_text_size": "text-base",
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "multicolumn_CxxeU4": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_xWbzhk": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_RwcJn4": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_UkHDAV": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_xWbzhk",
+        "column_RwcJn4",
+        "column_UkHDAV"
+      ],
+      "custom_css": [
+        ".multicolumn-card__image {margin-bottom: 0;}",
+        ".rich-text__text {max-width: 688px; margin: 1.6rem auto 0;}",
+        ".spacing--large {--header-padding-bottom-large: 8rem;}",
+        ".multicolumn__items {align-items: center;}",
+        ".f-grid--gap-extra-large {--column-gap: 8rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "It’s a classic, made better.",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>or slow-paced moments under the sun. This beach visor features a basket weave crafted with natural raffia paper yarn. Inner headband made from organic cotton for added comfort. Back adjustment strap with recycled polyester slider.</p>",
+        "text_size": "text-lg",
+        "column_alignment": "left",
+        "columns_desktop": 3,
+        "column_gap": "extra-large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "scrolling_promotion_WAekUk": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text_P4JyaD": {
+          "type": "text",
+          "settings": {
+            "text": "EASY REFUND",
+            "text_size": "h2",
+            "font_weight": "font-heading",
+            "font_style": "italic",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "html_XAthVt": {
+          "type": "html",
+          "settings": {
+            "html": "<div class=\"line\"></div>"
+          }
+        },
+        "text_QpjN3F": {
+          "type": "text",
+          "settings": {
+            "text": "ONLINE SUPPORT",
+            "text_size": "h2",
+            "font_weight": "font-heading",
+            "font_style": "normal",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "html_ADnizU": {
+          "type": "html",
+          "settings": {
+            "html": "<div class=\"line\"></div>"
+          }
+        },
+        "text_WiAYMn": {
+          "type": "text",
+          "settings": {
+            "text": "FLEXIBLE PAYMENT",
+            "text_size": "h2",
+            "font_weight": "font-heading",
+            "font_style": "italic",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "html_4bNp7y": {
+          "type": "html",
+          "settings": {
+            "html": "<div class=\"line\"></div>"
+          }
+        },
+        "text_zCiYBb": {
+          "type": "text",
+          "settings": {
+            "text": "FREE SHIPPING",
+            "text_size": "h2",
+            "font_weight": "font-heading",
+            "font_style": "normal",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "html_fpBRPL": {
+          "type": "html",
+          "settings": {
+            "html": "<div class=\"line\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "text_P4JyaD",
+        "html_XAthVt",
+        "text_QpjN3F",
+        "html_ADnizU",
+        "text_WiAYMn",
+        "html_4bNp7y",
+        "text_zCiYBb",
+        "html_fpBRPL"
+      ],
+      "custom_css": [
+        ".promotion__item-html {align-items: center; justify-content: center;}",
+        ".promotion__item-html .line {display: block; width: 2.4rem; height: 0; border-top: 0.1rem solid #000000;}",
+        "@media only screen and (min-width: 768px) {.promotion__item-html .line {width: 6.4rem; }}",
+        ".promotion__item {--h-spacing-mobile: 2.4rem; --v-spacing-mobile: 2.3rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "vertical_alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.2,
+        "h_spacing": 60,
+        "v_spacing": 40,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_divider": true,
+        "divider_layout": "vertical",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_overlay_czBhEX": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_AGa3Lg": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "How it all started"
+          }
+        },
+        "heading_tWEWM6": {
+          "type": "heading",
+          "settings": {
+            "heading": "That would speak to a new generation of creatives",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_AGa3Lg",
+        "heading_tWEWM6"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 63rem; margin: 0 auto;}",
+        ".rich-text__subheading {--subheading-margin-bottom: 2.4rem;}"
+      ],
+      "settings": {
+        "container": "full",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "image_width_text_columns_mptn3b": {
+      "type": "image-width-text-columns",
+      "blocks": {
+        "column_dbjQpR": {
+          "type": "column",
+          "settings": {
+            "image_width": "medium",
+            "title": "Extremely soft",
+            "heading_size": "h4",
+            "text": "<p>Experience extreme softness with our luxurious collection of products. Indulge in the comfort you deserve with every purchase.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_pLpad8": {
+          "type": "column",
+          "settings": {
+            "image_width": "medium",
+            "title": "European Linen",
+            "heading_size": "h4",
+            "text": "<p>Discover the luxurious feel of European Linen in our high-quality products. Experience the elegance and durability of linen.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_nVmYnC": {
+          "type": "column",
+          "settings": {
+            "image_width": "medium",
+            "title": "100% recycable",
+            "heading_size": "h4",
+            "text": "<p>Explore our collection of products made from 100% recyclable materials. Join us in creating a more sustainable future.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_jbdtPw": {
+          "type": "column",
+          "settings": {
+            "image_width": "medium",
+            "title": "Eco-friendly",
+            "heading_size": "h4",
+            "text": "<p>Discover our eco-friendly products designed to reduce your carbon footprint. Join us in making a positive impact on the environment.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "column_dbjQpR",
+        "column_pLpad8",
+        "column_nVmYnC",
+        "column_jbdtPw"
+      ],
+      "custom_css": [
+        ".f-grid--gap-large {--column-gap: 4.5rem; --row-gap-mobile: 2.4rem;}",
+        ".section__wrapper {--gap-y: 3.2rem;}",
+        ".multicolumn-card__image {--image-spacing-bottom: 1.2rem;}",
+        ".multicolumn-card__text {margin-top: 1.2rem;}",
+        "@media (min-width: 1024px) {.rich-text, .multicolumn__items {max-width: 598px; padding-inline-end: 2rem; }}",
+        "@media (max-width: 767.98px) {.multicolumn-card {display: flex; gap: 1.2rem; } .multicolumn-card__image {flex-shrink: 0; margin-bottom: 0; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "layout_gap": "medium",
+        "content_alignment": "center",
+        "image_position": "text_first",
+        "heading": "A meaningful idea into an impactful pursuit",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "Our values",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "left",
+        "columns_desktop": 2,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "collapsible_tabs_Q4FgXW": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "image_card_MTHNHk": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "desktop_image_position": "left",
+            "image_width": 50,
+            "alignment": "center",
+            "image_extend": false,
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "card_link": "",
+            "order_first": true
+          }
+        },
+        "heading_MYVKDX": {
+          "type": "heading",
+          "settings": {
+            "heading": "A meaningful idea into an impactful pursuit",
+            "heading_size": "h1",
+            "sub_heading": "Our values"
+          }
+        },
+        "collapsible_item_iUjpNi": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "European Linen",
+            "content": "<p>Linen is a sustainable, natural fiber made from the flax plant. It needs only sun and rain to grow. We grow our flax in Normandy, France, overlooking the English Channel. Made with 100% sustainably-grown French linen and dyed with organic, GOTS-certified pigments. Wash cool, hang dry. Our linen is full-bodied and rarely requires ironing.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": true
+          }
+        },
+        "collapsible_item_HnyELw": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Inspire innovation",
+            "content": "<p>Welcome to our store of innovation and creativity.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_UHkjLy": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Be authentic",
+            "content": "<p>Transform your authentic idea into an impactful pursuit with our premium products.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_QeDPAJ": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Create communities",
+            "content": "<p>\"Create Communities\", A Metaphor for Building Long-lasting Relationships and Supportive Networks.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_MTHNHk",
+        "heading_MYVKDX",
+        "collapsible_item_iUjpNi",
+        "collapsible_item_HnyELw",
+        "collapsible_item_UHkjLy",
+        "collapsible_item_QeDPAJ"
+      ],
+      "custom_css": [
+        ".collapsible-tabs__wrapper {justify-content: space-between;}",
+        ".collapsible-tabs__wrapper {--row-gap-mobile: 3.2rem;}",
+        "@media (min-width: 768px) {.collapsible-tabs__content-col {max-width: calc(598px + var(--gap-y)); }}",
+        "@media (min-width: 1024px) and (max-width: 1279px) {collapsible-tabs {padding-inline-start: 2rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h3",
+        "item_icon_size": "extra-large",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "related_products_EgizAE": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "",
+        "heading": "You may also like",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 4,
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "testimonials_8JHr3L",
+    "multicolumn_CxxeU4",
+    "scrolling_promotion_WAekUk",
+    "image_with_text_overlay_czBhEX",
+    "image_width_text_columns_mptn3b",
+    "collapsible_tabs_Q4FgXW",
+    "related_products_EgizAE"
+  ]
+}

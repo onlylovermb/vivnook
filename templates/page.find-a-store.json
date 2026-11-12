@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_RzgTi9": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_rwWQrL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GeX69R": {
+          "type": "heading",
+          "settings": {
+            "heading": "Find a Store",
+            "heading_size": "hd2"
+          }
+        },
+        "text_nb9hEL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Have a question or comment? Don't be shy: Reach out and say hi! <br/>Support hours: Monday-Friday, 7am-3pm</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GeX69R",
+        "text_nb9hEL"
+      ],
+      "custom_css": [
+        ".rich-text__text {--text-margin-top: 1.2rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "store_locator_xYHMFd": {
+      "type": "store-locator",
+      "blocks": {
+        "location_dGAaeF": {
+          "type": "location",
+          "settings": {
+            "image_width": 210,
+            "heading": "New York",
+            "heading_size": "h1",
+            "text": "<p>Address: 4b/39 James St, Fortitude Valley QLD 4006</p><p>+391 (0)35 2568</p><p>Mon-Sat: 10am-8pm</p>",
+            "button_label": "get directions",
+            "button_style": "btn--primary"
+          }
+        },
+        "location_pnPYTi": {
+          "type": "location",
+          "settings": {
+            "image_width": 210,
+            "heading": "Los Angeles",
+            "heading_size": "h1",
+            "text": "<p>Address: 4b/39 James St, Fortitude Valley QLD 4006</p><p>+391 (0)35 2568</p><p>Mon-Sat: 10am-8pm</p>",
+            "button_label": "get directions",
+            "button_style": "btn--primary"
+          }
+        },
+        "location_3hWjmp": {
+          "type": "location",
+          "settings": {
+            "image_width": 210,
+            "heading": "Chicago",
+            "heading_size": "h1",
+            "text": "<p>Address: 4b/39 James St, Fortitude Valley QLD 4006</p><p>+391 (0)35 2568</p><p>Mon-Sat: 10am-8pm</p>",
+            "button_label": "get directions",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "location_dGAaeF",
+        "location_pnPYTi",
+        "location_3hWjmp"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_RzgTi9",
+    "main",
+    "rich_text_rwWQrL",
+    "store_locator_xYHMFd"
+  ]
+}

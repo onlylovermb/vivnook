@@ -1,0 +1,205 @@
+.product__sharing--title {
+  margin-bottom: 1.2rem;
+}
+.product__sharing--inputs {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.product__sharing--inputs:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: var(--buttons-radius, 0);
+  pointer-events: none;
+}
+.product__sharing--inputs input {
+  border-color: transparent !important;
+  background: #fff;
+  text-overflow: ellipsis;
+  box-shadow: none !important;
+  border-end-end-radius: 0;
+  border-start-end-radius: 0;
+}
+.product__sharing--inputs .btn {
+  padding: 0 1.6rem !important;
+  height: var(--buttons-height);
+  border-radius: 0 var(--buttons-radius, 0) var(--buttons-radius, 0) 0;
+}
+.product__sharing .sharing__links {
+  display: flex;
+  align-items: center;
+  margin: 1.6rem -1rem 0;
+}
+.product__sharing .sharing__links a {
+  position: relative;
+  display: flex;
+  padding: 0 1rem;
+}
+.product__sharing .sharing__links a:before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  bottom: -1rem;
+  left: 0;
+  right: 0;
+}
+
+.article-tags a {
+  --color-border: var(--color-text-heading);
+  height: 3.8rem;
+  padding-inline: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s color, 0.3s border-color, 0.3s background-color;
+  white-space: nowrap;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: var(--buttons-radius, 0);
+}
+@media (hover: hover) {
+  .article-tags a:hover {
+    --color-border: var(--color-button-hover-background);
+    color: rgb(var(--color-button-hover-text));
+    border-color: rgb(var(--color-border));
+    background-color: rgb(var(--color-button-hover-background));
+  }
+}
+
+.article-navigation {
+  padding-top: 3rem;
+  border-top: 1px solid rgb(var(--color-border));
+}
+.article-navigation .btn {
+  column-gap: 0.6rem;
+}
+.article-navigation__prev svg {
+  transform: scaleX(-1);
+}
+.article-navigation__heading {
+  margin-top: 0.8rem;
+}
+@media (max-width: 767.98px) {
+  .article-navigation {
+    padding-top: 2.2rem;
+  }
+}
+
+.article__wrapper {
+  padding: 3.2rem 1.5rem 0;
+}
+.article__wrapper > * + * {
+  margin-top: 4rem;
+}
+@media (max-width: 767.98px) {
+  .article__wrapper > * + * {
+    margin-top: 3.2rem;
+  }
+}
+@media (min-width: 1023.98px) {
+  .article__wrapper {
+    position: relative;
+    background-color: rgb(var(--color-background));
+    max-width: 99rem;
+    margin-inline: auto;
+    padding: 4rem 3rem 0;
+  }
+  .article--has-media .article__wrapper {
+    margin-top: -7.5rem;
+    border-radius: var(--blocks-radius) var(--blocks-radius) 0 0;
+  }
+}
+.article__header > * + * {
+  margin-top: 2.4rem;
+}
+@media (max-width: 767.98px) {
+  .article__header > * + * {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1023.98px) {
+  .article__title {
+    max-width: 85%;
+    margin-inline: auto;
+  }
+}
+.article__meta {
+  position: relative;
+}
+.article__meta + .article__meta {
+  padding-inline-start: 1.3rem;
+  margin-inline-start: 1.2rem;
+}
+.article__meta + .article__meta:before {
+  content: "";
+  width: 0.1rem;
+  height: 1.7rem;
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 0;
+  transform: translateY(-50%);
+  border-left: 1px solid rgb(var(--color-border));
+}
+.article__blog a {
+  font-size: var(--font-body-size);
+}
+
+.article-comment__title, .article-comment__form-title {
+  margin-bottom: 4rem;
+}
+@media (max-width: 767.98px) {
+  .article-comment__title, .article-comment__form-title {
+    margin-bottom: 3.2rem;
+  }
+}
+
+.comment {
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+.comment + .comment {
+  margin-top: 4rem;
+}
+.comment p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+@media (max-width: 767.98px) {
+  .comment {
+    padding-bottom: 2.4rem;
+  }
+  .comment + .comment {
+    margin-top: 2.4rem;
+  }
+}
+.comment__meta span {
+  position: relative;
+}
+.comment__meta span + span {
+  padding-inline-start: 1.3rem;
+  margin-inline-start: 1.2rem;
+}
+.comment__meta span + span:before {
+  content: "";
+  width: 0.1rem;
+  height: 1.7rem;
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 0;
+  transform: translateY(-50%);
+  background: rgb(var(--color-border));
+}
+
+@media (min-width: 767.98px) {
+  .comment-form .form-footer {
+    margin-top: 4rem;
+  }
+}
+.comment-form__warning {
+  margin-bottom: 0;
+  margin-top: 1.2rem;
+}

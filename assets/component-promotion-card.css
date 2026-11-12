@@ -1,0 +1,25 @@
+.card-promotion {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.card-promotion__image, .card-promotion__content {
+  grid-area: 1/1/end/end;
+}
+.card-promotion__content {
+  position: relative;
+  z-index: 2;
+}
+.card-promotion__subheading {
+  margin-bottom: 1.2rem;
+}
+.card-promotion__button {
+  margin-top: 1.2rem;
+}
+@media (max-width: 767.98px) {
+  .card-promotion__button .btn {
+    --buttons-padding: 2rem;
+  }
+}
+.card-promotion__description:not(:first-child) {
+  margin-top: 1.2rem;
+}

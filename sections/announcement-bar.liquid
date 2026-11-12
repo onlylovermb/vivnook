@@ -1,0 +1,328 @@
+<div
+  data-section-index="{{ section.index }}"
+  class="announcement-bar color-{{ section.settings.color_scheme }} page-width section--padding"
+  style="--section-padding-top: 0px;--section-padding-bottom: 0px;--announcement-height-desktop: {{ section.settings.height_desktop }}px;--announcement-height-mobile: {{ section.settings.height_mobile }}px;"
+>
+  <announcement-bar
+    class="swiper announcement-bar__wrapper block"
+    {% if section.settings.autoplay %}
+      autoplay autoplay-speed="{{ section.settings.autoplay_speed }}"
+    {% endif %}
+    style="--content-width: {{ section.settings.content_width }}%;--content-width-mobile: {{ section.settings.content_width_mobile }}%;"
+  >
+    <div class="swiper-wrapper items-center">
+      {%- for block in section.blocks -%}
+        <div class="swiper-slide" {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+            {%- when 'announcement_bar' -%}
+              {%- if block.settings.link != blank -%}
+                <a class="announcement-bar__content rte text-center block" href="{{ block.settings.link }}">
+              {%- else -%}
+                <div class="announcement-bar__content rte text-center">
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="announcement-bar__text">{{ block.settings.text }}</p>
+              {%- endif -%}
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+            {%- when 'timer' -%}
+              <div class="countdown__wrapper announcement-bar__content announcement-bar__timer flex items-center justify-between sm:justify-center gap-2 md:gap-4">
+                {%- if block.settings.text != blank -%}
+                  <div class="md:text-base text-sm-extra">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- if block.settings.type == 'evergreen' or block.settings.time != blank -%}
+                  {%- render 'countdown-timer',
+                    id: block.id,
+                    type: block.settings.type,
+                    duration: block.settings.duration,
+                    time: block.settings.time,
+                    display_text: false,
+                    number_size: 'h4',
+                    custom_class: 'flex items-center justify-center',
+                    block_class: 'font-body-bolder'
+                  -%}
+                {%- endif -%}
+                {%- if block.settings.button_label != blank -%}
+                  <a
+                    href="{{ block.settings.button_link | default: "#" }}"
+                    class="btn btn--extra-small {{ block.settings.button_style }}"
+                  >
+                    <span class="hidden sm:block">
+                      {{- block.settings.button_label -}}
+                    </span>
+                    <span class="sm:hidden flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M5.25 2.625L9.625 7L5.25 11.375" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </a>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.blocks.size > 1 -%}
+      <div class="slider-controls">
+        <div
+          class="swiper-button swiper-button-prev swiper-button--blank"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+        >
+          {%- render 'icon-slider-prev', size: 'small' -%}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div
+          class="swiper-button swiper-button-next swiper-button--blank"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+        >
+          {%- render 'icon-slider-next', size: 'small' -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </announcement-bar>
+</div>
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "class": "announcement-bar-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/VMhEQbe)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-inverse"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "t:sections.all.content_width.label",
+      "min": 20,
+      "max": 100,
+      "unit": "%",
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "content_width_mobile",
+      "label": "手机端内容宽度",
+      "min": 20,
+      "max": 100,
+      "unit": "%",
+      "step": 1,
+      "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "公告栏电脑端高度",
+      "min": 24,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "公告栏手机端高度",
+      "min": 8,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:sections.announcement-bar.settings.autoplay_speed.label",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5,
+      "unit": "s",
+      "visible_if": "{{ section.settings.autoplay == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 12,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 12,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement_bar",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:sections.all.text.label",
+          "default": "Welcome to our store"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.all.link.label"
+        }
+      ]
+    },
+    {
+      "type": "timer",
+      "name": "t:sections.countdown-timer.blocks.timer.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "type",
+          "label": "t:sections.countdown-timer.blocks.timer.settings.type.label",
+          "options": [
+            {
+              "value": "evergreen",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.type.options__1.label"
+            },
+            {
+              "value": "fixed_time",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.type.options__2.label"
+            }
+          ],
+          "default": "fixed_time"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.countdown-timer.blocks.timer.settings.header__evergreen.content"
+        },
+        {
+          "type": "select",
+          "id": "duration",
+          "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.label",
+          "options": [
+            {
+              "value": "every_2_hrs",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_2_hrs.label"
+            },
+            {
+              "value": "every_6_hrs",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_6_hrs.label"
+            },
+            {
+              "value": "every_12_hrs",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_12_hrs.label"
+            },
+            {
+              "value": "every_24_hrs",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_24_hrs.label"
+            },
+            {
+              "value": "every_week",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_week.label"
+            },
+            {
+              "value": "every_month",
+              "label": "t:sections.countdown-timer.blocks.timer.settings.evergreen_duration.options__every_month.label"
+            }
+          ],
+          "default": "every_month"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.countdown-timer.blocks.timer.settings.header__fixed_time.content"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "default": "2025/08/20 00:00",
+          "label": "t:sections.countdown-timer.blocks.timer.settings.time.label",
+          "info": "t:sections.countdown-timer.blocks.timer.settings.time.info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.content_settings.content"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.all.text.label",
+          "default": "Sales end in"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.name",
+      "blocks": [
+        {
+          "type": "announcement_bar"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

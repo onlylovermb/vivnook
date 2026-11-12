@@ -1,0 +1,9 @@
+.article-card__media {
+  margin-bottom: 2.4rem;
+}
+.article-card__content > * + * {
+  margin: 1.2rem 0 0;
+}
+.article-card__content .article-card__button {
+  margin-top: 2rem;
+}

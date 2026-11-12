@@ -1,0 +1,29 @@
+{% liquid
+
+%}
+<div class="article-card">
+  <div class="article-card__media blocks-radius">
+    <div class="block media-wrapper" style="--aspect-ratio: 4/3;">
+      {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  </div>
+  <div class="article-card__content">
+    {% if show_date %}
+      <div class="article-card__date text-sm">{{ 'sections.featured_blog.onboarding_date' | t }}</div>
+    {% endif %}
+    <h3 class="article-card__title{% if title_size %} {{ title_size }}{% endif %}">
+      {{ 'sections.featured_blog.onboarding_title' | t }}
+    </h3>
+    {%- if show_excerpt -%}
+      <p class="article-card__excerpt">
+        {{ 'sections.featured_blog.onboarding_content' | t }}
+      </p>
+    {%- endif -%}
+    {% if show_button %}
+      <button class="btn btn--underline article-card__button">
+        {{- 'blogs.article.article_button_label' | t -}}
+      </button>
+    {% endif %}
+  </div>
+</div>

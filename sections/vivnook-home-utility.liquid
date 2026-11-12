@@ -1,0 +1,72 @@
+{{ 'section-vivnook-home-utility.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign selected_product = section.settings.product
+  assign product_image = section.settings.product_image | default: selected_product.featured_image
+-%}
+<section class="vivnook-product-video-split pvs-heading-weight-{{ section.settings.heading_weight | default: 400 }} pvs-body-weight-{{ section.settings.body_weight | default: 400 }}" aria-label="{{ section.settings.aria_label | escape }}" style="--pvs-desktop-height:{{ section.settings.desktop_height | default: 720 }}px;--pvs-mobile-media-height:{{ section.settings.mobile_media_height | default: 500 }}px;--pvs-mobile-product-height:{{ section.settings.mobile_product_height | default: 560 }}px;--pvs-heading-desktop:{{ section.settings.heading_desktop_scale | default: 100 | divided_by: 100.0 }};--pvs-heading-mobile:{{ section.settings.heading_mobile_scale | default: 90 | divided_by: 100.0 }};--pvs-body-desktop:{{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};--pvs-body-mobile:{{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};--pvs-button-desktop:{{ section.settings.button_desktop_scale | default: 100 | divided_by: 100.0 }};--pvs-button-mobile:{{ section.settings.button_mobile_scale | default: 90 | divided_by: 100.0 }};--pvs-button-desktop-width:{{ section.settings.button_desktop_width | default: 250 }}px;--pvs-button-desktop-height:{{ section.settings.button_desktop_height | default: 48 }}px;--pvs-button-mobile-width:{{ section.settings.button_mobile_width | default: 250 }}px;--pvs-button-mobile-height:{{ section.settings.button_mobile_height | default: 48 }}px;">
+  <div class="vivnook-product-video-split__product">
+    <div class="vivnook-product-video-split__product-inner">
+      {% if product_image != blank %}
+        {{ product_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 700, 1000, 1200', sizes: '50vw', class: 'vivnook-product-video-split__product-image' }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'vivnook-product-video-split__product-image vivnook-product-video-split__placeholder' }}
+      {% endif %}
+      {% if section.settings.product_title != blank %}<h2>{{ section.settings.product_title | escape }}</h2>{% endif %}
+      {% if section.settings.product_subtitle != blank %}<p>{{ section.settings.product_subtitle | escape }}</p>{% endif %}
+      {% if section.settings.product_button_label != blank %}
+        <a class="vivnook-product-video-split__button" href="{% if selected_product != blank %}{{ selected_product.url }}{% else %}{{ section.settings.product_button_link }}{% endif %}">{{ section.settings.product_button_label | escape }}</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="vivnook-product-video-split__media">
+    {% if section.settings.video != blank %}
+      {{ section.settings.video | video_tag: autoplay: section.settings.video_autoplay, loop: section.settings.video_loop, muted: section.settings.video_muted, controls: section.settings.video_controls, image_size: '1600x' }}
+    {% elsif section.settings.video_url != blank %}
+      <video src="{{ section.settings.video_url }}" {% if section.settings.video_autoplay %}autoplay{% endif %} {% if section.settings.video_loop %}loop{% endif %} {% if section.settings.video_muted %}muted{% endif %} {% if section.settings.video_controls %}controls{% endif %} playsinline></video>
+    {% elsif section.settings.media_image != blank %}
+      {{ section.settings.media_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 1000, 1400, 1600', sizes: '50vw' }}
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag }}
+    {% endif %}
+    {% if section.settings.media_overlay_text != blank %}<p class="vivnook-product-video-split__overlay">{{ section.settings.media_overlay_text | escape | newline_to_br }}</p>{% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Product + video split",
+  "settings": [
+    {"type":"text","id":"aria_label","label":"Accessibility label","default":"Product and video feature"},
+    {"type":"product","id":"product","label":"Product"},
+    {"type":"image_picker","id":"product_image","label":"Product image override"},
+    {"type":"text","id":"product_title","label":"Product title","default":"Free your form, secure your tools"},
+    {"type":"text","id":"product_subtitle","label":"Product subtitle","default":"Designed separately. Styled together."},
+    {"type":"text","id":"product_button_label","label":"Button label","default":"Explore The Fanny Pack"},
+    {"type":"url","id":"product_button_link","label":"Button link"},
+    {"type":"header","content":"Typography and sizing"},
+    {"type":"range","id":"desktop_height","label":"Section desktop height","min":400,"max":1200,"step":10,"unit":"px","default":720},
+    {"type":"range","id":"mobile_media_height","label":"Mobile video height","min":250,"max":1000,"step":10,"unit":"px","default":500},
+    {"type":"range","id":"mobile_product_height","label":"Mobile product content height","min":300,"max":1000,"step":10,"unit":"px","default":560},
+    {"type":"range","id":"heading_desktop_scale","label":"Heading desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"heading_mobile_scale","label":"Heading mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"body_desktop_scale","label":"Body desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"body_mobile_scale","label":"Body mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"button_desktop_scale","label":"Button desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"button_mobile_scale","label":"Button mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"button_desktop_width","label":"Button desktop width","min":120,"max":500,"step":5,"unit":"px","default":250},
+    {"type":"range","id":"button_desktop_height","label":"Button desktop height","min":36,"max":100,"step":2,"unit":"px","default":48},
+    {"type":"range","id":"button_mobile_width","label":"Button mobile width","min":120,"max":500,"step":5,"unit":"px","default":250},
+    {"type":"range","id":"button_mobile_height","label":"Button mobile height","min":36,"max":100,"step":2,"unit":"px","default":48},
+    {"type":"select","id":"heading_weight","label":"Heading weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},
+    {"type":"select","id":"body_weight","label":"Body and button weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},
+    {"type":"video","id":"video","label":"Video"},
+    {"type":"url","id":"video_url","label":"External video URL","info":"Optional MP4 URL if no Shopify-hosted video is selected."},
+    {"type":"image_picker","id":"media_image","label":"Image fallback"},
+    {"type":"textarea","id":"media_overlay_text","label":"Video overlay text"},
+    {"type":"checkbox","id":"video_autoplay","label":"Autoplay video","default":true},
+    {"type":"checkbox","id":"video_loop","label":"Loop video","default":true},
+    {"type":"checkbox","id":"video_muted","label":"Mute video","default":true},
+    {"type":"checkbox","id":"video_controls","label":"Show video controls","default":false}
+  ],
+  "presets": [{"name":"Product + video split"}]
+}
+{% endschema %}

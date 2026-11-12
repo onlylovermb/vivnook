@@ -1,0 +1,524 @@
+﻿{{ 'section-products-bundle.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'vivnook-look-bundle.js' | asset_url }}?v=20261030-3" defer="defer"></script>
+{%- liquid
+  assign has_products = false
+  assign all_available = true
+  assign image_count = 0
+-%}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --bundle-desktop-height: {{ section.settings.desktop_height | default: 720 }}px;
+    --bundle-mobile-left-height: {{ section.settings.mobile_left_height | default: 600 }}px;
+    --bundle-mobile-right-height: {{ section.settings.mobile_right_height | default: 760 }}px;
+    --bundle-heading-desktop: {{ section.settings.heading_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --bundle-heading-mobile: {{ section.settings.heading_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --bundle-product-title-desktop: {{ section.settings.product_title_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --bundle-product-title-mobile: {{ section.settings.product_title_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --bundle-body-desktop: {{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --bundle-body-mobile: {{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --bundle-button-desktop: {{ section.settings.button_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --bundle-button-mobile: {{ section.settings.button_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --bundle-button-desktop-width: {{ section.settings.button_desktop_width | default: 250 }}px;
+    --bundle-button-desktop-height: {{ section.settings.button_desktop_height | default: 48 }}px;
+    --bundle-button-mobile-width: {{ section.settings.button_mobile_width | default: 250 }}px;
+    --bundle-button-mobile-height: {{ section.settings.button_mobile_height | default: 48 }}px;
+    --bundle-button-desktop-y: {{ section.settings.button_desktop_y | default: 0 }}px;
+    --bundle-button-mobile-y: {{ section.settings.button_mobile_y | default: 0 }}px;
+    --bundle-heading-weight: {{ section.settings.heading_weight | default: 400 }};
+    --bundle-body-weight: {{ section.settings.body_weight | default: 400 }};
+  }
+{% endstyle %}
+<div class="products-bundle page-width section--padding {{ section.settings.custom_class | escape }}">
+  <products-bundle class="look-bundle" data-look-bundle data-cover-black="{{ section.settings.cover_black | image_url: width: 800 }}" data-cover-navy="{{ section.settings.cover_navy | image_url: width: 800 }}" data-cover-burgundy="{{ section.settings.cover_burgundy | image_url: width: 800 }}">
+    <div class="look-bundle__models" aria-label="Model photographs">
+      {% for number in (1..3) %}
+        {% liquid
+          assign image_key = 'image_' | append: number
+          if number == 1
+            assign image_key = 'image'
+          endif
+          assign model_image = section.settings[image_key]
+        %}
+        <div class="look-bundle__model{% if model_image == blank %} look-bundle__empty{% endif %}" data-model {% if image_count > 0 %}hidden{% endif %}>
+          {% if model_image != blank %}
+            {{ model_image | image_url: width: 1800 | image_tag: widths: '400, 750, 1100, 1500, 1800', sizes: '(min-width: 750px) 48vw, 100vw', loading: 'lazy' }}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        {% assign image_count = image_count | plus: 1 %}
+      {% endfor %}
+      {% if image_count > 1 %}
+        <div class="look-bundle__model-controls">
+          <button type="button" class="look-bundle__arrow" data-model-step="-1" aria-label="Previous model photograph">{% render 'look-bundle-arrow', direction: 'left' %}</button>
+          {% for number in (1..image_count) %}
+            <button type="button" class="look-bundle__dot" data-model-index="{{ forloop.index0 }}" aria-label="Model photograph {{ number }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+          {% endfor %}
+          <button type="button" class="look-bundle__arrow" data-model-step="1" aria-label="Next model photograph">{% render 'look-bundle-arrow', direction: 'right' %}</button>
+        </div>
+      {% endif %}
+    </div>
+    <div class="look-bundle__shop">
+      <h2 class="look-bundle__heading">{{ section.settings.look_heading | escape }}</h2>
+      <span class="look-bundle__rule" aria-hidden="true"></span>
+      <div class="look-bundle__carousel" aria-label="Products in this look" aria-roledescription="carousel">
+        <div class="look-bundle__track">
+          {% for block in section.blocks %}
+            {% liquid
+              assign card_product = block.settings.product
+              assign is_bag_product = false
+              if card_product.handle contains 'fanny'
+                assign is_bag_product = true
+              endif
+              assign display_image = block.settings.display_image | default: card_product.featured_image
+              if is_bag_product and section.settings.cover_black != blank
+                assign display_image = section.settings.cover_black
+              endif
+              if card_product != blank
+                assign has_products = true
+                unless card_product.available
+                  assign all_available = false
+                endunless
+              endif
+            %}
+            <article class="look-bundle__product" data-look-product data-block-id="{{ block.id }}" {{ block.shopify_attributes }} {% unless forloop.first %}inert aria-hidden="true"{% endunless %}>
+              <a class="look-bundle__product-image" {% if card_product != blank %}href="{{ card_product.url }}" aria-label="{{ card_product.title | escape }}"{% endif %}>
+                {% if is_bag_product %}
+                  {% if section.settings.cover_black != blank %}{{ section.settings.cover_black | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-black' }}{% endif %}
+                  {% if section.settings.cover_navy != blank %}{{ section.settings.cover_navy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-navy' }}{% endif %}
+                  {% if section.settings.cover_burgundy != blank %}{{ section.settings.cover_burgundy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-burgundy' }}{% endif %}
+                {% elsif display_image != blank %}{{ display_image | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy' }}{% endif %}
+              </a>
+              <div class="look-bundle__details">
+                <h3>{% if card_product != blank %}<a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>{% else %}EverTrue Scrub Top{% endif %}</h3>
+                {% if block.settings.caption != blank %}<p>{{ block.settings.caption | escape }}</p>{% elsif card_product == blank %}<p>Obsidian Black 脳 Barbie Pink</p>{% endif %}
+                {% if card_product != blank %}
+                  {% if card_product.available %}
+                    <select name="id" data-look-variant-select aria-label="{{ card_product.title | escape }} variant" {% if card_product.has_only_default_variant %}hidden{% endif %}>
+                      {% for variant in card_product.variants %}
+                        <option value="{{ variant.id }}" data-variant-image="{% if variant.featured_image %}{{ variant.image | image_url: width: 800 }}{% endif %}" {% if variant == card_product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} - Sold out{% endunless %}</option>
+                      {% endfor %}
+                    </select>
+                  {% else %}<p>{{ 'products.product.sold_out' | t }}</p>{% endif %}
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+        {% if section.blocks.size > 1 %}
+          <button class="look-bundle__arrow look-bundle__previous" type="button" data-product-step="-1" aria-label="Previous product">{% render 'look-bundle-arrow', direction: 'left' %}</button>
+          <button class="look-bundle__arrow look-bundle__next" type="button" data-product-step="1" aria-label="Next product">{% render 'look-bundle-arrow', direction: 'right' %}</button>
+        {% endif %}
+      </div>
+      <div class="look-bundle__purchase products-bundle__button">
+        <div class="product-form__error-message alert alert--error" role="alert" hidden></div>
+        <button type="button" class="btn btn--primary" data-bundle-add {% unless has_products and all_available %}disabled{% endunless %}>
+          <span>{{ section.settings.button_label | escape }}</span>{% render 'loading-spinner' %}
+        </button>
+      </div>
+      <span class="visually-hidden" data-look-status aria-live="polite"></span>
+    </div>
+  </products-bundle>
+</div>
+{% schema %}
+{
+  "name": "t:sections.products-bundle.name",
+  "class": "products-bundle-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The Look: add model images and product blocks. All selected products are added together; customers can choose each product variant."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section_header.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.all.heading.label",
+      "default": "Build Your Own Basket"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.text_size.heading.label",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_size.options__h6.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_size.options__h5.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_size.options__h4.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_size.options__h1.label"
+        },
+        {
+          "value": "hd3",
+          "label": "t:sections.all.text_size.options__hd3.label"
+        },
+        {
+          "value": "hd2",
+          "label": "t:sections.all.text_size.options__hd2.label"
+        },
+        {
+          "value": "hd1",
+          "label": "t:sections.all.text_size.options__hd1.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "t:sections.all.heading_tag.label",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_tag.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_tag.options__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_tag.options__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_tag.options__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_tag.options__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_tag.options__6.label"
+        }
+      ],
+      "info": "t:sections.all.heading_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.highlight_text.header.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.all.highlight_text.paragraph.content"
+    },
+    {
+      "type": "select",
+      "id": "heading_highlight_style",
+      "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label",
+      "default": "Bundle & save"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.all.description.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.all.custom_attr.custom_class"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Model image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Model image 3"
+    },
+    {
+      "type": "header",
+      "content": "Matching bag covers"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_black",
+      "label": "Black bag cover"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_navy",
+      "label": "Navy bag cover"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_burgundy",
+      "label": "Burgundy bag cover"
+    },
+    {
+      "type": "text",
+      "id": "look_heading",
+      "label": "Look heading",
+      "default": "The Look"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add Entire Look to Cart"
+    },
+    {
+      "type": "header",
+      "content": "Layout sizing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Desktop section height",
+      "min": 500,
+      "max": 1400,
+      "step": 10,
+      "unit": "px",
+      "default": 720
+    },
+    {
+      "type": "range",
+      "id": "mobile_left_height",
+      "label": "Mobile model image height",
+      "min": 300,
+      "max": 1200,
+      "step": 10,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "mobile_right_height",
+      "label": "Mobile product area height",
+      "min": 400,
+      "max": 1400,
+      "step": 10,
+      "unit": "px",
+      "default": 760
+    },
+    {
+      "type": "header",
+      "content": "Typography and button sizing"
+    },
+    {"type":"range","id":"heading_desktop_scale","label":"Heading desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"heading_mobile_scale","label":"Heading mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"product_title_desktop_scale","label":"Product title desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"product_title_mobile_scale","label":"Product title mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"body_desktop_scale","label":"Body desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"body_mobile_scale","label":"Body mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"button_desktop_scale","label":"Button desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"button_mobile_scale","label":"Button mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"button_desktop_width","label":"Button desktop width","min":120,"max":500,"step":5,"unit":"px","default":250},
+    {"type":"range","id":"button_desktop_height","label":"Button desktop height","min":36,"max":100,"step":2,"unit":"px","default":48},
+    {"type":"range","id":"button_mobile_width","label":"Button mobile width","min":120,"max":500,"step":5,"unit":"px","default":250},
+    {"type":"range","id":"button_mobile_height","label":"Button mobile height","min":36,"max":100,"step":2,"unit":"px","default":48},
+    {"type":"range","id":"button_desktop_y","label":"Button desktop vertical position","min":-300,"max":300,"step":10,"unit":"px","default":0},
+    {"type":"range","id":"button_mobile_y","label":"Button mobile vertical position","min":-300,"max":300,"step":10,"unit":"px","default":0},
+    {"type":"select","id":"heading_weight","label":"Heading weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},
+    {"type":"select","id":"body_weight","label":"Body and button weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"} ],"default":"400"}
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "t:sections.all.product.label",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.all.product.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.hotspot.content"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_position",
+          "label": "t:sections.all.position.horizontal.label",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "default": 30,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "vertical_position",
+          "label": "t:sections.all.position.vertical.label",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "default": 30,
+          "unit": "%"
+        },
+        {
+          "type": "image_picker",
+          "id": "display_image",
+          "label": "Product image override"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Colour cover image",
+          "info": "Use one cover image for each colour/product block."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Colour caption",
+          "info": "For example: Obsidian Black 脳 Barbie Pink"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.products-bundle.name",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "horizontal_position": 30,
+            "vertical_position": 32
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "horizontal_position": 38,
+            "vertical_position": 60
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "horizontal_position": 65,
+            "vertical_position": 45
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay"
+    ]
+  }
+}
+{% endschema %}
+
+
+

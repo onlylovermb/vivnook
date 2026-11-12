@@ -1,0 +1,350 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "tops_design_assets": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ 'tops-product-info.css' | asset_url | stylesheet_tag }}<script src=\"{{ 'tops-product-info.js' | asset_url }}\" defer></script><style>\nbody:has(product-info[data-url*='fanny']) .section--breadcrumb{padding:0!important;margin:0!important;min-height:0!important}\nbody:has(product-info[data-url*='fanny']) .section--breadcrumb .page-width{padding:0 3.5% 5px 8px!important;min-height:0!important}\nbody:has(product-info[data-url*='fanny']) .section--breadcrumb .breadcrumbs{padding:0!important;margin:0!important}\n\nproduct-info[data-url*='fanny'] .product__block--variant_picker {\n  border-bottom: 0 !important;\n  padding-bottom: 0 !important;\n  margin-bottom: 16px !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--buy_buttons {\n  border-top: 0 !important;\n  padding-top: 0 !important;\n  margin-top: 0 !important;\n  margin-bottom: 8px !important;\n  padding-bottom: 0 !important;\n  height: auto !important;\n  min-height: 0 !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__buttons {\n  display: grid !important;\n  grid-template-columns: 32% calc(68% - 12px) !important;\n  gap: 12px !important;\n  align-items: stretch !important;\n  width: 100% !important;\n  margin-top: 0 !important;\n  padding-top: 16px !important;\n  border-top: 1px solid #707070 !important;\n  height: auto !important;\n  min-height: 36px !important;\n  max-height: none !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__quantity,\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__quantity .quantity,\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .look-quantity-select,\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .look-quantity-select__trigger,\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .tops-quantity__trigger,\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__submit {\n  height: 36px !important;\n  min-height: 36px !important;\n  max-height: 36px !important;\n  box-sizing: border-box !important;\n  margin: 0 !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__quantity .quantity {\n  position: relative !important;\n  overflow: visible !important;\n}\n\nproduct-info[data-url*='fanny'] .tops-quantity__menu {\n  width: 100% !important;\n  min-width: 100% !important;\n  max-width: 100% !important;\n  left: 0 !important;\n  right: 0 !important;\n  transform: none !important;\n  box-sizing: border-box !important;\n  border-radius: 4px !important;\n  top: 100% !important;\n  bottom: auto !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--buy_buttons .product-form__submit {\n  width: 100% !important;\n  font-size: 14px !important;\n  line-height: 36px !important;\n  border-radius: 4px !important;\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--variant_picker .form__label > div > span {\n  font-size: 16px !important;\n}\nproduct-info[data-url*='fanny'] .product__block--variant_picker .form__label > div > span.font-body-bold {\n  font-weight: 700 !important;\n}\nproduct-info[data-url*='fanny'] .product__block--variant_picker .form__label > div > span[data-selected-swatch-value] {\n  font-weight: 400 !important;\n}\n\nproduct-info[data-url*='fanny'] .product__block--custom_liquid:has(.tops-shipping),\nproduct-info[data-url*='fanny'] .product__block:has(.tops-shipping),\nproduct-info[data-url*='fanny'] .product__block--buy_buttons + .product__block {\n  margin-top: 0 !important;\n  margin-bottom: 16px !important;\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n\nproduct-info[data-url*='fanny'] .tops-shipping {\n  display: flex !important;\n  justify-content: space-between !important;\n  align-items: center !important;\n  gap: 12px !important;\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n  padding: 0 !important;\n  font-family: Helvetica,Arial,sans-serif !important;\n  font-weight: 300 !important;\n  font-size: 12px !important;\n  line-height: 1.4 !important;\n}\n\nproduct-info[data-url*='fanny'] .tops-shipping span,\nproduct-info[data-url*='fanny'] .tops-shipping a {\n  font-family: Helvetica,Arial,sans-serif !important;\n  font-weight: 300 !important;\n  font-size: 12px !important;\n  line-height: 1.4 !important;\n}\n</style>"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": false,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 20,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 20,
+            "size_title": "size",
+            "size_chart_from_page": "product-size-chart"
+          }
+        },
+        "popup_F6EwRh": {
+          "type": "popup",
+          "disabled": true,
+          "settings": {
+            "text": "Size Chart",
+            "page": "size-chart-scrub-pants"
+          }
+        },
+        "custom_liquid_zbtydg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n/* Fanny Pack Mobile: Enforce exactly 21px for title and price */\n@media screen and (max-width: 767px) {\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--title .product__title,\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__title,\n  html body.product-template.fanny-pack .product__title,\n  html body.product-template.fanny-bag .product__title {\n    font-size: 21px !important;\n    line-height: 1.25 !important;\n    font-weight: 700 !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--price .f-price,\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--price .f-price-item,\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--price .f-price-item--regular,\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--price .f-price-item--sale,\n  html body.product-template.fanny-pack .product__block--price .f-price-item,\n  html body.product-template.fanny-bag .product__block--price .f-price-item {\n    font-size: 21px !important;\n    line-height: 1.2 !important;\n    font-weight: 400 !important;\n  }\n}\n\n/* Fanny Pack Mobile Buy Buttons Strict 32% QTY and 68% ATC with 9.6px gap */\n@media screen and (max-width: 767px) {\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__buttons,\n  html body.product-template.fanny-pack .product__block--buy_buttons .product-form__buttons,\n  html body.product-template.fanny-bag .product__block--buy_buttons .product-form__buttons {\n    display: grid !important;\n    grid-template-columns: 32% calc(68% - 9.6px) !important;\n    gap: 9.6px !important;\n    column-gap: 9.6px !important;\n    width: 100% !important;\n    margin-top: 0 !important;\n    padding-top: 16px !important;\n    border-top: 1px solid #707070 !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__quantity {\n    width: 100% !important;\n    min-width: 100% !important;\n    max-width: 100% !important;\n    flex: none !important;\n    margin: 0 !important;\n    padding: 0 !important;\n    border: 0 !important;\n    background: transparent !important;\n    box-shadow: none !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__quantity .quantity {\n    width: 100% !important;\n    min-width: 100% !important;\n    max-width: 100% !important;\n    height: 36px !important;\n    min-height: 36px !important;\n    max-height: 36px !important;\n    box-sizing: border-box !important;\n    border: 1px solid #707070 !important;\n    border-radius: 4px !important;\n    background: #ffffff !important;\n    box-shadow: none !important;\n    outline: none !important;\n    margin: 0 !important;\n    padding: 0 !important;\n    position: relative !important;\n    overflow: visible !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .tops-quantity__trigger {\n    width: 100% !important;\n    height: 100% !important;\n    border: 0 !important;\n    outline: none !important;\n    box-shadow: none !important;\n    background: transparent !important;\n    padding: 0 10px !important;\n    margin: 0 !important;\n    display: flex !important;\n    align-items: center !important;\n    justify-content: space-between !important;\n    font-size: 12px !important;\n    line-height: 1 !important;\n    cursor: pointer !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-url*=\"fanny-bag\"], [data-url*=\"fanny-pack\"]) .tops-quantity__menu,\n  html body.product-template.fanny-pack .tops-quantity__menu,\n  html body.product-template.fanny-bag .tops-quantity__menu {\n    top: 100% !important;\n    bottom: auto !important;\n    left: 0 !important;\n    right: 0 !important;\n    width: 100% !important;\n    min-width: 100% !important;\n    max-width: 100% !important;\n    transform: none !important;\n    z-index: 999 !important;\n    margin-top: 2px !important;\n    border: 1px solid #707070 !important;\n    border-radius: 4px !important;\n    box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;\n    background: #ffffff !important;\n  }\n\n  html body product-info:is([data-url*=\"fanny\"], [data-url*=\"fanny-bag\"], [data-url*=\"fanny-pack\"]) .product__block--buy_buttons .product-form__submit {\n    width: 100% !important;\n    min-width: 100% !important;\n    max-width: 100% !important;\n    flex: none !important;\n    margin: 0 !important;\n    height: 36px !important;\n    min-height: 36px !important;\n    max-height: 36px !important;\n    line-height: 36px !important;\n    font-size: 14px !important;\n    border-radius: 4px !important;\n    box-sizing: border-box !important;\n  }\n}\n\n@media screen and (min-width: 768px) {\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__buttons {\n    display: grid !important;\n    grid-template-columns: 32% calc(68% - 12px) !important;\n    gap: 12px !important;\n    column-gap: 12px !important;\n    width: 100% !important;\n    margin-top: 0 !important;\n    padding-top: 16px !important;\n    border-top: 1px solid #707070 !important;\n  }\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__quantity .quantity,\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .product__block--buy_buttons .product-form__submit {\n    height: 36px !important;\n    min-height: 36px !important;\n    max-height: 36px !important;\n    box-sizing: border-box !important;\n  }\n  html body product-info:is([data-url*=\"fanny\"], [data-product-id=\"8345662783603\"]) .tops-quantity__menu {\n    top: 100% !important;\n    bottom: auto !important;\n    left: 0 !important;\n    right: 0 !important;\n    width: 100% !important;\n    transform: none !important;\n    z-index: 999 !important;\n  }\n}\n</style>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "tops_shipping": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"tops-shipping\" style=\"display:flex!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;margin-top:0!important;margin-bottom:0!important;padding:0!important;font-family:Helvetica,Arial,sans-serif!important;font-weight:300!important;font-size:12px!important;line-height:1.4!important;\"><span style=\"font-family:Helvetica,Arial,sans-serif!important;font-weight:300!important;font-size:12px!important;line-height:1.4!important;\">Free Shipping for $100+ orders and Free Returns</span><a href=\"{{ shop.shipping_policy.url }}\" style=\"font-family:Helvetica,Arial,sans-serif!important;font-weight:300!important;font-size:12px!important;line-height:1.4!important;text-decoration:underline!important;white-space:nowrap!important;\">Learn More</a></div>"
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "truck",
+            "heading_1": "Shipped within 24 hours",
+            "icon_2": "arrow-up-left",
+            "heading_2": "30 day returns",
+            "icon_3": "package",
+            "heading_3": "Orders over $100 ship free"
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Your complete style",
+            "make_collapsible_row": true,
+            "icon": "tag",
+            "product_list_limit": 2,
+            "products_per_page": 2,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "icon": "none",
+            "content": "<p>Designed to keep everyday essentials organized, secure and within easy reach.</p><p>• 4-layer / 12-slot organization system</p><p>• Magnetic quick-release buckle</p><p>• Water-resistant nylon shell</p><p>• Ripstop polyester lining</p><p>• Adjustable for waist or crossbody wear</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Specs",
+            "icon": "none",
+            "content": "<p><strong>Capacity:</strong> 1.5L<br/><strong>Dimensions:</strong> 23×13×5cm<br/><strong>Adjustable belt:</strong> 58–113cm</p><p>Four dedicated storage zones for quick-access essentials, pens and shears, larger medical gear, and personal valuables.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "none",
+            "content": "<p>Free standard shipping on orders over US$100.</p><p>Standard orders are usually processed within 1–3 business days. Custom and embroidered orders require an additional 5–10 business days before shipping.</p><p><strong>Estimated transit time</strong><br/>United States: 7–12 business days<br/>Australia: 8–12 business days<br/>Europe: 6–10 business days<br/>Asia: 3–5 business days</p><p>Applicable VAT, GST or sales tax is shown at checkout where required. Vivnook covers applicable customs duties and import charges, so there are no surprise customs fees on delivery.</p><p>See our Shipping & Returns Policy for full details.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "shop-the-look": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ 'tops-product-info.css' | asset_url | stylesheet_tag }}<script src=\"{{ 'tops-product-info.js' | asset_url }}\" defer></script>{% render 'tops-shop-the-look' %}"
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "tops_design_assets",
+        "badges",
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "variant_picker",
+        "popup_F6EwRh",
+        "custom_liquid_zbtydg",
+        "buy_buttons",
+        "tops_shipping",
+        "icon_with_text",
+        "pickup_availability",
+        "complementary",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "shop-the-look",
+        "addons"
+      ],
+      "custom_css": [
+        ".f-price-item--sale {order: 0;}",
+        ".f-price__sale {column-gap: 1.6rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "gallery_layout": "columns",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": false,
+        "enable_video_looping": true,
+        "vivnook_learn_more_url": "",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "fanny_features": {
+      "type": "vivnook-fanny-features",
+      "blocks": {
+        "work": {
+          "type": "work_system",
+          "settings": {
+            "video": "shopify://files/videos/红色替换.mp4",
+            "image": "shopify://shop_images/995064ab1f2b127152456aa091fa880d.png",
+            "heading": "The Work System",
+            "text": "<p>Designed separately. Styled together. Why burden your pockets when your clothing is engineered for silhouette, fit, and fluid movement? The EverStealth™ Fanny Pack coordinates your daily clinical carry—re-architecting how you navigate high-intensity shifts without ever feeling weighed down.</p>",
+            "right_image_height": 300,
+            "right_image_height_mobile": 240,
+            "right_image_zoom": 100,
+            "right_image_zoom_mobile": 100,
+            "right_image_vertical_position": -15,
+            "right_image_vertical_position_mobile": 0,
+            "right_text_width": 520,
+            "right_text_width_mobile": 330,
+            "right_heading_size": 30,
+            "right_heading_weight": 400,
+            "right_heading_size_mobile": 26,
+            "right_heading_weight_mobile": 400,
+            "right_body_size": 16,
+            "right_body_weight": 400,
+            "right_body_size_mobile": 14,
+            "right_body_weight_mobile": 400,
+            "right_text_vertical_position": -30,
+            "right_text_vertical_position_mobile": 0
+          }
+        },
+        "images": {
+          "type": "image_pair",
+          "settings": {
+            "image": "shopify://shop_images/37a370d3d96358c545471b4ba6fd4347.webp",
+            "image_right": "shopify://shop_images/b5a59d62ae7be014c6c27df094bdfcc7.webp",
+            "heading": "Wipe-Clean Deflector",
+            "text": "<p>Built with a water-resistant nylon shell, this medical fanny pack deflects fluid splashes, chemical agents, and unpredictable clinic spills. The high-performance, non-porous exterior makes it exceptionally easy to clean with a single wipe, keeping you protected under demanding frontline exposure.</p>",
+            "middle_heading_size": 23,
+            "middle_heading_weight": 400,
+            "middle_heading_size_mobile": 22,
+            "middle_heading_weight_mobile": 400,
+            "middle_body_size": 16,
+            "middle_body_weight": 400,
+            "middle_body_size_mobile": 14,
+            "middle_body_weight_mobile": 400,
+            "middle_text_vertical_position": 0,
+            "middle_text_vertical_position_mobile": 0
+          }
+        },
+        "snap": {
+          "type": "snap",
+          "settings": {
+            "image": "shopify://shop_images/6d0e81b7103ea5aa2d2258c779aefb87.webp",
+            "video": "shopify://files/videos/一秒.mp4",
+            "heading": "One-Second Snap Your World",
+            "text": "<p>Engineered for peak efficiency, the 1.5L interior features a 12-slot system for organized, quick-access storage. Paired with a quick-release magnetic buckle for seamless one-second snap-on functionality, the soft, adjustable belt ensures all-day comfort as a waist bag or crossbody.</p>",
+            "middle_heading_size": 30,
+            "middle_heading_weight": 400,
+            "middle_heading_size_mobile": 26,
+            "middle_heading_weight_mobile": 400,
+            "middle_body_size": 16,
+            "middle_body_weight": 400,
+            "middle_body_size_mobile": 14,
+            "middle_body_weight_mobile": 400,
+            "middle_text_vertical_position": 0,
+            "middle_text_vertical_position_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "work",
+        "images",
+        "snap"
+      ],
+      "settings": {
+        "background": "#ececec",
+        "text_color": "#333333"
+      }
+    },
+    "vivnook_finale_banner_rVL8ar": {
+      "type": "vivnook-finale-banner",
+      "name": "Finale banner",
+      "settings": {
+        "aria_label": "",
+        "left_image": "shopify://shop_images/25a2ae4f3aeacec2f66ab92e67040928.png",
+        "left_heading": "Thoughtful Details, Better Care",
+        "right_image": "shopify://shop_images/aac65d016ca218544d481e800d820749.webp",
+        "right_heading": "Care for the Ones Who Care.",
+        "right_subheading": "Long shifts. Full days. Countless small acts of care.",
+        "right_body": "<p>We create workwear with thoughtful fits and considered details, so you can feel more like yourself in the work you do.</p>",
+        "left_heading_size": 30,
+        "left_heading_weight": 400,
+        "left_heading_size_mobile": 26,
+        "left_heading_weight_mobile": 400,
+        "left_subheading_size": 20,
+        "left_subheading_weight": 400,
+        "left_subheading_size_mobile": 18,
+        "left_subheading_weight_mobile": 400,
+        "left_body_size": 14,
+        "left_body_weight": 400,
+        "left_body_size_mobile": 13,
+        "left_body_weight_mobile": 400,
+        "left_vertical_position": -30,
+        "left_vertical_position_mobile": 0,
+        "right_heading_size": 30,
+        "right_heading_weight": 400,
+        "right_heading_size_mobile": 26,
+        "right_heading_weight_mobile": 400,
+        "right_subheading_size": 20,
+        "right_subheading_weight": 400,
+        "right_subheading_size_mobile": 18,
+        "right_subheading_weight_mobile": 400,
+        "right_body_size": 14,
+        "right_body_weight": 400,
+        "right_body_size_mobile": 13,
+        "right_body_weight_mobile": 400,
+        "right_vertical_position": 60,
+        "right_vertical_position_mobile": 50,
+        "left_detail_1_subtitle": "Made to Fit",
+        "left_detail_1_body": "<p>Complimentary hemming tailored to your height. Custom-altered items are final sale.</p>",
+        "left_detail_2_subtitle": "Delivery, Made Simple",
+        "left_detail_2_body": "<p>Reliable worldwide shipping, with delivery in 6–12 business days where available.</p>",
+        "left_detail_3_subtitle": "A Little More Peace of Mind",
+        "left_detail_3_body": "<p>Enjoy 14-day returns on eligible, unaltered items.</p>"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "fanny_features",
+    "vivnook_finale_banner_rVL8ar"
+  ]
+}

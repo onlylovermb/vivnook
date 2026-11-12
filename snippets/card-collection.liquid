@@ -1,0 +1,127 @@
+{% comment %}
+  Renders a collection card
+
+  Accepts:
+  - collection: {Object} Collection Liquid object
+  - card_style: {String} Collection card style (optional)
+  - show_product_count: {Boolean} Enable to show product count below the collection title. (optional)
+  - color_scheme: {String} Color schema for card (optional)
+  - featured_image: {Object} Collection featured image (optional)
+  - title: {String} Collection title (optional)
+
+  Usage:
+  {% render 'card-collection' %}
+{% endcomment %}
+{%- liquid
+  assign card_style = card_style | default: settings.collection_card_style
+  assign color_scheme = color_scheme | default: settings.collection_card_color_scheme
+  if show_product_count != null
+    assign show_product_count = show_product_count
+  else
+    assign show_product_count = settings.collection_card_show_product_count
+  endif
+  if show_icon != null
+    assign show_icon = show_icon
+  else
+    assign show_icon = true
+  endif
+  assign heading_size = heading_size | default: 'h4'
+
+  assign all_products_count = collection.all_products_count
+  if collection == blank
+    assign all_products_count = 12
+  endif
+
+  assign collection_title = title | default: collection.title
+  assign default_label = 'onboarding.collection_title' | t
+
+  unless featured_image
+    if collection.image
+      assign featured_image = collection.image
+    else
+      assign featured_image = collection.products.first.featured_media.preview_image
+    endif
+  endunless
+
+  assign image_ratio = image_ratio | default: 'adapt'
+  if image_ratio == 'adapt'
+    if featured_image != blank
+      assign image_ratio = featured_image.aspect_ratio
+    else
+      assign image_ratio = '1'
+    endif
+  endif
+-%}
+<div class="collection-card collection-card--{{ card_style }}{% if has_bg %} collection-card--has-bg blocks-radius{% endif %} color-{{ color_scheme }}">
+  <a
+    {% if collection != blank %}
+      href="{{ collection.url }}"
+    {% else %}
+      role="link" aria-disabled="true"
+    {% endif %}
+    class="collection-card__wrapper relative flex flex-col gap-6 focus-inset"
+    aria-label="{{ collection_title | default: default_label }}"
+  >
+    <div class="collection-card__image media-wrapper hover-wrapper{% unless has_bg %} blocks-radius{% endunless %}">
+      <motion-element data-motion="zoom-out-sm" class="block" style="--aspect-ratio: {{ image_ratio }};">
+        {%- if featured_image != blank -%}
+          {%- liquid
+            assign image_sizes = image_sizes | default: '450px'
+            assign image_widths = '165, 355, 450, 535, 710, 900, 1070, 1400, ' | append: featured_image.width
+          -%}
+          {{
+            featured_image
+            | image_url: width: featured_image.width
+            | image_tag:
+              loading: 'lazy',
+              class: 'motion-reduce hover-scale-up',
+              widths: image_widths,
+              sizes: image_sizes,
+              is: 'image-lazy'
+          }}
+        {%- else -%}
+          <div class="collection-card__placeholder hover-scale-up">
+            {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+      </motion-element>
+    </div>
+    <div class="collection-card__inner{% if card_style == 'style-2' %} content-overlay content-overlay--bottom-left{% endif %} pointer-events-none">
+      <div class="collection-card__info flex items-center gap-2 w-full">
+        <div class="collection-card__summary flex-1 flex flex-col gap-1 text-{{ content_alignment | default: 'left' }}">
+          <h3 class="collection-card__title {{ heading_size }}">{{ collection_title | default: default_label }}</h3>
+          {%- if show_product_count -%}
+            <div class="collection-card__count text-subtext">
+              {{ 'collections.general.collection_items' | t: title: all_products_count }}
+            </div>
+          {%- endif -%}
+          {%- if description != blank -%}
+            <div class="rte text-subtext">{{ description }}</div>
+          {%- endif -%}
+        </div>
+        {%- if show_icon -%}
+          <button
+            class="btn btn--icon-circle btn--secondary shrink-0"
+            aria-label="{{ collection_title | default: default_label }}"
+            {% unless collection %}
+              disabled
+            {% endunless %}
+          >
+            <svg
+              class="icon icon--medium rtl-flip-x"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M5 15L15 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.875 5H15V13.125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {%- endif -%}
+      </div>
+    </div>
+  </a>
+</div>

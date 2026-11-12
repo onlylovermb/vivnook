@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_zXqNmB": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .vn-faq{background:#f7f7f7;color:#111;padding:48px 5vw 72px;font-family:inherit}.vn-faq__wrap{max-width:1180px;margin:auto}.vn-faq__crumbs{font-size:13px;color:#777;margin-bottom:42px}.vn-faq__crumbs a{color:inherit}.vn-faq h1{font-size:clamp(36px,5vw,64px);margin:0 0 34px;letter-spacing:-.04em}.vn-faq__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.vn-faq__card{display:block;background:#fff;padding:24px;color:inherit;text-decoration:none;box-shadow:0 5px 16px #0000000d}.vn-faq__card h2{font-size:20px;margin:0 0 8px}.vn-faq__card p{margin:0;color:#666;line-height:1.5}.vn-faq__cta{text-align:center;border-top:1px solid #e5e5e5;margin-top:58px;padding-top:42px}.vn-faq__button{display:inline-flex;background:#111;color:#fff;padding:14px 24px;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-size:12px}@media(max-width:749px){.vn-faq{padding:32px 18px 52px}.vn-faq__grid{grid-template-columns:1fr}}\n</style>\n<section class=\"vn-faq\"><div class=\"vn-faq__wrap\">\n  <nav class=\"vn-faq__crumbs\"><a href=\"/pages/help-center\">Help Center Home</a> / <a href=\"/pages/returns-exchanges\">Returns &amp; Exchanges</a> / FAQ</nav>\n  <h1>Returns &amp; Exchanges FAQ</h1>\n  <div class=\"vn-faq__grid\">\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-return-policy\"><h2>What is your return policy?</h2><p>14-day window, eligibility requirements and final sale items.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-start-a-return\"><h2>How do I start a return?</h2><p>Request authorization and receive your pre-paid label.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-exchanges\"><h2>Can I exchange an item?</h2><p>Size and color exchange requirements and timing.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-damaged-wrong-item\"><h2>What if my item is damaged or incorrect?</h2><p>How Vivnook handles defects, damage and incorrect items.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-refund-timing\"><h2>When will I receive my refund?</h2><p>Inspection, approval and bank processing times.</p></a>\n  </div>\n  <div class=\"vn-faq__cta\"><h2>Need more help?</h2><p>Our concierge care team is here to help.</p><a class=\"vn-faq__button\" href=\"https://azbi0u-6f.myshopify.com/pages/contact\">Contact Us</a></div>\n</div></section>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_zXqNmB"
+  ]
+}

@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Overlay group",
+  "type": "custom.overlay",
+  "sections": {
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {
+        "show_cart_note": true,
+        "show_cart_discount": true,
+        "show_shipping_rates_calculator": true,
+        "show_free_shipping_goal": true,
+        "enable_cart_recommendations": true,
+        "cart_recommendations_heading": "You may also like",
+        "cart_recommendations_limit": 3
+      }
+    },
+    "search-drawer": {
+      "type": "search-drawer",
+      "settings": {
+        "drawer_position": "right"
+      }
+    },
+    "quick-view": {
+      "type": "quick-view",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "variant_picker",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_video_looping": true
+      }
+    },
+    "popup": {
+      "type": "popup",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_a1fecffd-6e6c-40fe-ab40-cb0af08f8fe7.webp",
+            "image_position": "left"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get 10% Off The Look",
+            "text_size": "h1",
+            "heading_tag": "h3"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Exclusive 10% off your Vivnook Signature Look™ bundle. Sign up to get your code.</p>",
+            "text_size": "text-sm"
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "design": "design-2",
+            "button_label": "Get 10% Off"
+          }
+        },
+        "socials": {
+          "type": "socials",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image",
+        "heading",
+        "text",
+        "form",
+        "socials"
+      ],
+      "settings": {
+        "enable": true,
+        "show_for_homepage_only": true,
+        "show_for_visitors_only": true,
+        "trigger_open": "delay",
+        "repeat_open": "every_day",
+        "alignment": "center",
+        "width": 880,
+        "show_teaser": false,
+        "teaser_button_text": "Newsletter",
+        "teaser_popup_bg": "#d63a2f",
+        "teaser_popup_text": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "cart-drawer",
+    "search-drawer",
+    "quick-view",
+    "popup"
+  ]
+}

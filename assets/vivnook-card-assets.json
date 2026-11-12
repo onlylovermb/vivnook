@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "landing_cover": "vivnook-identity-cover.webp",
+  "badge_back": "vivnook-badge-back.webp",
+  "activation_background": "vivnook-badge-activation-bg.webp",
+  "retrieve_background": "vivnook-badge-retrieve-bg.webp"
+}

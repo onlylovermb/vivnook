@@ -1,0 +1,123 @@
+{%- liquid
+  assign collection_title = 'onboarding.collection_title' | t
+  assign products_to_display = block.settings.limit
+
+  assign button_style = block.settings.button_style
+  assign button_label = block.settings.button_label
+
+  if collection != blank
+    assign collection_title = collection.title
+    assign button_link = collection.url
+
+    if collection.all_products_count < products_to_display
+      assign products_to_display = collection.all_products_count
+    endif
+  endif
+
+  assign columns = block.settings.columns
+  assign columns_tablet = columns | minus: 1
+  if columns < 3 or request.design_mode
+    assign columns_tablet = columns
+  endif
+  assign columns_mobile = block.settings.columns_mobile | plus: 0
+  assign enable_slider_desktop = block.settings.enable_slider
+  assign enable_slider_mobile = false
+  assign enable_swipe_mobile = block.settings.swipe_on_mobile
+
+  if products_to_display <= columns
+    assign enable_slider_desktop = false
+  endif
+
+  if enable_slider_desktop == true and enable_swipe_mobile == false and products_to_display > columns_mobile
+    assign enable_slider_mobile = true
+  endif
+
+  if products_to_display <= columns_mobile
+    assign enable_swipe_mobile = false
+  endif
+-%}
+{%- capture image_sizes -%}
+(max-width: 767px) calc((100vw - 30px) / {{ columns_mobile }}), (max-width: 1023px) calc((58vw - 60px) / {{ columns }}), 345px
+{%- endcapture -%}
+<collection-item-slider
+  class="collection-item-slider flex flex-col"
+  data-block-id="{{ block.id }}"
+  data-enable-slider-desktop="{{ enable_slider_desktop }}"
+  data-enable-slider-mobile="{{ enable_slider_mobile }}"
+  data-items="{{ columns }}"
+  data-items-tablet="{{ columns_tablet }}"
+  data-items-mobile="{{ columns_mobile }}"
+>
+  {%- if block.settings.hide_collection_name == blank or enable_slider_desktop or enable_slider_mobile -%}
+    <div class="collection-item-slider__header">
+      <motion-element
+        class="flex items-start justify-end gap-2 slider-controls--grouped-mobile"
+        data-motion="fade-up"
+      >
+        {%- if block.settings.hide_collection_name == blank -%}
+          <h2 class="h2 flex-grow">{{ collection_title }}</h2>
+        {%- endif -%}
+        {%- if enable_slider_desktop or enable_slider_mobile -%}
+          <div class="slider-controls--group{% if enable_slider_desktop == true and enable_slider_mobile == false %} hidden md:block{% elsif enable_slider_desktop == false and enable_slider_mobile == true %} md:hidden{% endif %}">
+            <div class="slider-controls flex items-center justify-start gap-2">
+              <button
+                class="swiper-button-prev btn"
+                name="previous"
+                aria-label="{{ 'general.slider.previous_slide' | t }}"
+              >
+                {% render 'icon-slider-prev' %}
+              </button>
+              <button
+                class="swiper-button-next btn"
+                name="next"
+                aria-label="{{ 'general.slider.next_slide' | t }}"
+              >
+                {% render 'icon-slider-next' %}
+              </button>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        {%- endif -%}
+      </motion-element>
+    </div>
+  {%- endif -%}
+  <grid-list class="block w-full">
+    <div class="collection-item-slider__products-wrap swiper swiper-equal-height{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ columns_mobile }}-cols{% endif %}">
+      <div class="collection-item-slider__products swiper-wrapper f-grid f-grid-{{ columns_mobile }}-cols md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns }}-cols f-grid--gap-{{ block.settings.column_gap }} f-grid--row-gap-{{ block.settings.row_gap }}{% if enable_swipe_mobile %} swipe-mobile__inner{% endif %}">
+        {%- for product in collection.products limit: products_to_display -%}
+          <div class="f-column swiper-slide">
+            {% render 'card-product',
+              product: product,
+              image_sizes: image_sizes,
+              image_ratio: block.settings.pcard_image_ratio,
+              quick_view_suffix: collection.handle,
+              section_index: section.index,
+              index: forloop.index
+            %}
+          </div>
+        {%- else -%}
+          {%- for i in (1..products_to_display) -%}
+            <div class="f-column swiper-slide">
+              {% render 'card-product-placeholder', image_ratio: block.settings.pcard_image_ratio %}
+            </div>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </grid-list>
+  {%- if button_label != blank -%}
+    <div class="collection-item-slider__footer flex items-center justify-center">
+      <a
+        class="btn {{ button_style }}"
+        {% if button_link != blank %}
+          href="{{ button_link }}"
+        {% else %}
+          aria-disabled="true"
+          disabled
+        {% endif %}
+      >
+        {{- button_label -}}
+      </a>
+    </div>
+  {%- endif -%}
+</collection-item-slider>

@@ -1,0 +1,66 @@
+{% liquid
+  assign image = block.settings.image
+  assign text = block.settings.text
+  assign author = block.settings.author
+  assign bio = block.settings.bio
+  assign icon = block.settings.icon
+%}
+
+<div class="testimonial testimonial--layout-1{% if has_bg %} testimonial--has-bg blocks-radius{% endif %} color-{{ color_scheme }} h-full flex flex-col">
+  {% if block.settings.show_image %}
+    <div class="testimonial__image media-wrapper hover-wrapper{% unless has_bg %} blocks-radius{% endunless %}">
+      <motion-element data-motion="zoom-out-sm" class="block w-full h-full">
+        {%- if image != blank -%}
+          {{
+            image
+            | image_url: width: 750
+            | image_tag:
+              loading: 'lazy',
+              class: 'motion-reduce hover-scale-up',
+              widths: '165, 360, 535, 750',
+              is: 'image-lazy'
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </motion-element>
+    </div>
+  {% endif %}
+  <div class="testimonial__inner flex-1 flex flex-col">
+    {% if author != blank or bio != blank %}
+      <div class="testimonial__header flex gap-x-2 flex-wrap">
+        {% if author != blank %}
+          <h4 class="testimonial__name h5">{{ author }}</h4>
+        {% endif %}
+        {% if bio != blank %}
+          <div class="testimonial__bio text-subtext text-sm">{{ bio }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if icon != 'none' %}
+      <div class="testimonial__icon">
+        {% render 'icon-testimonial', icon_name: block.settings.icon, size: 'small' %}
+      </div>
+    {% endif %}
+    {% if text != blank %}
+      <div class="testimonial__content rte {{ text_size }}">{{ text }}</div>
+    {% endif %}
+    {% if block.settings.product != blank %}
+      <div class="testimonial__footer flex-1 flex flex-col justify-end">
+        {%- assign product = all_products[block.settings.product] -%}
+        <a class="testimonial__product" href="{{ product.url }}" target="_blank">
+          <span class="block blocks-radius-sm hover-wrapper" style="--aspect-ratio: 1;">
+            {{
+              product.featured_image
+              | image_url: width: 360
+              | image_tag: loading: 'lazy', class: 'motion-reduce hover-scale-up', widths: '165, 360', is: 'image-lazy'
+            }}
+          </span>
+          <p class="testimonial__product-title text-pcard-title m-0">
+            <span class="reversed-link">{{ product.title }}</span>
+          </p>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

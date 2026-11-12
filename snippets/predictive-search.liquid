@@ -1,0 +1,354 @@
+{%- liquid
+  assign search_recommendation_empty = true
+  if settings.most_searched_keyworkds != blank or settings.products_recommendations != blank
+    assign search_recommendation_empty = false
+  endif
+-%}
+<form
+  action="{{ routes.search_url }}"
+  {% if settings.predictive_search_enabled %}
+    is="predictive-search"
+    data-results-limit="{{ settings.number_results_to_show }}"
+  {% endif %}
+  method="get"
+  role="search"
+  class="search__form flex flex-col w-full h-full relative"
+  data-search-recommendation-empty="{{ search_recommendation_empty }}"
+>
+  <input type="hidden" name="options[prefix]" value="last">
+  <div class="search__field relative flex items-center">
+    <span class="search__field-icon absolute search__icon-search flex items-center justify-center">
+      {%- render 'icon-search', size: 'large' -%}
+    </span>
+    <input
+      id="SearchInput-{{ section.id }}"
+      class="search__input form-control"
+      type="search"
+      name="q"
+      {% if context == 'page' %}
+        value="{{ search.terms | escape }}"
+      {% endif %}
+      placeholder="{{ 'general.search.search' | t }}"
+      {% if settings.predictive_search_enabled %}
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results"
+        aria-controls="predictive-search-results"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      {% endif %}
+    >
+    <label class="visually-hidden" for="SearchInput-{{ section.id }}">
+      {{- 'general.search.search' | t -}}
+    </label>
+    {%- if settings.predictive_search_enabled %}
+      <button
+        type="reset"
+        class="search__reset absolute flex items-center justify-center text-subtext"
+        aria-label="{{ 'general.search.reset' | t }}"
+      >
+        <span>{{ 'templates.search.clear' | t }}</span>
+        {% render 'loading-spinner' %}
+      </button>
+    {%- endif -%}
+  </div>
+  <div class="search__content flex-grow{% if context == 'page' %} v-scrollable{% endif %}{% if search_recommendation_empty %} hidden{% endif %}">
+    {%- unless search_recommendation_empty -%}
+      <div class="search_box search__recommendations grid gap-6">
+        {%- if settings.most_searched_keyworkds != blank -%}
+          {%- liquid
+            assign keywords = settings.most_searched_keyworkds | split: ','
+          -%}
+          <div class="search__most-searched-keywords search__box-item grid gap-3{% if drawer_position == 'top' %} md:text-center{% endif %}">
+            <h4 class="h5">{{ 'templates.search.most_searched_keywords' | t }}</h4>
+            <ul class="flex flex-wrap gap-x-1 gap-y-2{% if drawer_position == 'top' %} md:justify-center{% endif %}">
+              {%- for keyword in keywords -%}
+                <li>
+                  <a
+                    href="{{ routes.search_url }}?type=product&options%5Bprefix%5D=last&q={{- keyword | strip -}}"
+                    class="reversed-link text-capitalize"
+                  >
+                    {%- if forloop.last -%}
+                      {{ keyword | strip }}
+                    {%- else -%}
+                      {{ keyword | append: ', ' | strip }}
+                    {%- endif -%}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+        {% if settings.products_recommendations != blank %}
+          <div class="search__products-recommendation search__box-item grid gap-6{% if drawer_position == 'top' %} md:text-center{% endif %}">
+            <h4 class="h5">
+              {{- 'templates.search.most_searched_products' | t -}}
+            </h4>
+            {%- if drawer_position == 'top' -%}
+              <div class="f-grid f-grid-2-cols md:f-grid-4-cols f-grid--gap-extra-small">
+                {%- for product in settings.products_recommendations -%}
+                  <div class="f-column">
+                    {% render 'card-product',
+                      product: product,
+                      enable_quick_add: false,
+                      enable_quick_view: false,
+                      show_vendor: settings.predictive_search_show_vendor,
+                      show_price: settings.predictive_search_show_price,
+                      image_ratio: settings.pcard_image_ratio,
+                      show_type: false,
+                      section_index: section.index,
+                      index: forloop.index
+                    %}
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <div class="grid gap-4">
+                {%- for product in settings.products_recommendations -%}
+                  <div class="predictive-search__list-item">
+                    <div class="flex items-center gap-3">
+                      {%- if product.featured_media != blank -%}
+                        <a href="{{ product.url }}" class="media-wrapper blocks-radius-sm">
+                          <img
+                            src="{{ product.featured_media | image_url: width: 150 }}"
+                            alt="{{ product.featured_media.alt }}"
+                            width="100"
+                            is="image-lazy"
+                            loading="lazy"
+                            height="{{ 100 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
+                          >
+                        </a>
+                      {%- endif -%}
+                      <div class="grid gap-1">
+                        <p class="block m-0">
+                          <a href="{{ product.url }}" class="reversed-link text-pcard-title">
+                            {{- product.title | escape -}}
+                          </a>
+                        </p>
+                        {% render 'price', product: product, use_variant: true, show_badges: false %}
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+    <div class="search__box search__results w-full h-full">
+      <div
+        id="PredictiveSearchResults-{{ section.id }}"
+        role="listbox"
+        class="h-full w-full"
+      >
+        {%- if predictive_search.performed -%}
+          {%- if predictive_search.resources.queries.size > 0
+            or predictive_search.resources.products.size > 0
+            or predictive_search.resources.collections.size > 0
+            or predictive_search.resources.articles.size > 0
+            or predictive_search.resources.pages.size > 0
+          -%}
+            <div class="grid gap-6 w-full">
+              {%- if predictive_search.resources.queries.size > 0 -%}
+                <div class="grid predictive-search-result search__box-item{% if drawer_position == 'top' %} predictive-search-result--queries-top gap-4{% else %} gap-3{% endif %}">
+                  <h4 class="predictive-search-result__heading h5{% if drawer_position == 'top' %} md:text-center{% endif %}">
+                    {{- 'templates.search.suggestions' | t -}}
+                  </h4>
+                  <ul
+                    id="predictive-search-results-queries-list"
+                    role="group"
+                    aria-labelledby="predictive-search-queries"
+                    class="predictive-search-result__list flex flex-wrap gap-x-5 gap-y-2{% if drawer_position == 'top' %} md:justify-center{% endif %}"
+                  >
+                    {%- for query in predictive_search.resources.queries -%}
+                      <li
+                        id="predictive-search-option-query-{{ forloop.index }}"
+                        class="predictive-search-result__list-item"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <a href="{{ query.url }}" class="reversed-link" aria-label="{{ query.text }}">
+                          {{ query.styled_text }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+              {%- if predictive_search.resources.products.size > 0 -%}
+                <div class="grid predictive-search-result search__box-item predictive-search-result--products{% if drawer_position == 'top' %} gap-4{% else %} gap-3{% endif %}">
+                  <h4 class="predictive-search-result__heading h5{% if drawer_position == 'top' %} md:text-center{% endif %}">
+                    {{- 'templates.search.products' | t -}}
+                  </h4>
+                  {%- if drawer_position == 'top' -%}
+                    <div
+                      id="predictive-search-results-products-list"
+                      class="f-grid f-grid-2-cols md:f-grid-4-cols f-grid--gap-extra-small"
+                      role="group"
+                      aria-labelledby="predictive-search-products"
+                    >
+                      {%- for product in predictive_search.resources.products -%}
+                        <div
+                          id="predictive-search-option-product-{{ forloop.index }}"
+                          class="f-column predictive-search__list-item"
+                          role="option"
+                          aria-selected="false"
+                        >
+                          {% render 'card-product',
+                            product: product,
+                            enable_quick_add: false,
+                            enable_quick_view: false,
+                            show_vendor: settings.predictive_search_show_vendor,
+                            image_ratio: settings.pcard_image_ratio,
+                            show_type: false,
+                            show_price: settings.predictive_search_show_price,
+                            section_index: section.index,
+                            index: forloop.index
+                          %}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  {%- else -%}
+                    <ul
+                      id="predictive-search-results-products-list"
+                      class="grid gap-4"
+                      role="group"
+                      aria-labelledby="predictive-search-products"
+                    >
+                      {%- for product in predictive_search.resources.products -%}
+                        <li
+                          id="predictive-search-option-product-{{ forloop.index }}"
+                          class="predictive-search__list-item"
+                          role="option"
+                          aria-selected="false"
+                        >
+                          <div class="flex items-center gap-3">
+                            {%- if product.featured_media != blank -%}
+                              <a href="{{ product.url }}" class="media-wrapper blocks-radius-sm">
+                                <img
+                                  class=""
+                                  src="{{ product.featured_media | image_url: width: 150 }}"
+                                  alt="{{ product.featured_media.alt }}"
+                                  loading="lazy"
+                                  width="100"
+                                  is="image-lazy"
+                                  height="{{ 100 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
+                                >
+                              </a>
+                            {%- endif -%}
+                            <div class="grid gap-1">
+                              {%- if settings.predictive_search_show_vendor -%}
+                                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+                                <div class="text-subtext text-sm">
+                                  {{ product.vendor }}
+                                </div>
+                              {%- endif -%}
+                              <p class="block m-0">
+                                <a href="{{ product.url }}" class="reversed-link text-pcard-title">
+                                  {{- product.title | escape -}}
+                                </a>
+                              </p>
+                              {%- if settings.predictive_search_show_price -%}
+                                {% render 'price', product: product, use_variant: true, show_badges: false %}
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              {%- if predictive_search.resources.collections.size > 0 -%}
+                <div class="grid predictive-search-result search__box-item predictive-search-result--collections{% if drawer_position == 'top' %} gap-4{% else %} gap-3{% endif %}">
+                  <h4 class="predictive-search-result__heading h5{% if drawer_position == 'top' %} md:text-center{% endif %}">
+                    {{ 'templates.search.collections' | t }}
+                  </h4>
+                  <ul
+                    id="predictive-search-results-collection-list"
+                    role="group"
+                    aria-labelledby="predictive-search-collection"
+                    class="predictive-search-result__list flex flex-wrap gap-x-5 gap-y-2{% if drawer_position == 'top' %} md:justify-center{% endif %}"
+                  >
+                    {%- for collection in predictive_search.resources.collections -%}
+                      <li
+                        id="predictive-search-option-collection-{{ forloop.index }}"
+                        class="predictive-search__list-item"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <a href="{{ collection.url }}" class="reversed-link">
+                          {{ collection.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+              {%- if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
+                <div class="grid predictive-search-result search__box-item predictive-search-result--article{% if drawer_position == 'top' %} gap-4 md:text-center{% else %} gap-3{% endif %}">
+                  <h4 class="predictive-search-result__heading h5{% if drawer_position == 'top' %} md:text-center{% endif %}">
+                    {{ 'templates.search.articles_pages' | t }}
+                  </h4>
+                  <ul
+                    id="predictive-search-results-article-page-list"
+                    class="predictive-search-result__list flex flex-wrap gap-x-5 gap-y-2{% if drawer_position == 'top' %} md:justify-center{% endif %}"
+                    role="group"
+                    aria-labelledby="predictive-search-article-page"
+                  >
+                    {%- for article in predictive_search.resources.articles -%}
+                      <li
+                        id="predictive-search-option-article-{{ forloop.index }}"
+                        class="predictive-search-result__list-item"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <a href="{{ article.url }}" class="reversed-link">
+                          {{ article.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                    {%- for page in predictive_search.resources.pages -%}
+                      <li
+                        id="predictive-search-option-page-{{ forloop.index }}"
+                        class="predictive-search-result__list-item"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <a href="{{ page.url }}" class="reversed-link">
+                          {{ page.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="search__results-all{% if drawer_position == 'top' %} flex md:justify-center{% endif %}">
+              <button
+                type="submit"
+                class="reversed-link btn--inherit flex items-center justify-center gap-2 font-body-bolder"
+              >
+                {{ 'templates.search.search_for' | t: terms: predictive_search.terms }}
+                {%- render 'icon-arrow', size: 'extra-medium' -%}
+              </button>
+            </div>
+          {%- else -%}
+            <div class="empty-state flex flex-col gap-3 items-center justify-center text-center w-full h-full">
+              {%- render 'icon-empty-state' -%}
+              <h4>
+                {{ 'templates.search.no_results_text' | t: terms: predictive_search.terms }}
+              </h4>
+              <p class="m-0">{{ 'templates.search.no_results_message' | t }}</p>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</form>

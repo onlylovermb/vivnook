@@ -1,0 +1,398 @@
+{{ 'section-vivnook-scrub-finale-banner.css' | asset_url | stylesheet_tag }}
+<section class="vivnook-finale-banner" aria-label="{{ section.settings.aria_label | escape }}" style="--finale-left-heading-size:{{ section.settings.left_heading_size }}px;--finale-left-heading-size-mobile:{{ section.settings.left_heading_size_mobile }}px;--finale-left-heading-weight:{{ section.settings.left_heading_weight }};--finale-left-heading-weight-mobile:{{ section.settings.left_heading_weight_mobile }};--finale-left-subheading-size:{{ section.settings.left_subheading_size }}px;--finale-left-subheading-size-mobile:{{ section.settings.left_subheading_size_mobile }}px;--finale-left-subheading-weight:{{ section.settings.left_subheading_weight }};--finale-left-subheading-weight-mobile:{{ section.settings.left_subheading_weight_mobile }};--finale-left-body-size:{{ section.settings.left_body_size }}px;--finale-left-body-size-mobile:{{ section.settings.left_body_size_mobile }}px;--finale-left-body-weight:{{ section.settings.left_body_weight }};--finale-left-body-weight-mobile:{{ section.settings.left_body_weight_mobile }};--finale-left-y:{{ section.settings.left_vertical_position }}px;--finale-left-y-mobile:{{ section.settings.left_vertical_position_mobile }}px;--finale-right-heading-size:{{ section.settings.right_heading_size }}px;--finale-right-heading-size-mobile:{{ section.settings.right_heading_size_mobile }}px;--finale-right-heading-weight:{{ section.settings.right_heading_weight }};--finale-right-heading-weight-mobile:{{ section.settings.right_heading_weight_mobile }};--finale-right-subheading-size:{{ section.settings.right_subheading_size }}px;--finale-right-subheading-size-mobile:{{ section.settings.right_subheading_size_mobile }}px;--finale-right-subheading-weight:{{ section.settings.right_subheading_weight }};--finale-right-subheading-weight-mobile:{{ section.settings.right_subheading_weight_mobile }};--finale-right-body-size:{{ section.settings.right_body_size }}px;--finale-right-body-size-mobile:{{ section.settings.right_body_size_mobile }}px;--finale-right-body-weight:{{ section.settings.right_body_weight }};--finale-right-body-weight-mobile:{{ section.settings.right_body_weight_mobile }};--finale-right-y:{{ section.settings.right_vertical_position }}px;--finale-right-y-mobile:{{ section.settings.right_vertical_position_mobile }}px;">
+  <div class="vivnook-finale-banner__copy">
+    {% if section.settings.left_image != blank %}{{ section.settings.left_image | image_url: width: 700 | image_tag: loading: 'lazy', class: 'vivnook-finale-banner__gift' }}{% endif %}
+    <div class="vivnook-finale-banner__copy-text"><h2>{{ section.settings.left_heading | escape }}</h2>
+      <div class="vivnook-finale-banner__details vivnook-finale-banner__details--separate">
+        {% for index in (1..3) %}{% assign subtitle_key = 'left_detail_' | append: index | append: '_subtitle' %}{% assign body_key = 'left_detail_' | append: index | append: '_body' %}{% assign subtitle = section.settings[subtitle_key] %}{% assign body = section.settings[body_key] %}{% if subtitle != blank or body != blank %}<div class="vivnook-finale-banner__detail">{% if subtitle != blank %}<h4>{{ subtitle | escape }}</h4>{% endif %}{% if body != blank %}<div class="vivnook-finale-banner__detail-body">{{ body }}</div>{% endif %}</div>{% endif %}{% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="vivnook-finale-banner__visual">{% if section.settings.right_image != blank %}{{ section.settings.right_image | image_url: width: 1800 | image_tag: loading: 'lazy' }}{% endif %}<div class="vivnook-finale-banner__overlay"><h2>{{ section.settings.right_heading | escape }}</h2><h3>{{ section.settings.right_subheading | escape }}</h3><div>{{ section.settings.right_body }}</div></div></div>
+</section>
+{% schema %}
+{
+  "name": "Finale banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility label",
+      "default": "The Atelier and Finale banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left image"
+    },
+    {
+      "type": "text",
+      "id": "left_heading",
+      "label": "Left heading",
+      "default": "The Atelier & Concierge"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right image"
+    },
+    {
+      "type": "text",
+      "id": "right_heading",
+      "label": "Right heading",
+      "default": "THE FINALE BANNER"
+    },
+    {
+      "type": "text",
+      "id": "right_subheading",
+      "label": "Right subheading",
+      "default": "CARE INCLUDES YOU."
+    },
+    {
+      "type": "richtext",
+      "id": "right_body",
+      "label": "Right description",
+      "default": "<p>We believe those who care for others deserve to be cared for. Not because it makes you a better medical professional. Simply because you are human first. You will never be invisible here.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Left: heading"
+    },
+    {
+      "type": "range",
+      "id": "left_heading_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "left_heading_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "left_heading_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "left_heading_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Left: detail subtitles"
+    },
+    {
+      "type": "range",
+      "id": "left_subheading_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 23
+    },
+    {
+      "type": "range",
+      "id": "left_subheading_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "left_subheading_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "left_subheading_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Left: body"
+    },
+    {
+      "type": "range",
+      "id": "left_body_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "left_body_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "left_body_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "left_body_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Left: vertical position"
+    },
+    {
+      "type": "range",
+      "id": "left_vertical_position",
+      "label": "Desktop offset",
+      "min": -250,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "left_vertical_position_mobile",
+      "label": "Mobile offset",
+      "min": -250,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Right: heading"
+    },
+    {
+      "type": "range",
+      "id": "right_heading_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_heading_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "right_heading_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "right_heading_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Right: subheading"
+    },
+    {
+      "type": "range",
+      "id": "right_subheading_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 23
+    },
+    {
+      "type": "range",
+      "id": "right_subheading_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "right_subheading_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "right_subheading_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Right: body"
+    },
+    {
+      "type": "range",
+      "id": "right_body_size",
+      "label": "Desktop size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "right_body_weight",
+      "label": "Desktop weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "right_body_size_mobile",
+      "label": "Mobile size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "right_body_weight_mobile",
+      "label": "Mobile weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Right: vertical position"
+    },
+    {
+      "type": "range",
+      "id": "right_vertical_position",
+      "label": "Desktop offset",
+      "min": -250,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "right_vertical_position_mobile",
+      "label": "Mobile offset",
+      "min": -250,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Left details: separate fields"
+    },
+    {
+      "type": "text",
+      "id": "left_detail_1_subtitle",
+      "label": "Detail 1 subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "left_detail_1_body",
+      "label": "Detail 1 body"
+    },
+    {
+      "type": "text",
+      "id": "left_detail_2_subtitle",
+      "label": "Detail 2 subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "left_detail_2_body",
+      "label": "Detail 2 body"
+    },
+    {
+      "type": "text",
+      "id": "left_detail_3_subtitle",
+      "label": "Detail 3 subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "left_detail_3_body",
+      "label": "Detail 3 body"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Finale banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+{%- liquid
+  assign fit_kind = blank
+  if product.template_suffix == 'scrub-top'
+    assign fit_kind = 'top'
+  elsif product.template_suffix == 'scrub-pants'
+    assign fit_kind = 'pant'
+  elsif product.template_suffix == 'signature-look'
+    assign fit_kind = 'signature-look'
+  endif
+-%}
+{%- if fit_kind != blank -%}
+  <style>
+    .vivnook-fit-profile__legacy-size-entry{display:none!important}
+    [data-vivnook-fit-trigger][hidden],[data-vivnook-size-chart-trigger][hidden],[data-vivnook-fit-hint][hidden]{display:none!important}
+    .vivnook-fit-profile__header{align-items:center;margin-bottom:1.5rem}
+    .vivnook-fit-profile__required{color:#c62828}
+    .vivnook-fit-profile__units{gap:.6rem}
+    .vivnook-fit-profile__unit-toggle{display:flex;height:3.6rem;padding:.2rem;border-radius:999px;background:#e8e8e8}
+    .vivnook-fit-profile__unit-toggle button{box-sizing:border-box!important;width:4.1rem!important;min-width:4.1rem!important;height:3.2rem!important;min-height:0!important;padding:0!important;border:0!important;border-radius:999px!important;background:transparent;color:#555;font:inherit;font-size:1.2rem!important;font-weight:700;line-height:3.2rem!important;letter-spacing:0!important;cursor:pointer}
+    .vivnook-fit-profile__unit-toggle button[aria-pressed="true"]{background:#fff;color:#111;box-shadow:0 1px 3px rgb(0 0 0 / .08)}
+    .vivnook-fit-profile__unit-toggle button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+    [data-vivnook-size-heading]{align-items:baseline;flex-wrap:nowrap!important;width:100%}
+    [data-vivnook-size-heading] .vivnook-fit-profile__hint{flex:0 1 auto!important;margin-left:.5rem;white-space:nowrap}
+    product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"], [data-url*="scrub-top"]) .vivnook-fit-profile__hint,
+    product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"], [data-url*="scrub-top"]) [data-vivnook-fit-hint],
+    product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"], [data-url*="scrub-top"]) .vivnook-fit-profile__globo-actions [data-vivnook-fit-trigger],
+    product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"], [data-url*="scrub-top"]) .vivnook-fit-profile__trigger {display:none!important}
+    .globo-swatch-product-detail .swatch--gl legend[data-name="Size"]{display:flex;align-items:baseline;flex-wrap:nowrap;width:100%}
+    .vivnook-fit-profile__globo-actions{display:flex;flex:1 1 auto;align-items:baseline;margin:0 0 0 1.2rem;width:auto}
+    .vivnook-fit-profile__globo-actions .vivnook-fit-profile__hint{flex:0 1 auto!important;white-space:nowrap}
+    .vivnook-fit-profile__globo-actions .vivnook-fit-profile__trigger{margin-left:auto}
+    @media(max-width:749px){.vivnook-fit-profile__header{gap:.8rem;margin-right:3.5rem;margin-bottom:1.2rem}.vivnook-fit-profile__units{gap:.4rem}.vivnook-fit-profile__unit-toggle{height:3.2rem}.vivnook-fit-profile__unit-toggle button{width:3.5rem!important;min-width:3.5rem!important;height:2.8rem!important;line-height:2.8rem!important;font-size:1.1rem!important}[data-vivnook-size-heading] .vivnook-fit-profile__hint,.vivnook-fit-profile__globo-actions .vivnook-fit-profile__hint{font-size:1.05rem;white-space:normal}}
+  </style>
+    <basic-modal id="VivnookFitProfile-{{ section_id }}" class="drawer modal vivnook-fit-profile" style="--modal-width: 58rem;" data-vivnook-fit-profile-root data-vivnook-fit-kind="{{ fit_kind }}" data-vivnook-size-reference="null">
+      <div class="fixed-overlay" aria-controls="VivnookFitProfile-{{ section_id }}"></div>
+      <div class="drawer__inner">
+        <button class="drawer__close-btn" type="button" aria-controls="VivnookFitProfile-{{ section_id }}" aria-label="{{ 'accessibility.close' | t }}">
+          {% render 'icon-close' %}
+        </button>
+        <div class="drawer__body v-scrollable h-full">
+          <div class="vivnook-fit-profile__header">
+            <h2 class="h2">Your Fit Profile</h2>
+            <div class="vivnook-fit-profile__units" aria-label="Measurement units">
+              <div class="vivnook-fit-profile__unit-toggle" role="group" aria-label="Length unit" data-vivnook-length-unit>
+                <button type="button" data-vivnook-unit-value="in" aria-pressed="false">IN</button>
+                <button type="button" data-vivnook-unit-value="cm" aria-pressed="true">CM</button>
+              </div>
+              <div class="vivnook-fit-profile__unit-toggle" role="group" aria-label="Weight unit" data-vivnook-weight-unit>
+                <button type="button" data-vivnook-unit-value="lb" aria-pressed="false">LB</button>
+                <button type="button" data-vivnook-unit-value="kg" aria-pressed="true">KG</button>
+              </div>
+            </div>
+          </div>
+          <form class="vivnook-fit-profile__form" data-vivnook-fit-form novalidate>
+            <label class="vivnook-fit-profile__field vivnook-fit-profile__field--wide">
+              <span>Name</span><span class="vivnook-fit-profile__input"><input name="name" type="text" autocomplete="name" maxlength="80"></span>
+            </label>
+            {%- assign fields = 'height:Height,weight:Weight,waist:Waist,bust:Bust,hip:Hips,inseam:Inseam' | split: ',' -%}
+            {%- for field_pair in fields -%}
+              {%- assign field = field_pair | split: ':' -%}
+              <label class="vivnook-fit-profile__field">
+                <span>{{ field[1] }}{% if field[0] == 'height' or field[0] == 'weight' or field[0] == 'waist' %} <span class="vivnook-fit-profile__required" aria-hidden="true">*</span>{% endif %}</span>
+                <span class="vivnook-fit-profile__input">
+                  <input name="{{ field[0] }}" type="number" min="0.1" step="any" inputmode="decimal"{% if field[0] == 'height' or field[0] == 'weight' or field[0] == 'waist' %} required{% endif %}>
+                  <span data-vivnook-unit-for="{{ field[0] }}">{% if field[0] == 'weight' %}KG{% else %}CM{% endif %}</span>
+                </span>
+              </label>
+            {%- endfor -%}
+            <p class="vivnook-fit-profile__error" data-vivnook-fit-error role="alert" hidden></p>
+            <button class="btn btn--primary" type="submit">Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </basic-modal>
+{%- endif -%}

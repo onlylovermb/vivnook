@@ -1,0 +1,110 @@
+{%- liquid
+  assign default_placeholder = 'newsletter.label' | t
+  assign default_button_label = 'newsletter.button_label' | t
+  assign button_label = button_label | default: default_button_label
+  assign design = design | default: 'design-1'
+  assign custom_id = custom_id | default: section.id
+  assign form_id = 'ContactSubscribe-' | append: custom_id
+-%}
+<div class="newsletter-form newsletter-form__{{ design }}">
+  {%- form 'customer', id: form_id, is: 'newsletter-form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <div class="newsletter-form__field-wrapper">
+      <div class="form-field relative">
+        <label class="form-label visually-hidden" for="NewsletterForm-{{ custom_id }}">
+          {{ default_placeholder }}
+        </label>
+        <input
+          id="NewsletterForm-{{ custom_id }}"
+          type="email"
+          name="contact[email]"
+          class="form-control"
+          value="{{ form.email }}"
+          aria-required="true"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          {% if form.errors %}
+            autofocus
+            aria-invalid="true"
+            aria-describedby="Newsletter-error--{{ custom_id }}"
+          {% elsif form.posted_successfully? %}
+            aria-describedby="Newsletter-success--{{ custom_id }}"
+          {% endif %}
+          placeholder="{{ default_placeholder }}"
+          required
+        >
+        {%- if design == 'design-2' -%}
+          <button
+            type="submit"
+            class="newsletter-form__button btn w-full {{ button_style | default: 'btn--primary' }}"
+            name="commit"
+            id="Newsletter-submit--{{ custom_id }}"
+          >
+            {{- button_label -}}
+          </button>
+        {%- else -%}
+          <button
+            type="submit"
+            class="newsletter-form__button btn btn--icon {{ button_style | default: 'btn--blank' }}"
+            name="commit"
+            id="Newsletter-submit--{{ custom_id }}"
+            aria-label="{{ button_label }}"
+          >
+            {% render 'icon-caret', size: 'medium' %}
+          </button>
+        {%- endif -%}
+        <basic-modal class="drawer modal modal--newsletter-alert" id="NewsletterAlertModal-{{ custom_id }}" hidden>
+          <div
+            class="fixed-overlay"
+            aria-controls="NewsletterAlertModal-{{ custom_id }}"
+          ></div>
+          <div class="drawer__inner v-scrollable">
+            <button
+              class="drawer__close-btn z-1"
+              aria-controls="NewsletterAlertModal-{{ custom_id }}"
+              aria-label="{{ 'accessibility.close' | t }}"
+            >
+              {% render 'icon-close' %}
+            </button>
+            <div class="drawer__body no-empty">
+              <p
+                class="form-message alert blocks-radius h6 hidden"
+                id="Newsletter-error-subscribed--{{ custom_id }}"
+              >
+                {% render 'icon-error' %}
+                {{- 'newsletter.already_subscribed' | t -}}
+              </p>
+              {%- if form.errors -%}
+                <p
+                  class="form-message form-message--main alert alert--error blocks-radius h6"
+                  id="Newsletter-error--{{ custom_id }}"
+                >
+                  {% render 'icon-error' %}
+                  {{- form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email -}}
+                </p>
+              {%- endif -%}
+              {%- if form.posted_successfully? -%}
+                <p
+                  class="form-message form-message--main alert alert--success blocks-radius h6"
+                  id="Newsletter-success--{{ custom_id }}"
+                  style="color: {{ settings.vivnook_newsletter_success_color | default: '#0c5132' }};"
+                  tabindex="-1"
+                  autofocus
+                >
+                  {% render 'icon-success' -%}
+                  {%- assign newsletter_success_default = 'newsletter.success' | t -%}
+                  {%- assign newsletter_success_message = settings.vivnook_newsletter_success_text | default: newsletter_success_default | escape -%}
+                  {%- capture newsletter_discount_code -%}<strong style="color: #881337; font-weight: 700;">THELOOK10</strong>{%- endcapture -%}
+                  {%- assign newsletter_success_message = newsletter_success_message | replace: 'THELOOK10', newsletter_discount_code | replace: 'checkout', '<br>checkout' -%}
+                  <span>{{ newsletter_success_message }}</span>
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+        </basic-modal>
+      </div>
+    </div>
+  {%- endform -%}
+</div>

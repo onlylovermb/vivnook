@@ -1,0 +1,266 @@
+{%- comment -%}
+  The Look keeps its dedicated purchase flow; ordinary products use the
+  generic native-form purchase flow.
+{%- endcomment -%}
+{%- if section.settings.visibility != 'hide' -%}
+  <link rel="stylesheet" href="{{ 'section-sticky-atc-bar.css' | asset_url }}">
+  <script src="{{ 'sticky-atc-bar.js' | asset_url }}" defer="defer"></script>
+  {%- liquid
+    assign show_dynamic_checkout_buttons = section.settings.show_dynamic_checkout_buttons
+    assign sticky_select_size = false
+    if product.template_suffix == 'scrub-top' or product.title contains 'Scrub Top' or product.template_suffix == 'signature-look' or product.title contains 'Signature Look'
+      assign sticky_select_size = true
+    endif
+
+    assign wrap_class = ''
+    assign visibility = section.settings.visibility
+
+    case visibility
+      when 'desktop'
+        assign wrap_class = ' hidden md:block'
+      when 'mobile'
+        assign wrap_class = ' block md:hidden'
+    endcase
+  -%}
+  <div class="sticky-atc-bar{{ wrap_class }}{% if show_dynamic_checkout_buttons %} sticky-atc-bar--with-dynamic-buttons{% endif %}{% if product.template_suffix == 'signature-look' %} sticky-atc-bar--signature-look{% endif %}{% if sticky_select_size %} sticky-atc-bar--select-size{% endif %} page-width page-width--{{ section.settings.container }}">
+    <sticky-atc-bar
+      data-sticky-mode="{% if product.template_suffix == 'signature-look' %}signature-look{% else %}generic{% endif %}"
+      class="sticky-atc-bar__inner flex items-center justify-between"
+      data-product-id="{{ product.id }}"
+      data-section="{{ section.id }}"
+      data-url="{{ product.url }}"
+    >
+      <div class="sticky-atc-bar__product hidden md:flex items-center gap-5">
+        <div
+          class="sticky-atc-bar__product-image media-wrapper blocks-radius-sm"
+          style="--aspect-ratio: 1"
+          data-variant-image
+        >
+          {%- if product.featured_image -%}
+            {{
+              product.featured_media
+              | image_url: width: 180
+              | image_tag:
+                loading: 'lazy',
+                fetchpriority: 'low',
+                class: 'motion-reduce',
+                widths: '90, 180',
+                sizes: '90px',
+                is: 'image-lazy'
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="sticky-atc-bar__product-info">
+          <h3 class="sticky-atc-bar__product-title text-pcard-title text-limit-2-lines">
+            {{ product.title }}
+          </h3>
+          {% if product.template_suffix == 'signature-look' %}
+            <div class="sticky-atc-bar__product-price">{%- render 'price', product: product, use_variant: true -%}</div>
+          {% endif %}
+          {% unless product.template_suffix == 'signature-look' %}{%- render 'price', product: product, use_variant: true -%}{% endunless %}
+        </div>
+      </div>
+      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+      {%- liquid
+        assign vivnook_fit_purchase_kind = blank
+        if product.template_suffix == 'scrub-top'
+          assign vivnook_fit_purchase_kind = 'top'
+        elsif product.template_suffix == 'scrub-pants'
+          assign vivnook_fit_purchase_kind = 'pant'
+        elsif product.template_suffix == 'signature-look'
+          assign vivnook_fit_purchase_kind = 'signature-look'
+        endif
+      -%}
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'sticky-atc-bar__form flex items-center justify-center md:justify-start gap-3',
+        data-type: 'add-to-cart-form',
+        is: 'product-form',
+        data-vivnook-fit-purchase-kind: vivnook_fit_purchase_kind
+      -%}
+        <div class="select{% if product.has_only_default_variant %} hidden{% endif %}">
+          <select
+            name="id"
+            class="sticky-atc-bar__variant-select form-control form-control--select"
+          >
+            {%- for variant in product.variants -%}
+              {%- liquid
+                assign selected = false
+                if variant.id == product.selected_or_first_available_variant.id
+                  assign selected = true
+                endif
+                assign variant_image = variant.featured_media.preview_image | default: variant.featured_image | image_url: width: 180
+              -%}
+              <option
+                value="{{ variant.id }}"
+                {% if selected %}
+                  selected="true"
+                {% endif %}
+                {% if variant_image != blank %}
+                  data-variant-image="{{ variant_image }}"
+                {% endif %}
+              >
+                {{ variant.title }}
+              </option>
+            {%- endfor -%}
+          </select>
+          {%- render 'icon-caret-down' -%}
+        </div>
+        {%- if section.settings.show_quantity -%}
+          <div id="QuantitySticky-{{ section.id }}">
+            {%- liquid
+              assign qty_class = ''
+              unless product.has_only_default_variant
+                assign qty_class = 'hidden md:flex'
+              endunless
+
+              assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id
+            -%}
+            <quantity-input
+              class="quantity {{ qty_class }}"
+              data-section-id="{{ section.id }}"
+              data-product-id="{{ product.id }}"
+            >
+              <button class="quantity__button" name="minus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-minus' %}
+              </button>
+              <input
+                class="quantity__input"
+                type="number"
+                name="quantity"
+                id="Quantity-{{ section.id }}"
+                data-cart-quantity="{{ cart_qty }}"
+                step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                  data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                {% endif %}
+                inputmode="numeric"
+                autocomplete="off"
+                form="{{ product_form_id }}"
+              >
+              <button class="quantity__button" name="plus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-plus' %}
+              </button>
+            </quantity-input>
+          </div>
+        {% endif %}
+        <div class="product-form__buttons flex items-center">
+          {%- if section.settings.show_atc_button -%}
+            <button
+              type="submit"
+              name="add"
+              class="product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %} w-full{% if sticky_select_size %} sticky-atc-bar__select-size{% endif %}"
+              {% if sticky_select_size %}data-vivnook-select-size{% endif %}
+              {% if product.selected_or_first_available_variant.available == false %}
+                disabled
+              {% endif %}
+            >
+              <span>
+                {%- if product.selected_or_first_available_variant.available -%}
+                  {% if sticky_select_size %}Select Size{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
+              {% render 'loading-spinner' %}
+            </button>
+          {% endif %}
+          {%- if product.quantity_price_breaks_configured? != true -%}
+            {%- if show_dynamic_checkout_buttons -%}
+              <div class="product-form__button-dynamic hidden md:block">
+                {{ form | payment_button }}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endform -%}
+    </sticky-atc-bar>
+    <script type="application/json">
+      {{ product.variants | json }}
+    </script>
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:sections.sticky-atc-bar.name",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/MdDIC1D)"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "full",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "t:sections.sticky-atc-bar.settings.visibility.label",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__1.label"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__2.label"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__3.label"
+        },
+        {
+          "value": "hide",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__4.label"
+        }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_atc_button",
+      "label": "t:sections.sticky-atc-bar.settings.show_atc_button.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout_buttons",
+      "label": "t:sections.sticky-atc-bar.settings.show_dynamic_checkout_buttons.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "t:sections.sticky-atc-bar.settings.show_quantity.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

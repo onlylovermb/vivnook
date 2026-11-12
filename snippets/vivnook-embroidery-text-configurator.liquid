@@ -1,0 +1,39 @@
+<section class="vivnook-embroidery-text" data-vivnook-text-editor hidden aria-label="Configure text embroidery">
+  <div class="vivnook-embroidery-text__heading">
+    <div><p class="vivnook-embroidery__eyebrow">Text embroidery</p><h3>Personalize your text</h3></div>
+    <span>$10</span>
+  </div>
+  <div class="vivnook-embroidery-text__fields">
+    <label class="vivnook-embroidery-field">
+      <span>First Line <small>Optional</small></span>
+      <span class="vivnook-embroidery-field__input"><input type="text" maxlength="26" autocomplete="off" aria-autocomplete="list" aria-expanded="false" data-vivnook-text-input="line1"><small><span data-vivnook-counter="line1">0</span>/26</small></span>
+    </label>
+    <label class="vivnook-embroidery-field">
+      <span>Second Line <small>Optional</small></span>
+      <span class="vivnook-embroidery-field__input"><input type="text" maxlength="26" autocomplete="off" aria-autocomplete="list" aria-expanded="false" data-vivnook-text-input="line2"><small><span data-vivnook-counter="line2">0</span>/26</small></span>
+    </label>
+  </div>
+  <fieldset class="vivnook-embroidery-control" data-vivnook-control="placement">
+    <legend>Placement</legend>
+    <div class="vivnook-embroidery-segmented">
+      <label><input type="radio" name="{{ modal_id }}-placement" value="leftChest"><span>Left Chest</span></label>
+      <label><input type="radio" name="{{ modal_id }}-placement" value="rightChest"><span>Right Chest</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="vivnook-embroidery-control" data-vivnook-control="threadColor">
+    <legend>Thread Color</legend>
+    <div class="vivnook-embroidery-swatches">
+      <label><input type="radio" name="{{ modal_id }}-thread" value="black"><span><i class="vivnook-embroidery-swatch vivnook-embroidery-swatch--black"></i>Black</span></label>
+      <label><input type="radio" name="{{ modal_id }}-thread" value="white"><span><i class="vivnook-embroidery-swatch vivnook-embroidery-swatch--white"></i>White</span></label>
+    </div>
+  </fieldset>
+  <p class="vivnook-embroidery-warning" data-vivnook-contrast-warning role="status" hidden>This thread color may have low contrast against the selected garment color.</p>
+  <fieldset class="vivnook-embroidery-control" data-vivnook-control="font">
+    <legend>Font</legend>
+    <div class="vivnook-embroidery-segmented">
+      <label><input type="radio" name="{{ modal_id }}-font" value="block"><span class="vivnook-embroidery-font--block">Block</span></label>
+      <label><input type="radio" name="{{ modal_id }}-font" value="script"><span class="vivnook-embroidery-font--script">Script</span></label>
+    </div>
+  </fieldset>
+  <p class="vivnook-embroidery-validation" data-vivnook-text-validation role="status">Enter text in at least one line to continue.</p>
+</section>

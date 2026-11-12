@@ -1,0 +1,108 @@
+{%- liquid
+  assign rich_text_size = rich_text_size | default: 'small'
+  assign image_ratio_placeholder = image_ratio_placeholder | default: '1/1'
+  assign image_ratio = image_ratio | default: image_ratio_placeholder
+  if image_ratio == 'adapt'
+    if image == blank
+      assign image_ratio = image_ratio_placeholder
+    else
+      assign image_ratio = image.aspect_ratio
+    endif
+
+    if image_mobile == blank
+      assign image_mobile_ratio = image_ratio
+    else
+      assign image_mobile_ratio = image_mobile.aspect_ratio
+    endif
+  endif
+
+  assign content_alignment_mobile = content_alignment_mobile | default: content_alignment
+  assign description_size = description_size | default: 'text-base'
+
+  assign card_mobile_color_inherit = false
+  if parent_color_scheme == color_scheme_mobile
+    assign card_mobile_color_inherit = true
+  endif
+-%}
+{%- if link -%}
+  <a
+    href="{{ link }}"
+    class="card-media--link focus-inset"
+    aria-label="{{ heading | default: shop.name }}"
+  >
+{%- endif -%}
+<div class="card-media card-media--content-{{ content_position }} card-media--{{ content_spacing }}{% if show_text_below %} card-media--mobile-content-below{% if card_mobile_color_inherit %} card-media--mobile-color-inherit{% endif %}{% endif %}{% if content_position != 'below' %} blocks-radius{% endif %} relative overflow-hidden color-{{ color_scheme }}{% if color_scheme_mobile %} mobile-color-{{ color_scheme_mobile }}{% endif %} hover-wrapper">
+  <div class="card-media__image overflow-hidden block w-full h-full{% if content_position == 'below' %} blocks-radius{% endif %}">
+    <motion-element class="block h-full" data-motion="zoom-out-sm">
+      <picture
+        class="card-media__media media-wrapper{% if image == blank %} bg-none{% endif %}"
+        style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"
+      >
+        {%- if image != blank -%}
+          {%- if image_mobile -%}
+            <source
+              media="(max-width: 767px)"
+              srcset="{{ image_mobile | image_url: width: '400x' }} 400w, {{ image_mobile | image_url: width: '600x' }} 600w, {{ image_mobile | image_url: width: '800x' }} 800w, {{ image_mobile | image_url: width: '1000x' }} 1000w"
+              width="{{ image_mobile.width }}"
+              height="{{ image_mobile.height }}"
+            >
+          {%- endif -%}
+          {{
+            image
+            | image_url: width: 1100
+            | image_tag:
+              loading: 'lazy',
+              class: 'motion-reduce absolute inset-0 w-full h-full hover-scale-up',
+              widths: '165, 360, 535, 750, 940, 1100',
+              is: 'image-lazy'
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg hover-scale-up' }}
+        {%- endif -%}
+
+        {% if image_overlay_opacity and image_overlay_opacity > 0 %}
+          <div
+            class="bg-overlay"
+            style="--color-overlay-alpha: {{ image_overlay_opacity }};"
+          ></div>
+        {% endif %}
+      </picture>
+    </motion-element>
+  </div>
+  {%- if heading != blank or description != blank or button_label != blank or subheading != blank -%}
+    <div class="card-media__content card-media__content--{{ content_alignment }}{% if content_position != 'below' %} content-overlay content-overlay--{{ content_position }}{% if content_position_mobile %} content-overlay--{{ content_position_mobile }}-mobile{% endif %}{% endif %}">
+      <div class="card-media__content-wrapper rich-text rich-text--{{ rich_text_size }} text-{{ content_alignment_mobile }} md:text-{{ content_alignment }}">
+        <div class="card-media__text rich-text rich-text--{{ rich_text_size }}">
+          {%- if subheading != blank -%}
+            <p class="m-0 rich-text__subheading text-subheading">{{ subheading }}</p>
+          {%- endif -%}
+          {%- if heading != blank -%}
+            <div class="block card-media__heading rich-text__heading {{ heading_size }}">
+              <span class="{% if content_position == 'below' %}reversed-link{% endif %}">
+                {% render 'highlight-text', text: heading, style: heading_highlight_style %}
+              </span>
+            </div>
+          {%- endif -%}
+          {%- if description != blank -%}
+            <div class="card-media__description rich-text__text rte {{ description_size }}">{{ description }}</div>
+          {%- endif -%}
+        </div>
+        {%- if button_label != blank -%}
+          <div class="card-media__button">
+            <button
+              class="btn {{ button_style }}"
+              {% unless link %}
+                disabled
+              {% endunless %}
+            >
+              {{ button_label }}
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{%- if link -%}
+  </a>
+{%- endif -%}

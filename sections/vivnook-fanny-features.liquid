@@ -1,0 +1,601 @@
+{{ 'vivnook-fanny-features.css' | asset_url | stylesheet_tag }}
+{{ 'vivnook-fanny-features-layout.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} .vn-fanny__copy--pair h2,
+  #shopify-section-{{ section.id }} .vn-fanny__copy--pair h2 * {
+    font-size: var(--fanny-pair-heading-size, 23px) !important;
+    font-weight: var(--fanny-pair-heading-weight, 400) !important;
+  }
+  #shopify-section-{{ section.id }} .vn-fanny__copy--pair p,
+  #shopify-section-{{ section.id }} .vn-fanny__copy--pair p * {
+    font-size: var(--fanny-pair-body-size, 16px) !important;
+    font-weight: var(--fanny-pair-body-weight, 400) !important;
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .vn-fanny__copy--pair h2,
+    #shopify-section-{{ section.id }} .vn-fanny__copy--pair h2 * {
+      font-size: var(--fanny-pair-heading-size-mobile, 22px) !important;
+      font-weight: var(--fanny-pair-heading-weight-mobile, 400) !important;
+    }
+    #shopify-section-{{ section.id }} .vn-fanny__copy--pair p,
+    #shopify-section-{{ section.id }} .vn-fanny__copy--pair p * {
+      font-size: var(--fanny-pair-body-size-mobile, 15px) !important;
+      font-weight: var(--fanny-pair-body-weight-mobile, 400) !important;
+    }
+  }
+{% endstyle %}
+<div class="vn-fanny" style="--vn-bg:{{ section.settings.background }};--vn-ink:{{ section.settings.text_color }}">
+  {% for block in section.blocks %}
+    <div class="vn-fanny__row vn-fanny__row--{{ block.type }}" {{ block.shopify_attributes }}>
+      {% if block.type == 'work_system' %}
+        {% render 'vivnook-fanny-media', video: block.settings.video, image: block.settings.poster, kind: 'video', label: 'Left video' %}
+        <div class="vn-fanny__system" style="--fanny-right-image-height:{{ block.settings.right_image_height }}px;--fanny-right-image-height-mobile:{{ block.settings.right_image_height_mobile }}px;--fanny-right-image-zoom:{{ block.settings.right_image_zoom | divided_by: 100.0 }};--fanny-right-image-zoom-mobile:{{ block.settings.right_image_zoom_mobile | divided_by: 100.0 }};--fanny-right-image-y:{{ block.settings.right_image_vertical_position }}px;--fanny-right-image-y-mobile:{{ block.settings.right_image_vertical_position_mobile }}px;--fanny-right-heading-size:{{ block.settings.right_heading_size }}px;--fanny-right-heading-size-mobile:{{ block.settings.right_heading_size_mobile }}px;--fanny-right-heading-weight:{{ block.settings.right_heading_weight }};--fanny-right-heading-weight-mobile:{{ block.settings.right_heading_weight_mobile }};--fanny-right-body-size:{{ block.settings.right_body_size }}px;--fanny-right-body-size-mobile:{{ block.settings.right_body_size_mobile }}px;--fanny-right-body-weight:{{ block.settings.right_body_weight }};--fanny-right-body-weight-mobile:{{ block.settings.right_body_weight_mobile }};--fanny-right-text-y:{{ block.settings.right_text_vertical_position }}px;--fanny-right-text-y-mobile:{{ block.settings.right_text_vertical_position_mobile }}px;--fanny-right-text-width:{{ block.settings.right_text_width }}px;--fanny-right-text-width-mobile:{{ block.settings.right_text_width_mobile }}px;">
+          <div class="vn-fanny__small">{% render 'vivnook-fanny-media', image: block.settings.image, label: 'Small image' %}</div>
+          <div class="vn-fanny__copy">{% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}{{ block.settings.text }}</div>
+        </div>
+      {% elsif block.type == 'image_pair' %}
+        {% render 'vivnook-fanny-media', image: block.settings.image, label: 'Left image' %}
+        <div class="vn-fanny__copy vn-fanny__copy--pair" style="--fanny-pair-heading-size:{{ block.settings.middle_heading_size }}px;--fanny-pair-heading-size-mobile:{{ block.settings.middle_heading_size_mobile }}px;--fanny-pair-heading-weight:{{ block.settings.middle_heading_weight }};--fanny-pair-heading-weight-mobile:{{ block.settings.middle_heading_weight_mobile }};--fanny-pair-body-size:{{ block.settings.middle_body_size }}px;--fanny-pair-body-size-mobile:{{ block.settings.middle_body_size_mobile }}px;--fanny-pair-body-weight:{{ block.settings.middle_body_weight }};--fanny-pair-body-weight-mobile:{{ block.settings.middle_body_weight_mobile }};--fanny-pair-text-y:{{ block.settings.middle_text_vertical_position }}px;--fanny-pair-text-y-mobile:{{ block.settings.middle_text_vertical_position_mobile }}px;">
+          {% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}
+          {{ block.settings.text }}
+        </div>
+        {% render 'vivnook-fanny-media', image: block.settings.image_right, label: 'Right image' %}
+      {% else %}
+        {% render 'vivnook-fanny-media', image: block.settings.image, label: 'Left image' %}
+        <div class="vn-fanny__copy vn-fanny__copy--snap" style="--fanny-snap-heading-size:{{ block.settings.middle_heading_size }}px;--fanny-snap-heading-size-mobile:{{ block.settings.middle_heading_size_mobile }}px;--fanny-snap-heading-weight:{{ block.settings.middle_heading_weight }};--fanny-snap-heading-weight-mobile:{{ block.settings.middle_heading_weight_mobile }};--fanny-snap-body-size:{{ block.settings.middle_body_size }}px;--fanny-snap-body-size-mobile:{{ block.settings.middle_body_size_mobile }}px;--fanny-snap-body-weight:{{ block.settings.middle_body_weight }};--fanny-snap-body-weight-mobile:{{ block.settings.middle_body_weight_mobile }};--fanny-snap-text-y:{{ block.settings.middle_text_vertical_position }}px;--fanny-snap-text-y-mobile:{{ block.settings.middle_text_vertical_position_mobile }}px;">{% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape | newline_to_br }}</h2>{% endif %}{{ block.settings.text }}</div>
+        {% render 'vivnook-fanny-media', video: block.settings.video, image: block.settings.poster, kind: 'video', label: 'Right video' %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Fanny pack features",
+  "tag": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ececec"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "work_system",
+      "name": "1. Video + work system",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Left video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Video cover"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Small image above text"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Right upper image: size, zoom and position"
+        },
+        {
+          "type": "range",
+          "id": "right_image_height",
+          "label": "Desktop height",
+          "min": 120,
+          "max": 700,
+          "step": 10,
+          "unit": "px",
+          "default": 300
+        },
+        {
+          "type": "range",
+          "id": "right_image_height_mobile",
+          "label": "Mobile height",
+          "min": 100,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "default": 240
+        },
+        {
+          "type": "range",
+          "id": "right_image_zoom",
+          "label": "Desktop zoom",
+          "min": 50,
+          "max": 150,
+          "step": 5,
+          "unit": "%",
+          "default": 100
+        },
+        {
+          "type": "range",
+          "id": "right_image_zoom_mobile",
+          "label": "Mobile zoom",
+          "min": 50,
+          "max": 150,
+          "step": 5,
+          "unit": "%",
+          "default": 100
+        },
+        {
+          "type": "range",
+          "id": "right_image_vertical_position",
+          "label": "Desktop up/down",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "right_image_vertical_position_mobile",
+          "label": "Mobile up/down",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Right lower: heading"
+        },
+        {
+          "type": "header",
+          "content": "Right lower text width"
+        },
+        {
+          "type": "range",
+          "id": "right_text_width",
+          "label": "Desktop width",
+          "min": 240,
+          "max": 900,
+          "step": 10,
+          "unit": "px",
+          "default": 520
+        },
+        {
+          "type": "range",
+          "id": "right_text_width_mobile",
+          "label": "Mobile width",
+          "min": 180,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "default": 330
+        },
+        {
+          "type": "range",
+          "id": "right_heading_size",
+          "label": "Desktop size",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "right_heading_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "right_heading_size_mobile",
+          "label": "Mobile size",
+          "min": 12,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "default": 26
+        },
+        {
+          "type": "range",
+          "id": "right_heading_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Right lower: body"
+        },
+        {
+          "type": "range",
+          "id": "right_body_size",
+          "label": "Desktop size",
+          "min": 10,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "right_body_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "right_body_size_mobile",
+          "label": "Mobile size",
+          "min": 10,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "right_body_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Right lower: vertical position"
+        },
+        {
+          "type": "range",
+          "id": "right_text_vertical_position",
+          "label": "Desktop offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "right_text_vertical_position_mobile",
+          "label": "Mobile offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "image_pair",
+      "name": "2. Images + text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Left image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_right",
+          "label": "Right image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Middle text controls"
+        },
+        {
+          "type": "header",
+          "content": "Middle: heading"
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_size",
+          "label": "Desktop size",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 23
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_size_mobile",
+          "label": "Mobile size",
+          "min": 12,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "default": 22
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Middle: body"
+        },
+        {
+          "type": "range",
+          "id": "middle_body_size",
+          "label": "Desktop size",
+          "min": 10,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "middle_body_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "middle_body_size_mobile",
+          "label": "Mobile size",
+          "min": 10,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "middle_body_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Middle: vertical position"
+        },
+        {
+          "type": "range",
+          "id": "middle_text_vertical_position",
+          "label": "Desktop offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "middle_text_vertical_position_mobile",
+          "label": "Mobile offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "snap",
+      "name": "3. Image + text + video",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Left image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Right video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Video cover"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Middle text controls"
+        },
+        {
+          "type": "header",
+          "content": "Middle: heading"
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_size",
+          "label": "Desktop size",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_size_mobile",
+          "label": "Mobile size",
+          "min": 12,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "default": 26
+        },
+        {
+          "type": "range",
+          "id": "middle_heading_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Middle: body"
+        },
+        {
+          "type": "range",
+          "id": "middle_body_size",
+          "label": "Desktop size",
+          "min": 10,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "middle_body_weight",
+          "label": "Desktop weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "middle_body_size_mobile",
+          "label": "Mobile size",
+          "min": 10,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "middle_body_weight_mobile",
+          "label": "Mobile weight",
+          "min": 100,
+          "max": 900,
+          "step": 100,
+          "default": 400
+        },
+        {
+          "type": "header",
+          "content": "Middle: vertical position"
+        },
+        {
+          "type": "range",
+          "id": "middle_text_vertical_position",
+          "label": "Desktop offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "middle_text_vertical_position_mobile",
+          "label": "Mobile offset",
+          "min": -250,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fanny pack features",
+      "blocks": [
+        {
+          "type": "work_system"
+        },
+        {
+          "type": "image_pair"
+        },
+        {
+          "type": "snap"
+        }
+      ]
+    }
+  ],
+  "class": "fanny-features-section"
+}
+{% endschema %}

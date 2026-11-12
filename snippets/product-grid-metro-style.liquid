@@ -1,0 +1,106 @@
+{%- liquid
+  assign section_css_id = '#shopify-section-' | append: section_id
+  assign desktop_breakpoint = desktop_breakpoint | default: 1280
+  assign tablet_large_breakpoint = tablet_large_breakpoint | default: 1024
+
+  if columns_desktop == 3
+    assign metro_columns_desktop = 10
+  else
+    assign metro_columns_desktop = columns_desktop | minus: 1 | times: 2
+  endif
+
+  if columns_tablet_large == 3
+    assign metro_columns_tablet_large = 10
+  else
+    assign metro_columns_tablet_large = columns_tablet_large | minus: 1 | times: 2
+  endif
+
+  if columns_tablet == 3
+    assign metro_columns_tablet = 10
+  else
+    assign metro_columns_tablet = columns_tablet | minus: 1 | times: 2
+  endif
+-%}
+<style>
+  @media (min-width: 768px) and (max-width: {{ tablet_large_breakpoint | minus: 1 }}px) {
+    {%- if columns_tablet > 3 -%}
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 1),
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + {{ metro_columns_tablet }})
+      {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 1) [style*='--aspect-ratio']:before,
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + {{ metro_columns_tablet }}) [style*='--aspect-ratio']:before
+      {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    {%- elsif columns_tablet == 3 -%}
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 1),
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 7)
+      {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 1) [style*='--aspect-ratio']:before,
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet }}n + 7) [style*='--aspect-ratio']:before
+      {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    {%- endif -%}
+  }
+  @media (min-width: {{ tablet_large_breakpoint }}px) and (max-width: {{ desktop_breakpoint | minus: 1 }}px) {
+    {%- if columns_tablet_large > 3 -%}
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 1),
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + {{ metro_columns_tablet_large }})
+      {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 1) [style*='--aspect-ratio']:before,
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + {{ metro_columns_tablet_large }}) [style*='--aspect-ratio']:before
+      {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    {%- elsif columns_tablet_large == 3 -%}
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 1),
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 7)
+      {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 1) [style*='--aspect-ratio']:before,
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_tablet_large }}n + 7) [style*='--aspect-ratio']:before
+      {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    {%- endif -%}
+  }
+  @media (min-width: {{ desktop_breakpoint }}px) {
+    {%- if columns_desktop > 3 -%}
+    {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 1),
+    {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + {{ metro_columns_desktop }}) {
+      grid-column: span 2;
+    }
+    {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 1) [style*='--aspect-ratio']:before,
+    {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + {{ metro_columns_desktop }}) [style*='--aspect-ratio']:before {
+      padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+    }
+    {%- elsif columns_desktop == 3 -%}
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 1),
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 7) {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 1) [style*='--aspect-ratio']:before,
+      {{ section_css_id }} .products-list .f-column:nth-child({{ metro_columns_desktop }}n + 7) [style*='--aspect-ratio']:before {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    {%- endif -%}
+  }
+  {%- if columns_mobile == 2 -%}
+    @media (max-width: 767px) {
+      {{ section_css_id }} .products-list .f-column:nth-child(5n + 1) {
+        grid-column: span 2;
+      }
+      {{ section_css_id }} .products-list .f-column:nth-child(5n + 1) [style*='--aspect-ratio']:before {
+        padding-top: calc((50% - var(--gap-x, 0) / 2) / (0 + var(--aspect-ratio, 1)));
+      }
+    }
+  {%- endif -%}
+</style>

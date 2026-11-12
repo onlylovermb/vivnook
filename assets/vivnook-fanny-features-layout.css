@@ -1,0 +1,66 @@
+/* Second feature: the image-and-copy group fills the left half; the detail image fills the right half. */
+.vn-fanny__row--image_pair {
+  grid-template-columns: 1fr 1fr 2fr;
+}
+
+.vn-fanny__row--image_pair > .vn-fanny__media {
+  aspect-ratio: auto;
+}
+
+.vn-fanny__row--image_pair .vn-fanny__copy {
+  padding: 32px clamp(20px, 2.5vw, 50px);
+}
+
+.vn-fanny__row--image_pair .vn-fanny__copy h2 {
+  font-size: 23px;
+}
+
+.vn-fanny__row--image_pair .vn-fanny__copy p {
+  font-size: 16px;
+}
+
+/* Keep adjoining media flush: no visible frame or shadow at image/video seams. */
+.vn-fanny__media,
+.vn-fanny__media img,
+.vn-fanny__media video {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Overlap the adjoining content by two pixels so no renderer seam can show. */
+.vn-fanny__row--work_system > .vn-fanny__media:first-child,
+.vn-fanny__row--image_pair > .vn-fanny__media:first-child {
+  margin-right: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* The uploaded work-system video contains a dark edge in its final pixels. */
+.vn-fanny__row--work_system > .vn-fanny__media:first-child video {
+  width: calc(100% + 2px);
+  max-width: none;
+}
+
+@media (max-width: 749px) {
+  .vn-fanny__row--image_pair {
+    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* On mobile: right image at top, copy in middle, left image at bottom */
+  .vn-fanny__row--image_pair > .vn-fanny__media:last-child {
+    order: 1 !important;
+  }
+
+  .vn-fanny__row--image_pair .vn-fanny__copy {
+    order: 2 !important;
+    padding: 40px 24px;
+  }
+
+  .vn-fanny__row--image_pair > .vn-fanny__media:first-child {
+    order: 3 !important;
+    margin-right: 0 !important;
+  }
+}

@@ -1,0 +1,1165 @@
+{%- if request.page_type != 'cart' and settings.cart_type == 'drawer' -%}
+  {%- if request.page_type == 'cart' -%}
+    {{ 'cart.css' | asset_url | stylesheet_tag }}
+  {%- else -%}
+    <link
+      rel="stylesheet"
+      href="{{ 'cart.css' | asset_url }}"
+      media="print"
+      fetchpriority="low"
+      onload="this.media='all'"
+    >
+  {%- endif -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+  {{ 'vivnook-embroidery-cart.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'vivnook-embroidery-cart.js' | asset_url }}" defer="defer"></script>
+  {{ 'vivnook-embroidery.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'vivnook-embroidery.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'vivnook-embroidery-phase-0.js' | asset_url }}" defer="defer"></script>
+  {{ 'signature-look-cart.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'signature-look-cart.js' | asset_url }}" defer="defer"></script>
+  {%- if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link' -%}
+    <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  <cart-drawer
+    id="CartDrawer"
+    class="drawer cart-drawer drawer--right"
+    data-section-id="{{ section.id }}"
+    shopify-design-mode
+    hidden
+  >
+    <div class="fixed-overlay" aria-controls="CartDrawer"></div>
+    <div class="drawer__inner">
+      <button
+        class="drawer__close-btn z-1"
+        aria-controls="CartDrawer"
+        type="button"
+        aria-label="{{ 'templates.cart.cart' | t }}"
+      >
+        {% render 'icon-close', size: 'large' %}
+      </button>
+      <div id="CartDrawer-{{ section.id }}" class="drawer__content flex flex-col h-full w-full">
+        <div class="drawer__header cart-drawer__header flex flex-col gap-5 items-start">
+          <h2 class="drawer__heading h3 flex items-center gap-3">
+            <span class="font-body-bolder">Your Bag (<cart-count class="cart-count font-body-bolder" style="display:inline-flex;width:auto;height:auto;border-radius:0;background:transparent;color:inherit;font-size:inherit;line-height:inherit;vertical-align:baseline" aria-label="{{ 'general.cart.cart_count' | t: count: cart.item_count | escape }}"{% if cart == empty %} hidden{% endif %}>{%- if cart.item_count < 100 -%}{{- cart.item_count -}}{%- else -%}<span style="font-size:inherit">99+</span>{%- endif -%}</cart-count>)</span>
+          </h2>
+        </div>
+        <div
+          id="CartDrawerEmpty-{{ section.id }}"
+          class="drawer__body flex-grow v-scrollable{% if cart != empty %} hidden{% endif %}"
+        >
+          <div class="cart-drawer__empty text-center grid gap-10">
+            <div class="grid gap-3">
+              <p class="h4">{{ 'sections.cart.empty' | t }}</p>
+              {%- if settings.cart_empty_message != blank -%}
+                <div class="rte">{{ settings.cart_empty_message }}</div>
+              {%- endif -%}
+            </div>
+            {%- if settings.collection_list != blank -%}
+              <ul class="recommendation-collection flex flex-col gap-4" role="list">
+                {%- for collection in settings.collection_list -%}
+                  {%- liquid
+                    assign collection_image = collection.featured_image
+                    assign first_product_in_collection = collection.products[0]
+
+                    if collection_image == blank
+                      assign collection_image = first_product_in_collection.featured_image
+                    endif
+                  -%}
+                  <li class="recommendation-collection-item blocks-radius flex-grow flex items-center">
+                    <a href="{{ collection.url }}" class="w-full flex items-center gap-3">
+                      <div class="recommendation-collection-item__image blocks-radius-sm media-wrapper">
+                        {%- if collection_image != blank -%}
+                          {{-
+                            collection_image
+                            | image_url: width: collection_image.width
+                            | image_tag: loading: 'lazy', widths: '180,360,540', is: 'image-lazy', alt: ''
+                          -}}
+                        {%- else -%}
+                          <div style="--aspect-ratio: 1;">
+                            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                      <div class="recommendation-collection-item__content flex items-center justify-between flex-grow">
+                        <h3 class="recommendation-collection-item__title h5 font-body-bolder">
+                          {{ collection.title | escape }}
+                        </h3>
+                        <button
+                          class="btn btn--icon-circle btn--secondary shrink-0"
+                          aria-label="{{ collection.title | escape }}"
+                        >
+                          <svg
+                            class="icon icon--medium rtl-flip-x"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5 15L15 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.875 5H15V13.125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- else -%}
+              <a class="btn btn--secondary" href="{{ routes.all_products_collection_url }}">
+                {{- 'general.cart.continue_shopping' | t -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+        <div
+          id="CartDrawerBody-{{ section.id }}"
+          class="drawer__body cart-drawer__body flex-grow v-scrollable{% if cart == empty %} hidden{% endif %}"
+        >
+          <div class="cart-drawer__items-stack flex flex-col gap-8">
+            {%- liquid
+              if section.settings.show_free_shipping_goal and settings.free_shipping_minimum_amount != blank
+                assign minimum_amount = settings.free_shipping_minimum_amount | remove: ' '
+                render 'free-shipping-goal', minimum_amount: minimum_amount, classes: 'w-full'
+              endif
+            -%}
+            {%- liquid
+              if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link'
+                assign gift_wrapping = linklists['gift-wrapping'].links.first
+
+                assign gift_wrap_id = gift_wrapping.object.variants.first.id
+                assign gift_wraps_in_cart = 0
+                for item in cart.items
+                  if item.id == gift_wrap_id
+                    assign gift_wraps_in_cart = item.quantity
+                    break
+                  endif
+                endfor
+                assign items_in_cart = cart.item_count | minus: gift_wraps_in_cart
+              endif
+            -%}
+            <cart-items>
+              {%- assign cart_recommendation_product_id = blank -%}
+              <ul role="list" class="flex flex-col gap-8">
+                {%- for item in cart.items -%}
+                  {%- liquid
+                    assign is_gift_wrap_item = false
+                    assign embroidery_group_id = item.properties['_embroidery_group_id']
+                    assign embroidery_role = item.properties['_embroidery_role']
+                    assign embroidery_service_type = item.properties['_embroidery_service_type']
+                    assign signature_bundle = item.properties['_vivnook_bundle']
+                    assign signature_bundle_instance = item.properties['_vivnook_bundle_instance']
+                    # Product templates are the source of truth for which garment service is available.
+                    assign vivnook_garment_kind = blank
+                    if item.product.template_suffix == 'scrub-top'
+                      assign vivnook_garment_kind = 'top'
+                    elsif item.product.template_suffix == 'scrub-pants'
+                      assign vivnook_garment_kind = 'pant'
+                    endif
+                    assign is_standalone_look_product = false
+                    unless signature_bundle == 'signature-look'
+                      if item.product.title contains 'Scrub Top' or item.product.title contains 'Scrub Pant' or item.product.title contains 'Fanny Pack'
+                        assign is_standalone_look_product = true
+                      endif
+                    endunless
+                    if gift_wrap_id != null and item.id == gift_wrap_id
+                      assign is_gift_wrap_item = true
+                    endif
+
+                    assign line_item_image = item.image
+                    assign is_fanny_item = false
+                    assign check_handle = item.product.handle | default: item.handle | downcase
+                    assign check_title = item.product.title | default: item.title | downcase
+                    if check_handle contains 'fanny' or check_title contains 'fanny' or check_title contains '腰包'
+                      assign is_fanny_item = true
+                    endif
+
+                    if is_fanny_item
+                      assign fanny_color = ''
+                      if item.variant.option1 != blank and item.variant.title != 'Default Title'
+                        assign fanny_color = item.variant.option1 | downcase
+                      elsif item.variant.title != blank and item.variant.title != 'Default Title'
+                        assign fanny_color = item.variant.title | downcase
+                      endif
+                      if fanny_color == blank
+                        for option in item.options_with_values
+                          assign opt_name = option.name | downcase
+                          if opt_name contains 'color'
+                            assign fanny_color = option.value | downcase
+                            break
+                          endif
+                        endfor
+                      endif
+                      if fanny_color == blank
+                        if item.properties['Color'] != blank
+                          assign fanny_color = item.properties['Color'] | downcase
+                        elsif item.properties['color'] != blank
+                          assign fanny_color = item.properties['color'] | downcase
+                        elsif item.properties['Fanny Pack Color'] != blank
+                          assign fanny_color = item.properties['Fanny Pack Color'] | downcase
+                        elsif item.properties['fanny_pack_color'] != blank
+                          assign fanny_color = item.properties['fanny_pack_color'] | downcase
+                        endif
+                      endif
+                      if fanny_color == blank
+                        assign item_full_title = item.title | downcase
+                        if item_full_title contains 'navy'
+                          assign fanny_color = 'navy blue'
+                        elsif item_full_title contains 'burgundy'
+                          assign fanny_color = 'burgundy'
+                        elsif item_full_title contains 'black'
+                          assign fanny_color = 'black'
+                        endif
+                      endif
+
+                      if fanny_color contains 'black' and settings.vivnook_look_fanny_black != blank
+                        assign line_item_image = settings.vivnook_look_fanny_black
+                      elsif fanny_color contains 'navy' and settings.vivnook_look_fanny_navy_blue != blank
+                        assign line_item_image = settings.vivnook_look_fanny_navy_blue
+                      elsif fanny_color contains 'burgundy' and settings.vivnook_look_fanny_burgundy != blank
+                        assign line_item_image = settings.vivnook_look_fanny_burgundy
+                      elsif item.variant.featured_image != blank
+                        assign line_item_image = item.variant.featured_image
+                      else
+                        for var in item.product.variants
+                          assign var_c = var.option1 | default: var.title | downcase
+                          if fanny_color != blank and var_c contains fanny_color and var.featured_image != blank
+                            assign line_item_image = var.featured_image
+                            break
+                          endif
+                        endfor
+                      endif
+                    endif
+                  -%}
+                  {%- if cart_recommendation_product_id == blank and is_gift_wrap_item == false -%}
+                    {%- assign cart_recommendation_product_id = item.product_id -%}
+                  {%- endif -%}
+                  {%- capture cart_item -%}
+                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4{% if embroidery_group_id != blank %} cart-item--embroidery-group{% endif %}{% if embroidery_role == 'service' %} cart-item--embroidery-service cart-item--embroidery-{{ embroidery_service_type | downcase }}{% endif %}{% if signature_bundle == 'signature-look' and signature_bundle_instance != blank %} cart-item--signature-look-member{% endif %}{% if is_standalone_look_product %} cart-item--standalone-look-product{% if item.index > 1 %} cart-item--standalone-look-product-separated{% endif %}{% endif %}" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-option-signature="{{ item.options | join: '||' | escape }}" data-handle="{{ item.product.handle }}" data-vivnook-garment-kind="{{ vivnook_garment_kind }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" data-final-line-price="{{ item.final_line_price }}" data-cart-item-key="{{ item.key | escape }}" data-cart-properties="{{ item.properties | json | escape }}"{% if signature_bundle == 'signature-look' and signature_bundle_instance != blank %} data-signature-look-instance="{{ signature_bundle_instance | escape }}"{% endif %}{% if embroidery_group_id != blank %} data-embroidery-group-id="{{ embroidery_group_id | escape }}" data-embroidery-role="{{ embroidery_role | escape }}" data-embroidery-service-type="{{ embroidery_service_type | escape }}"{% endif %}>
+                    {%- if embroidery_role == 'service' -%}
+                      {%- liquid
+                        case embroidery_service_type
+                          when 'TEXT'
+                            assign embroidery_display_title = 'Text'
+                          when 'ICON'
+                            assign embroidery_display_title = 'Icon'
+                          when 'LOGO_BW', 'LOGO_FULL_COLOR', 'LOGO_DIGITIZATION'
+                            assign embroidery_display_title = 'Logo'
+                          else
+                            assign embroidery_display_title = item.product.title
+                        endcase
+                      -%}
+                      <div class="vivnook-embroidery-service__heading">
+                        <span>{{ embroidery_display_title }}</span>
+                        <span>{{ item.final_line_price | money }}</span>
+                      </div>
+                    {%- endif -%}
+                    <div class="cart-item__product flex items-start gap-3">
+                      {%- unless embroidery_role == 'service' -%}
+                        <a
+                          class="signature-look-cart-item__remove"
+                          is="cart-remove-item"
+                          href="{{ item.url_to_remove }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                          aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                        >
+                          <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16h32M18 16v-6h12v6M13 16v22a5 5 0 0 0 5 5h12a5 5 0 0 0 5-5V16M20 24v12M28 24v12"></path></svg>
+                        </a>
+                      {%- endunless -%}
+                      {%- if embroidery_role == 'service' -%}
+                        {%- assign embroidery_garment_color = blank -%}
+                        {%- for related_item in cart.items -%}
+                          {%- if related_item.properties['_embroidery_group_id'] == embroidery_group_id and related_item.properties['_embroidery_role'] == 'garment' -%}
+                            {%- assign embroidery_garment_color = related_item.options_with_values.first.value -%}
+                            {%- break -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        <div class="vivnook-embroidery-preview vivnook-embroidery-preview--{{ embroidery_service_type | downcase }}" data-embroidery-garment-color="{{ embroidery_garment_color | escape }}" data-embroidery-preview-color="{{ item.properties['Thread Color'] | default: item.properties['Logo Style'] | escape }}">
+                          {%- if embroidery_service_type == 'TEXT' -%}
+                            <span>{{ item.properties['First Line'] }}</span>{% if item.properties['Second Line'] != blank %}<span>{{ item.properties['Second Line'] }}</span>{% endif %}
+                          {%- elsif embroidery_service_type == 'ICON' -%}
+                            {%- liquid
+                              assign icon_label = item.properties['Icon'] | default: ''
+                              assign raw_icon_id = item.properties['_embroidery_icon_id'] | default: ''
+                              assign icon_slug = blank
+
+                              if raw_icon_id != blank
+                                assign id_parts = raw_icon_id | split: '-'
+                                assign icon_slug = id_parts.first
+                              endif
+
+                              if icon_slug == blank and icon_label != blank
+                                assign normalized_label = icon_label | downcase | strip
+                                case normalized_label
+                                  when 'heartbeat', 'heart beat'
+                                    assign icon_slug = 'heartbeat'
+                                  when 'heart'
+                                    assign icon_slug = 'heart'
+                                  when 'lungs', 'lung'
+                                    assign icon_slug = 'lungs'
+                                  when 'kidneys', 'kidney'
+                                    assign icon_slug = 'kidneys'
+                                  when 'stomach'
+                                    assign icon_slug = 'stomach'
+                                  when 'brain'
+                                    assign icon_slug = 'brain'
+                                  when 'tooth', 'teeth'
+                                    assign icon_slug = 'tooth'
+                                  when 'x-ray', 'xray', 'x ray'
+                                    assign icon_slug = 'x-ray'
+                                  when 'health'
+                                    assign icon_slug = 'health'
+                                  when 'ribbon'
+                                    assign icon_slug = 'ribbon'
+                                  else
+                                    assign icon_slug = normalized_label | replace: ' ', '-'
+                                endcase
+                              endif
+
+                              assign icon_file = 'embroidery-icon_black_' | append: icon_slug | append: '.svg'
+                            -%}
+                            {%- case icon_slug -%}
+                              {%- when 'heart', 'heartbeat', 'lungs', 'kidneys', 'stomach', 'brain', 'tooth', 'x-ray', 'health', 'ribbon' -%}
+                                <img src="{{ icon_file | asset_url }}" alt="{{ icon_label | default: icon_slug | escape }}" width="80" height="80" loading="lazy">
+                              {%- when 'star' -%}<svg viewBox="0 0 24 24" aria-label="{{ icon_label | escape }}"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5-4.7-4.6 6.5-.9Z"/></svg>
+                              {%- when 'spark' -%}<svg viewBox="0 0 24 24" aria-label="{{ icon_label | escape }}"><path d="M12 1.8c.7 5.8 4.4 9.5 10.2 10.2-5.8.7-9.5 4.4-10.2 10.2C11.3 16.4 7.6 12.7 1.8 12 7.6 11.3 11.3 7.6 12 1.8Z"/></svg>
+                              {%- when 'smile' -%}<svg viewBox="0 0 24 24" aria-label="{{ icon_label | escape }}"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><path d="M8 14c1 2.2 2.4 3 4 3s3-.8 4-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                              {%- when 'medical-cross' -%}<svg viewBox="0 0 24 24" aria-label="{{ icon_label | escape }}"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6Z"/></svg>
+                              {%- when 'paw' -%}<svg viewBox="0 0 24 24" aria-label="{{ icon_label | escape }}"><ellipse cx="12" cy="16" rx="5.2" ry="4.2"/><ellipse cx="6.2" cy="10" rx="2.1" ry="2.8"/><ellipse cx="17.8" cy="10" rx="2.1" ry="2.8"/><ellipse cx="9.5" cy="6.4" rx="2" ry="2.7"/><ellipse cx="14.5" cy="6.4" rx="2" ry="2.7"/></svg>
+                              {%- else -%}
+                                <img src="{{ icon_file | asset_url }}" alt="{{ icon_label | default: icon_slug | escape }}" width="80" height="80" loading="lazy" onerror="this.style.display='none';">
+                            {%- endcase -%}
+                          {%- elsif embroidery_service_type contains 'LOGO' and item.properties['Logo File'] != blank -%}
+                            <img src="{{ item.properties['Logo File'] }}" alt="Logo preview" loading="lazy">
+                          {%- elsif item.image -%}
+                            {{- item.image | image_url: width: item.image.width | image_tag: loading: 'lazy', widths: '80, 100, 160, 200', sizes: '(max-width: 767px) 80px, 100px', is: 'image-lazy' -}}
+                          {%- else -%}
+                            <span>{{ item.properties['Icon'] }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- elsif line_item_image -%}
+                        <a class="cart-item__media blocks-radius-sm media-wrapper" href="{{ item.url }}" tabindex="-1" aria-label="{{ item.title }}">
+                          {{- line_item_image 
+                            | image_url: width: line_item_image.width
+                            | image_tag:
+                            loading: 'lazy',
+                            widths: '80, 100, 160, 200',
+                            sizes: '(max-width: 767px) 80px, 100px',
+                            is: 'image-lazy' 
+                          -}}
+                        </a>
+                      {%- endif -%}
+                      <div class="cart-item__details flex-grow flex flex-col gap-2">
+                        <div class="grid">
+                          <div class="flex items-center gap-2 flex-wrap">
+                            {%- if embroidery_role == 'service' -%}
+                              {%- liquid
+                                assign embroidery_display_title = item.product.title
+                                case embroidery_service_type
+                                  when 'TEXT'
+                                    assign embroidery_display_title = 'Text'
+                                  when 'ICON'
+                                    assign embroidery_display_title = 'Icon'
+                                  when 'LOGO_BW', 'LOGO_FULL_COLOR', 'LOGO_DIGITIZATION'
+                                    assign embroidery_display_title = 'Logo'
+                                endcase
+                              -%}
+                              <span class="cart-item__title text-pcard-title reversed-link">{{ embroidery_display_title }}</span>
+                            {%- else -%}
+                              <a href="{{ item.url }}" class="cart-item__title text-pcard-title reversed-link">{{- item.product.title | escape -}}</a>
+                            {%- endif -%}
+                            {%- if embroidery_role == 'service' -%}
+                              <span class="vivnook-embroidery-cart__quantity" aria-label="Quantity {{ item.quantity }}">×{{ item.quantity }}</span>
+                            {%- endif -%}
+                          </div>
+                          {%- assign last_index = item.options_with_values.size | minus: 1 -%}
+                          {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != null -%}
+                            <div class="cart-item__options">
+                              {%- if embroidery_role == 'service' -%}
+                                {%- case embroidery_service_type -%}
+                                  {%- when 'TEXT' -%}
+                                    {%- assign text_fields = 'First Line|Second Line|Font Type|Thread Color|Text Placement' | split: '|' -%}
+                                    {%- for field in text_fields -%}
+                                      {%- assign field_value = item.properties[field] -%}
+                                      {%- if field == 'Thread Color' -%}{%- assign field_label = 'Text Color' -%}{%- else -%}{%- assign field_label = field -%}{%- endif -%}
+                                      {%- if field_value != blank -%}<div><dt>{{ field_label }}:</dt><dd>{{ field_value }}</dd></div>{%- endif -%}
+                                    {%- endfor -%}
+                                  {%- when 'ICON' -%}
+                                    {%- if item.properties['Icon'] != blank -%}<div><dt>Icon:</dt><dd>{{ item.properties['Icon'] }}</dd></div>{%- endif -%}
+                                    {%- if item.properties['Icon Placement'] != blank -%}<div><dt>Icon Placement:</dt><dd>{{ item.properties['Icon Placement'] }}</dd></div>{%- endif -%}
+                                  {%- when 'LOGO_BW', 'LOGO_FULL_COLOR', 'LOGO_DIGITIZATION' -%}
+                                    {%- if item.properties['Logo File'] != blank -%}<div class="vivnook-embroidery-logo-preview"><img src="{{ item.properties['Logo File'] }}" alt="Logo"></div>{%- endif -%}
+                                    {%- if item.properties['Logo Name'] != blank -%}<div><dt>Logo Name:</dt><dd>{{ item.properties['Logo Name'] }}</dd></div>{%- endif -%}
+                                    {%- if item.properties['Logo Style'] != blank -%}
+                                      <div><dt>Logo Color:</dt><dd>{{ item.properties['Logo Style'] }}</dd></div>
+                                    {%- endif -%}
+                                    {%- if item.properties['Logo Placement'] != blank -%}<div><dt>Logo Placement:</dt><dd>{{ item.properties['Logo Placement'] }}</dd></div>{%- endif -%}
+                                    {%- if item.properties['Digitization'] != blank -%}<div><dt>Logo Digitizations:</dt><dd>{{ item.properties['Digitization'] }}</dd></div>{%- endif -%}
+                                {%- endcase -%}
+                              {%- else -%}
+                                {%- for property in item.properties -%}
+                                  {%- assign property_first_char = property.first | slice: 0 -%}
+                                  {%- if property.last != blank and property_first_char != '_' and property.first != 'Free Length Adjustment' -%}<div><dt>{{ property.first }}:</dt><dd>{{ property.last }}</dd></div>{%- endif -%}
+                                {%- endfor -%}
+                              {%- endif -%}
+                              {%- if item.selling_plan_allocation != null -%}
+                                <p class="text-sm text-subtext">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                              {%- endif -%}
+                            </div>
+                          {%- endif -%}
+                          {%- unless embroidery_role == 'service' -%}
+                            {%- if vivnook_garment_kind == 'top' -%}
+                              {%- assign cart_embroidery_section_id = 'CartEmbroidery-' | append: item.index -%}
+                              {%- assign cart_embroidery_modal_id = 'VivnookEmbroideryModal-' | append: cart_embroidery_section_id -%}
+                              <button type="button" class="vivnook-cart-embroidery-link" data-vivnook-cart-embroidery-open="{{ cart_embroidery_modal_id }}">
+                                <span>Bespoke Embroidery</span><span>From $8.00</span>{% unless signature_bundle == 'signature-look' %}<span aria-hidden="true">&rsaquo;</span>{% endunless %}
+                              </button>
+                              <div data-vivnook-cart-editor data-development-store="{% if shop.permanent_domain == 'vivnook-sf-integration-dev.myshopify.com' %}true{% else %}false{% endif %}">
+                                {% render 'vivnook-embroidery-modal', product: item.product, section_id: cart_embroidery_section_id, host_type: 'cart' %}
+                              </div>
+                            {%- elsif vivnook_garment_kind == 'pant' -%}
+                              <div class="vivnook-cart-length-option{% if item.properties['_vivnook_length_adjustment_requested'] == 'yes' or item.properties['Free Length Adjustment'] == 'Requested' %} is-requested{% endif %}">
+                                <input type="checkbox" class="vivnook-cart-checkbox{% if item.properties['_vivnook_length_adjustment_requested'] == 'yes' or item.properties['Free Length Adjustment'] == 'Requested' %} is-checked{% endif %}" data-vivnook-cart-length-toggle aria-label="Toggle free length adjustment"{% if item.properties['_vivnook_length_adjustment_requested'] == 'yes' or item.properties['Free Length Adjustment'] == 'Requested' %} checked{% endif %}>
+                                <span>Free Length Adjustment</span>
+                                <span class="vivnook-cart-info-wrap">
+                                  <button type="button" class="vivnook-cart-info" aria-label="Free length adjustment information" aria-describedby="VivnookLengthInfo-{{ item.index }}" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"></circle><path d="M12 10v6M12 7.25h.01" stroke-linecap="round"></path></svg></button>
+                                  <span id="VivnookLengthInfo-{{ item.index }}" class="vivnook-cart-info-tooltip" role="tooltip">Please contact customer care after checkout to provide your desired inseam. Custom altered pieces are Final Sale (Non-Returnable, Non-Exchangeable).</span>
+                                </span>
+                              </div>
+                            {%- endif -%}
+                          {%- endunless -%}
+                          {%- if embroidery_role == 'service' -%}
+                            <span class="vivnook-embroidery-service__quantity" aria-label="Quantity {{ item.quantity }}">×{{ item.quantity }}</span>
+                          {%- endif -%}
+                          <div class="vivnook-cart-item-footer">
+                            <div class="cart-item__options vivnook-cart-item-footer__variants">
+                              {%- unless item.product.has_only_default_variant -%}
+                                {%- for option in item.options_with_values -%}
+                                  <span class="cart-item__option-value text-sm text-subtext">{{ option.value }}{% unless forloop.last %}, {% endunless %}</span>
+                                {%- endfor -%}
+                              {%- endunless -%}
+                            </div>
+                            {%- unless embroidery_role == 'service' -%}
+                              <a class="vivnook-cart-view-details" href="{{ item.url }}">View Details</a>
+                            {%- endunless -%}
+                          </div>
+                          <div class="cart-item__prices">
+                            <div class="price font-body-bolder{% if item.original_line_price != item.final_line_price %} price--on-sale{% endif %}">
+                              {%- liquid
+                                assign money_price = item.original_line_price | money
+                                if settings.currency_code_enabled
+                                  assign money_price = item.original_line_price | money_with_currency
+                                endif
+                              -%}
+                              {%- if item.original_line_price != item.final_line_price -%}
+                                <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                                <s class="price__sale font-body text-sm text-subtext">{{ money_price }}</s>
+                                <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                                <span class="price__regular">
+                                  {%- liquid 
+                                    if settings.currency_code_enabled
+                                      echo item.final_line_price | money_with_currency
+                                    else
+                                      echo item.final_line_price | money
+                                    endif  
+                                  -%}
+                                </span>
+                              {%- else -%}
+                                {{- money_price -}}
+                              {%- endif -%}
+                            </div>
+                              {%- if item.variant.available and item.unit_price_measurement -%}
+                                <div>
+                                <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                <span class="unit-price flex items-center text-sm font-body text-subtext">
+                                  {%- liquid
+                                    capture unit_price_base_unit
+                                      if item.variant.unit_price_measurement
+                                        if item.variant.unit_price_measurement.reference_value != 1
+                                          echo item.variant.unit_price_measurement.reference_value
+                                        endif
+                                        echo item.variant.unit_price_measurement.reference_unit
+                                      endif
+                                    endcapture
+                                  -%}
+                                  ({{ item.variant.unit_price | money }}
+                                  <span aria-hidden="true">/</span>
+                                  <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                  {{ unit_price_base_unit }})
+                                  </span>
+                                </div>
+                              {%- endif -%}
+                          </div>
+                        </div>
+                        {%- if item.line_level_discount_allocations != blank -%}
+                          <ul class="cart-item__discounts discounts list-unstyled flex flex-wrap gap-1" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                            {%- for discount_allocation in item.line_level_discount_allocations -%}
+                              <li class="discount text-sm inline-flex items-center">
+                                {% render 'icon-discount' %}
+                                <span>{{ discount_allocation.discount_application.title }}</span>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </div>
+                      <div class="cart-item__action flex flex-col items-end justify-end gap-4">
+                        <a id="Loader-{{ section.id }}-{{ item.index | plus: 1 }}"{% unless is_gift_wrap_item %} is="cart-remove-item"{% else %} is="gift-wrap-remove-item"{% endunless %} class="cart-item__remove flex items-center justify-center relative" href="{{ item.url_to_remove }}" data-index="{{ item.index | plus: 1 }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                          <span class="flex">
+                            {%- render 'icon-close', size: 'small' -%}
+                          </span>
+                          {% render 'loading-spinner' %}
+                        </a>
+
+                        {%- liquid 
+                          assign has_qty_rules = false
+                          if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
+                            assign has_qty_rules = true
+                          endif
+
+                          assign has_vol_pricing = false
+                          if item.variant.quantity_price_breaks.size > 0
+                            assign has_vol_pricing = true
+                          endif
+                        -%}
+
+                        {%- if has_qty_rules or has_vol_pricing -%}
+                          {%- capture qty_rules_vol_pricing -%}
+                            {%- if has_qty_rules -%}
+                              <div
+                                class="quantity__rules text-sm"
+                              >
+                                {%- if item.variant.quantity_rule.increment > 1 -%}
+                                  <span class="divider">
+                                    {{-
+                                      'products.product.quantity.multiples_of'
+                                      | t: quantity: item.variant.quantity_rule.increment
+                                    -}}
+                                  </span>
+                                {%- endif -%}
+                                {%- if item.variant.quantity_rule.min > 1 -%}
+                                  <span class="divider">
+                                    {{-
+                                      'products.product.quantity.minimum_of'
+                                      | t: quantity: item.variant.quantity_rule.min
+                                    -}}
+                                  </span>
+                                {%- endif -%}
+                                {%- if item.variant.quantity_rule.max != null -%}
+                                  <span class="divider">
+                                    {{-
+                                      'products.product.quantity.maximum_of'
+                                      | t: quantity: item.variant.quantity_rule.max
+                                    -}}
+                                  </span>
+                                {%- endif -%}
+                              </div>
+                            {%- endif -%}
+                            {%- if has_vol_pricing -%}
+                              {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+                              <volume-pricing class="block parent-display blocks-radius-md" id="Volume-{{ section.id }}">
+                                <span class="caption block">{{ 'products.product.volume_pricing.title' | t }}</span>
+                                <ul class="list-unstyled">
+                                  <li class="blocks-radius-md">
+                                    <span>{{ item.variant.quantity_rule.min }}+</span>
+                                    {%- liquid 
+                                      if settings.currency_code_enabled
+                                        assign price = item.variant.price | money_with_currency
+                                      else
+                                        assign price = item.variant.price | money
+                                      endif
+                                    -%}
+                                    <span> {{ 'products.product.volume_pricing.each_html' | t: money: price }}</span>
+                                  </li>
+                                  {%- for price_break in item.variant.quantity_price_breaks -%}
+                                    <li class="blocks-radius-md">
+                                      <span>
+                                        {{- price_break.minimum_quantity -}}
+                                        <span aria-hidden="true">+</span>
+                                      </span>
+                                      {%- liquid 
+                                        if settings.currency_code_enabled
+                                          assign price_break_price = price_break.price | money_with_currency
+                                        else
+                                          assign price_break_price = price_break.price | money
+                                        endif
+                                      -%}
+                                      <span>{{ 'products.product.volume_pricing.each_html' | t: money: price_break_price }}</span>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </volume-pricing>
+                            {%- endif -%}
+                          {%- endcapture -%}
+                        {%- endif -%}
+                        <div class="flex items-center gap-2">
+                          {% if has_qty_rules or has_vol_pricing %}
+                            <button class="btn btn--plain" aria-controls="VolumnPricing-{{ section.id }}-{{ item.key }}">
+                              <svg class="icon icon-info icon--medium" viewBox="0 0 25 24" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12.5 16V11M13 8C13 8.27614 12.7761 8.5 12.5 8.5C12.2239 8.5 12 8.27614 12 8M13 8C13 7.72386 12.7761 7.5 12.5 7.5C12.2239 7.5 12 7.72386 12 8M13 8H12M22.5 12C22.5 17.5228 18.0228 22 12.5 22C6.97715 22 2.5 17.5228 2.5 12C2.5 6.47715 6.97715 2 12.5 2C18.0228 2 22.5 6.47715 22.5 12Z"></path>
+                              </svg>
+                            </button>
+                            <modal-component class="drawer cart-addons-drawer drawer--bottom" id="VolumnPricing-{{ section.id }}-{{ item.key }}" hidden>
+                              <div class="fixed-overlay absolute" aria-controls="VolumnPricing-{{ section.id }}-{{ item.key }}"></div>
+                              <div class="drawer__inner v-scrollable">
+                                <button aria-controls="VolumnPricing-{{ section.id }}-{{ item.key }}" class="drawer__close-btn z-1">
+                                  {%- render 'icon-close' -%}
+                                </button>
+                                <div class="drawer__content cart-addons-drawer__content grid gap-5">
+                                  <div>
+                                    <h4>{{ item.product.title | escape }}</h4>
+                                    {% if item.product.has_only_default_variant == false %}
+                                      <div class="flex gap-1">
+                                        {% for option in item.options_with_values %}
+                                          <span class="text-sm text-subtext">{{ option.value }}{% unless forloop.index0 == last_index %},{% endunless %}</span>
+                                        {% endfor %}
+                                      </div>
+                                    {% endif %}
+                                  </div>
+                                  <div class="grid gap-3">
+                                    {{ qty_rules_vol_pricing }}
+                                  </div>
+                                </div>
+                              </div>
+                            </modal-component>
+                          {% endif %}
+
+                          {%- unless is_gift_wrap_item -%}
+                            {%- if is_standalone_look_product -%}
+                              {%- liquid
+                                assign standalone_quantity_max = 10
+                                if item.quantity > standalone_quantity_max
+                                  assign standalone_quantity_max = item.quantity
+                                endif
+                                if item.variant.quantity_rule.max != null and item.variant.quantity_rule.max > standalone_quantity_max
+                                  assign standalone_quantity_max = item.variant.quantity_rule.max
+                                endif
+                              -%}
+                              <label class="standalone-quantity-wrap"><span>Qty:</span><select class="standalone-quantity-select" name="updates[]" aria-label="Quantity for {{ item.product.title | escape }}" data-index="{{ item.index | plus: 1 }}">
+                                {%- for quantity_option in (1..standalone_quantity_max) -%}<option value="{{ quantity_option }}"{% if quantity_option == item.quantity %} selected{% endif %}>{{ quantity_option }}</option>{%- endfor -%}
+                              </select></label>
+                            {%- endif -%}
+                            <quantity-input class="cart-quantity quantity">
+                              <label class="visually-hidden" for="Quantity-{{ section.id }}-{{ item.index | plus: 1 }}"></label>
+                              <button type="button" name="minus" class="quantity__button" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">
+                                <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                              <input class="quantity__input"
+                                type="number"
+                                name="updates[]"
+                                value="{{ item.quantity }}"
+                                id="Quantity-{{ section.id }}-{{ item.index | plus: 1 }}"
+                                aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                step="{{ item.variant.quantity_rule.increment }}"
+                                size="2"
+                                inputmode="numeric"
+                                autocomplete="off"
+                                data-index="{{ item.index | plus: 1 }}"
+                                data-quantity-variant-id="{{ item.variant.id }}"
+                                data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                                min="0"
+                                data-min="{{ item.variant.quantity_rule.min }}"
+                                {% if item.variant.quantity_rule.max != null %}
+                                  max="{{ item.variant.quantity_rule.max }}"
+                                  data-max="{{ item.variant.quantity_rule.max }}"
+                                {% endif %}
+                              />
+                              <button type="button" name="plus" class="quantity__button" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">
+                                <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M7.5 2.1875V11.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                            </quantity-input>
+                          {%- else -%}
+                            <div class="cart-quantity quantity cart-quantity-gift-wrap">
+                              <label class="visually-hidden" for="Quantity-{{ section.id }}-{{ item.index | plus: 1 }}"></label>
+                              <button type="button" name="minus" class="quantity__button hidden" disabled aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">
+                                <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                              <input 
+                                class="quantity__input"
+                                disabled
+                                type="text"
+                                name="updates[]"
+                                value="{{ item.quantity }}"
+                                id="Quantity-{{ section.id }}-{{ item.index | plus: 1 }}"
+                                inputmode="numeric"
+                                autocomplete="off"
+                                aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                                data-quantity-variant-id="{{ item.variant.id }}"
+                                data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                                size="2"
+                                min="0"
+                                data-min="{{ item.variant.quantity_rule.min }}"
+                                {% if item.variant.quantity_rule.max != null %}
+                                  max="{{ item.variant.quantity_rule.max }}"
+                                {% endif %}
+                                step="{{ item.variant.quantity_rule.increment }}"
+                              />
+                              <button type="button" name="plus" disabled class="quantity__button hidden" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">
+                                <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M7.5 2.1875V11.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
+                          {%- endunless -%}
+                        </div>
+                      </div>
+                    </div>
+                    {%- unless embroidery_role == 'service' -%}
+                      {% liquid
+                        assign collections = ''
+                        for collection in item.product.collections
+                          assign collections = collections | append: collection.id | append: ','
+                        endfor
+                      %}
+                      <foxkit-incart-upsell
+                        data-collections="{{ collections | remove_last: ',' }}"
+                        data-product-title="{{ item.product.title }}"
+                        data-product-id="{{ item.product_id }}"
+                      ></foxkit-incart-upsell>
+                    {%- endunless -%}
+                  </li>
+                {%- endcapture -%}
+
+                  {%- liquid
+                    unless is_gift_wrap_item
+                      echo cart_item
+                    else
+                      assign cart_gift_wrap_item = cart_item
+                    endunless
+                  -%}
+                {%- endfor -%}
+                {%- liquid
+                  if cart_gift_wrap_item
+                    echo cart_gift_wrap_item
+                  endif
+                -%}
+              </ul>
+            </cart-items>
+          </div>
+        </div>
+        <div
+          id="CartDrawerFooter-{{ section.id }}"
+          class="drawer__footer cart-drawer__footer grid gap-4{% if cart == empty %} hidden{% endif %}"
+        >
+          <div class="drawer__footer-head">
+            {%- render 'gift-wrapping',
+              section_id: section.id,
+              gift_wrapping: gift_wrapping,
+              gift_wrap_id: gift_wrap_id,
+              gift_wraps_in_cart: gift_wraps_in_cart,
+              items_in_cart: items_in_cart
+            -%}
+            {%- if true
+              or true
+              or true
+            -%}
+              <div class="cart-drawer__addons">
+                <div class="flex gap-6">
+                  {%- if true -%}
+                    <button
+                      type="button"
+                      class="btn--inherit flex gap-2 items-center justify-center"
+                      aria-controls="CartNote-{{ section.id }}"
+                      aria-expanded="false"
+                    >
+                      {%- render 'icon-pencil' -%}
+                      <span class="reversed-link">{{ 'general.cart.note.title' | t }}</span>
+                    </button>
+                  {%- endif -%}
+                  {%- if false -%}
+                    <button
+                      type="button"
+                      class="btn--inherit flex gap-2 items-center justify-center"
+                      aria-controls="ShippingCalculator-{{ section.id }}"
+                      aria-expanded="false"
+                    >
+                      {%- render 'icon-clock' -%}
+                      <span class="reversed-link">{{ 'general.cart.shipping_calculator.title' | t }}</span>
+                    </button>
+                  {%- endif -%}
+
+                  {%- if true -%}
+                    <button
+                      type="button"
+                      class="btn--inherit flex gap-2 items-center justify-center"
+                      aria-controls="CartDiscount-{{ section.id }}"
+                      aria-expanded="false"
+                    >
+                      {% render 'icon-discount', size: 'medium' %}
+                      <span class="reversed-link">{{ 'general.cart.coupon.title' | t }}</span>
+                    </button>
+                  {%- endif -%}
+
+                  {%- if true -%}
+                    <cart-addon-modal
+                      id="CartNote-{{ section.id }}"
+                      class="drawer cart-addons-drawer drawer--bottom"
+                      hidden
+                    >
+                      <div class="fixed-overlay absolute" aria-controls="CartNote-{{ section.id }}"></div>
+                      <div class="drawer__inner">
+                        <button aria-controls="CartNote-{{ section.id }}" class="drawer__close-btn z-1">
+                          {%- render 'icon-close' -%}
+                        </button>
+                        <div class="drawer__content cart-addons-drawer__content grid gap-5">
+                          <h4>{{ 'general.cart.note.title' | t }}</h4>
+                          <cart-note class="flex flex-col items-start gap-5">
+                            <div class="form-field w-full">
+                              <textarea
+                                name="note"
+                                class="form-control form-control--textarea"
+                                rows="5"
+                                placeholder="{{ 'general.cart.note.caption' | t }}"
+                                id="CartNoteForm-{{ section.id }}"
+                              >{{ cart.note }}</textarea>
+                              <label class="visually-hidden" for="CartNoteForm-{{ section.id }}">
+                                {{- 'general.cart.note.title' | t -}}
+                              </label>
+                            </div>
+                            <button
+                              class="btn btn--primary"
+                              type="button"
+                              aria-controls="CartNote-{{ section.id }}"
+                              aria-expanded="false"
+                            >
+                              <span>{{ 'general.cart.note.button' | t }}</span>
+                            </button>
+                          </cart-note>
+                        </div>
+                      </div>
+                    </cart-addon-modal>
+                  {%- endif -%}
+                  {%- if false -%}
+                    <calculate-shipping
+                      id="ShippingCalculator-{{ section.id }}"
+                      class="drawer cart-addons-drawer drawer--bottom"
+                      hidden
+                      data-show="fasle"
+                    >
+                      <div class="fixed-overlay absolute" aria-controls="ShippingCalculator-{{ section.id }}"></div>
+                      <div class="drawer__inner cart-addons-drawer__inner flex flex-col w-full h-full">
+                        <button aria-controls="ShippingCalculator-{{ section.id }}" class="drawer__close-btn z-1">
+                          {%- render 'icon-close' -%}
+                        </button>
+                        <div class="drawer__content v-scrollable cart-addons-drawer__content flex flex-col gap-4">
+                          <h4>{{ 'general.cart.shipping_calculator.title' | t }}</h4>
+                          <form
+                            class="grid gap-4"
+                            action="{{ routes.cart_url }}"
+                            method="POST"
+                            novalidate
+                            is="shipping-calculator"
+                          >
+                            <country-province
+                              class="grid gap-4"
+                              {% if shop.customer_accounts_enabled and customer %}
+                                data-country="{{ customer.default_address.country }}"
+                                {%- if customer.default_address.province != '' %}
+                                  data-province="{{ customer.default_address.province }}"
+                                {%- endif -%}
+                              {% endif %}
+                            >
+                              <div class="form-field reset-spacing">
+                                <label class="form-label" for="ShippingCalculatorCountry-{{ section.id }}">
+                                  {{- 'customer.addresses.country' | t -}}
+                                </label>
+                                <div class="select">
+                                  <select
+                                    name="address[country]"
+                                    class="form-control form-control--select"
+                                    autocomplete="country"
+                                    id="ShippingCalculatorCountry-{{ section.id }}"
+                                  >
+                                    <template>{{- all_country_option_tags -}}</template>
+                                  </select>
+                                  {%- render 'icon-caret-down' -%}
+                                </div>
+                              </div>
+                              <div class="form-field reset-spacing" hidden>
+                                <label class="form-label" for="ShippingCalculatorProvince-{{ section.id }}">
+                                  {{- 'customer.addresses.province' | t -}}
+                                </label>
+                                <div class="select">
+                                  <select
+                                    name="address[province]"
+                                    class="form-control form-control--select"
+                                    autocomplete="address-level1"
+                                    id="ShippingCalculatorProvince-{{ section.id }}"
+                                  ></select>
+                                  {%- render 'icon-caret-down' -%}
+                                </div>
+                              </div>
+                            </country-province>
+                            <div class="form-field">
+                              <label class="form-label" for="ShippingCalculatorZip-{{ section.id }}">
+                                {{- 'customer.addresses.zip' | t -}}
+                              </label>
+                              <input
+                                name="address[zip]"
+                                class="form-control form-control--input"
+                                type="text"
+                                autocapitalize="characters"
+                                autocomplete="postal-code"
+                                placeholder=" "
+                                id="ShippingCalculatorZip-{{ section.id }}"
+                                {% if shop.customer_accounts_enabled and customer %}
+                                  value="{{ customer.default_address.zip }}"
+                                {% endif %}
+                              >
+                            </div>
+                            <div class="">
+                              <button class="btn btn--primary" type="submit">
+                                <span>{{ 'general.cart.shipping_calculator.button' | t }}</span>
+                                {%- render 'loading-spinner' -%}
+                              </button>
+                            </div>
+                            <div class="grid gap-3"></div>
+                          </form>
+                        </div>
+                      </div>
+                    </calculate-shipping>
+                  {%- endif -%}
+                  {%- if true -%}
+                    <cart-addon-modal
+                      id="CartDiscount-{{ section.id }}"
+                      class="drawer cart-addons-drawer drawer--bottom"
+                      hidden
+                    >
+                      <div class="fixed-overlay absolute" aria-controls="CartDiscount-{{ section.id }}"></div>
+                      <div class="drawer__inner">
+                        <button aria-controls="CartDiscount-{{ section.id }}" class="drawer__close-btn z-1">
+                          {%- render 'icon-close' -%}
+                        </button>
+                        <div class="drawer__content cart-addons-drawer__content grid gap-5">
+                          <h4>{{ 'general.cart.coupon.title' | t }}</h4>
+                          <form
+                            is="cart-discount"
+                            class="cart-discount__form flex flex-col items-start gap-5"
+                            action="{{ routes.cart_url }}"
+                            method="POST"
+                          >
+                            <div class="form-field w-full">
+                              <label class="visually-hidden" for="CartCouponForm-{{ section.id }}">
+                                {{- 'general.cart.coupon.title' | t -}}
+                              </label>
+                              <input
+                                id="CartCouponForm-{{ section.id }}"
+                                class="form-control"
+                                name="discount"
+                                placeholder="{{ 'general.cart.coupon.caption' | t }}"
+                                required
+                                aria-required="true"
+                              >
+                            </div>
+                            <div class="form-submit w-full">
+                              <button class="btn btn--primary w-full" type="submit">
+                                <span class="btn__text">{{ 'general.cart.coupon.button' | t }}</span>
+                                {%- render 'loading-spinner' -%}
+                              </button>
+                            </div>
+                            <div class="form__message w-full alert alert--error blocks-radius grid gap-2"></div>
+                          </form>
+                        </div>
+                      </div>
+                    </cart-addon-modal>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="drawer__footer-body">
+            <div class="grid gap-4">
+              <div class="grid gap-2">
+                {%- liquid
+                  assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+                  assign cart_items_has_discount = false
+                  for item in cart.items
+                    for allocation in item.line_level_discount_allocations
+                      if allocation.discount_application.type == 'discount_code'
+                        assign cart_items_has_discount = true
+                      endif
+                    endfor
+                  endfor
+                -%}
+                {%- if cart.cart_level_discount_applications.size > 0 or cart_items_has_discount -%}
+                  <ul
+                    class="discounts cart__discounts list-unstyled flex flex-wrap justify-end gap-1"
+                    role="list"
+                    aria-label="{{ 'customer.order.discount' | t }}"
+                  >
+                    {%- for discount in cart.cart_level_discount_applications -%}
+                      <li
+                        class="discount cart__discount text-sm flex items-center"
+                        data-discount-code="{{ discount.title }}"
+                      >
+                        {% render 'icon-discount' %}
+                        <span>{{- discount.title -}}</span>
+                        <span class="font-body-bold">(-{{ discount.total_allocated_amount | money }})</span>
+
+                        <button
+                          is="cart-discount-remove"
+                          type="button"
+                          aria-label="{{ 'general.cart.coupon.remove' | t: code: discount.title }}"
+                          class="btn btn--inherit btn-remove discount__btn-remove"
+                        >
+                          {% render 'icon-close', size: 'extra-small' %}
+                          {%- render 'loading-spinner', size: 'extra-small' -%}
+                        </button>
+                      </li>
+                    {%- endfor -%}
+                    {%- if cart_items_has_discount -%}
+                      {%- for item in cart.items -%}
+                        {%- for allocation in item.line_level_discount_allocations -%}
+                          {%- liquid
+                            unless allocation.discount_application.type == 'discount_code'
+                              continue
+                            endunless
+
+                            assign discount = allocation.discount_application
+
+                            assign is_displayed = discount_codes | has: discount.title
+                            if is_displayed
+                              continue
+                            endif
+
+                            assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+                          -%}
+                          <li
+                            class="discount cart__discount text-sm flex items-center"
+                            data-discount-code="{{ discount.title }}"
+                          >
+                            {% render 'icon-discount' %}
+                            <span>{{- discount.title -}}</span>
+                            <span class="font-body-bold">(-{{ discount.total_allocated_amount | money }})</span>
+
+                            <button
+                              is="cart-discount-remove"
+                              type="button"
+                              aria-label="{{ 'general.cart.coupon.remove' | t: code: discount.title }}"
+                              class="btn btn--inherit btn-remove discount__btn-remove"
+                            >
+                              {% render 'icon-close', size: 'extra-small' %}
+                              {%- render 'loading-spinner', size: 'extra-small' -%}
+                            </button>
+                          </li>
+                        {%- endfor -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+                <div class="totals flex justify-between items-center">
+                  <span class="totals__subtotal h4">
+                    Subtotal:
+                  </span>
+                  <span class="totals__subtotal-value h4 font-body-bolder">
+                    {{- cart.total_price | money_with_currency -}}
+                  </span>
+                </div>
+                <div class="tax-note">
+                  {%- liquid
+                    if cart.taxes_included and shop.shipping_policy.body != blank
+                      echo 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url
+                    elsif cart.taxes_included
+                      echo 'sections.cart.taxes_included_but_shipping_at_checkout' | t
+                    elsif shop.shipping_policy.body != blank
+                      echo 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url
+                    else
+                      echo 'sections.cart.taxes_and_shipping_at_checkout' | t
+                    endif
+                  -%}
+                </div>
+              </div>
+              <form
+                action="{{ routes.cart_url }}"
+                method="POST"
+                novalidate
+                class="drawer__footer-buttons flex flex-wrap gap-2"
+              >
+                <button class="btn btn--primary flex-5" type="submit" name="checkout">
+                  Proceed to Check Out
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cart-drawer>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.cart-drawer.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/wdOue47)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "label": "t:sections.cart-drawer.settings.show_cart_note.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_discount",
+      "label": "t:sections.cart-drawer.settings.show_cart_discount.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_rates_calculator",
+      "label": "t:sections.cart-drawer.settings.show_shipping_rates_calculator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_free_shipping_goal",
+      "label": "t:sections.cart-drawer.settings.show_free_shipping_goal.label",
+      "default": true,
+      "info": "t:settings_schema.cart.settings.free_shipping_minimum_amount.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.cart-drawer.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_cart_recommendations",
+      "label": "t:sections.cart-drawer.settings.enable_cart_recommendations.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cart_recommendations_heading",
+      "label": "t:sections.cart-drawer.settings.cart_recommendations_heading.label",
+      "default": "You may also like",
+      "visible_if": "{{ section.settings.enable_cart_recommendations == true }}"
+    },
+    {
+      "type": "range",
+      "id": "cart_recommendations_limit",
+      "label": "t:sections.cart-drawer.settings.cart_recommendations_limit.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "visible_if": "{{ section.settings.enable_cart_recommendations == true }}"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,112 @@
+.section-layered-images-with-text {
+  overflow: hidden;
+}
+.section-layered-images-with-text .section__header {
+  padding-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .layered-images .even-layers {
+    position: relative;
+    margin-bottom: 2.4rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .layered-images .odd-layers {
+    position: relative;
+    margin: 4.2rem 2.8rem 0 2.5rem;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .layered-images .layer {
+    width: 28vw;
+  }
+  .layered-images .layer-1 {
+    position: static;
+    align-self: center;
+    margin-inline-start: -15%;
+  }
+  .layered-images .layer-2 {
+    position: static;
+  }
+  .layered-images .layer-3 {
+    position: static;
+    align-self: flex-end;
+    margin-top: -3.6rem;
+  }
+  .layered-images .layer-5 {
+    bottom: 0.8rem;
+    inset-inline-start: 0;
+  }
+  .layered-images .layer-4 {
+    bottom: min(4.8rem, var(--section-padding-bottom, 0) * -0.6);
+    inset-inline-start: 0;
+  }
+}
+@media (min-width: 768px) {
+  .section-layered-images-with-text .section__header {
+    width: 40%;
+    margin: 0 auto;
+  }
+  .layered-images {
+    margin: 15.1rem 0;
+    z-index: 0;
+  }
+  .layered-images .layer {
+    max-width: 30%;
+    z-index: -1;
+  }
+  .layered-images .layer-1 {
+    width: 23.8rem;
+    top: 0;
+    inset-inline-start: 2.8rem;
+    transform: translateY(-63%);
+  }
+  .layered-images .layer-2 {
+    width: 19.3rem;
+    top: 82%;
+    inset-inline-start: 72%;
+    transform: translateY(-58%);
+  }
+  .layered-images .layer-3 {
+    top: 100%;
+    transform: translateY(-2rem);
+    inset-inline-end: 72.5%;
+    width: 16.9rem;
+  }
+  .layered-images .layer-4 {
+    bottom: 100%;
+    transform: translateY(60%);
+    inset-inline-start: 79%;
+    z-index: -2;
+    width: 25.4rem;
+  }
+  .layered-images .layer-5 {
+    top: 50%;
+    transform: translateY(-60%);
+    inset-inline-start: -3.5rem;
+    width: 13.9rem;
+  }
+}
+@media (min-width: 1280px) {
+  .layered-images {
+    margin: 19.6rem 0;
+  }
+  .layered-images .layer-1 {
+    width: 31rem;
+  }
+  .layered-images .layer-2 {
+    width: 25rem;
+    top: 100%;
+  }
+  .layered-images .layer-3 {
+    width: 22rem;
+  }
+  .layered-images .layer-4 {
+    width: 33rem;
+  }
+  .layered-images .layer-5 {
+    width: 18rem;
+  }
+}

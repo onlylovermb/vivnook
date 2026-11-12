@@ -1,0 +1,43 @@
+<section class="vivnook-embroidery-logo-editor" data-vivnook-logo-editor hidden aria-labelledby="{{ modal_id }}-logo-title">
+  <div class="vivnook-embroidery-editor__heading">
+    <div>
+      <p class="vivnook-embroidery__eyebrow">Logo embroidery</p>
+      <div class="vivnook-embroidery-logo-title-row">
+        <h3 id="{{ modal_id }}-logo-title">Add your logo</h3>
+        <span>One logo. One setup fee.</span>
+      </div>
+    </div>
+    <strong data-vivnook-logo-editor-price>+$40</strong>
+  </div>
+  <label class="vivnook-embroidery-field">
+    <span class="vivnook-embroidery-field__required-title">Logo Name <span class="vivnook-embroidery-required" aria-hidden="true">*</span><span class="visually-hidden"> required</span></span>
+    <input type="text" maxlength="60" autocomplete="off" data-vivnook-logo-name placeholder="Organization or team name">
+  </label>
+  <label class="vivnook-embroidery-field vivnook-embroidery-logo-upload">
+    <span class="vivnook-embroidery-field__required-title">Logo File <span class="vivnook-embroidery-required" aria-hidden="true">*</span><span class="visually-hidden"> required</span></span>
+    <span class="vivnook-embroidery-logo-upload__control">
+      <input class="visually-hidden" type="file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp" data-vivnook-logo-file>
+      <span class="vivnook-embroidery-logo-upload__button">Choose File</span>
+      <span class="vivnook-embroidery-logo-upload__name" data-vivnook-logo-file-name>No file selected</span>
+    </span>
+    <small>PNG, JPG or WebP. Maximum 5 MB.</small>
+    <span class="vivnook-embroidery-logo-upload__error" data-vivnook-logo-upload-error role="alert" hidden></span>
+  </label>
+  <fieldset class="vivnook-embroidery-control" data-vivnook-logo-service>
+    <legend>Logo Style <span class="vivnook-embroidery-required" aria-hidden="true">*</span><span class="visually-hidden"> required</span></legend>
+    <div class="vivnook-embroidery-segmented">
+      <label><input type="radio" name="vivnook-logo-service" value="bw" checked><span>Black&amp;White <strong>+$20</strong></span></label>
+      <label><input type="radio" name="vivnook-logo-service" value="fullColor"><span>Full Color <strong>+$40</strong></span></label>
+    </div>
+  </fieldset>
+  <fieldset class="vivnook-embroidery-control" data-vivnook-logo-placement>
+    <legend>Logo Placement</legend>
+    <div class="vivnook-embroidery-segmented">
+      <label><input type="radio" name="vivnook-logo-placement" value="leftChest"><span>Left Chest</span></label>
+      <label><input type="radio" name="vivnook-logo-placement" value="rightChest"><span>Right Chest</span></label>
+    </div>
+  </fieldset>
+  <label class="vivnook-embroidery-logo-terms"><input type="checkbox" data-vivnook-logo-terms><span>I confirm that I own or have permission to use this logo. <span class="vivnook-embroidery-required" aria-hidden="true">*</span><span class="visually-hidden"> required</span></span></label>
+  <p class="vivnook-embroidery-logo-shipping-note"><span aria-hidden="true">🧵</span><span>Embroidered items are final sale and take up to 1 week to ship.</span></p>
+  <p class="vivnook-embroidery-logo-error" data-vivnook-logo-error role="alert" hidden></p>
+</section>

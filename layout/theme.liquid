@@ -1,0 +1,287 @@
+{%- liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+-%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+<style>
+/* Size Chart popup 与 Size 标签同行右对齐 */
+.product__block--popup {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8.4rem !important;
+  margin-bottom: 6.3rem !important;
+  position: relative;
+  z-index: 10;
+}
+.product__block--popup .btn--underline {
+  font-size: 1.3rem !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  text-decoration: underline !important;
+  text-decoration-line: underline !important;
+}
+/* Size Chart 弹窗内表格和图片宽度一致 */
+#PopupModal-popup_F6EwRh table,
+#PopupModal-popup_F6EwRh img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* Easify 标题样式 */
+.tpo_option-label-container span {
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+/* 隐藏独立数量块（保留加购按钮行内的数量选择器） */
+.product__block--quantity,
+.quantity-selector {
+  display: none !important;
+}
+/* Easify Size Chart 链接样式 */
+.tpo_option-label-container {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+.tpo_option-label-container .form__label {
+  flex: 1 !important;
+}
+/* 隐藏 Easify 必填星号 */
+.tpo_option-required-indicator {
+  display: none !important;
+}
+#MainContent .product__block--popup {
+  height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin-top: -16px !important;
+  margin-bottom: -16px !important;
+}
+/* 移除 Size Chart 按钮的静态底线 */
+/* 防止弹窗开关时页面震动 */
+html {
+  overflow-y: scroll !important;
+}
+/* 防止弹窗打开时页面抖动 */
+body.overflow-hidden {
+  padding-right: var(--scrollbar-width, 17px) !important;
+}
+// 计算滚动条宽度并设置 CSS 变量
+const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+
+/* Size Chart 表格统一加边框 */
+.drawer__body table,
+.modal table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+.drawer__body table td,
+.drawer__body table th,
+.modal table td,
+.modal table th {
+  border: 1px solid #e0e0e0 !important;
+  padding: 8px 12px !important;
+  text-align: center !important;
+}
+/* Size Chart 表格字体统一 */
+.drawer__body table,
+.modal table {
+  font-size: 1.4rem !important;
+  font-family: inherit !important;
+}
+.drawer__body table td,
+.drawer__body table th,
+.modal table td,
+.modal table th {
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+.drawer__body table th,
+.modal table th {
+  font-weight: 600 !important;
+}
+</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+      echo 'vivnook-global-shell.css' | asset_url | stylesheet_tag
+
+      comment
+        Product-page custom styling used to be loaded from a custom_liquid
+        block near the end of the document. That allowed the native theme
+        variant picker to paint first and caused a visible UI flash. Load the
+        same assets in the head so the first paint uses the intended design.
+      endcomment
+      if request.page_type == 'product'
+        if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants' or product.template_suffix == 'fanny-pack'
+          echo 'tops-product-info.css' | asset_url | stylesheet_tag: preload: true
+        endif
+        if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants'
+          echo 'signature-look-design.css' | asset_url | stylesheet_tag: preload: true
+        endif
+      endif
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {%- if request.page_type == 'product' and product.template_suffix == 'scrub-pants' -%}
+      {%- comment -%}
+        Prioritize the Globo product styling chunks used by scrub pants.
+        These versioned URLs match the active Globo embed observed in the
+        2026-11-11 performance trace; refresh them if the app extension updates.
+      {%- endcomment -%}
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.base_styles.75a4f1a914f056f92432.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_styles.5421c7f90f91ec6a58a5.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_customize_styles_new.06aad072135460d63f1c.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.649.91fe3a07fc903cc3e90a.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.424.4e20e3b7443c182e4b2f.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_styles.255556113c8ecc187a27.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_customize_styles_new.7464820bd50bffa582d6.js">
+      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_styles_new.874ca7793c5d0f0e3fe6.js">
+      <link rel="preload" as="style" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_styles.a58b540cfdd5a812f745.css">
+    {%- endif -%}
+
+    {{ content_for_header }}
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+    {%- if request.page_type == 'index' -%}
+      {{ 'homepage-applegothic.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+    {%- render 'vivnook-image-skeleton' -%}
+  </head>
+
+<script>
+  // 为 Easify Top Size 和 Pant Size 添加 Size Chart 链接
+</script>
+
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}{% unless settings.enable_animation %} disable-animations{% endunless %}{% unless settings.enable_hover_image %} disable-hover-image{% endunless %}"
+    {% unless request.page_type == 'product' %}
+    data-initializing
+    {% endunless %}
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- unless request.page_type == 'cart' -%}
+      {{ 'vivnook-added-to-bag.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'vivnook-added-to-bag.js' | asset_url }}" defer="defer"></script>
+      {% render 'vivnook-added-to-bag-modal' %}
+    {%- endunless -%}
+    {%- liquid
+      if template.name == 'product'
+        section 'sticky-atc-bar'
+      endif
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+  </body>
+</html>

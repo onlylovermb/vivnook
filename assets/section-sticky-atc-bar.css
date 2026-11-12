@@ -1,0 +1,689 @@
+body.sticky-atc-bar-enabled {
+  padding-bottom: var(--sticky-atc-bar-height, 0px);
+}
+
+.sticky-atc-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 29;
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 100%, 0);
+}
+.sticky-atc-bar--show {
+  transform: translate3d(0, 0, 0);
+  bottom: var(--mobile-sticky-bar-height, 0px);
+}
+.mobile-sticky-bar-down .sticky-atc-bar--show {
+  bottom: 0;
+}
+
+/* Desktop purchase bars sit at the top of the viewport. Their quantity
+   menus therefore open into the page below the bar. */
+@media (min-width: 768px) {
+  body.sticky-atc-bar-enabled {
+    padding-bottom: 0;
+  }
+  .sticky-atc-bar {
+    top: 0;
+    bottom: auto;
+    transform: translate3d(0, -110%, 0);
+  }
+  .sticky-atc-bar--show,
+  .mobile-sticky-bar-down .sticky-atc-bar--show {
+    top: 0;
+    bottom: auto;
+    transform: translate3d(0, 0, 0);
+  }
+  .sticky-atc-bar--signature-look .look-sticky-quantity__menu {
+    top: 100%;
+    bottom: auto;
+  }
+  /* Use the same compact desktop top-bar treatment as The Look for every
+     product. The selected variant remains synced from the main form, so the
+     hidden duplicate selector cannot drift from the product-page choice. */
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) {
+    padding: 0;
+    border-top: 1px solid #e5e5e5;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, .08);
+    z-index: 100;
+  }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__inner {
+    min-height: 56px;
+    padding: 7px 24px;
+    gap: 16px;
+  }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product-image {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product { gap: 12px; min-width: 0; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product-info { min-width: 190px; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product-title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product .f-price { margin-top: 3px; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__product .f-price-item { font-size: 16px; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__form { margin-left: auto; gap: 12px; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__form > .select { display: none; }
+  .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__form .product-form__submit {
+    min-width: 220px;
+    min-height: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+}
+
+/* All mobile sticky add to cart bars: unified layout matching pants page (32% quantity, aligned with right button) */
+@media (max-width: 767.98px) {
+  .sticky-atc-bar {
+    top: auto;
+    bottom: 0 !important;
+    z-index: 100;
+    padding-inline: 0;
+  }
+  .sticky-atc-bar .sticky-atc-bar__inner {
+    padding: 10px 11px !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+  }
+  .sticky-atc-bar .sticky-atc-bar__product,
+  .sticky-atc-bar .sticky-atc-bar__product-image,
+  .sticky-atc-bar .sticky-atc-bar__product-info,
+  .sticky-atc-bar .sticky-atc-bar__inline-price,
+  .sticky-atc-bar .sticky-atc-bar__form > .select {
+    display: none !important;
+  }
+  .sticky-atc-bar .sticky-atc-bar__form {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 9.6px !important;
+    justify-content: stretch !important;
+    align-items: center !important;
+    margin-inline: auto !important;
+  }
+  .sticky-atc-bar [id^="QuantitySticky-"] {
+    display: flex !important;
+    flex: 0 0 32% !important;
+    width: 32% !important;
+    min-width: 0 !important;
+    max-width: 32% !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    align-items: center !important;
+    align-self: center !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sticky-atc-bar .quantity,
+  .sticky-atc-bar quantity-input.quantity {
+    display: grid !important;
+    grid-template-columns: 48px minmax(0, 1fr) 48px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 1 1 auto !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #555 !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    align-self: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sticky-atc-bar .quantity::before,
+  .sticky-atc-bar .quantity::after,
+  .sticky-atc-bar .look-sticky-quantity__menu,
+  .sticky-atc-bar .look-sticky-quantity__trigger {
+    display: none !important;
+  }
+  .sticky-atc-bar .quantity .quantity__button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #242424 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .sticky-atc-bar .quantity .quantity__button svg {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
+    stroke: currentColor !important;
+  }
+  .sticky-atc-bar .quantity .quantity__input,
+  .sticky-atc-bar quantity-input.quantity .quantity__input {
+    display: block !important;
+    grid-column: 2 !important;
+    position: static !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    text-align: center !important;
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 38px !important;
+    color: #242424 !important;
+    -webkit-text-fill-color: #242424 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+  html body .sticky-atc-bar .product-form__buttons,
+  html body .sticky-atc-bar [id^="QuantitySticky-"],
+  html body .sticky-atc-bar--signature-look .product-form__buttons,
+  html body .sticky-atc-bar--signature-look [id^="QuantitySticky-"],
+  .sticky-atc-bar .product-form__buttons {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    align-items: center !important;
+    align-self: center !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html body .sticky-atc-bar .product-form__submit,
+  html body .sticky-atc-bar--signature-look .product-form__submit,
+  .sticky-atc-bar .product-form__submit {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    line-height: 38px !important;
+    padding: 0 16px !important;
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .sticky-atc-bar:not(.sticky-atc-bar--show) {
+    transform: translate3d(0, 110%, 0) !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .sticky-atc-bar.sticky-atc-bar--show {
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+.sticky-atc-bar__inner {
+  padding: 1rem 0;
+  gap: 0.8rem;
+}
+
+
+/* All product sticky purchase buttons use the Vivnook brand red. */
+.sticky-atc-bar .sticky-atc-bar__form .product-form__submit {
+  background: #881337 !important;
+  background-color: #881337 !important;
+  color: #fff !important;
+  border-color: #881337 !important;
+}
+
+.sticky-atc-bar .sticky-atc-bar__form .product-form__submit:hover,
+.sticky-atc-bar .sticky-atc-bar__form .product-form__submit:focus-visible {
+  background: #881337 !important;
+  background-color: #881337 !important;
+  color: #fff !important;
+  filter: brightness(.92);
+}
+.sticky-atc-bar__product-image {
+  width: 9rem;
+}
+.sticky-atc-bar__product-title {
+  margin-bottom: 0.4rem;
+}
+.sticky-atc-bar__product .f-price > * {
+  margin: 0;
+}
+.sticky-atc-bar .form-control {
+  background: none;
+}
+.sticky-atc-bar .select {
+  max-width: 25rem;
+}
+.sticky-atc-bar .select select {
+  min-width: 8rem;
+}
+.sticky-atc-bar .quantity {
+  flex-shrink: 0;
+}
+.sticky-atc-bar__form {
+  flex-shrink: 0;
+}
+.sticky-atc-bar__form .shopify-payment-button__more-options {
+  display: none;
+}
+.sticky-atc-bar .product-form__buttons {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+@media (max-width: 1023.98px) {
+  .sticky-atc-bar .product-form__submit {
+    padding: 0 2.4rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .sticky-atc-bar__product {
+    gap: 0.8rem;
+  }
+  .sticky-atc-bar__form {
+    gap: 0.8rem;
+  }
+  .sticky-atc-bar .product-form__buttons {
+    gap: 0.8rem;
+  }
+  .sticky-atc-bar .product-form__submit {
+    padding: 0 2.4rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .sticky-atc-bar__form {
+    width: 100%;
+  }
+  .sticky-atc-bar .product-form__buttons {
+    flex-grow: 1;
+  }
+}
+@media (min-width: 1280px) {
+  .sticky-atc-bar.page-width--full {
+    --page-padding: 5rem;
+  }
+}
+
+/* Signature Look desktop purchase bar */
+@media (min-width: 768px) {
+  .sticky-atc-bar--signature-look {
+    top: 0;
+    bottom: auto;
+    padding: 0;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    box-shadow: 0 -4px 14px rgba(0,0,0,.08);
+    z-index: 100;
+  }
+  .sticky-atc-bar--signature-look:not(.sticky-atc-bar--show) { transform: translate3d(0, -110%, 0) !important; }
+  .sticky-atc-bar--signature-look.sticky-atc-bar--show { transform: translate3d(0, 0, 0) !important; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__inner {
+    min-height: 56px;
+    padding: 7px 24px;
+    gap: 16px;
+  }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-image { display: block; width: 44px; height: 44px; flex: 0 0 44px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-image,
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-image img { border-radius: 0 !important; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product { gap: 12px; min-width: 0; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-info { min-width: 190px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-color {
+    margin-top: 2px;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-price { margin-top: 3px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product-price .f-price-item { font-size: 16px; font-weight: 400 !important; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product .f-price { margin-top: 3px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__product .f-price-item { font-size: 16px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form { margin-left: auto; gap: 12px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__inline-price { white-space: nowrap; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__inline-price .f-price { margin: 0; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__inline-price .f-price-item { font-size: 16px; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__inline-price .f-price-item { font-weight: 400 !important; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form > .select { display: none; }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form .product-form__submit {
+    min-width: 220px;
+    min-height: 40px;
+    border-radius: 4px;
+    background: var(--color-button-background, #881337);
+    color: #fff;
+    font-size: 14px;
+  }
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form .product-form__submit:hover { background: var(--color-button-background, #881337); filter: brightness(.92); }
+  .sticky-atc-bar--signature-look .quantity {
+    display: flex !important;
+    position: relative !important;
+    width: 12.5rem !important;
+    min-width: 12.5rem !important;
+    max-width: 12.5rem !important;
+    flex: 0 0 12.5rem !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    align-self: center !important;
+  }
+}
+
+/* The Look desktop: keep the quantity box and purchase button on one baseline. */
+@media (min-width: 768px) {
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form {
+    align-items: center !important;
+  }
+  .sticky-atc-bar--signature-look [id^="QuantitySticky-"],
+  .sticky-atc-bar--signature-look .product-form__buttons {
+    display: flex !important;
+    align-items: center !important;
+    align-self: center !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sticky-atc-bar--signature-look .quantity,
+  .sticky-atc-bar--signature-look .sticky-atc-bar__form .product-form__submit {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    margin: 0 !important;
+    align-self: center !important;
+  }
+}
+
+/* All product sticky bars: exactly 38px controls with shared vertical alignment. */
+.sticky-atc-bar .sticky-atc-bar__form {
+  display: flex !important;
+  align-items: center !important;
+}
+.sticky-atc-bar .sticky-atc-bar__form [id^="QuantitySticky-"],
+.sticky-atc-bar .sticky-atc-bar__form .product-form__buttons {
+  display: flex !important;
+  align-items: center !important;
+  align-self: center !important;
+  box-sizing: border-box !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+.sticky-atc-bar .sticky-atc-bar__form .quantity,
+.sticky-atc-bar .sticky-atc-bar__form .product-form__submit {
+  box-sizing: border-box !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  margin-block: 0 !important;
+  align-self: center !important;
+}
+.sticky-atc-bar .sticky-atc-bar__form .quantity .quantity__button,
+.sticky-atc-bar .sticky-atc-bar__form .quantity .quantity__input,
+.sticky-atc-bar .sticky-atc-bar__form .quantity .quantity__select {
+  box-sizing: border-box !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding-block: 0 !important;
+}
+
+/* Sticky ATC Bar: Remove top border/line and make QTY and Button equal width */
+.sticky-atc-bar,
+.sticky-atc-bar.sticky-atc-bar--show,
+#shopify-section-sticky-atc-bar,
+.sticky-atc-bar .product-form__buttons {
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .sticky-atc-bar .sticky-atc-bar__form,
+  #shopify-section-sticky-atc-bar .sticky-atc-bar__form {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* equal width 50% 50% */
+    gap: 10px !important;
+    width: 100% !important;
+    border-top: 0 !important;
+  }
+
+  .sticky-atc-bar [id^="QuantitySticky-"],
+  #shopify-section-sticky-atc-bar [id^="QuantitySticky-"] {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    border-top: 0 !important;
+  }
+
+  .sticky-atc-bar .quantity,
+  .sticky-atc-bar quantity-input.quantity,
+  #shopify-section-sticky-atc-bar .quantity {
+    width: 100% !important;
+    max-width: none !important;
+    border-top: 1px solid #555 !important;
+  }
+
+  .sticky-atc-bar .product-form__buttons,
+  #shopify-section-sticky-atc-bar .product-form__buttons {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: 0 !important;
+  }
+
+  .sticky-atc-bar .product-form__submit,
+  #shopify-section-sticky-atc-bar .product-form__submit {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* Strictly prohibit any border-top inside sticky-atc-bar */
+html body .sticky-atc-bar *,
+html body .sticky-atc-bar *::before,
+html body .sticky-atc-bar *::after,
+html body #shopify-section-sticky-atc-bar *,
+html body #shopify-section-sticky-atc-bar *::before,
+html body #shopify-section-sticky-atc-bar *::after {
+  border-top: 0 !important;
+}
+
+html body .sticky-atc-bar .quantity,
+html body .sticky-atc-bar quantity-input.quantity,
+html body #shopify-section-sticky-atc-bar .quantity {
+  border: 1px solid #555 !important;
+}
+
+/* Force high-contrast solid border on Sticky ATC quantity box */
+html body .sticky-atc-bar .quantity,
+html body .sticky-atc-bar quantity-input.quantity,
+html body #shopify-section-sticky-atc-bar .quantity,
+html body [id^="QuantitySticky-"] .quantity {
+  border: 1px solid #707070 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  background-color: #ffffff !important;
+}
+
+/* Force 32% QTY / 68% ATC on Mobile Sticky ATC Bar across The Look, Tops, Pants, Fanny Pack */
+@media screen and (max-width: 767px) {
+  html body .sticky-atc-bar .sticky-atc-bar__form,
+  html body #shopify-section-sticky-atc-bar .sticky-atc-bar__form,
+  html body .sticky-atc-bar--signature-look .sticky-atc-bar__form {
+    display: grid !important;
+    grid-template-columns: 32% calc(68% - 9.6px) !important;
+    column-gap: 9.6px !important;
+    gap: 9.6px !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  html body .sticky-atc-bar [id^="QuantitySticky-"],
+  html body #shopify-section-sticky-atc-bar [id^="QuantitySticky-"],
+  html body .sticky-atc-bar--signature-look [id^="QuantitySticky-"],
+  html body .sticky-atc-bar .quantity,
+  html body #shopify-section-sticky-atc-bar .quantity,
+  html body .sticky-atc-bar quantity-input.quantity {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  html body .sticky-atc-bar .product-form__buttons,
+  html body #shopify-section-sticky-atc-bar .product-form__buttons,
+  html body .sticky-atc-bar--signature-look .product-form__buttons,
+  html body .sticky-atc-bar .product-form__submit,
+  html body #shopify-section-sticky-atc-bar .product-form__submit,
+  html body .sticky-atc-bar--signature-look .product-form__submit {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    line-height: 36px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+}
+
+/* Fanny Pack Mobile Sticky ATC Bar: Restore native stepper (+ 1 -) matching pants page */
+@media screen and (max-width: 767px) {
+  html body.product-template.fanny-pack .sticky-atc-bar quantity-input.quantity,
+  html body.product-template.fanny-bag .sticky-atc-bar quantity-input.quantity,
+  html body:has(product-info[data-url*="fanny"]) .sticky-atc-bar quantity-input.quantity {
+    display: grid !important;
+    grid-template-columns: 40px minmax(0, 1fr) 40px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border: 1px solid #707070 !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  html body.product-template.fanny-pack .sticky-atc-bar .quantity__input,
+  html body.product-template.fanny-bag .sticky-atc-bar .quantity__input,
+  html body:has(product-info[data-url*="fanny"]) .sticky-atc-bar .quantity__input {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #111111 !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 36px !important;
+  }
+
+  html body.product-template.fanny-pack .sticky-atc-bar .quantity__button,
+  html body.product-template.fanny-bag .sticky-atc-bar .quantity__button,
+  html body:has(product-info[data-url*="fanny"]) .sticky-atc-bar .quantity__button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 100% !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #111111 !important;
+    cursor: pointer !important;
+  }
+
+  /* Hide any rogue custom dropdown artifacts inside sticky bar for fanny pack */
+  html body.product-template.fanny-pack .sticky-atc-bar .tops-quantity__trigger,
+  html body.product-template.fanny-pack .sticky-atc-bar .tops-quantity__menu,
+  html body.product-template.fanny-bag .sticky-atc-bar .tops-quantity__trigger,
+  html body.product-template.fanny-bag .sticky-atc-bar .tops-quantity__menu {
+    display: none !important;
+  }
+}
+
+/* Force visible quantity input number on all mobile sticky bars */
+@media screen and (max-width: 767px) {
+  .sticky-atc-bar quantity-input.quantity input.quantity__input,
+  .sticky-atc-bar quantity-input.quantity input[name="quantity"],
+  .sticky-atc-bar .quantity__input {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    color: #111111 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    line-height: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+}

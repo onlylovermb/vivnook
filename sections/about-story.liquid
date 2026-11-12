@@ -1,0 +1,99 @@
+{{ 'section-about-story.css' | asset_url | stylesheet_tag }}
+{%- assign hero_y_desktop = section.settings.hero_position_y_desktop -%}
+{%- if hero_y_desktop == blank -%}
+  {%- assign hero_y_desktop = 50 -%}
+{%- endif -%}
+
+{% style %}
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .about-story__hero-copy {
+      top: {{ hero_y_desktop }}% !important;
+      bottom: auto !important;
+      transform: translateY(-50%) !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .about-features {
+      padding-bottom: {{ section.settings.mobile_footer_gap }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="about-story" aria-label="{{ section.settings.aria_label | escape }}" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;">
+  <div class="about-story__hero">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'about-story__image', widths: '960,1440,1920,2400' }}
+    {% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
+    <div class="about-story__hero-copy" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;"><h1>{{ section.settings.hero_heading }}</h1></div>
+  </div>
+
+  {% assign rows = 'pockets|dentist|vibrant|bulk' | split: '|' %}
+  {% for row in rows %}
+    {% assign image_key = row | append: '_image' %}
+    {% assign heading_key = row | append: '_heading' %}
+    {% assign body_key = row | append: '_body' %}
+    {% assign image = section.settings[image_key] %}
+    {% assign heading = section.settings[heading_key] %}
+    {% assign body = section.settings[body_key] %}
+    <div class="about-story__row about-story__row--{{ row }} {% if row == 'dentist' or row == 'bulk' %}about-story__row--text-first{% endif %}">
+      <div class="about-story__media">
+        {% if image != blank %}{{ image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'about-story__image', widths: '640,960,1280,1600' }}{% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
+      </div>
+      <div class="about-story__copy"><div class="about-story__copy-inner"><h2>{{ heading }}</h2><div class="about-story__body">{{ body }}</div></div></div>
+    </div>
+  {% endfor %}
+
+  <div class="about-features" data-about-features>
+    <h2 class="about-features__heading">{{ section.settings.features_heading }}</h2>
+    <div class="about-features__track">
+      {% assign feature_keys = 'one|two|three|four' | split: '|' %}
+      {% for key in feature_keys %}
+        {% assign image = section.settings[key] %}
+        {% assign title_key = 'feature_' | append: key | append: '_title' %}
+        {% assign body_key = 'feature_' | append: key | append: '_body' %}
+        <article class="about-feature" tabindex="0">
+          <div class="about-feature__media">{% if image != blank %}{{ image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'about-feature__image', widths: '360,600,800,1000' }}{% else %}<div class="about-feature__image about-feature__image--empty"></div>{% endif %}</div>
+          <div class="about-feature__overlay"><button class="about-feature__toggle" type="button" aria-expanded="false"><span class="about-feature__arrow" aria-hidden="true">⌃</span><span class="about-feature__title">{{ section.settings[title_key] }}</span></button><div class="about-feature__body">{{ section.settings[body_key] }}</div></div>
+        </article>
+      {% endfor %}
+    </div>
+    {% assign learn_url = section.settings.learn_more_url | default: '/products/the-look' %}<a class="about-features__learn" href="{{ learn_url }}">{{ section.settings.learn_more_label }}</a>
+  </div>
+</section>
+
+<script>
+  (() => { const root = document.querySelector('[data-about-features]'); if (!root) return; root.querySelectorAll('.about-feature__toggle').forEach((button) => { button.addEventListener('click', () => { const card = button.closest('.about-feature'); const open = card.classList.toggle('is-open'); button.setAttribute('aria-expanded', open); }); }); })();
+</script>
+
+{% schema %}
+{
+  "name": "About story",
+  "settings": [
+    {"type":"text","id":"aria_label","label":"Accessibility label","default":"About Vivnook"},
+    {"type":"image_picker","id":"hero_image","label":"Hero image"},
+    {"type":"text","id":"hero_heading","label":"Hero heading","default":"Workwear That Feels More Like You"},
+    {"type":"header","content":"Hero Banner 电脑端设置"},
+    {"type":"range","id":"hero_position_y_desktop","label":"电脑端标题上下位置","min":0,"max":100,"step":1,"unit":"%","default":50,"info":"默认 50% 为垂直居中，数值越小越靠上，数值越大越靠下"},
+    {"type":"image_picker","id":"pockets_image","label":"Pockets image"},
+    {"type":"text","id":"pockets_heading","label":"Pockets heading","default":"The Paradox Of Pockets: Reimagining Storage For The Modern Shift"},
+    {"type":"richtext","id":"pockets_body","label":"Pockets body","default":"<p>At Vivnook, we believe your workwear should empower your day, not drag you down. For years, the industry’s only solution for storage was adding more pockets—a design built for convenience that ultimately became a compromise, leaving scrubs heavy, bulky, and misshapen. We once watched an ICU nurse return home after a grueling 12-hour shift and collapse onto her living room floor from sheer exhaustion. Before she could even rest, she faced the frustrating chore of manually emptying over ten stuffed, sagging pockets just to do her laundry. That moment redefined our purpose. We set out to prove that powerful functionality and a sharp, streamlined fit can coexist. You shouldn’t have to sacrifice style to stay efficient.</p>"},
+    {"type":"image_picker","id":"dentist_image","label":"Dentist image"},
+    {"type":"text","id":"dentist_heading","label":"Dentist heading","default":"From A Dentist’s Wardrobe To A Vision For The World"},
+    {"type":"richtext","id":"dentist_body","label":"Dentist body","default":"<p>The spark for Vivnook happened through a simple, lifelong observation. Our co-founder, a Parsons graduate, spent her childhood watching her mother navigate a 30-year career as a clinical dentist. Her mother always appreciated personal style, yet while her wardrobe featured an extensive, expressive collection of shoes, her white lab coat remained completely unchanged for an entire decade. Growing up, the realization became clear: shoes were the only part of her daily attire that escaped rigid uniform codes. They were her only outlet for individual expression on shift. We founded Vivnook to prove that this unyielding monotony didn’t have to be the norm—and that modern healthcare professionals deserve a system built around both form and function.</p>"},
+    {"type":"image_picker","id":"vibrant_image","label":"Vibrant soul image"},
+    {"type":"text","id":"vibrant_heading","label":"Vibrant soul heading","default":"Celebrating The Vibrant Soul Underneath The Uniform"},
+    {"type":"richtext","id":"vibrant_body","label":"Vibrant soul body","default":"<p>Vivnook exists to honor the authentic individuals behind the profession. We believe that underneath every serious, mission-driven shift, your personal identity should never be erased. We respect the solemn professionalism required by your field with a sophisticated, monochromatic exterior. At the same time, we give the right of self-expression back to you. We celebrate your passion for life, ensuring that you can feel completely like yourself while caring for others.</p>"},
+    {"type":"image_picker","id":"bulk_image","label":"Bulk image"},
+    {"type":"text","id":"bulk_heading","label":"Bulk heading","default":"Extra Ten Pockets, Zero Extra Bulk"},
+    {"type":"richtext","id":"bulk_body","label":"Bulk body","default":"<p>We refuse to accept that functionality must come at the cost of a messy, sagging silhouette. Vivnook completely re-engineered the anatomy of medical apparel. By migrating the entire utility system into a color-matched, highly ergonomic carry pack, we delivered a streamlined, drawstring-free waistband. In hidden corners, we introduced an unexpected contrast lining—leaving the choice of self-expression entirely in your hands. Designed separately, styled together.</p>"}
+    ,{"type":"text","id":"features_heading","label":"Features heading","default":"Re-Architecting How You Move Through High-Intensity Shifts"},
+    {"type":"image_picker","id":"one","label":"Feature 1 image"},{"type":"text","id":"feature_one_title","label":"Feature 1 title","default":"The Fabric Shield: Golden Ratio Elasticity"},{"type":"textarea","id":"feature_one_body","label":"Feature 1 body","default":"An ultra-elastic 89% Poly and 11% Spandex blend delivering fluid four-way stretch for frantic runs and deep bends. Infused with antistatic tech that actively repels pet hair and lint—a gentle pat maintains a crisp look all day."},
+    {"type":"image_picker","id":"two","label":"Feature 2 image"},{"type":"text","id":"feature_two_title","label":"Feature 2 title","default":"The Cordless Era: Streamlined Fit"},{"type":"textarea","id":"feature_two_body","label":"Feature 2 body","default":"We completely eliminated clumsy, slipping cords. Engineered with a sleek, high-resilience band that precision-grips your torso with zero bunching. Combined with free custom-hemming, it ensures the uniform fits you flawlessly."},
+    {"type":"image_picker","id":"three","label":"Feature 3 image"},{"type":"text","id":"feature_three_title","label":"Feature 3 title","default":"The 3-Second Rule: Defeating The Black"},{"type":"textarea","id":"feature_three_body","label":"Feature 3 body","default":"Traditional pockets are chaotic black holes. Our carry solution migrates the entire storage system into an ergonomic waist pack with internal elastic tool slots, allowing effortless one-handed blind retrieval in under 3 seconds."},
+    {"type":"image_picker","id":"four","label":"Feature 4 image"},{"type":"text","id":"feature_four_title","label":"Feature 4 title","default":"Infection Control: Medical-Grade Armor"},{"type":"textarea","id":"feature_four_body","label":"Feature 4 body","default":"Built to ruthlessly endure high-temperature 60°C laundering without ever fading. The utility pack is 100% waterproof inside and out, fearlessly resisting fluid splashes and continuous medical-grade Clinell Wipes decontaminations."},
+    {"type":"text","id":"learn_more_label","label":"Learn More label","default":"Learn More"},{"type":"url","id":"learn_more_url","label":"Learn More link"},
+    {"type":"range","id":"mobile_footer_gap","label":"Mobile: space below Learn More","min":0,"max":160,"step":4,"unit":"px","default":48}
+  ],
+  "presets": [{"name":"About story"}]
+}
+{% endschema %}

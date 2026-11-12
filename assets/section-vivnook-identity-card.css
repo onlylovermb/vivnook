@@ -1,0 +1,1630 @@
+.vivnook-identity-card-generator {
+  background:#f4f4f4!important;
+  --vivnook-accent: rgb(var(--color-primary));
+  --vivnook-card-background: rgb(var(--color-background));
+  --badge-name-font-size: 27px;
+  --badge-name-top: 29%;
+  --badge-name-left: 4.3%;
+  --badge-name-width: 50%;
+  --badge-name-letter-spacing: 0.04em;
+  --badge-name-color: #111111;
+  --desktop-reroll-bg: #881337;
+  --desktop-reroll-color: #fff7e8;
+  --desktop-unlock-bg: #E8E2D0;
+  --desktop-unlock-color: #24140e;
+
+  /* Activation inputs �?desktop visual controls. Edit these values without affecting form behavior. */
+  --activation-name-width: 100%;
+  --activation-name-min-height: 4.4rem;
+  --activation-name-font-size: inherit;
+  --activation-name-translate-x: 0;
+  --activation-name-translate-y: 0;
+  --activation-email-width: 100%;
+  --activation-email-min-height: 4.4rem;
+  --activation-email-font-size: inherit;
+  --activation-email-translate-x: 0;
+  --activation-email-translate-y: 0;
+
+  --activation-consent-font-size: 1.2rem;
+  --activation-consent-text-width: 100%;
+  --activation-consent-translate-x: 0px;
+  --activation-consent-translate-y: 0px;
+
+  /* Retrieve lookup error controls. Adjust these without affecting the form or card. */
+  --retrieve-error-color: #111111;
+  --retrieve-error-font-size: 1.2rem;
+  --retrieve-error-translate-x: 0;
+  --retrieve-error-translate-y: 0;
+  --retrieve-form-translate-y: -2rem;
+}
+
+/* Final mobile size override: allow the editor's width/height controls to exceed 100%. */
+@media (max-width: 767px) {
+  #MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+    width: var(--identity-left-width-mobile, 100%) !important;
+    height: var(--identity-left-height-mobile, 100%) !important;
+    margin: 0 auto !important;
+    transform: translate(var(--identity-left-x-mobile, 0%), var(--identity-left-y-mobile, 0%)) !important;
+  }
+}
+
+/* Activated copy typography */
+.vivnook-identity-card-generator [data-activated-copy]
+.vivnook-identity-card-generator__title {
+  font-size: 23px !important;
+}
+
+.vivnook-identity-card-generator [data-activated-copy]
+.vivnook-identity-card-generator__marketing-content {
+  font-size: 16px !important;
+}
+
+.vivnook-identity-card-generator__grid {
+  display: grid;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.vivnook-identity-card-generator__intro {
+  max-width: 54rem;
+  color: #000;
+  transform: translate(20px, -38px);
+}
+
+.vivnook-identity-card-generator__intro * {
+  color: #000;
+}
+
+.vivnook-identity-card-generator__eyebrow,
+.vivnook-identity-card-generator__copy,
+.vivnook-identity-card-generator__benefits,
+.vivnook-identity-card-generator__benefits li {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+}
+
+.vivnook-identity-card-generator__copy-state--activated {
+  display: none;
+}
+
+vivnook-identity-card-generator[data-stage='activated'] .vivnook-identity-card-generator__copy-state--default {
+  display: none;
+}
+
+vivnook-identity-card-generator[data-stage='activated'] .vivnook-identity-card-generator__copy-state--activated {
+  display: block;
+}
+
+.vivnook-identity-card-generator__activated-subtitle {
+  margin: 1.2rem 0 0;
+  color: var(--vivnook-accent);
+}
+
+.vivnook-identity-card-generator__eyebrow {
+  margin: 0 0 0.8rem;
+  color: #000;
+  text-transform: none;
+  opacity: 1;
+  text-transform: none;
+  font-family: var(--font-body-family);
+  font-weight: 400;
+}
+
+.vivnook-identity-card-generator__title {
+  margin: 0;
+    margin-left: 60px;
+}
+
+.vivnook-identity-card-generator__copy {
+  margin: 2rem 0 0;
+}
+
+.vivnook-identity-card-generator__message[hidden],
+.vivnook-identity-card-generator__image[hidden],
+.vivnook-identity-card-generator__actions [hidden],
+.vivnook-identity-card-generator__retrieval[hidden],
+.vivnook-identity-card-generator__activation-actions[hidden],
+.vivnook-identity-card-generator__retrieve-actions[hidden] {
+  display: none;
+}
+
+.vivnook-identity-card-generator__actions {
+  --vivnook-action-gap: 1.2rem;
+  --vivnook-actions-offset: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vivnook-action-gap);
+  margin-top: var(--vivnook-actions-offset);
+}
+
+.vivnook-identity-card-generator__actions[hidden] {
+  display: none;
+}
+
+.vivnook-badge-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.vivnook-identity-card-generator__controls-stage {
+  min-height: var(--vivnook-controls-stage-height, auto);
+}
+
+.vivnook-identity-card-generator__benefits {
+  --vivnook-benefit-gap: 0.8rem;
+  --vivnook-benefit-font-size: inherit;
+  display: grid;
+  gap: var(--vivnook-benefit-gap);
+  margin: 4.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  font-size: var(--vivnook-benefit-font-size);
+
+  transform: translateX(-20px);
+}
+
+.vivnook-identity-card-generator__benefits li {
+  position: relative;
+  padding-inline-start: 2rem;
+  list-style: none;
+  list-style-type: none;
+}
+
+.vivnook-identity-card-generator__benefits li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.72em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--vivnook-accent);
+}
+
+.vivnook-identity-card-generator__eyebrow {
+  font-size: 23px!important;
+  line-height: 1.35!important;
+  text-align: left !important;
+}
+
+.vivnook-identity-card-generator__benefits {
+  font-size: 16px!important;
+  margin-top:16px!important;
+  transform: none;
+}
+
+.vivnook-identity-card-generator__benefits li {
+  padding-inline-start: 0;
+}
+
+.vivnook-identity-card-generator__benefits li::before {
+  display: none;
+}
+
+@media (min-width: 750px) {
+  .vivnook-identity-card-generator__eyebrow {
+    margin-left: 30px !important;
+    white-space: nowrap !important;
+  }
+
+  .vivnook-identity-card-generator__benefits {
+    margin-left: 90px !important;
+    margin-top: 26px !important;
+  }
+}
+
+.vivnook-identity-card-generator__retrieval {
+  --vivnook-retrieval-offset: 1.8rem;
+  margin-top: var(--vivnook-retrieval-offset);
+  text-align: center;
+}
+
+.vivnook-identity-card-generator__retrieval-link,
+.vivnook-retrieval-link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 0;
+  color: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vivnook-identity-card-generator__retrieval-link span,
+.vivnook-retrieval-link span {
+  opacity: 0.6;
+}
+
+.vivnook-identity-card-generator__retrieval-link:hover,
+.vivnook-retrieval-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.vivnook-badge-experience {
+  position: relative;
+  width: min(100%, 62rem);
+  margin-inline: auto;
+}
+
+/* Hide the prior standalone close control; the active close control is inside the activation face. */
+.vivnook-badge-experience > .vivnook-identity-card-generator__activation-close {
+  display: none;
+}
+
+.vivnook-identity-card-generator__interaction-messages {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: none !important;
+  place-items: center;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.vivnook-badge-status {
+  min-height: 0;
+}
+
+.vivnook-identity-card-generator__card-stage {
+  width: 100%;
+  perspective: 140rem;
+}
+
+.vivnook-identity-card-generator__card {
+  position: relative;
+  aspect-ratio: 7334 / 4706;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vivnook-identity-card-generator__card.is-activation-form,
+.vivnook-identity-card-generator__card.is-retrieve-form {
+  transform: rotateY(180deg);
+}
+
+.vivnook-identity-card-generator__card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(1.6rem, 3vw, 2.8rem);
+  border: 0.1rem solid rgba(var(--color-background), 0.36);
+  border-radius: var(--blocks-radius, 0);
+  background: #0d1d2c;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 2rem 5rem rgba(var(--color-shadow), 0.2);
+}
+
+.vivnook-identity-card-generator__card-face--front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(10rem, 32%) minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: clamp(1.4rem, 3vw, 2.8rem);
+  color: #f8f5f0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+  transform-style: preserve-3d;
+}
+
+.vivnook-identity-card-generator__card-face--back {
+  transform: rotateY(180deg);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.vivnook-identity-card-generator__card-face--activation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: rotateY(180deg);
+  padding: 0;
+  background: transparent;
+  color: #f8f5f0;
+}
+
+.vivnook-identity-card-generator__card-face--retrieve {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: rotateY(180deg);
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  color: #f8f5f0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.vivnook-identity-card-generator__retrieve-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vivnook-identity-card-generator__card-face--retrieve .vivnook-identity-card-generator__activation-close {
+  z-index: 2;
+  color: #111111;
+}
+
+.vivnook-identity-card-generator__card-face--activation .vivnook-identity-card-generator__activation-close {
+  color: #111111;
+}
+
+.vivnook-identity-card-generator__activation-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-activation-panel] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-activation-panel] > *:not(.vivnook-identity-card-generator__activation-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* The dedicated Liquid image above is the sole activation artwork surface. */
+[data-activation-background] {
+  display: none;
+}
+
+.vivnook-identity-card-generator__activation-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background:
+    linear-gradient(145deg, rgba(248, 245, 240, 0.12), rgba(248, 245, 240, 0.02)),
+    linear-gradient(135deg, #243f53, #0d1d2c);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vivnook-identity-card-generator__activation-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  width: min(100%, 43rem);
+  height: 100%;
+  margin-inline: auto;
+  padding: clamp(1.6rem, 3vw, 2.8rem);
+}
+
+.vivnook-identity-card-generator__activation-content form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 4.7rem;
+}
+
+.vivnook-identity-card-generator__retrieve-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  width: min(100%, 43rem);
+  height: 100%;
+  margin-inline: auto;
+  padding: clamp(1.6rem, 3vw, 2.8rem);
+}
+
+.vivnook-identity-card-generator__retrieve-content form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 4.7rem;
+  transform: translateY(var(--retrieve-form-translate-y));
+}
+
+.vivnook-identity-card-generator__card.is-activation-form .vivnook-identity-card-generator__card-face--front {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+vivnook-identity-card-generator[data-stage='activation-form'] .vivnook-identity-card-generator__card-face--front {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+vivnook-identity-card-generator[data-stage='activation-form'] .vivnook-identity-card-generator__card-face--activation {
+  visibility: visible;
+  opacity: 1;
+}
+
+vivnook-identity-card-generator[data-stage='retrieve'] .vivnook-identity-card-generator__card-face--front,
+vivnook-identity-card-generator[data-stage='retrieve'] .vivnook-identity-card-generator__card-face--activation {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+vivnook-identity-card-generator[data-stage='retrieve'] .vivnook-identity-card-generator__card-face--retrieve {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vivnook-identity-card-generator__card-face--activation[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+.vivnook-identity-card-generator__card-face--retrieve[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+
+.vivnook-identity-card-generator__card-kicker,
+.vivnook-identity-card-generator__card-id {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vivnook-identity-card-generator__card-kicker {
+  grid-column: 1 / -1;
+  color: #d7b87a;
+}
+
+.vivnook-identity-text-layer {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-template-columns: minmax(10rem, 32%) minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: clamp(1.4rem, 3vw, 2.8rem);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transition: opacity 0.16s ease, visibility 0s linear;
+}
+
+.vivnook-identity-card-generator__card-face--front.is-rotating .vivnook-identity-text-layer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vivnook-identity-text-layer {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+vivnook-identity-card-generator[data-stage='landing'] .vivnook-identity-text-layer,
+vivnook-identity-card-generator[data-stage='shuffling'] .vivnook-identity-text-layer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.vivnook-badge-flipper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vivnook-badge-flipper:focus-visible {
+  outline: 0.2rem solid #f8f5f0;
+  outline-offset: -0.5rem;
+}
+
+.vivnook-badge-flipper.is-rotating {
+  animation: vivnook-badge-rotation 550ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  will-change: transform;
+}
+
+@keyframes vivnook-badge-rotation {
+  0% {
+    transform: rotateY(0deg) translateZ(0);
+  }
+  40% {
+    transform: rotateY(76deg) translateZ(42px);
+  }
+  50% {
+    transform: rotateY(112deg) translateZ(60px);
+  }
+  60% {
+    transform: rotateY(76deg) translateZ(42px);
+  }
+  100% {
+    transform: rotateY(0deg) translateZ(0);
+  }
+}
+
+.vivnook-badge-card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.vivnook-badge-card-face--front {
+  transform: rotateY(0deg);
+  background: transparent;
+}
+
+.vivnook-badge-flipper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: var(--vivnook-badge-back-image) center / contain no-repeat;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.vivnook-badge-card-face--front {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* The front stays physical and visible; only its artwork layers change by state. */
+.vivnook-identity-card-generator__art-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: #f8f5f0;
+  text-align: center;
+}
+
+.vivnook-identity-card-generator__art-mark {
+  font-family: var(--font-heading-family);
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 1;
+}
+
+.vivnook-identity-card-generator__art-label {
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vivnook-identity-card-generator__art-back-placeholder {
+  display: grid;
+  place-items: center;
+  width: 62%;
+  aspect-ratio: 1;
+  border: 0.1rem solid rgba(248, 245, 240, 0.4);
+  border-radius: 50%;
+  color: #f8f5f0;
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Designer PNG identity mode: the JSON-mapped identity image is the primary card artwork layer. */
+.vivnook-identity-card-generator__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vivnook-identity-card-generator__designer-png {
+  object-fit: contain;
+}
+
+.vivnook-identity-card-generator__card-name {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  margin: 0;
+  color: inherit;
+  font-size: clamp(2rem, 3vw, 3.6rem);
+}
+
+.vivnook-identity-card-generator__user-name-overlay {
+  position: absolute;
+  z-index: 3;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  top: var(--badge-name-top);
+  left: var(--badge-name-left);
+  width: var(--badge-name-width);
+  margin: 0;
+  color: transparent;
+  font-size: var(--badge-name-font-size);
+  font-family: 'Pixeltype', sans-serif;
+  letter-spacing: var(--badge-name-letter-spacing);
+  line-height: 1.1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms ease, visibility 0s linear 120ms;
+}
+
+vivnook-identity-card-generator[data-stage='revealed'] .vivnook-identity-card-generator__user-name-overlay,
+vivnook-identity-card-generator[data-stage='activated'] .vivnook-identity-card-generator__user-name-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.vivnook-identity-card-generator__card-face--front:has(.vivnook-badge-flipper[data-artwork-state='cover']) .vivnook-identity-card-generator__user-name-overlay,
+.vivnook-identity-card-generator__card-face--front:has(.vivnook-badge-flipper.is-rotating) .vivnook-identity-card-generator__user-name-overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Legacy CSS identity fallback: temporary identity copy remains available in the DOM but is not card artwork. */
+.vivnook-identity-text-layer > :not(.vivnook-identity-card-generator__user-name-overlay) {
+  display: none;
+}
+
+.vivnook-identity-card-generator__card-face--front .vivnook-identity-card-generator__art-placeholder,
+.vivnook-identity-card-generator__card-face--front .vivnook-identity-card-generator__art-back-placeholder {
+  display: none;
+}
+
+.vivnook-identity-card-generator__user-name-overlay::after {
+  content: 'Your Name Here';
+  position: absolute;
+  inset: 0;
+  color: var(--badge-name-color);
+}
+
+vivnook-identity-card-generator[data-stage='activated'] .vivnook-identity-card-generator__user-name-overlay {
+  color: var(--badge-name-color);
+}
+
+vivnook-identity-card-generator[data-stage='activated'] .vivnook-identity-card-generator__user-name-overlay::after {
+  display: none;
+}
+
+.vivnook-identity-card-generator__role {
+  grid-column: 2;
+  grid-row: 3;
+  margin: 0.8rem 0 0;
+  color: #d7b87a;
+}
+
+.vivnook-identity-card-generator__personality,
+.vivnook-identity-card-generator__quote {
+  grid-column: 2;
+  margin: 1.8rem 0 0;
+}
+
+.vivnook-identity-card-generator__personality {
+  grid-row: 4;
+  align-self: center;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.45;
+}
+
+.vivnook-identity-card-generator__quote {
+  grid-row: 5;
+  font-family: var(--font-heading-family);
+  font-style: italic;
+}
+
+.vivnook-identity-card-generator__card-meta {
+  position: absolute;
+  inset-inline-end: clamp(1.6rem, 3vw, 2.8rem);
+  inset-block-start: clamp(1.6rem, 3vw, 2.8rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vivnook-identity-card-generator__card-edition,
+.vivnook-identity-card-generator__card-id {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vivnook-identity-card-generator__card-id {
+  opacity: 0.65;
+}
+
+.vivnook-identity-card-generator__form-title {
+  margin: 1.2rem 0 0;
+}
+
+.vivnook-identity-card-generator__form-copy {
+  margin: 1.2rem 0 2.4rem;
+}
+
+.vivnook-identity-card-generator__field + .vivnook-identity-card-generator__field {
+  margin-top: 1.6rem;
+}
+
+.vivnook-identity-card-generator__activation-content .vivnook-identity-card-generator__field + .vivnook-identity-card-generator__field {
+  margin-top: 0;
+}
+
+.vivnook-identity-card-generator__field label {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.vivnook-identity-card-generator__field input,
+.vivnook-identity-card-generator__field select {
+  width: 100%;
+}
+
+.vivnook-identity-card-generator__activation-input {
+  min-height: 4.4rem;
+  padding: 1.1rem 1.4rem;
+  border: 0.1rem solid rgba(248, 245, 240, 0.48);
+  border-radius: 0;
+  outline: none;
+  background: rgba(7, 19, 30, 0.24);
+  box-shadow: inset 0 0 0 0.1rem rgba(248, 245, 240, 0.06);
+  color: #f8f5f0;
+  font: inherit;
+}
+
+/* Activation inputs �?use the desktop/mobile visual controls above. */
+.vivnook-identity-card-generator [data-activation-name] {
+  width: var(--activation-name-width);
+  min-height: var(--activation-name-min-height);
+  font-size: var(--activation-name-font-size);
+  transform: translate(var(--activation-name-translate-x), var(--activation-name-translate-y));
+}
+
+.vivnook-identity-card-generator [data-activation-email] {
+  width: var(--activation-email-width);
+  min-height: var(--activation-email-min-height);
+  font-size: var(--activation-email-font-size);
+  transform: translate(var(--activation-email-translate-x), var(--activation-email-translate-y));
+}
+
+/* Retrieve uses the exact same email field dimensions as activation. */
+.vivnook-identity-card-generator [data-retrieve-email] {
+  width: var(--activation-email-width);
+  min-height: var(--activation-email-min-height);
+  font-size: var(--activation-email-font-size);
+  transform: translate(var(--activation-email-translate-x), var(--activation-email-translate-y));
+}
+
+.vivnook-identity-card-generator__activation-input::placeholder {
+  color: rgba(248, 245, 240, 0.68);
+}
+
+.vivnook-identity-card-generator__activation-input:focus-visible {
+  border-color: #d7b87a;
+  box-shadow: 0 0 0 0.2rem rgba(215, 184, 122, 0.3);
+}
+
+.vivnook-identity-card-generator__form-error {
+  margin: 0.5rem 0 0;
+  color: var(--retrieve-error-color, #ff6b6b);
+  font-size: var(--retrieve-error-font-size, 1.2rem);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.vivnook-identity-card-generator__form-error:empty {
+  display: none;
+}
+
+.vivnook-identity-card-generator__retrieve-error {
+  margin: 0;
+  color: var(--retrieve-error-color);
+  font-size: var(--retrieve-error-font-size);
+  line-height: 1.25;
+  text-align: center;
+  transform: translate(var(--retrieve-error-translate-x), var(--retrieve-error-translate-y));
+}
+
+.vivnook-identity-card-generator__activation-actions,
+.vivnook-identity-card-generator__retrieve-actions {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.vivnook-identity-card-generator__completed-actions {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.vivnook-identity-card-generator__completed-actions[hidden] {
+  display: none;
+}
+
+.vivnook-identity-card-generator__activation-actions .btn--underline,
+.vivnook-identity-card-generator__completed-actions .btn--underline {
+  font-family: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  line-height: normal;
+  text-transform: lowercase;
+}
+
+.vivnook-identity-card-generator__activation-close {
+  position: absolute;
+  top: 1.8rem;
+  right: 0.2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.vivnook-identity-card-generator__field-helper {
+  margin: 0.6rem 0 0;
+  color: #000000;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.vivnook-identity-card-generator__consent {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-top: 1.8rem;
+
+   font-size: var(--activation-consent-font-size);
+  transform: translate(
+    var(--activation-consent-translate-x),
+    var(--activation-consent-translate-y)
+  );
+}
+
+.vivnook-identity-card-generator__consent input {
+  flex: 0 0 auto;
+  margin-top: 0.3rem;
+  transform: translateX(4px);
+}
+
+.vivnook-identity-card-generator__activation-content .vivnook-identity-card-generator__consent label {
+  display: block;
+  width: var(--activation-consent-text-width);
+  color: #000000;
+  opacity: 1;
+  visibility: visible;
+}
+
+.vivnook-identity-card-generator__activation-content .vivnook-identity-card-generator__consent label * {
+  color: inherit;
+}
+
+.vivnook-identity-card-generator__live-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .vivnook-identity-card-generator__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 5rem);
+
+    height: 410px;
+    min-height: 410px;
+    align-items: center;
+  }
+
+  .vivnook-identity-card-generator__retrieval {
+  transform: translateY(-2.5rem);
+  }
+
+  /* Desktop badge actions �?compact, editable controls beneath the identity card only. */
+  .vivnook-identity-card-generator {
+    --desktop-action-offset: 0.15rem;
+    --desktop-action-gap: 1.8rem;
+    --desktop-action-width: 24.5rem;
+    --desktop-action-height: 3.2rem;
+    --desktop-action-radius: var(--blocks-radius);
+
+    --desktop-action-font-size: 2.6rem;
+    --desktop-controls-stage-height: 8rem;
+
+  }
+
+  .vivnook-identity-card-generator__controls-stage {
+    --vivnook-controls-stage-height: var(--desktop-controls-stage-height);
+    height: var(--desktop-controls-stage-height);
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions {
+    gap: var(--desktop-action-gap);
+    margin-top: var(--desktop-action-offset);
+    transform: translateY(-1.5rem);
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='shuffle'],
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='claim'],
+  .vivnook-identity-card-generator__activation-actions [data-action='activate'],
+  .vivnook-identity-card-generator__retrieve-actions [data-action='retrieve'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--desktop-action-width);
+    min-height: var(--desktop-action-height);
+    padding: 0.55rem 1.2rem 0.25rem;
+    border-radius: var(--desktop-action-radius);
+    font-family: "Pixeltype", sans-serif;
+    font-size: var(--desktop-action-font-size);
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='shuffle'],
+  .vivnook-identity-card-generator__activation-actions [data-action='activate'],
+  .vivnook-identity-card-generator__retrieve-actions [data-action='retrieve'] {
+    background: var(--desktop-reroll-bg);
+    color: var(--desktop-reroll-color);
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='claim'] {
+    background: var(--desktop-unlock-bg);
+    color: var(--desktop-unlock-color);
+  }
+
+  .vivnook-identity-card-generator__activation-actions,
+  .vivnook-identity-card-generator__retrieve-actions {
+    margin-top: var(--desktop-action-offset);
+    transform: translateY(-1.5rem);
+    align-content: start;
+  }
+
+  .vivnook-identity-card-generator__completed-actions [data-download-badge] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    min-height: var(--desktop-action-height);
+    padding: 0.55rem 1.2rem 0.25rem;
+
+    border-radius: var(--desktop-action-radius);
+
+    font-family: "Pixeltype", sans-serif;
+    font-size: var(--desktop-action-font-size);
+    line-height: 1;
+    letter-spacing: 0.08em;
+
+    background: var(--desktop-reroll-bg);
+    color: var(--desktop-reroll-color);
+  }
+
+  .vivnook-identity-card-generator__completed-actions {
+    margin-top: var(--desktop-action-offset);
+    transform: translateY(-10rem);
+  }
+
+  /* Desktop: identity card on the left, copy on the right. */
+  .vivnook-identity-card-generator__intro {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    width: 100%;
+    max-width: 54rem;
+    transform: none;
+    text-align: left;
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-experience {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .vivnook-identity-card-generator__eyebrow {
+    margin-left: 0 !important;
+    text-align: left !important;
+  }
+
+  .vivnook-identity-card-generator__title {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .vivnook-identity-card-generator__benefits {
+    margin-left: 0 !important;
+    transform: none;
+    text-align: left;
+  }
+}
+
+@media (max-width: 479px) {
+  .vivnook-identity-card-generator__eyebrow,
+  .vivnook-identity-card-generator__marketing-content {
+    font-size: 1.3rem;
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions {
+  margin-top: 0 !important;
+  }
+  .vivnook-identity-card-generator {
+    /* Mobile badge actions �?edit independently from desktop controls. */
+    --mobile-action-gap: 1.4rem;
+    --mobile-action-width: 47.6%;
+    --mobile-action-height: 2rem;
+    --mobile-action-radius: var(--blocks-radius);
+    --mobile-action-font-size: 2.1rem;
+    --mobile-vertical-gap: 0.6rem;
+    --mobile-controls-stage-height: 9.2rem;
+
+    /* Mobile retrieve lookup error controls. */
+    --retrieve-error-color: #111111;
+    --retrieve-error-font-size: 1.2rem;
+    --retrieve-error-translate-x: 0;
+    --retrieve-error-translate-y: 0;
+    --retrieve-form-translate-y: -2rem;
+
+    --badge-name-font-size: 18px;
+    --badge-name-top: 28%;
+    --badge-name-left: 4.3%;
+    --badge-name-width: 50%;
+  }
+
+    .vivnook-identity-card-generator__intro {
+    width: min(100%, 54rem);
+    justify-self: center;
+    align-self: center;
+    transform: none;
+  }
+
+   .vivnook-identity-card-generator__benefits {
+    transform: translateX(8px);
+    margin-top: 2.3rem;
+
+    --vivnook-benefit-gap: 0.4rem;
+  }
+
+  vivnook-identity-card-generator:not([data-stage='activated'])
+  .vivnook-badge-experience {
+    grid-column: 1 / -1;
+    margin-top: 10px !important;
+  }
+
+  vivnook-identity-card-generator[data-stage='activated']
+  .vivnook-badge-experience {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .vivnook-identity-card-generator__controls-stage {
+    --vivnook-controls-stage-height: var(--mobile-controls-stage-height);
+  }
+
+  /* Shared mobile card dimensions: both front and activation faces inherit this exact box. */
+  .vivnook-identity-card-generator__card-stage {
+    width: 96vw;
+    max-width: none;
+    margin-left: calc(50% - 48vw);
+    margin-right: 0;
+  }
+
+  .vivnook-identity-card-generator {
+    /* Activation inputs �?mobile visual controls. Defaults match the current appearance. */
+    --activation-name-width: 90%;
+    --activation-name-min-height: 2.6rem;
+    --activation-name-font-size: 13px;
+    --activation-name-translate-x: 0;
+    --activation-name-translate-y: 10px;
+    --activation-email-width: 90%;
+    --activation-email-min-height: 2.6rem;
+    --activation-email-font-size: 13px;
+    --activation-email-translate-x: 0;
+    --activation-email-translate-y: 2px;
+
+    --activation-consent-font-size: 1rem;
+    --activation-consent-text-width: 90%;
+    --activation-consent-translate-x: 0px;
+    --activation-consent-translate-y: -18px;
+  }
+  
+  .vivnook-identity-card-generator [data-activation-name],
+  .vivnook-identity-card-generator [data-activation-email],
+  .vivnook-identity-card-generator [data-retrieve-email] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions {
+    gap: var(--mobile-action-gap);
+    margin-top: var(--mobile-vertical-gap);
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='shuffle'],
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='claim'],
+  .vivnook-identity-card-generator__activation-actions [data-action='activate'],
+  .vivnook-identity-card-generator__retrieve-actions [data-action='retrieve']  {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--mobile-action-width);
+    min-height: var(--mobile-action-height);
+    padding: calc(0.4rem + 0.1em) 0.8rem calc(0.4rem - 0.1em);
+    border-radius: var(--mobile-action-radius);
+    font-family: "Pixeltype", sans-serif;
+    font-size: var(--mobile-action-font-size);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='shuffle'],
+  .vivnook-identity-card-generator__activation-actions [data-action='activate'],
+  .vivnook-identity-card-generator__retrieve-actions [data-action='retrieve'] {
+    background: var(--desktop-reroll-bg);
+    color: var(--desktop-reroll-color);
+  }
+
+  .vivnook-identity-card-generator .vivnook-badge-actions [data-action='claim'] {
+    background: var(--desktop-unlock-bg);
+    color: var(--desktop-unlock-color);
+  }
+
+  .vivnook-identity-card-generator__completed-actions [data-download-badge] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    min-height: var(--mobile-action-height);
+    padding: calc(0.4rem + 0.1em) 0.8rem calc(0.4rem - 0.1em);
+
+    border-radius: var(--mobile-action-radius);
+
+    font-family: "Pixeltype", sans-serif;
+    font-size: var(--mobile-action-font-size);
+    line-height: 1;
+    letter-spacing: 0.02em;
+
+    background: var(--desktop-reroll-bg);
+    color: var(--desktop-reroll-color);
+  }
+
+  .vivnook-identity-card-generator__completed-actions {
+    margin-top: calc(var(--mobile-vertical-gap) - 10rem);
+    transform: none;
+  }
+
+  .vivnook-identity-card-generator__activation-actions,
+  .vivnook-identity-card-generator__retrieve-actions {
+    margin-top: 0 !important;
+    align-content: start;
+  }
+
+  .vivnook-identity-card-generator__activation-actions,
+  .vivnook-identity-card-generator__retrieve-actions {
+    margin-top: 0 !important;
+    align-content: start;
+  }
+
+  .vivnook-identity-card-generator__retrieval {
+    margin-top: var(--mobile-vertical-gap);
+    transform: none;
+  }
+
+  .vivnook-identity-card-generator__activation-input {
+    padding-block: 0.4rem;
+  }
+
+   .vivnook-identity-card-generator__field-helper {
+    transform: translate(15px, 6px);
+  }
+
+  .vivnook-identity-card-generator__card-face--front {
+    grid-template-columns: 28% minmax(0, 1fr);
+    column-gap: 1rem;
+  }
+
+  .vivnook-identity-text-layer {
+    grid-template-columns: 28% minmax(0, 1fr);
+    column-gap: 1.2rem;
+  }
+
+  .vivnook-identity-card-generator__card-meta {
+    display: none;
+  }
+
+  .vivnook-identity-card-generator__personality {
+    font-size: 1.1rem;
+  }
+
+  .vivnook-identity-card-generator__quote {
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vivnook-identity-card-generator__card {
+    transition: none;
+  }
+
+  .vivnook-badge-flipper.is-rotating {
+    animation: none;
+  }
+
+  .vivnook-identity-card-generator__card.is-activation-form .vivnook-identity-card-generator__card-face--front {
+    visibility: hidden;
+  }
+}
+
+
+/* Retrieval hover underline */
+.vivnook-identity-card-generator__retrieval-link,
+.vivnook-identity-card-generator__retrieval-link:hover {
+  text-decoration: none;
+}
+
+.vivnook-identity-card-generator__retrieval-link:hover .vivnook-retrieval-prefix {
+  text-decoration: none;
+}
+
+.vivnook-identity-card-generator__retrieval-link:hover .vivnook-retrieval-action {
+  text-decoration: underline;
+}
+
+
+/* ===== ACTIVATED LEFT COPY �?DESKTOP ===== */
+@media (min-width: 768px) {
+
+  .vivnook-identity-card-generator__activation-close {
+    top: 3.5rem;
+    right: -2rem;
+  }
+
+  /* 整个左侧文字区域位置 */
+  .vivnook-identity-card-generator [data-activated-copy] {
+    transform: translate(var(--identity-activated-x-desktop, 0px), calc(-45px + var(--identity-activated-y-desktop, 0px)));
+  }
+
+  /* 大标�?*/
+  .vivnook-identity-card-generator [data-activated-copy]
+  .vivnook-identity-card-generator__title {
+    font-size: 2.8rem;
+    line-height: 1.15;
+    margin: 0;
+    margin-left: 0;
+    margin-bottom: 4.1rem; /* �?标题和正文的间隔 */
+  }
+
+  /* 正文 */
+  .vivnook-identity-card-generator [data-activated-copy]
+  .vivnook-identity-card-generator__marketing-content {
+    font-size: 1.45rem;
+    line-height: 1.55;
+    margin: 0;
+    margin-left: 0;
+  }
+}
+
+
+@media (max-width: 767px) {
+
+  .vivnook-identity-card-generator [data-activated-copy] {
+    margin-bottom: 0 !important;
+  }
+
+  .vivnook-identity-card-generator [data-activated-copy]
+  .vivnook-identity-card-generator__marketing-content {
+    width: calc(100% - 32px);
+    max-width: none;
+    margin: 0 auto !important;
+    padding: 0;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+   .vivnook-identity-card-generator__grid {
+    gap: 0rem;
+  }
+
+   .vivnook-identity-card-generator [data-activated-copy] {
+    margin-bottom: -5rem !important;
+  }
+
+
+  .vivnook-identity-card-generator [data-activated-copy] {
+    transform: translate(0px, 0px);
+  }
+
+  .vivnook-identity-card-generator [data-activated-copy]
+  .vivnook-identity-card-generator__title {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin: 0;
+    margin-left: 20px;
+    margin-bottom: 2rem; /* 手机端标�?�?正文间距 */
+  }
+
+  .vivnook-identity-card-generator [data-activated-copy]
+  .vivnook-identity-card-generator__marketing-content {
+    font-size: 1.4rem;
+    
+    line-height: 1.5;
+    margin: 0;
+    margin-left: -100px !important;
+    margin-left: 60px;
+  }
+
+  vivnook-identity-card-generator[data-stage='activated']
+  .vivnook-badge-experience {
+    margin-top: 16px !important;
+  }
+
+  vivnook-identity-card-generator[data-stage='activated'] {
+    padding-bottom: 0 !important;
+    min-height: auto !important;
+  }
+
+  vivnook-identity-card-generator[data-stage='activated']
+  .vivnook-identity-card-generator__grid {
+    min-height: auto !important;
+  }
+
+}
+
+
+@media (max-width: 767px) {
+  .vivnook-identity-card-generator [data-activated-copy] .vivnook-identity-card-generator__marketing-content {
+    width: calc(100% - 32px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: left !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Identity card controls: desktop/mobile typography and panel geometry. */
+#MainContent .vivnook-identity-card-generator {
+  min-height: var(--identity-height-desktop, 720px) !important;
+}
+#MainContent .vivnook-identity-card-generator > .page-width,
+#MainContent .vivnook-identity-card-generator > .page-width > vivnook-identity-card-generator {
+  min-height: inherit;
+}
+#MainContent .vivnook-identity-card-generator__grid {
+  min-height: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+}
+#MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+  width: min(100%, calc(var(--identity-left-width-desktop, 50%) * 1.54)) !important;
+  height: var(--identity-left-height-desktop, 100%) !important;
+  max-width: none !important;
+  justify-self: center;
+  transform: translate(var(--identity-left-x-desktop, 0%), calc(var(--identity-left-y-desktop, 0%) - 20%)) !important;
+}
+#MainContent .vivnook-identity-card-generator .vivnook-identity-card-generator__card-stage {
+  width: 100% !important;
+}
+#MainContent .vivnook-identity-card-generator__intro {
+  width: min(100%, calc(var(--identity-right-width-desktop, 50%) * 1.54)) !important;
+  height: var(--identity-right-height-desktop, 100%) !important;
+  max-width: none !important;
+  justify-self: center;
+  transform: translate(var(--identity-right-x-desktop, 0%), var(--identity-right-y-desktop, 0%)) !important;
+}
+#MainContent .vivnook-identity-card-generator__eyebrow,
+#MainContent .vivnook-identity-card-generator [data-activated-copy] .vivnook-identity-card-generator__title {
+  font-size: calc(23px * var(--identity-title-desktop, 1)) !important;
+  font-weight: var(--identity-title-weight, 400) !important;
+}
+#MainContent .vivnook-identity-card-generator__marketing-content,
+#MainContent .vivnook-identity-card-generator__marketing-content p,
+#MainContent .vivnook-identity-card-generator__benefits,
+#MainContent .vivnook-identity-card-generator__benefits li {
+  font-size: calc(16px * var(--identity-body-desktop, 1)) !important;
+  font-weight: var(--identity-body-weight, 400) !important;
+}
+
+@media (max-width: 767px) {
+  #MainContent .vivnook-identity-card-generator {
+    min-height: var(--identity-height-mobile, 900px) !important;
+  }
+  #MainContent .vivnook-identity-card-generator__grid {
+    display: block !important;
+    min-height: 100%;
+  }
+  #MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+    width: var(--identity-left-width-mobile, 100%) !important;
+    height: var(--identity-left-height-mobile, 100%) !important;
+    transform: translate(var(--identity-left-x-mobile, 0%), var(--identity-left-y-mobile, 0%)) !important;
+  }
+  #MainContent .vivnook-identity-card-generator__intro {
+    width: min(100%, calc(var(--identity-right-width-mobile, 100%) * 1.1)) !important;
+    height: var(--identity-right-height-mobile, 100%) !important;
+    transform: translate(var(--identity-right-x-mobile, 0%), var(--identity-right-y-mobile, 0%)) !important;
+  }
+  #MainContent .vivnook-identity-card-generator__eyebrow,
+  #MainContent .vivnook-identity-card-generator [data-activated-copy] .vivnook-identity-card-generator__title {
+    font-size: calc(23px * var(--identity-title-mobile, .9)) !important;
+    font-weight: var(--identity-title-weight, 400) !important;
+    text-align: left !important;
+  }
+  #MainContent .vivnook-identity-card-generator__marketing-content,
+  #MainContent .vivnook-identity-card-generator__marketing-content p,
+  #MainContent .vivnook-identity-card-generator__benefits,
+  #MainContent .vivnook-identity-card-generator__benefits li {
+    font-size: calc(16px * var(--identity-body-mobile, .9)) !important;
+    font-weight: var(--identity-body-weight, 400) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vivnook-identity-card-generator [data-activated-copy] .vivnook-identity-card-generator__marketing-content {
+    width: calc(100% - 32px) !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vivnook-identity-card-generator__grid {
+    display: block !important;
+  }
+  .vivnook-identity-card-generator__intro {
+    width: 100% !important;
+  }
+  .vivnook-identity-card-generator .vivnook-badge-experience {
+    position: relative !important;
+    margin-top: 16px !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vivnook-identity-card-generator[data-stage='activated'] .vivnook-badge-experience {
+    margin-top: 32px !important;
+  }
+}
+
+/* Mobile order: identity card first, explanatory text below. */
+@media (max-width: 767px) {
+  #MainContent .vivnook-identity-card-generator__grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+    order: 1 !important;
+    margin-top: 0 !important;
+  }
+  #MainContent .vivnook-identity-card-generator__intro {
+    order: 2 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vivnook-identity-card-generator [data-activated-copy] {
+    margin: 0 !important;
+    transform: translate(var(--identity-activated-x-mobile, 0px), var(--identity-activated-y-mobile, 0px)) !important;
+  }
+  .vivnook-identity-card-generator [data-activated-copy] .vivnook-identity-card-generator__marketing-content {
+    width: calc(100% - 32px) !important;
+    margin: 0 16px !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+  .vivnook-identity-card-generator .vivnook-badge-experience {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 32px 0 0 !important;
+    transform: none !important;
+  }
+}
+
+/* Final mobile controls: card size and text position remain editor-controlled. */
+@media (max-width: 767px) {
+  #MainContent .vivnook-identity-card-generator__grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+    order: 1 !important;
+    width: var(--identity-left-width-mobile, 100%) !important;
+    height: var(--identity-left-height-mobile, 100%) !important;
+    margin: 0 auto !important;
+    transform: translate(
+      var(--identity-left-x-mobile, 0%),
+      var(--identity-left-y-mobile, 0%)
+    ) !important;
+  }
+
+  #MainContent .vivnook-identity-card-generator__intro {
+    order: 2 !important;
+    width: var(--identity-right-width-mobile, 100%) !important;
+    height: var(--identity-right-height-mobile, 100%) !important;
+    margin: 0 auto !important;
+    transform: translate(
+      var(--identity-right-x-mobile, 0%),
+      var(--identity-right-y-mobile, 0%)
+    ) !important;
+  }
+}
+
+/* Final mobile size override: allow the editor's width/height controls to exceed 100%. */
+@media (max-width: 767px) {
+  #MainContent .vivnook-identity-card-generator .vivnook-badge-experience {
+    width: var(--identity-left-width-mobile, 100%) !important;
+    height: var(--identity-left-height-mobile, 100%) !important;
+    margin: 0 auto !important;
+    transform: translate(var(--identity-left-x-mobile, 0%), var(--identity-left-y-mobile, 0%)) !important;
+  }
+}
+/* Identity Card 福利清单：电脑端固定 16px */
+@media (min-width: 768px) {
+  #MainContent .vivnook-identity-card-generator__benefits,
+  #MainContent .vivnook-identity-card-generator__benefits li {
+    font-size: 16px !important;
+  }
+}

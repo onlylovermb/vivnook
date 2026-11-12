@@ -1,0 +1,196 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_XjgC3J": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_bar_n4eWby": {
+          "type": "announcement_bar",
+          "settings": {
+            "text": "Free Shipping on Orders $100+&nbsp;",
+            "link": "/cart"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_bar_n4eWby"
+      ],
+      "custom_css": [
+        ".announcement-bar__content {display: block;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-white-text",
+        "content_width": 43,
+        "content_width_mobile": 100,
+        "autoplay": true,
+        "height_desktop": 24,
+        "height_mobile": 24,
+        "autoplay_speed": 5,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "custom_card_Tjp9hw": {
+          "type": "custom_card",
+          "settings": {
+            "menu_title": "Shop",
+            "menu_columns": 4,
+            "enable_on_mobile": true,
+            "promotions_width": 38,
+            "promotion_columns": 1,
+            "promo_image_1": "shopify://shop_images/5.png",
+            "heading_1": "scrubs",
+            "heading_size_1": "h5",
+            "description_1": "<p>scrub tops</p>",
+            "promotion_link_1": "shopify://collections/scrub-tops",
+            "promo_image_2": "shopify://shop_images/Scrub_Pants_W_Category_Tiles.webp",
+            "heading_2": "scrub pants",
+            "heading_size_2": "h5",
+            "description_2": "<p>scrub pants</p>",
+            "promotion_link_2": "shopify://collections/scrub-pants",
+            "promo_image_3": "shopify://shop_images/1_d53e9e43-92f8-4ab2-9363-b603a622d201.png",
+            "heading_3": "bags",
+            "heading_size_3": "h5",
+            "description_3": "<p>bags</p>",
+            "promotion_link_3": "shopify://collections/fanny-bag",
+            "promo_image_4": "shopify://shop_images/faq.png",
+            "heading_4": "",
+            "heading_size_4": "h5",
+            "description_4": "",
+            "promotion_link_4": "",
+            "heading_5": "",
+            "heading_size_5": "h5",
+            "description_5": "",
+            "promotion_link_5": ""
+          }
+        },
+        "promotion_banner_niWhG7": {
+          "type": "promotion_banner",
+          "settings": {
+            "menu_title": "",
+            "menu_columns": 3,
+            "enable_on_mobile": true,
+            "promotions_width": 38,
+            "promotion_columns": 1,
+            "color_scheme_1": "",
+            "promo_image_1": "shopify://shop_images/faq_bff89881-74a3-491f-9050-17f36f5920af.png",
+            "subheading_1": "group orders",
+            "heading_1": "Customized for your team",
+            "heading_size_1": "h5",
+            "description_1": "",
+            "button_label_1": "shop now",
+            "button_style_1": "btn--primary",
+            "content_position_1": "below",
+            "content_alignment_1": "left",
+            "promotion_link_1": "shopify://pages/contact",
+            "color_scheme_2": "",
+            "subheading_2": "",
+            "heading_2": "",
+            "heading_size_2": "h5",
+            "description_2": "",
+            "button_label_2": "",
+            "button_style_2": "btn--primary",
+            "content_position_2": "below",
+            "content_alignment_2": "left",
+            "promotion_link_2": "",
+            "color_scheme_3": "",
+            "subheading_3": "",
+            "heading_3": "",
+            "heading_size_3": "h5",
+            "description_3": "",
+            "button_label_3": "",
+            "button_style_3": "btn--primary",
+            "content_position_3": "below",
+            "content_alignment_3": "left",
+            "promotion_link_3": "",
+            "color_scheme_4": "",
+            "subheading_4": "",
+            "heading_4": "",
+            "heading_size_4": "h5",
+            "description_4": "",
+            "button_label_4": "",
+            "button_style_4": "btn--primary",
+            "content_position_4": "below",
+            "content_alignment_4": "left",
+            "promotion_link_4": "",
+            "color_scheme_5": "",
+            "heading_5": "",
+            "subheading_5": "",
+            "heading_size_5": "h5",
+            "description_5": "",
+            "button_label_5": "",
+            "button_style_5": "btn--primary",
+            "content_position_5": "below",
+            "content_alignment_5": "left",
+            "promotion_link_5": ""
+          }
+        },
+        "product_list_FCxjgp": {
+          "type": "product_list",
+          "settings": {
+            "menu_title": "Shop",
+            "collections": [
+              "fanny-bag",
+              "scrub-pants",
+              "scrub-tops"
+            ],
+            "menu_columns": 3,
+            "show_menu_column_divider": true,
+            "enable_on_mobile": true,
+            "promotions_width": 38,
+            "number_of_columns": 2,
+            "product_list": [
+              "scrub-pants™",
+              "scrub-top"
+            ],
+            "heading": "Best seller"
+          }
+        }
+      },
+      "block_order": [
+        "custom_card_Tjp9hw",
+        "promotion_banner_niWhG7",
+        "product_list_FCxjgp"
+      ],
+      "settings": {
+        "container": "full",
+        "color_scheme": "scheme-1",
+        "menu": "main-menu",
+        "menu_mobile": "main-menu",
+        "header_layout": "left-center",
+        "sticky_header": "always",
+        "menu_trigger": "hover",
+        "show_sperator_line": false,
+        "hide_sperator_on_pages": "",
+        "enable_transparent_header": true,
+        "transparent_header_color": "#ffffff",
+        "customer_account_menu": "customer-account-main-menu",
+        "logo_mobile_position": "left",
+        "show_social_media_icons": true,
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "height_desktop": 44,
+        "height_mobile": 48,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_XjgC3J",
+    "header"
+  ]
+}

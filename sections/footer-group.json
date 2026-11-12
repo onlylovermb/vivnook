@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_3qCrWc": {
+          "type": "newsletter",
+          "settings": {
+            "block_width": 41,
+            "heading": "Subscribe to get 10% OFF",
+            "heading_size": "h2",
+            "newsletter_description": "<p>Subscribe for store updates and discounts.</p>",
+            "newsletter_term": "<p>By subscribing you agree to our<a href=\"/pages/privacy-policy\" title=\"Privacy policy\"> Privacy Policy.</a></p>",
+            "newsletter_text_alignment": "left",
+            "form_width": 465,
+            "order_first": true
+          }
+        },
+        "menu_4eCrBB": {
+          "type": "menu",
+          "settings": {
+            "block_width": 17,
+            "heading": "Get Help",
+            "heading_size": "h4",
+            "menu": "get-help",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_DEKGYP": {
+          "type": "menu",
+          "settings": {
+            "block_width": 17,
+            "heading": "Customer",
+            "heading_size": "h4",
+            "menu": "footer",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "image_text_F3FNhx": {
+          "type": "image_text",
+          "settings": {
+            "block_width": 25,
+            "heading": "Our Story",
+            "heading_size": "h4",
+            "image_width": 150,
+            "text": "<p>We only carry designs we believe in&nbsp;<br/>ethically and aesthetically – original,&nbsp;<br/>authentic pieces that are made to last.</p>",
+            "button_label": "Learn more",
+            "button_link": "shopify://pages/our-story",
+            "open_default": false,
+            "show_divider": false
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_3qCrWc",
+        "menu_4eCrBB",
+        "menu_DEKGYP",
+        "image_text_F3FNhx"
+      ],
+      "custom_css": [
+        ".form-control {--color-border: var(--color-field);}",
+        "@media (min-width: 1024px) {.footer__bottom {padding-top: 8rem; }}",
+        "@media (max-width: 1023.98px) {.footer-block--newsletter.order-first {margin-bottom: 2.4rem; }}",
+        "@media (max-width: 767.98px) {.footer__bottom {padding-top: 2.4rem; }}"
+      ],
+      "settings": {
+        "about_mobile_subscribe_top_gap": 48,
+        "color_scheme": "scheme-118ad4fd-a250-44d4-bdf7-cb33b57e67f9",
+        "enable_follow_on_shop": true,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "footer_bottom_menu": "",
+        "show_section_divider": false,
+        "divider_width": "full"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

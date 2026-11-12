@@ -1,0 +1,91 @@
+.testimonial__header {
+  align-items: baseline;
+}
+.testimonial__icon {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  gap: 0.2rem;
+}
+.testimonial__icon:not(:first-child) {
+  margin-top: 0.8rem;
+}
+.testimonial__content:not(:first-child) {
+  margin-top: 1.6rem;
+}
+.testimonial__product {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding-top: 1.6rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgb(var(--color-border));
+}
+.testimonial__product span {
+  flex-shrink: 0;
+  width: 5.2rem;
+}
+.testimonial--layout-1:has(.testimonial__image) .testimonial__inner {
+  padding-top: 3rem;
+}
+@media (max-width: 767.98px) {
+  .testimonial--layout-1:has(.testimonial__image) .testimonial__inner {
+    padding-top: 1.6rem;
+  }
+}
+.testimonial--layout-1.testimonial--has-bg .testimonial__inner {
+  padding: 3rem 2rem;
+}
+@media (max-width: 767.98px) {
+  .testimonial--layout-1.testimonial--has-bg .testimonial__inner {
+    padding: 1.6rem 1.6rem 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .testimonial--layout-1.testimonial--has-bg .testimonial__product {
+    margin-bottom: -1rem;
+  }
+}
+.testimonial--layout-2:has(.testimonial__image) .testimonial__inner {
+  padding-inline-end: 2rem;
+}
+@media (max-width: 767.98px) {
+  .testimonial--layout-2:has(.testimonial__image) .testimonial__inner {
+    padding-inline-end: 0;
+    padding-top: 1.6rem;
+  }
+}
+@media (min-width: 768px) {
+  .testimonial--layout-2 {
+    display: grid;
+    place-items: start;
+  }
+  .testimonial--layout-2 .testimonial__inner {
+    align-self: stretch;
+  }
+  .testimonial--layout-2:has(.testimonial__image) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+  }
+  .testimonial--layout-2 .testimonial__image {
+    height: 100%;
+    width: 100%;
+    order: 2;
+  }
+  .testimonial--layout-2 .testimonial__image img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@media (min-width: 1280px) {
+  .testimonial--layout-2:has(.testimonial__image) {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
+  }
+}
+.testimonial--layout-2.testimonial--has-bg .testimonial__inner {
+  padding: 2rem;
+}
+@media (max-width: 767.98px) {
+  .testimonial--layout-2.testimonial--has-bg .testimonial__inner {
+    padding: 1.6rem 1.6rem 2rem;
+  }
+}

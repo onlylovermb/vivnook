@@ -1,0 +1,482 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 20,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 38,
+            "size_title": "size",
+            "size_chart_from_page": "product-size-chart"
+          }
+        },
+        "popup_7aczK9": {
+          "type": "popup",
+          "settings": {
+            "text": "",
+            "page": "size-chart"
+          }
+        },
+        "popup_F6EwRh": {
+          "type": "popup",
+          "settings": {
+            "text": "",
+            "page": "size-chart-scrub-pants"
+          }
+        },
+        "custom_liquid_zbtydg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "truck",
+            "heading_1": "Shipped within 24 hours",
+            "icon_2": "arrow-up-left",
+            "heading_2": "30 day returns",
+            "icon_3": "package",
+            "heading_3": "Orders over $100 ship free"
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Your complete style",
+            "make_collapsible_row": true,
+            "icon": "tag",
+            "product_list_limit": 2,
+            "products_per_page": 2,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "icon": "none",
+            "content": "<p>A complete Vivnook workday set, designed to move with you through long shifts.</p><p><strong>EverTrue™ Scrub Tops</strong></p><ul><li>Clean, modern silhouette</li><li>Four-way stretch</li></ul><p><strong>EverTrue™ Scrub Pants</strong></p><ul><li>High-stretch knit waistband</li><li>No drawstring</li><li>Straight-leg fit</li><li>Two front pockets, one side cargo pocket and one back pocket</li></ul><p><strong>Fanny Pack</strong></p><ul><li>12-slot organization system</li><li>Magnetic quick-release buckle</li><li>Adjustable for waist or crossbody wear</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Specs",
+            "icon": "none",
+            "content": "<p><strong>EverTrue™ Scrub Tops & EverTrue™ Scrub Pants</strong></p><p>Body: 89% Polyester, 11%&nbsp;</p><p>Spandex</p><p><strong>Pants Contrast Fabric</strong></p><p>50% Rayon, 45% Nylon, 5% Spandex</p><p><strong>Fanny Pack</strong></p><p>Shell: Water-resistant nylon</p><p>Lining: Ripstop polyester</p><p>Capacity: 1.5L</p><p>Dimensions: 23×13×5cm</p><p>Adjustable belt: 58–113cm</p><p><strong>Care — Scrubs</strong></p><p>Machine wash warm, inside out, with like colors. Tumble dry low. Low heat iron if needed. Do not bleach or dry clean. Do not iron directly on embroidery.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "none",
+            "content": "<p><strong>Shipping</strong></p><ul><li>Free standard shipping on orders over US$100.</li><li>Standard orders are processed within 1–3 business days. Custom and embroidered orders require an additional 5–10 business days.</li><li>Estimated delivery after dispatch: US 7–12, Australia 8–12, Europe 6–12, Asia 3–5 business days.</li></ul><p><strong>Returns</strong></p><ul><li>Return requests are reviewed case by case. Please contact <a href=\"mailto:support@vivnook.com\">support@vivnook.com</a> before sending items back.</li><li>Embroidered or altered items are not eligible for change-of-mind returns, subject to applicable law.</li></ul><p><strong>Duties & Taxes</strong></p><p>Applicable taxes are shown at checkout where required. Vivnook covers applicable customs duties and import charges.</p><p>See our full Shipping & Returns Policy for details.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "disabled": true,
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "variant_picker",
+        "popup_7aczK9",
+        "popup_F6EwRh",
+        "custom_liquid_zbtydg",
+        "buy_buttons",
+        "icon_with_text",
+        "pickup_availability",
+        "complementary",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "addons"
+      ],
+      "custom_css": [
+        ".f-price-item--sale {order: 0;}",
+        ".f-price__sale {column-gap: 1.6rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": false,
+        "media_size": "large",
+        "gallery_layout": "columns",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": false,
+        "enable_video_looping": true,
+        "vivnook_learn_more_url": "shopify://pages/return-policy",
+        "vivnook_top_bust_image": "shopify://shop_images/01.webp",
+        "vivnook_shared_waist_image": "shopify://shop_images/02.webp",
+        "vivnook_pant_hip_image": "shopify://shop_images/03.webp",
+        "vivnook_pant_inseam_image": "shopify://shop_images/04.webp",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "vivnook_product_video_split_fDkd7a": {
+      "type": "vivnook-product-video-split",
+      "custom_css": [
+        "@media (min-width: 750px) {.vivnook-product-video-split__media {grid-column: 1; } .vivnook-product-video-split__product {grid-column: 2; }}"
+      ],
+      "name": "Product + video split",
+      "settings": {
+        "aria_label": "Product and video feature",
+        "product": "",
+        "product_image": "shopify://shop_images/995064ab1f2b127152456aa091fa880d.png",
+        "product_title": "The Work System",
+        "product_subtitle": "Designed separately. Styled together. Why burden your pockets when your clothing is engineered for silhouette, fit, and fluid movement? The EverStealth™ Fanny Pack coordinates your daily clinical carry—re-architecting how you navigate high-intensity shifts without ever feeling weighed down.",
+        "product_button_label": "",
+        "product_button_link": "",
+        "desktop_height": 720,
+        "mobile_height": 680,
+        "heading_desktop_scale": 95,
+        "heading_mobile_scale": 90,
+        "body_desktop_scale": 90,
+        "body_mobile_scale": 80,
+        "button_desktop_scale": 105,
+        "button_mobile_scale": 100,
+        "button_desktop_width": 250,
+        "button_desktop_height": 48,
+        "button_mobile_width": 250,
+        "button_mobile_height": 48,
+        "heading_weight": "400",
+        "body_weight": "400",
+        "button_weight": "400",
+        "video": "shopify://files/videos/红色替换.mp4",
+        "video_url": "",
+        "media_overlay_text": "",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "video_controls": false,
+        "right_image_height": 320,
+        "right_image_height_mobile": 240,
+        "right_image_zoom": 110,
+        "right_image_zoom_mobile": 100,
+        "right_image_vertical_position": -35,
+        "right_image_vertical_position_mobile": 0,
+        "right_text_width": 520,
+        "right_text_width_mobile": 330,
+        "right_heading_size": 30,
+        "right_heading_weight": 400,
+        "right_heading_size_mobile": 26,
+        "right_heading_weight_mobile": 400,
+        "right_body_size": 14,
+        "right_body_weight": 400,
+        "right_body_size_mobile": 13,
+        "right_body_weight_mobile": 400,
+        "right_text_vertical_position": -50,
+        "right_text_vertical_position_mobile": 0
+      }
+    },
+    "vivnook_fabric_laboratory_LJ9GBV": {
+      "type": "vivnook-fabric-laboratory",
+      "blocks": {
+        "feature_id4Xh9": {
+          "type": "feature",
+          "settings": {
+            "title": "01 / Ultra 4-Way Stretch Apparel",
+            "text": "Fluid, Adaptive Movement That Retains Its\nStructural Silhouette All Day Long."
+          }
+        },
+        "feature_D38aDw": {
+          "type": "feature",
+          "settings": {
+            "title": "02 / Anti-Wrinkle & Drape",
+            "text": "Instant Crease Recovery That Keeps Your\nDesigner Medical Uniform Crisp And Professional."
+          }
+        },
+        "feature_DfKfJm": {
+          "type": "feature",
+          "settings": {
+            "title": "03 / Fade-Resistant Color Tech",
+            "text": "Deeply Saturated, Striking Pigments Engineered\nTo Endure Endless Industrial Laundering."
+          }
+        },
+        "feature_x6j6Vr": {
+          "type": "feature",
+          "settings": {
+            "title": "04 / Lint & Hair Repellent Finish",
+            "text": "An Invisible Microscopic Shield That Completely\nRepels Hair, Lint, And Clinic Particles."
+          }
+        }
+      },
+      "block_order": [
+        "feature_id4Xh9",
+        "feature_D38aDw",
+        "feature_DfKfJm",
+        "feature_x6j6Vr"
+      ],
+      "name": "EverTrue fabric lab",
+      "settings": {
+        "aria_label": "EverTrue fabric laboratory",
+        "heading": "The Fabric Laboratory",
+        "intro": "Introducing EverTrue™ textile technology. A luxury curation of high-performance healthcare textiles custom-engineered to breathe, stretch, and endure through the most high-intensity shifts. Where clinical utility meets an avant-garde silhouette.",
+        "feature_image": "shopify://shop_images/c359fa3fbc8ea0fa28fa701d6a177dfa.webp",
+        "right_image": "shopify://shop_images/the_look_p3.webp"
+      }
+    },
+    "signature_fabric_laboratory": {
+      "type": "vivnook-scrubs-feature",
+      "disabled": true,
+      "settings": {
+        "aria_label": "EverTrue Fabric Laboratory",
+        "heading": "EverTrue™ Fabric Laboratory",
+        "body": "<p>Introducing EverTrue™ textile technology. A curation of high-performance, premium medical scrubs meticulously custom-engineered to breathe, stretch, and endure through the most high-intensity clinical shifts.</p>",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "signature_customer_review": {
+      "type": "vivnook-customer-review",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8"
+      ],
+      "disabled": true,
+      "settings": {
+        "aria_label": "Customer Review",
+        "heading": "Customer Review"
+      }
+    },
+    "signature_finale_banner": {
+      "type": "vivnook-finale-banner",
+      "settings": {
+        "aria_label": "The Atelier and Finale banner",
+        "left_image": "shopify://shop_images/25a2ae4f3aeacec2f66ab92e67040928.png",
+        "left_heading": "Thoughtful Details, Better Care",
+        "right_image": "shopify://shop_images/aac65d016ca218544d481e800d820749.webp",
+        "right_heading": "Care for the Ones Who Care.",
+        "right_subheading": "Long shifts. Full days. Countless small acts of care.",
+        "right_body": "<p>We create workwear with thoughtful fits and considered details, so you can feel more like yourself in the work you do.</p>",
+        "left_heading_size": 30,
+        "left_heading_weight": 400,
+        "left_heading_size_mobile": 26,
+        "left_heading_weight_mobile": 400,
+        "left_subheading_size": 20,
+        "left_subheading_weight": 400,
+        "left_subheading_size_mobile": 18,
+        "left_subheading_weight_mobile": 400,
+        "left_body_size": 14,
+        "left_body_weight": 400,
+        "left_body_size_mobile": 13,
+        "left_body_weight_mobile": 400,
+        "left_vertical_position": -30,
+        "left_vertical_position_mobile": 0,
+        "right_heading_size": 30,
+        "right_heading_weight": 400,
+        "right_heading_size_mobile": 26,
+        "right_heading_weight_mobile": 400,
+        "right_subheading_size": 20,
+        "right_subheading_weight": 400,
+        "right_subheading_size_mobile": 18,
+        "right_subheading_weight_mobile": 400,
+        "right_body_size": 14,
+        "right_body_weight": 400,
+        "right_body_size_mobile": 13,
+        "right_body_weight_mobile": 400,
+        "right_vertical_position": 60,
+        "right_vertical_position_mobile": 50,
+        "left_detail_1_subtitle": "Made to Fit",
+        "left_detail_1_body": "<p>Complimentary hemming tailored to your height. Custom-altered items are final sale.</p>",
+        "left_detail_2_subtitle": "Delivery, Made Simple",
+        "left_detail_2_body": "<p>Reliable worldwide shipping, with delivery in 6–12 business days where available.</p>",
+        "left_detail_3_subtitle": "A Little More Peace of Mind",
+        "left_detail_3_body": "<p>Enjoy 14-day returns on eligible, unaltered items.</p>"
+      }
+    },
+    "related_products_EgizAE": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading": "You may also like",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 4,
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "vivnook_product_video_split_fDkd7a",
+    "vivnook_fabric_laboratory_LJ9GBV",
+    "signature_fabric_laboratory",
+    "signature_customer_review",
+    "signature_finale_banner",
+    "related_products_EgizAE"
+  ]
+}

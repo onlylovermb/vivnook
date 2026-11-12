@@ -1,0 +1,186 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "breadcrumbs_AUegfr": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "rich_text_B3PC47": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AXUMYc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover more in our FAQ",
+            "heading_size": "hd2"
+          }
+        },
+        "text_kj6WEc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Have a question or comment? Don't be shy: Reach out and say hi! <br/>Support hours: Monday-Friday, 7am-3pm</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AXUMYc",
+        "text_kj6WEc"
+      ],
+      "custom_css": [
+        ".rich-text__text {--text-margin-top: 1.2rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 90,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "collapsible_tabs_cpVbcj": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "image_card_Kb6mtB": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "desktop_image_position": "left",
+            "image_width": 35,
+            "alignment": "start",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "heading": "Still need help?",
+            "heading_size": "h2",
+            "subheading": "",
+            "description": "<p>Shoot our team an email & we’ll get back to you ASAP</p>",
+            "button_label": "contact us",
+            "button_style": "btn--primary",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "order_first": false
+          }
+        },
+        "collapsible_item_aGcPPC": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "How long does shipping take?",
+            "content": "<p>Your sales managers will go into the field feeling energized, excited, and inspired. We are a full service business development group – we build strategies and systems. </p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": true
+          }
+        },
+        "collapsible_item_9cqCCR": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Does my piece come in any packaging?",
+            "content": "<p>Discover Eco-Friendly Packaging for Your Favorite Pieces.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_WdtWb8": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Do you ship internationally?",
+            "content": "<p>Effortlessly Ship Across Borders with Our International Shipping Services.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Xbyk9C": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "What payment methods do you accept?",
+            "content": "<p>Discover a Variety of Payment Options for Seamless Online Shopping</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_tKhan3": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "What payment methods do you accept?",
+            "content": "<p>Explore Secure and Convenient Payment Options for Every Purchase.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_Kb6mtB",
+        "collapsible_item_aGcPPC",
+        "collapsible_item_9cqCCR",
+        "collapsible_item_WdtWb8",
+        "collapsible_item_Xbyk9C",
+        "collapsible_item_tKhan3"
+      ],
+      "custom_css": [
+        ".f-grid--gap-large {--column-gap: 9rem; --row-gap-mobile: 4.8rem;}",
+        ".collapsible-tabs__wrapper {max-width: 1263px; margin: 0 auto;}",
+        ".accordion-parent {max-width: 720px;}",
+        ".accordion-item:first-child .accordion-details__summary {padding-top: 0;}",
+        ".card-media__description {--text-margin-top: 1.2rem;}",
+        ".card-media__button {--child-margin-top: 2rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "heading": "",
+        "heading_size": "h1",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h3",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumbs_AUegfr",
+    "rich_text_B3PC47",
+    "collapsible_tabs_cpVbcj"
+  ]
+}

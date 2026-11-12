@@ -1,0 +1,27 @@
+{{ 'vivnook-home-rebuild.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} .home-rebuild-hero__media,
+  #shopify-section-{{ section.id }} .home-rebuild-hero__media > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .home-rebuild-hero__media > img {
+    object-fit: cover;
+  }
+{% endstyle %}
+<section class="home-rebuild-hero home-hero-heading-weight-{{ section.settings.heading_weight | default: 400 }} home-hero-body-weight-{{ section.settings.body_weight | default: 400 }}" style="--home-hero-desktop-height:{{ section.settings.desktop_height | default: 720 }}px;--home-hero-mobile-height:{{ section.settings.mobile_height | default: 680 }}px;--home-hero-heading-desktop:{{ section.settings.heading_desktop_scale | default: 100 | divided_by: 100.0 }};--home-hero-heading-mobile:{{ section.settings.heading_mobile_scale | default: 90 | divided_by: 100.0 }};--home-hero-body-desktop:{{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};--home-hero-body-mobile:{{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};--home-hero-button-desktop:{{ section.settings.button_desktop_scale | default: 100 | divided_by: 100.0 }};--home-hero-button-mobile:{{ section.settings.button_mobile_scale | default: 90 | divided_by: 100.0 }};--home-hero-button-mobile-width:{{ section.settings.button_mobile_width | default: 250 }}px;--home-hero-button-mobile-height:{{ section.settings.button_mobile_height | default: 48 }}px;">
+  {% if section.settings.image != blank or section.settings.mobile_image != blank %}
+    {% assign hero_fallback_image = section.settings.image | default: section.settings.mobile_image %}
+    <picture class="home-rebuild-hero__media">
+      {% if section.settings.mobile_image != blank %}
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w, {{ section.settings.mobile_image | image_url: width: 1600 }} 1600w" sizes="100vw">
+      {% endif %}
+      {{ hero_fallback_image | image_url: width: 2400 | image_tag: loading: 'lazy', fetchpriority: 'high', widths: '600,1000,1600,2000,2400', sizes: '100vw' }}
+    </picture>
+  {% endif %}
+  <div class="home-rebuild-hero__copy"><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.body | escape }}</p><a href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a></div>
+</section>
+{% schema %}
+{"name":"Homepage main visual","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"image_picker","id":"mobile_image","label":"Mobile banner image"},{"type":"text","id":"heading","label":"Heading"},{"type":"textarea","id":"body","label":"Description"},{"type":"text","id":"button_label","label":"Button label"},{"type":"url","id":"button_link","label":"Button link"},{"type":"header","content":"Layout"},{"type":"range","id":"desktop_height","label":"Banner desktop height","min":400,"max":1400,"step":10,"unit":"px","default":720},{"type":"range","id":"mobile_height","label":"Banner mobile height","min":400,"max":1200,"step":10,"unit":"px","default":680},{"type":"header","content":"Typography"},{"type":"range","id":"heading_desktop_scale","label":"Heading desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},{"type":"range","id":"heading_mobile_scale","label":"Heading mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},{"type":"range","id":"body_desktop_scale","label":"Description desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},{"type":"range","id":"body_mobile_scale","label":"Description mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},{"type":"range","id":"button_desktop_scale","label":"Button desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},{"type":"range","id":"button_mobile_scale","label":"Button mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},{"type":"select","id":"heading_weight","label":"Heading weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},{"type":"select","id":"body_weight","label":"Description and button weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"}],"presets":[{"name":"Homepage main visual"}]}
+{% endschema %}

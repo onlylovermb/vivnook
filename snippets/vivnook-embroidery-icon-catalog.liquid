@@ -1,0 +1,17 @@
+{%- assign icon_names = 'heart|heartbeat|lungs|kidneys|stomach|brain|tooth|x-ray|health' | split: '|' -%}
+{%- assign icon_labels = 'Heart|Heartbeat|Lungs|Kidneys|Stomach|Brain|Tooth|X-Ray|Health' | split: '|' -%}
+{%- assign colors = 'black|burgundy|navy-blue' | split: '|' -%}
+{
+  "source":"theme-assets",
+  "items":[
+  {%- assign first = true -%}
+  {%- for color in colors -%}
+    {%- for name in icon_names -%}
+      {%- assign index = forloop.index0 -%}
+      {%- unless first -%},{%- endunless -%}
+      {"id":{{ name | append: '-' | append: color | json }},"label":{{ icon_labels[index] | json }},"color":{{ color | json }},"imageUrl":{{ 'embroidery-icon_' | append: color | append: '_' | append: name | append: '.svg' | asset_url | json }},"width":160,"height":160}
+      {%- assign first = false -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  ]
+}

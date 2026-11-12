@@ -1,0 +1,38 @@
+.vivnook-fabric-lab,.vivnook-fabric-lab *{font-family:AppleGothic,"Apple Gothic",Arial,sans-serif;box-sizing:border-box}.vivnook-fabric-lab{margin-top:0;margin-bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:100%;height:min(56.25vw,960px);background:#f1f1f2;color:#263746}.vivnook-fabric-lab__left{display:grid;grid-template-rows:1fr 1fr;min-width:0;height:100%}.vivnook-fabric-lab__intro{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(36px,6vw,96px);text-align:center}.vivnook-fabric-lab h2{margin:0 0 16px;font:400 30px/1.3 AppleGothic,"Apple Gothic",Arial,sans-serif;color:#263746}.vivnook-fabric-lab__intro p{max-width:620px;margin:0;font:400 16px/1.4 AppleGothic,"Apple Gothic",Arial,sans-serif}.vivnook-fabric-lab__feature,.vivnook-fabric-lab__image{position:relative;min-height:0;overflow:hidden}.vivnook-fabric-lab__feature>img,.vivnook-fabric-lab__feature>svg,.vivnook-fabric-lab__image>img,.vivnook-fabric-lab__image>svg{display:block;width:100%;height:100%;object-fit:cover}.vivnook-fabric-lab__feature-copy{position:absolute;left:8%;right:8%;bottom:8%;color:#fff}.vivnook-fabric-lab__item{margin-top:20px;font:400 16px/1.35 AppleGothic,"Apple Gothic",Arial,sans-serif}.vivnook-fabric-lab__item:first-child{margin-top:0}.vivnook-fabric-lab__item strong{font:400 16px/1.35 AppleGothic,"Apple Gothic",Arial,sans-serif;text-decoration:underline}.vivnook-fabric-lab__item p{margin:4px 0 0;font:400 16px/1.35 AppleGothic,"Apple Gothic",Arial,sans-serif}.vivnook-fabric-lab__image{grid-column:2;grid-row:1;min-height:0;height:100%}@media(max-width:749px){.vivnook-fabric-lab{height:auto}.vivnook-fabric-lab__left{min-height:0}.vivnook-fabric-lab{grid-template-columns:1fr;grid-template-rows:auto}.vivnook-fabric-lab__left{display:contents}.vivnook-fabric-lab__image{grid-column:1;grid-row:auto;min-height:520px}.vivnook-fabric-lab__intro{min-height:360px;padding:48px 24px}.vivnook-fabric-lab__feature{min-height:520px;height:auto}.vivnook-fabric-lab__feature-copy{left:7%;right:7%;bottom:7%}}
+
+
+
+
+
+
+.vivnook-fabric-lab__image>video{display:block;width:100%;height:100%;object-fit:cover}.vivnook-fabric-lab__video-note{padding:32px;text-align:center}
+@media(max-width:749px){.vivnook-fabric-lab__image>video{position:absolute;inset:0}}
+
+/* Theme-editor controls for the shared tops/pants EverTrue lab. */
+.vivnook-fabric-lab h2{font-size:var(--fabric-lab-intro-title-size,30px);font-weight:var(--fabric-lab-intro-title-weight,400)}
+.vivnook-fabric-lab__intro>p{font-size:var(--fabric-lab-intro-text-size,16px);font-weight:var(--fabric-lab-intro-text-weight,400)}
+.vivnook-fabric-lab__item strong{font-size:var(--fabric-lab-feature-title-size,16px);font-weight:var(--fabric-lab-feature-title-weight,400)}
+.vivnook-fabric-lab__item p{font-size:var(--fabric-lab-feature-text-size,16px);font-weight:var(--fabric-lab-feature-text-weight,400)}
+.vivnook-fabric-lab__image{height:100%}
+@media(max-width:749px){
+  .vivnook-fabric-lab{height:auto}
+  .vivnook-fabric-lab h2{font-size:var(--fabric-lab-intro-title-size-mobile,26px)}
+  .vivnook-fabric-lab__intro>p{font-size:var(--fabric-lab-intro-text-size-mobile,15px)}
+  .vivnook-fabric-lab__item strong{font-size:var(--fabric-lab-feature-title-size-mobile,16px)}
+  .vivnook-fabric-lab__item p{font-size:var(--fabric-lab-feature-text-size-mobile,16px)}
+  .vivnook-fabric-lab__image{height:var(--fabric-lab-video-height-mobile,520px);min-height:var(--fabric-lab-video-height-mobile,520px)}
+}
+.shopify-section[id$="__scrub_customer_review"] > .vivnook-customer-review {
+  margin-top: 0 !important;
+}
+
+/* Crop the narrow black edges encoded in the scrub video and its poster. */
+.shopify-section[id$="__scrub_fabric_laboratory"] .vivnook-fabric-lab__image > video {
+  transform: scale(1.01);
+  transform-origin: center;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+/* Shared homepage background override. */
+.vivnook-fabric-lab{background:var(--vivnook-home-background,#F4F4F4)!important}

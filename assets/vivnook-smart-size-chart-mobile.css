@@ -1,0 +1,182 @@
+@media (max-width: 749px) {
+  .vivnook-smart-size-chart .drawer__inner {
+    border-radius: 0;
+  }
+
+  .vivnook-smart-size-chart .drawer__close-btn {
+    top: 1.6rem;
+    right: 1.6rem;
+  }
+
+  .vivnook-smart-size-chart__body {
+    padding: 2rem 1.8rem max(2.4rem, env(safe-area-inset-bottom));
+  }
+
+  .vivnook-smart-size-chart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 3.8rem 1.8rem 0;
+  }
+
+  .vivnook-smart-size-chart__header h2 {
+    flex: 0 1 auto;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .vivnook-smart-size-chart__unit-groups {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+
+  .vivnook-smart-size-chart__profile {
+    min-height: 4.8rem;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .vivnook-smart-size-chart__profile > span:first-child {
+    display: flex;
+    align-items: center;
+    line-height: 1.35;
+  }
+
+  .vivnook-smart-size-chart__profile strong {
+    font-size: 1.25rem;
+  }
+
+  .vivnook-smart-size-chart__profile-summary {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .vivnook-smart-size-chart .vivnook-smart-size-chart__edit-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+  }
+
+  .vivnook-smart-size-chart__toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: rgb(var(--color-foreground));
+  }
+
+  .vivnook-smart-size-chart__toolbar > [data-vivnook-chart-measurement-label] {
+    padding: 0;
+  }
+
+  .vivnook-smart-size-chart__toolbar label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
+  }
+
+  .vivnook-smart-size-chart__toolbar select {
+    width: 9.6rem;
+    min-width: 9.6rem;
+    min-height: 3.2rem;
+    padding: 0.35rem 2.2rem 0.35rem 0.7rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    position: relative;
+    z-index: 4;
+    pointer-events: auto;
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+
+  .vivnook-smart-size-chart__table-wrap {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: visible;
+  }
+
+  .vivnook-smart-size-chart table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .vivnook-smart-size-chart th,
+  .vivnook-smart-size-chart td {
+    padding: 0.9rem 0.25rem;
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: normal;
+  }
+
+  .vivnook-smart-size-chart th {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .vivnook-smart-size-chart td {
+    font-size: 0.95rem;
+  }
+
+  .vivnook-smart-size-chart th:first-child,
+  .vivnook-smart-size-chart td:first-child {
+    width: 15%;
+  }
+
+  .vivnook-smart-size-chart th:last-child,
+  .vivnook-smart-size-chart td:last-child {
+    width: 28%;
+  }
+
+  .vivnook-smart-size-chart__measure h3 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Move the close button to the very top right and ensure no overlap on mobile */
+@media (max-width: 749px) {
+  .vivnook-smart-size-chart .drawer__close-btn {
+    top: 0.2rem !important;
+    right: 0.8rem !important;
+    width: 3.2rem !important;
+    height: 3.2rem !important;
+    z-index: 20 !important;
+  }
+
+  .vivnook-smart-size-chart__body {
+    padding-top: 3.6rem !important;
+  }
+
+  .vivnook-smart-size-chart__header {
+    margin-top: 0.6rem !important;
+    margin-right: 3.6rem !important;
+    gap: 0.6rem !important;
+  }
+
+  .vivnook-smart-size-chart__units {
+    height: 3.2rem !important;
+  }
+
+  .vivnook-smart-size-chart__units button {
+    width: 3.4rem !important;
+    min-width: 3.4rem !important;
+    height: 2.8rem !important;
+    line-height: 2.8rem !important;
+    font-size: 1.1rem !important;
+  }
+}

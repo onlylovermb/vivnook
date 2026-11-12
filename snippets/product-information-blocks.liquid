@@ -1,0 +1,740 @@
+{%- liquid
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+<div
+  id="ProductInfo-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-url="{{ product.url }}"
+  class="product__info-container{% if enable_sticky_info %} sticky-element{% endif %}"
+>
+  <div class="product__blocks accordion-parent">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when '@app' -%}
+          <div class="product__block product__block--{{ block.type }}">
+            {% render block %}
+          </div>
+        {%- when 'text' -%}
+          <div
+            class="product__block rte product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            <p class="product__text inline-richtext m-0{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}">
+              {{- block.settings.text -}}
+            </p>
+          </div>
+        {%- when 'title' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {% if context == 'main-product' %}
+              <h1 class="product__title {{ block.settings.heading_size }}">{{ product.title | escape }}</h1>
+            {% else %}
+              <h2 class="product__title {{ block.settings.heading_size }}">
+                <a href="{{ product.url }}">{{ product.title | escape }}</a>
+              </h2>
+            {% endif %}
+          </div>
+        {%- when 'price' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            <div id="price-{{ section.id }}" role="status">
+              {%- render 'price',
+                product: product,
+                use_variant: true,
+                show_sale_badge: false,
+                price_class: 'f-price--large'
+              -%}
+            </div>
+            {%- if product.quantity_price_breaks_configured? -%}
+              <div class="volume-pricing-note" id="VolumeNote-{{ section.id }}">
+                <span class="text-sm text-subtext">{{ 'products.product.volume_pricing.note' | t }}</span>
+              </div>
+            {%- endif -%}
+            <div class="product__tax rte" style="display:none!important;">
+              {%- comment -%}
+              {%- if cart.taxes_included -%}
+                {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- endcomment -%}
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            </div>
+            {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+            {%- form 'product', product, id: product_form_installment_id, class: 'installment' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
+            {%- endform -%}
+          </div>
+        {%- when 'inventory' -%}
+          <div
+            class="product__block product__block--{{ block.type }}{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} hidden{% endif %}"
+            {{ block.shopify_attributes }}
+            id="Inventory-{{ section.id }}"
+            role="status"
+          >
+            {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+              {%- liquid
+                assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity
+
+                if inventory_quantity > 0
+                  if inventory_quantity <= block.settings.inventory_threshold
+                    assign inventory_status = 'low-stock'
+                    if block.settings.show_inventory_quantity
+                      if inventory_quantity == 1
+                        assign inventory_message = 'products.product.inventory_low_stock_one_item_html' | t: quantity: inventory_quantity
+                      else
+                        assign inventory_message = 'products.product.inventory_low_stock_many_items_html' | t: quantity: inventory_quantity
+                      endif
+                    else
+                      assign inventory_message = 'products.product.inventory_low_stock' | t
+                    endif
+                  else
+                    assign inventory_status = 'in-stock'
+                    if block.settings.show_inventory_quantity
+                      assign inventory_message = 'products.product.inventory_in_stock_show_count_html' | t: quantity: inventory_quantity
+                    else
+                      assign inventory_message = 'products.product.inventory_in_stock' | t
+                    endif
+                  endif
+                else
+                  if product.selected_or_first_available_variant.inventory_policy == 'continue'
+                    assign inventory_status = 'in-stock'
+                    assign inventory_message = 'products.product.inventory_out_of_stock_continue_selling' | t
+                  else
+                    assign inventory_status = 'out-of-stock'
+                    assign inventory_message = 'products.product.inventory_out_of_stock' | t
+                  endif
+                endif
+              %}
+              <p class="product__inventory product__inventory--{{ inventory_status }}">
+                <span class="product__inventory-icon"></span>
+                <span class="product__inventory-text">{{- inventory_message -}}</span>
+              </p>
+              {%- if inventory_status == 'low-stock' and inventory_quantity < block.settings.inventory_threshold -%}
+                <progress-bar
+                  class="product__inventory-stock-bar progress-bar"
+                  data-value="{{ inventory_quantity }}"
+                  data-max="{{ block.settings.inventory_threshold }}"
+                ></progress-bar>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- when 'description' -%}
+          {%- if product.description != blank -%}
+            <div
+              class="product__block product__block--{{ block.type }} rte"
+              {{ block.shopify_attributes }}
+            >
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+        {%- when 'sku' -%}
+          <div
+            class="product__block product__block--{{ block.type }}{% if product.selected_or_first_available_variant.sku.size == 0 %} hidden{% endif %}"
+            id="Sku-{{ section.id }}"
+            {{ block.shopify_attributes }}
+          >
+            <p
+              class="product__sku{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}"
+              role="status"
+            >
+              <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
+              {{- product.selected_or_first_available_variant.sku -}}
+            </p>
+          </div>
+        {%- when 'custom_liquid' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.custom_liquid }}
+          </div>
+        {%- when 'collapsible_tab' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            <details
+              id="Details-{{ block.id }}-{{ section.id }}"
+              class="accordion-details"
+              is="accordion-group"
+              {% if block.settings.default_open %}
+                open
+                aria-expanded="true"
+              {% else %}
+                aria-expanded="false"
+              {% endif %}
+            >
+              <summary class="accordion-details__summary flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  {% render 'icons', icon: block.settings.icon %}
+                  <h2 class="h4 inline-richtext">
+                    {{ block.settings.heading | default: block.settings.page.title | escape }}
+                  </h2>
+                </div>
+                {%- render 'icon-plus-toggle' -%}
+              </summary>
+              <span class="look-accordion-divider" aria-hidden="true"></span>
+              <div class="accordion-details__content rte">
+                {{ block.settings.content }}
+                {{ block.settings.custom_liquid }}
+                {{ block.settings.page.content }}
+              </div>
+            </details>
+          </div>
+        {%- when 'popup' -%}
+          {%- liquid
+            assign suppress_legacy_size_popup = false
+            assign legacy_size_pages = 'product-size-chart,size-chart,size-chart-scrub-pants' | split: ','
+            if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants' or product.template_suffix == 'signature-look'
+              if legacy_size_pages contains block.settings.page.handle
+                assign suppress_legacy_size_popup = true
+              endif
+            endif
+          -%}
+          {%- unless suppress_legacy_size_popup -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            <button
+              class="btn--underline"
+              aria-controls="PopupModal-{{ block.id }}"
+              aria-haspopup="dialog"
+            >
+              {{ block.settings.text | default: block.settings.page.title | escape }}
+            </button>
+            <basic-modal id="PopupModal-{{ block.id }}" class="drawer modal" style="--modal-width: 77rem;">
+              <div class="fixed-overlay" aria-controls="PopupModal-{{ block.id }}"></div>
+              <div class="drawer__inner">
+                <button
+                  class="drawer__close-btn"
+                  aria-controls="PopupModal-{{ block.id }}"
+                  aria-label="{{ 'accessibility.close' | t }}"
+                >
+                  {% render 'icon-close' %}
+                </button>
+                <div class="drawer__body v-scrollable h-full">
+                  <h1 class="h2">{{ block.settings.page.title | escape }}</h1>
+                  {{ block.settings.page.content }}
+                </div>
+              </div>
+            </basic-modal>
+          </div>
+          {%- endunless -%}
+        {%- when 'addons' -%}
+          {%- if block.settings.show_share or block.settings.show_ask_question -%}
+            <div
+              class="product__block product__block--{{ block.type }} flex items-center"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.show_share -%}
+                <script src="{{ 'product-share.js' | asset_url }}" defer="defer"></script>
+                {%- liquid
+                  assign share_modal_id = 'PopupModal-Sharing-' | append: section.id
+                  assign share_url = product.selected_or_first_available_variant.url | default: product.url | prepend: request.origin
+                -%}
+                <button
+                  class="btn btn--with-icon btn--plain"
+                  aria-controls="{{ share_modal_id }}"
+                  aria-haspopup="dialog"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="rtl-flip-x"
+                  >
+                    <path d="M2.4168 15.525C3.70274 14.1555 7.07852 11.25 11.8754 11.25V15L18.1254 8.75L11.8754 2.5V6.25C7.7504 6.25 2.46212 10.1914 1.8754 15.2766C1.86728 15.3424 1.88032 15.4091 1.91265 15.4671C1.94498 15.525 1.99491 15.5712 2.05522 15.5988C2.11552 15.6265 2.18307 15.6343 2.24807 15.621C2.31308 15.6077 2.37218 15.5741 2.4168 15.525Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="font-body text-normal tracking-normal">
+                    {{- 'products.product.share_label' | t -}}
+                  </span>
+                </button>
+                <basic-modal id="{{ share_modal_id }}" class="drawer modal">
+                  <div class="fixed-overlay" aria-controls="{{ share_modal_id }}"></div>
+                  <div class="drawer__inner">
+                    <button
+                      class="drawer__close-btn"
+                      aria-controls="{{ share_modal_id }}"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                    <div class="drawer__body v-scrollable h-full">
+                      <div class="product__sharing">
+                        <h3 class="product__sharing--title h5">{{ 'products.product.share' | t }}</h3>
+                        <product-share class="product__sharing--inputs" id="ProductShare-{{ section.id }}">
+                          <label for="ProductShare-{{ section.id }}" class="visually-hidden">
+                            {{- 'products.product.share_label' | t -}}
+                          </label>
+                          <input
+                            id="ProductShare-{{ section.id }}"
+                            type="text"
+                            class="form-control"
+                            value="{{ share_url }}"
+                            readonly
+                          >
+                          <button class="btn btn-copy" data-copied-text="{{ 'general.share.copied' | t }}">
+                            {{ 'general.share.copy' | t }}
+                          </button>
+                        </product-share>
+                        {% render 'social-sharing',
+                          url: product.url,
+                          share_image: product.featured_media.preview_image
+                        %}
+                      </div>
+                    </div>
+                  </div>
+                </basic-modal>
+              {%- endif -%}
+              {%- if block.settings.show_ask_question -%}
+                {%- assign ask_question_modal_id = 'PopupModal-AskQuestionForm-' | append: section.id -%}
+                <button
+                  class="btn btn--with-icon btn--plain"
+                  aria-controls="{{ ask_question_modal_id }}"
+                  aria-haspopup="dialog"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                  >
+                    <path d="M10 15C10.5178 15 10.9375 14.5803 10.9375 14.0625C10.9375 13.5447 10.5178 13.125 10 13.125C9.48223 13.125 9.0625 13.5447 9.0625 14.0625C9.0625 14.5803 9.48223 15 10 15Z" fill="currentColor"/>
+                    <path d="M10 11.25V10.625C11.3805 10.625 12.5 9.64531 12.5 8.4375C12.5 7.22969 11.3805 6.25 10 6.25C8.61953 6.25 7.5 7.22969 7.5 8.4375V8.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="font-body text-normal tracking-normal">
+                    {{- 'products.product.question_form.label' | t -}}
+                  </span>
+                </button>
+                <basic-modal id="{{ ask_question_modal_id }}" class="drawer modal">
+                  <div class="fixed-overlay" aria-controls="{{ ask_question_modal_id }}"></div>
+                  <div class="drawer__inner">
+                    <button
+                      class="drawer__close-btn"
+                      aria-controls="{{ ask_question_modal_id }}"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                    <div class="drawer__body v-scrollable h-full">
+                      {% render 'ask-question-form' %}
+                    </div>
+                  </div>
+                </basic-modal>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- when 'variant_picker' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {% render 'product-variant-picker',
+              product: product,
+              block: block,
+              product_form_id: product_form_id,
+              update_url: update_browser_history
+            %}
+            {%- if product.template_suffix == 'scrub-top' -%}
+              <div data-vivnook-inline-recommendation-host="top"></div>
+            {%- elsif product.template_suffix == 'scrub-pants' -%}
+              <div data-vivnook-inline-recommendation-host="pant"></div>
+              <div data-vivnook-length-adjustment-host></div>
+            {%- endif -%}
+          </div>
+        {%- when 'buy_buttons' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'buy-buttons',
+              block: block,
+              product: product,
+              product_form_id: product_form_id,
+              section_id: section.id,
+              product_id: product.id
+            -%}
+            {%- if product.template_suffix == 'signature-look' -%}
+              <p class="look-shipping"><span>Free Shipping for $100+ orders and Free Returns</span><a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}">Learn More</a></p>
+            {%- endif -%}
+          </div>
+        {%- when 'pickup_availability' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'product-pickup-availability', product: product -%}
+          </div>
+        {%- when 'badges' -%}
+          <div
+            class="product__block product__block--{{ block.type }} product__badges flex flex-wrap items-center"
+            id="Badges-{{ section.id }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'product-badges', block: block, product: product, section_id: section.id -%}
+          </div>
+        {%- when 'shipping' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            <ul class="icon-with-text icon-with-text--vertical list-unstyled">
+              {%- if block.settings.deliver_days != blank -%}
+                <li class="icon-with-text__item">
+                  <svg
+                    fill="currentColor"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M245.57,117.78l-14-35a13.93,13.93,0,0,0-13-8.8H182V64a6,6,0,0,0-6-6H24A14,14,0,0,0,10,72V184a14,14,0,0,0,14,14H42.6a30,30,0,0,0,58.8,0h53.2a30,30,0,0,0,58.8,0H232a14,14,0,0,0,14-14V120A6,6,0,0,0,245.57,117.78ZM182,86h36.58a2,2,0,0,1,1.86,1.26L231.14,114H182ZM22,72a2,2,0,0,1,2-2H170v68H22ZM72,210a18,18,0,1,1,18-18A18,18,0,0,1,72,210Zm82.6-24H101.4a30,30,0,0,0-58.8,0H24a2,2,0,0,1-2-2V150H170v15.48A30.1,30.1,0,0,0,154.6,186ZM184,210a18,18,0,1,1,18-18A18,18,0,0,1,184,210Zm50-26a2,2,0,0,1-2,2H213.4A30.05,30.05,0,0,0,184,162c-.67,0-1.34,0-2,.07V126h52Z"></path>
+                  </svg>
+                  {%- liquid
+                    assign date_format = block.settings.date_format | default: '%b %d'
+                    assign range = 2 | times: 24 | times: 60 | times: 60
+                    assign deliver_in = block.settings.deliver_days | times: 24 | times: 60 | times: 60
+                    assign now = 'now' | date: '%s'
+                    assign from = now | plus: deliver_in | minus: range | date: date_format
+                    assign to = now | plus: deliver_in | plus: range | date: date_format
+                  -%}
+                  <div>
+                    {{- block.settings.deliver_text | strip_html }}
+                    <span>{{ from }} - {{ to }}</span>
+                  </div>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- when 'complementary' -%}
+          <div
+            class="product__block product__block--{{ block.type }} product__block--{{ block.type }}-{% if block.settings.make_collapsible_row %}collapsible{% else %}inline{% endif %}{% if block.settings.block_heading != blank %} has-heading{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <script src="{{ 'product-recommendations.js' | asset_url }}" defer="defer"></script>
+            <script src="{{ 'complementary-product-slider.js' | asset_url }}" defer="defer"></script>
+            <product-recommendations
+              class="complementary-products{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
+              data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"
+            >
+              {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                <aside aria-label="{{ 'accessibility.complementary_products' | t }}">
+                  <div class="complementary-products__container">
+                    {%- if block.settings.make_collapsible_row -%}
+                      <details
+                        id="Details-{{ block.id }}-{{ section.id }}"
+                        class="accordion-details"
+                        is="accordion-group"
+                        open
+                      >
+                        <summary class="accordion-details__summary flex items-center justify-between">
+                    {%- endif %}
+                    {%- if block.settings.make_collapsible_row -%}
+                      <div class="flex items-center gap-2">
+                        {% render 'icons', icon: block.settings.icon %}
+                        <h2 class="h4">{{ block.settings.block_heading }}</h2>
+                      </div>
+                    {%- else -%}
+                      <h2 class="h4 complementary-products__heading">{{ block.settings.block_heading }}</h2>
+                    {%- endif -%}
+                    {%- if block.settings.make_collapsible_row -%}
+                      {%- render 'icon-plus-toggle' -%}
+                      </summary>
+                      <div class="accordion-details__content">
+                    {%- endif -%}
+                    <complementary-product-slider class="slider-controls--grouped-always block relative">
+                      {%- liquid
+                        assign products_per_page = block.settings.products_per_page
+                        assign number_of_slides = recommendations.products_count
+                        if products_per_page > 1
+                          assign number_of_slides = recommendations.products_count | plus: 0.0 | divided_by: products_per_page | ceil
+                        endif
+                      -%}
+                      <div class="swiper">
+                        <div
+                          class="swiper-wrapper"
+                          role="list"
+                          {% if number_of_slides > 1 %}
+                            aria-label="{{ 'general.slider.name' | t }}"
+                          {% endif %}
+                        >
+                          {%- if products_per_page > 1 -%}
+                            {%- for i in (1..number_of_slides) -%}
+                              <div class="swiper-slide" role="listitem" tabindex="-1">
+                                <ul
+                                  class="complementary-products__list list-unstyled flex flex-col gap-4"
+                                  role="list"
+                                >
+                                  {%- for product in recommendations.products
+                                    limit: products_per_page
+                                    offset: continue
+                                  -%}
+                                    <li>
+                                      {% render 'card-product-list',
+                                        section_index: section.index,
+                                        index: forloop.index,
+                                        product: product,
+                                        image_ratio: block.settings.image_ratio,
+                                        enable_quick_add: block.settings.enable_quick_add
+                                      %}
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endfor -%}
+                          {%- else -%}
+                            {%- for product in recommendations.products -%}
+                              <div class="swiper-slide" role="listitem" tabindex="-1">
+                                {% render 'card-product-list',
+                                  section_index: section.index,
+                                  index: forloop.index,
+                                  product: product,
+                                  image_ratio: block.settings.image_ratio,
+                                  enable_quick_add: block.settings.enable_quick_add
+                                %}
+                              </div>
+                            {%- endfor -%}
+                          {%- endif -%}
+                        </div>
+                      </div>
+                      {%- if number_of_slides > 1 -%}
+                        <div class="slider-controls--group">
+                          <div class="slider-controls">
+                            <button
+                              class="swiper-button-prev"
+                              name="previous"
+                              aria-label="{{ 'general.slider.previous_slide' | t }}"
+                            >
+                              {% render 'icon-slider-prev' %}
+                            </button>
+                            <button
+                              class="swiper-button-next"
+                              name="next"
+                              aria-label="{{ 'general.slider.next_slide' | t }}"
+                            >
+                              {% render 'icon-slider-next' %}
+                            </button>
+                            <div class="swiper-pagination"></div>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    </complementary-product-slider>
+                    {%- if block.settings.make_collapsible_row -%}
+                      </div>
+                      </details>
+                    {%- endif -%}
+                  </div>
+                </aside>
+              {%- endif -%}
+              {%- if block.settings.enable_quick_add -%}
+                <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+              {%- endif -%}
+            </product-recommendations>
+          </div>
+        {%- when 'icon-with-text' -%}
+          <div
+            class="product__block product__block--{{ block.type }} product__block--{{ block.type }}-{{ block.settings.layout }}"
+            {{ block.shopify_attributes }}
+          >
+            {% render 'icon-with-text',
+              layout: block.settings.layout,
+              title_size: block.settings.title_size,
+              title_font: block.settings.title_font,
+              heading_1: block.settings.heading_1,
+              image_1: block.settings.image_1,
+              icon_1: block.settings.icon_1,
+              heading_2: block.settings.heading_2,
+              image_2: block.settings.image_2,
+              icon_2: block.settings.icon_2,
+              heading_3: block.settings.heading_3,
+              image_3: block.settings.image_3,
+              icon_3: block.settings.icon_3
+            %}
+          </div>
+        {%- when 'line_item_property' -%}
+          <div
+            class="product__block product__block--{{ block.type }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- assign property_name = block.settings.property_name | escape -%}
+            {%- if block.settings.property_type == 'checkbox' and property_name != blank -%}
+              <div class="form-field" data-custom-property>
+                <div class="flex items-center gap-x-3">
+                  <input
+                    type="hidden"
+                    name="properties[{{ property_name }}]"
+                    form="{{ product_form_id }}"
+                    value="{{ block.settings.property_uncheck_value | escape }}"
+                  >
+                  <input
+                    type="checkbox"
+                    id="LineItemProperty-{{ block.id }}"
+                    name="properties[{{ property_name }}]"
+                    form="{{ product_form_id }}"
+                    value="{{ block.settings.property_checked_value | escape }}"
+                    {% if block.settings.required %}
+                      required
+                    {% endif %}
+                  >
+                  <label class="flex-1" for="LineItemProperty-{{ block.id }}">
+                    {{- property_name -}}
+                  </label>
+                </div>
+              </div>
+            {%- elsif block.settings.property_type == 'radio' -%}
+              <div class="form-field" data-custom-property>
+                {%- assign options = block.settings.property_options | split: ',' -%}
+                {%- if property_name != blank -%}
+                  <label class="form-label font-body-bold" for="LineItemProperty-{{ block.id }}">
+                    {{- property_name -}}
+                    {% if block.settings.required %}
+                      <span aria-hidden="true">*</span>
+                    {% endif %}
+                  </label>
+                  {%- if options.size > 0 -%}
+                    <div class="flex flex-wrap gap-x-6 gap-y-2{% if block.settings.radio_layout == 'vertical' %} flex-col{% else %} flex-row items-center{% endif %}">
+                      {%- for option in options -%}
+                        <div class="flex items-center gap-x-3">
+                          <input
+                            type="radio"
+                            id="LineItemProperty-{{ block.id }}-{{ option | escape }}"
+                            name="properties[{{ property_name }}]"
+                            form="{{ product_form_id }}"
+                            value="{{ option | escape }}"
+                            {% if forloop.first %}
+                              checked
+                            {% endif %}
+                            {% if block.settings.required %}
+                              required
+                            {% endif %}
+                          >
+                          <label for="LineItemProperty-{{ block.id }}-{{ option | escape }}">
+                            {{- option -}}
+                          </label>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              {%- case block.settings.property_type -%}
+                {%- when 'text' -%}
+                  <div class="form-field" data-custom-property>
+                    {%- if property_name != blank -%}
+                      <label class="form-label font-body-bold" for="LineItemProperty-{{ block.id }}">
+                        {{- property_name -}}
+                        {% if block.settings.required %}
+                          <span aria-hidden="true">*</span>
+                        {% endif %}
+                      </label>
+                      <input
+                        type="text"
+                        id="LineItemProperty-{{ block.id }}"
+                        name="properties[{{ property_name }}]"
+                        form="{{ product_form_id }}"
+                        class="form-control"
+                        value="{{ block.settings.property_value | escape }}"
+                        placeholder="{{ block.settings.property_placeholder | escape }}"
+                        {% if block.settings.required %}
+                          required
+                        {% endif %}
+                      >
+                    {%- endif -%}
+                  </div>
+                {%- when 'textarea' -%}
+                  <div class="form-field" data-custom-property>
+                    {%- if property_name != blank -%}
+                      <label class="form-label font-body-bold" for="LineItemProperty-{{ block.id }}">
+                        {{- property_name -}}
+                        {% if block.settings.required %}
+                          <span aria-hidden="true">*</span>
+                        {% endif %}
+                      </label>
+                      <textarea
+                        id="LineItemProperty-{{ block.id }}"
+                        name="properties[{{ property_name }}]"
+                        form="{{ product_form_id }}"
+                        class="form-control"
+                        placeholder="{{ block.settings.property_placeholder | escape }}"
+                        {% if block.settings.required %}
+                          required
+                        {% endif %}
+                      >
+                      {{- block.settings.property_value | escape -}}
+                    </textarea>
+                    {%- endif -%}
+                  </div>
+                {%- when 'select' -%}
+                  <div class="form-field" data-custom-property>
+                    {%- if property_name != blank -%}
+                      <label class="form-label font-body-bold" for="LineItemProperty-{{ block.id }}">
+                        {{- property_name -}}
+                        {% if block.settings.required %}
+                          <span aria-hidden="true">*</span>
+                        {% endif %}
+                      </label>
+                      {%- assign options = block.settings.property_options | split: ',' -%}
+                      <div class="select">
+                        <select
+                          id="LineItemProperty-{{ block.id }}"
+                          name="properties[{{ property_name }}]"
+                          form="{{ product_form_id }}"
+                          class="form-control form-control--select"
+                          {% if block.settings.required %}
+                            required
+                          {% endif %}
+                        >
+                          {% if block.settings.property_placeholder != blank %}
+                            <option value="" disabled>
+                              {{- block.settings.property_placeholder -}}
+                            </option>
+                          {% endif %}
+                          {%- for option in options -%}
+                            <option value="{{ option | escape }}">
+                              {{- option -}}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret-down' %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+  {%- if show_details_link == true -%}
+    <a
+      {% if product == blank %}
+        role="link" aria-disabled="true"
+      {% else %}
+        href="{{ product.url }}"
+      {% endif %}
+      class="product__view-details btn btn--with-icon"
+    >
+      {{- 'products.product.view_full_details' | t -}}
+      {% render 'icon-caret' %}
+    </a>
+  {%- endif -%}
+</div>

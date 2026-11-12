@@ -1,0 +1,117 @@
+{%- liquid
+  assign logo = settings.logo
+  assign logo_mobile = settings.logo_mobile
+  assign menu = section.settings.menu
+  assign menu_mobile = section.settings.menu_mobile
+
+  assign logo_mobile_width = settings.logo_width_mobile
+  assign logo_mobile_width_2x = logo_mobile_width | times: 2
+
+  if logo_mobile == blank
+    assign logo_mobile = logo
+  endif
+
+  if menu_mobile == blank
+    assign menu_mobile = menu
+  endif
+-%}
+{% style %}
+  #MenuDrawer {
+    --logo-width: {{ settings.logo_width }}px;
+    --logo-width-mobile: {{ settings.logo_width_mobile }}px;
+  }
+{% endstyle %}
+<menu-drawer id="MenuDrawer" class="menu-drawer drawer drawer--left" hidden>
+  <div class="fixed-overlay" aria-controls="MenuDrawer"></div>
+  <div class="drawer__inner flex flex-col w-full h-full overflow-hidden">
+    <div class="drawer__header menu-drawer__header flex items-center justify-between">
+      <a
+        href="{{ routes.root_url }}"
+        class="h3 relative flex{% unless logo_mobile %} header__logo--text{% else %} header__logo--image{% endunless %}"
+      >
+        {%- if logo_mobile != blank -%}
+          <img
+            srcset="{{ logo_mobile | image_url: width: logo_mobile_width }} 1x, {{ logo_mobile | image_url: width: logo_mobile_width_2x }} 2x"
+            src="{{ logo_mobile | image_url: width: logo_mobile_width }}"
+            loading="eager"
+            width="{{ logo_mobile.width }}"
+            height="{{ logo_mobile.height }}"
+            alt="{{ logo_mobile.alt | default: shop.name | escape }}"
+          >
+        {%- else -%}
+          {{ shop.name }}
+        {%- endif -%}
+      </a>
+      <button class="drawer__close btn btn--inherit" aria-controls="MenuDrawer">
+        {%- render 'icon-close', size: 'large' -%}
+      </button>
+    </div>
+    <div class="drawer__content menu-drawer__content flex-grow flex flex-col h-full w-full">
+      <nav class="overflow-hidden flex-grow" role="navigation">
+        <ul class="menu-drawer__menus v-scrollable relative w-full h-full" data-parent>
+          {%- for link in menu_mobile.links -%}
+            <li class="menu-drawer__item">
+              {%- liquid
+                assign enable_mega_menu = false
+                assign link_title_handle = link.title | handle
+                for block in blocks
+                  assign menu_title_handle = block.settings.menu_title | handle
+                  assign enable_on_mobile = block.settings.enable_on_mobile
+                  if menu_title_handle == link_title_handle and enable_on_mobile
+                    assign enable_mega_menu = true
+                    assign mega_menu_block = block
+                    break
+                  endif
+                endfor
+              -%}
+              {%- if link.links != blank or enable_mega_menu -%}
+                {%- render 'menu-drawer-details',
+                  link: link,
+                  enable_mega_menu: enable_mega_menu,
+                  block: mega_menu_block
+                -%}
+              {%- else -%}
+                <a href="{{ link.url }}" class="menu-drawer__item-link flex items-center justify-between">
+                  {{- link.title | escape -}}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+      <div class="drawer__footer menu-drawer__footer flex justify-center flex-col gap-y-5">
+        <div class="grid gap-3">
+          {%- if section.settings.enable_language_selector or section.settings.enable_country_selector -%}
+            <div class="menu-drawer__localization-form flex justify-center flex-wrap gap-x-6 gap-y-4">
+              {%- liquid
+                if section.settings.enable_country_selector
+                  render 'country-selector', position: 'up'
+                endif
+                if section.settings.enable_language_selector
+                  render 'language-selector', position: 'up'
+                endif
+              -%}
+            </div>
+          {%- endif -%}
+          {%- if shop.customer_accounts_enabled -%}
+            <a
+              href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+              class="account-button btn btn--primary w-full flex items-center justify-center"
+            >
+              {% if customer %}
+                {{ 'customer.account_fallback' | t }}
+              {% else %}
+                {{ 'customer.log_in' | t }}
+              {% endif %}
+            </a>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.show_social_media_icons -%}
+          <div class="menu-drawer__social-icons">
+            {% render 'social-icons', size: 'large', class: 'justify-center' %}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</menu-drawer>

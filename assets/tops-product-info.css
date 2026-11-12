@@ -1,0 +1,2174 @@
+/* Asset-only blocks must not add space above the mobile product title. */
+@media(max-width:767px){
+  /* Remove the mobile row gap between the media gallery and product details. */
+  body:has(product-info[data-url="/products/scrub-top"]) .product.product--media-has-many{
+    gap:0!important;
+    row-gap:0!important;
+  }
+  body:has(product-info[data-url="/products/scrub-top"]) .product.product--media-has-many,
+  body:has(product-info[data-url="/products/scrub-top"]) .product__media-wrapper{
+    margin-bottom:0!important;
+  }
+  product-info[data-url="/products/scrub-top"] .product__media-gallery,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer-wrap,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer{
+    margin-bottom:0!important;
+    padding-bottom:0!important;
+  }
+  product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(link[href*="tops-product-info.css"]){display:none;}
+  product-info[data-url="/products/scrub-top"] .product__block--badges:empty{display:none;}
+  product-info[data-url="/products/scrub-top"] .product__block--badges:empty + .product__block--title{margin-top:0;}
+}
+
+/* Final mobile override after all tops gallery rules. */
+@media (max-width: 767px) {
+  body.product-template.scrub-top .product__media-gallery-viewer-wrap,
+  body.product-template.scrub-top .product__media-gallery-viewer,
+  body.product-template.scrub-top .product__media-container,
+  body.product-template.scrub-top .product__media,
+  body.product-template.scrub-top .product__media img,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer-wrap,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer,
+  product-info[data-url="/products/scrub-top"] .product__media-container,
+  product-info[data-url="/products/scrub-top"] .product__media,
+  product-info[data-url="/products/scrub-top"] .product__media img {
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Mobile top gallery corners must stay square after all top-specific rules. */
+@media (max-width: 767px) {
+  body.product-template.scrub-top .product__media-gallery-viewer-wrap,
+  body.product-template.scrub-top .product__media-gallery-viewer,
+  body.product-template.scrub-top .product__media-container,
+  body.product-template.scrub-top .product__media,
+  body.product-template.scrub-top .product__media img,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer-wrap,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer,
+  product-info[data-url="/products/scrub-top"] .product__media-container,
+  product-info[data-url="/products/scrub-top"] .product__media,
+  product-info[data-url="/products/scrub-top"] .product__media img {
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Final mobile override: the tops stylesheet previously reintroduced 16px corners. */
+@media (max-width: 767px) {
+  body.product-template.scrub-top .product__media-gallery-viewer-wrap,
+  body.product-template.scrub-top .product__media-gallery-viewer,
+  body.product-template.scrub-top .product__media-container,
+  body.product-template.scrub-top .product__media,
+  body.product-template.scrub-top .product__media img,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer-wrap,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer,
+  product-info[data-url="/products/scrub-top"] .product__media-container,
+  product-info[data-url="/products/scrub-top"] .product__media,
+  product-info[data-url="/products/scrub-top"] .product__media img {
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Product breadcrumb to gallery spacing: keep only a 5px lower gap. */
+body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .breadcrumbs{padding-top:0!important;padding-bottom:0!important;}
+body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb{padding-top:0!important;padding-bottom:5px!important;margin-top:0!important;margin-bottom:0!important;min-height:0!important;}
+body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .page-width{padding-top:0!important;padding-bottom:0!important;min-height:0!important;}
+
+@media (min-width:1024px){
+  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb{margin-bottom:3px!important;}
+  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .page-width{padding-inline:8px 3.5%!important;padding-top:24px!important;padding-bottom:0!important;}
+  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .breadcrumbs{padding-block:0!important;}
+  /* Keep product title 3px below the gallery top, matching both product pages. */
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__info-wrapper,
+  product-info[data-url="/products/scrub-top"] .product__info-wrapper{align-self:start!important;margin-top:0!important;padding-top:0!important;}
+  /* Align both product titles to the blue reference line at the gallery top. */
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--title,
+  product-info[data-url="/products/scrub-top"] .product__block--title{margin-top:0!important;padding-top:0!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]){margin-top:0!important;}
+}
+
+product-info[data-url="/products/scrub-top"] .product__title{font-size:28px;font-weight:700;line-height:1.2;}
+product-info[data-url="/products/scrub-top"] .product__block--title{margin-bottom:12px;}
+product-info[data-url="/products/scrub-top"] .product__block--text{font-size:18px;margin-top:0;margin-bottom:22px;}
+product-info[data-url="/products/scrub-top"] .product__tax,product-info[data-url="/products/scrub-top"] .globo_color_swatch_bundle_combo{display:none!important;}
+product-info[data-url="/products/scrub-top"] .product__block--price{margin:0 0 26px;}
+product-info[data-url="/products/scrub-top"] .product__block--price{margin-bottom:16px;}
+product-info[data-url="/products/scrub-top"] .f-price{font-size:20px;font-weight:400;}
+product-info[data-url="/products/scrub-top"] .product__block--variant_picker{margin-bottom:16px;}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons{margin-top:8px!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .name-option{font-weight:700;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .name-option .name-variant{font-weight:400;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl + .swatch--gl{margin-top:16px!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option{display:flex;align-items:center;font-size:30px!important;font-weight:700!important;line-height:1.2;margin-bottom:16px;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-variant{font-weight:400;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .vivnook-fit-profile__globo-actions{margin-left:auto;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] [data-vivnook-fit-trigger],product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] [data-vivnook-fit-hint]{display:none!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .open-size-chart{display:block!important;visibility:visible!important;font-size:20px;text-decoration:none;color:#111;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li{width:auto!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{display:flex;align-items:center;justify-content:center;width:100%;height:54px!important;border:1px solid #777;border-radius:8px;font-size:20px!important;font-weight:700;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked) .swatch-anchor{border:3px solid #222;padding:0;}
+product-info[data-url="/products/scrub-top"] .vivnook-fit-profile__globo-actions [data-vivnook-fit-trigger],product-info[data-url="/products/scrub-top"] .vivnook-fit-profile__hint{display:none!important;}
+product-info[data-url="/products/scrub-top"] .tops-find-size{display:flex;width:100%;height:56px;justify-content:space-between;align-items:center;border:1px solid #555;border-radius:4px;background:white;padding:0 20px;margin-top:6px;font-size:18px;cursor:pointer;}
+product-info[data-url="/products/scrub-top"] .tops-size-chart{float:right;text-decoration:underline;border:0;background:none;font-size:14px;cursor:pointer;}
+product-info[data-url="/products/scrub-top"] .tops-size-chart{display:none!important;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-title{font-size:20px;font-weight:700;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card{font-weight:400;border:1px solid #555;border-radius:4px!important;min-height:42px;padding:10px 20px;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry{border-bottom:.5px solid #707070;padding-bottom:16px;margin-bottom:16px;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__learn-trigger{text-transform:capitalize;text-decoration:underline;font-size:14px;}
+product-info[data-url="/products/scrub-top"] .product-form__buttons{display:grid;grid-template-columns:minmax(0,32%) minmax(0,1fr);gap:16px;border-top:0;padding-top:30px;margin-top:30px;}
+product-info[data-url="/products/scrub-top"] .product-form__buttons .tpo_option-set-wrapper{display:none!important;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity{display:block!important;flex:0 0 32%;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity{display:flex;align-items:center;justify-content:space-between;width:100%;height:80px;min-height:80px;border:1px solid #555;border-radius:8px;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button{display:flex;align-items:center;justify-content:center;width:64px;height:100%;padding:0;border:0;background:transparent;color:#111;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button{display:none;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::before{content:"Qty:";font-size:18px;margin-left:26px;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::after{content:"";width:0;height:0;margin-right:22px;border-left:11px solid transparent;border-right:11px solid transparent;border-top:14px solid #222;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button svg{width:22px;height:22px;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__input{flex:0 0 48px!important;width:48px!important;height:100%;padding:0!important;border:0!important;box-shadow:none!important;outline:0!important;background:transparent!important;text-align:center;font-size:22px;}
+product-info[data-url="/products/scrub-top"] .product-form__submit{width:100%;background:#881337!important;color:#fff!important;border:0;border-radius:8px!important;min-height:80px;font-size:28px;font-weight:700;}
+product-info[data-url="/products/scrub-top"] .tops-shipping{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin:0 0 30px;}
+product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(.tops-shipping){margin-top:-16px!important;}
+product-info[data-url="/products/scrub-top"] .tops-shipping a{text-decoration:underline;white-space:nowrap;}
+product-info[data-url="/products/scrub-top"] .tops-look{border-top:1px solid #888;margin-top:34px;padding-top:30px;}
+product-info[data-url="/products/scrub-top"] .tops-look h2{font-size:23px;font-weight:700;margin:0 0 24px;}
+product-info[data-url="/products/scrub-top"] .tops-look__panel{background:#f4f4f4;border-radius:5px;padding:16px;}
+product-info[data-url="/products/scrub-top"] .tops-look__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+product-info[data-url="/products/scrub-top"] .tops-look__item{min-width:0;}
+product-info[data-url="/products/scrub-top"] .tops-look__item img{display:block;width:100%;aspect-ratio:148/185;object-fit:cover;border-radius:5px;}
+product-info[data-url="/products/scrub-top"] .tops-look__item h3{text-align:center;font-size:14px;line-height:1.2;font-weight:700;min-height:34px;margin:12px 0 8px;}
+product-info[data-url="/products/scrub-top"] .tops-look__item>a:not(:first-child){display:block;text-align:center;font-size:14px;text-decoration:underline;}
+product-info[data-url="/products/scrub-top"] .tops-look__item select{width:100%;border:1px solid #888;border-radius:4px;background:transparent;padding:7px 24px 7px 5px;margin-top:12px;font-size:13px;text-align:center;}
+product-info[data-url="/products/scrub-top"] .tops-look__availability{min-height:1.4em;margin:6px 0 0;color:#666;font:400 12px/1.4 Helvetica,Arial,sans-serif;text-align:center;}
+product-info[data-url="/products/scrub-top"] .tops-look__footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-size:14px;}
+product-info[data-url="/products/scrub-top"] .tops-look__footer strong{font-weight:400;}
+product-info[data-url="/products/scrub-top"] [data-look-add]{background:#881337;color:#fff;border:0;border-radius:4px;padding:12px 16px;font-size:14px;font-weight:700;cursor:pointer;}
+product-info[data-url="/products/scrub-top"] [data-look-add]:disabled{opacity:.5;cursor:not-allowed;}
+product-info[data-url="/products/scrub-top"] [data-look-status]{font-size:14px;margin:12px 0 0;}
+
+/* Match The Look desktop composition and its responsive design scale.
+   product-info contains .product; it is not a descendant of .product. */
+@media (min-width:1024px){
+product-info[data-url="/products/scrub-top"]{--tops-scale:.7;max-width:none;padding-inline:8px 3.5%;padding-top:24px;}
+product-info[data-url="/products/scrub-top"]>.product{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,26%);gap:45px;}
+product-info[data-url="/products/scrub-top"] .product .product__media-wrapper,product-info[data-url="/products/scrub-top"] .product .product__info-wrapper{width:100%!important;max-width:none!important;min-width:0;padding:0;}
+product-info[data-url="/products/scrub-top"] .product__info-container{position:static;padding-inline:0!important;margin-inline:0;}
+product-info[data-url="/products/scrub-top"] .product__media-gallery{--media-item-gap:4px!important;position:static;}
+product-info[data-url="/products/scrub-top"] .product--columns .product__media-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;}
+product-info[data-url="/products/scrub-top"] .product--columns .product__media-item{width:100%!important;max-width:none!important;padding:0;}
+product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer{margin:0;border-radius:0;}
+product-info[data-url="/products/scrub-top"] .product__media-container{aspect-ratio:442/542;border-radius:0;}
+@media (max-width:767px){
+  product-info[data-url="/products/scrub-top"] .product__media-container{aspect-ratio:0.7236!important;}
+}
+product-info[data-url="/products/scrub-top"] .product__media-container>.product__media{width:100%;}
+product-info[data-url="/products/scrub-top"] .product__media-container .media{width:100%;height:100%;padding:0;}
+product-info[data-url="/products/scrub-top"] .product__media-container img{width:100%;height:100%;object-fit:cover;}
+product-info[data-url="/products/scrub-top"] .product__media-gallery-thumbails{display:none!important;}
+product-info[data-url="/products/scrub-top"] .product__info-container{font-family:Helvetica,Arial,sans-serif;}
+product-info[data-url="/products/scrub-top"] .product__title{font-size:calc(30px * var(--tops-scale));line-height:1.25;}
+product-info[data-url="/products/scrub-top"] .product__block--title{margin-bottom:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .product__block--price{margin-bottom:calc(32px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .f-price,product-info[data-url="/products/scrub-top"] .f-price-item{font-size:calc(23px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .form__label,product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .name-option{font-size:calc(23px * var(--tops-scale))!important;line-height:1.4;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option{font-size:calc(23px * var(--tops-scale))!important;line-height:1;margin-bottom:16px;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .name-variant{font-size:inherit!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .open-size-chart{font-size:calc(16px * var(--tops-scale));white-space:nowrap;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value{gap:calc(7px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{height:calc(38px * var(--tops-scale))!important;min-height:0;border-width:.5px;border-radius:4px;font-size:calc(16px * var(--tops-scale))!important;}
+product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked) .swatch-anchor{border-width:1px;}
+product-info[data-url="/products/scrub-top"] .tops-find-size{height:auto;min-height:calc(47px * var(--tops-scale));margin-top:6px;padding:8px calc(26px * var(--tops-scale));font-size:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .vivnook-inline-size-reference{font-size:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels,product-info[data-url="/products/scrub-top"] .vivnook-inline-size-reference .vivnook-smart-size-chart__fit-guidance{font-size:inherit;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-title,product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-title p{font-size:calc(23px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__learn-trigger,product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card{font-size:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card{min-height:calc(47px * var(--tops-scale));padding:8px calc(26px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .product-form__buttons{gap:calc(12px * var(--tops-scale));padding-top:0;margin-top:calc(32px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .product-form__buttons .product-form__buttons{display:flex;margin:0;padding:0;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity,product-info[data-url="/products/scrub-top"] .product-form__submit{height:calc(47px * var(--tops-scale));min-height:calc(47px * var(--tops-scale));border-radius:4px!important;font-size:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::before{font-size:calc(16px * var(--tops-scale));margin-left:12px;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::after{margin-right:12px;border-left-width:6px;border-right-width:6px;border-top-width:7px;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__input{flex:1 1 auto!important;width:2ch!important;min-width:0;font-size:calc(16px * var(--tops-scale));}
+product-info[data-url="/products/scrub-top"] .tops-shipping{font-size:calc(16px * var(--tops-scale));}
+}
+@media(min-width:1600px){product-info[data-url="/products/scrub-top"]{--tops-scale:1;}}
+
+/* Same accordion dimensions, typography and rules as The Look. */
+product-info[data-url="/products/scrub-top"]{--tops-scale:.7;}
+@media(max-width:1023px){product-info[data-url="/products/scrub-top"]{--tops-scale:.8;}}
+@media(min-width:1600px){product-info[data-url="/products/scrub-top"]{--tops-scale:1;}}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab{color:#242424;}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab,product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab *{font-family:Helvetica,Arial,sans-serif!important;}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab{margin:0!important;background:#f4f4f4;padding:0 calc(28px * var(--tops-scale))!important;border:0!important;border-radius:4px}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab + .product__block--collapsible_tab{border-radius:0}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab:not(.product__block--collapsible_tab + .product__block--collapsible_tab){border-radius:4px 4px 0 0}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab:not(:has(~ .product__block--collapsible_tab)){border-radius:0 0 4px 4px}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-parent,product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-item,product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab details.accordion-details{display:block;height:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-details__summary{position:relative;display:flex;height:auto;min-height:0;margin:0;padding:16px 0;box-sizing:border-box;align-items:center;border:0;box-shadow:none;line-height:1.4}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-details__summary::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:#707070;transform:scaleY(.5);transform-origin:bottom;pointer-events:none}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .look-accordion-divider{display:none!important}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-details__summary h2{margin:0;font:400 17px/1.4 Helvetica,Arial,sans-serif}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle{color:#707070}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle path{stroke:#707070;stroke-width:.5}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab:not(.product__block--collapsible_tab + .product__block--collapsible_tab) .accordion-details__summary{padding-top:20px}
+product-info[data-url="/products/scrub-top"] .product__block--collapsible_tab:not(:has(~ .product__block--collapsible_tab)){padding-bottom:20px!important;border-radius:0 0 4px 4px}
+
+/* Keep the fit recommendation-to-button gap at 6px on all screens. */
+product-info[data-url="/products/scrub-top"] .product__block--variant_picker .vivnook-inline-size-reference{margin-bottom:0;}
+
+/* The variant picker supplies the 16px gap above Personalize. */
+product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(+ .product__block--buy_buttons){margin-block:0;}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons:has(.vivnook-embroidery){margin-top:0;}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry{padding-top:0;gap:10px;}
+
+/* Match the compact reference control height. */
+product-info[data-url="/products/scrub-top"] .tops-find-size,
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card {
+  box-sizing: border-box;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding-block: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+product-info[data-url="/products/scrub-top"] .tops-find-size {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-price {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons,
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons:has(.vivnook-embroidery) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery,
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card {
+  box-sizing: border-box !important;
+  border: 1px solid #707070 !important;
+  border-radius: 4px !important;
+  margin-bottom: 0 !important;
+}
+product-info[data-url="/products/scrub-top"] [data-vivnook-embroidery-phase-0-bridge] {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons::before,
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__buttons::before,
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons::after,
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__buttons::after {
+  display: none !important;
+  content: none !important;
+}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__buttons,
+product-info[data-url="/products/scrub-top"] .product-form__buttons {
+  border-top: 1px solid #707070 !important;
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+}
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__quantity .quantity,
+product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__submit{height:36px!important;min-height:36px!important;max-height:36px!important}
+product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(.tops-shipping){margin-bottom:0!important}
+product-info[data-url="/products/scrub-top"] .vivnook-inline-size-reference{padding:12px 16px!important;min-height:0!important;height:auto!important;row-gap:8px!important;align-content:start!important}
+body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .page-width {
+  padding-inline: 8px 3.5%;
+}
+body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .breadcrumbs {
+  padding-block: 0;
+}
+body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb {
+  margin-top: -13px;
+  margin-bottom: 10px;
+}
+body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .breadcrumbs {
+  position: relative;
+  top: 35px;
+}
+product-info[data-url="/products/scrub-top"] .tops-quantity__trigger{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;height:100%;border:0;background:transparent;font:400 23px/1 Helvetica,Arial,sans-serif;cursor:pointer;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:has(.tops-quantity__menu)::before,
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:has(.tops-quantity__menu)::after{display:none!important;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__trigger{font-size:12px!important;font-weight:400!important;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity{position:relative;}
+product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity>input[name="quantity"]{display:none!important;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__trigger strong{font-weight:400;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__caret{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #242424;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__menu{position:absolute;z-index:20;left:50%;right:auto;top:100%;bottom:auto;width:100%!important;left:0!important;right:0!important;transform:none!important;transform:translateX(-50%);display:grid;border:.5px solid #707070;background:#fff;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__menu[hidden]{display:none;}
+product-info[data-url="/products/scrub-top"] .tops-quantity__menu button{height:47px!important;border:0;background:#fff;font:400 12px/1 Helvetica,Arial,sans-serif!important;cursor:pointer;}
+@media(max-width:767px){
+  /* The Look uses a .8 mobile scale and 44px size controls. */
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option{font-size:14px!important;line-height:1;margin-bottom:16px;align-items:baseline;}
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-variant{font-size:inherit!important;line-height:inherit;}
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .open-size-chart{font-size:12.8px!important;line-height:1;white-space:nowrap;}
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value{gap:5.6px;}
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{box-sizing:border-box;height:44px!important;min-height:44px;padding:0;border-width:.5px;border-radius:4px;font-size:12.8px!important;}
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked) .swatch-anchor{border-width:1px;}
+}
+@media(max-width:767px){
+  product-info[data-url="/products/scrub-top"] .tops-quantity__menu{width:100%!important;left:0!important;right:0!important;transform:none!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;}
+  product-info[data-url="/products/scrub-top"] .tops-quantity__menu button{height:47px!important;font-size:12px!important;font-weight:400!important;}
+}
+
+/* Fanny Pack follows the same compact purchase treatment as the reference pages. */
+product-info[data-url="/products/fanny-bag"],product-info[data-url="/products/fanny-pack"]{--tops-scale:1;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--variant_picker{padding-bottom:16px;margin-bottom:16px;border-bottom:0!important;padding-bottom:0!important;margin-bottom:0!important;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product-form__buttons{display:grid;grid-template-columns:minmax(0,32%) minmax(0,1fr);gap:12px;padding-top:0;margin-top:32px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product-form__quantity{display:block!important;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product-form__quantity .quantity,product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product-form__submit{height:47px;min-height:47px;border-radius:4px!important;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product-form__submit{background:#881337!important;color:#fff!important;font-weight:700;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-shipping{display:flex;justify-content:space-between;gap:12px;font-size:16px;margin:0 0 30px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-shipping a{text-decoration:underline;white-space:nowrap;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--collapsible_tab{margin:0!important;background:#f4f4f4;padding:0 28px!important;border:0!important;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--collapsible_tab:first-of-type{border-radius:4px 4px 0 0;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--collapsible_tab:last-of-type{border-radius:0 0 4px 4px;padding-bottom:20px!important;}
+
+/* Keep the fanny pack bundle visually identical to The Look bundle. */
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look{border-top:1px solid #888;margin-top:34px;padding-top:30px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look h2{font-size:23px;font-weight:700;margin:0 0 24px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__panel{background:#f4f4f4;border-radius:5px;padding:16px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__item{min-width:0;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__item img{display:block;width:100%;aspect-ratio:148/185;object-fit:cover;border-radius:5px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__item h3{text-align:center;font-size:14px;line-height:1.2;font-weight:700;min-height:34px;margin:12px 0 8px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__item>a:not(:first-child){display:block;text-align:center;font-size:14px;text-decoration:underline;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__item select{width:100%;border:1px solid #888;border-radius:4px;background:transparent;padding:7px 24px 7px 5px;margin-top:12px;font-size:13px;text-align:center;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-size:14px;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-look__footer strong{font-weight:400;}
+product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) [data-look-add]{background:#881337;color:#fff;border:0;border-radius:4px;padding:12px 16px;font-size:14px;font-weight:700;cursor:pointer;}
+
+/* The live product handle includes a localized suffix, so scope by the stable path. */
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker{padding-bottom:16px;margin-bottom:16px;border-bottom:0!important;padding-bottom:0!important;margin-bottom:0!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__buttons{display:grid!important;grid-template-columns:minmax(0,32%) minmax(0,1fr);gap:12px;padding-top:0;margin-top:32px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity{display:block!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity,product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__submit{height:47px;min-height:47px;border-radius:4px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__submit{background:#881337!important;color:#fff!important;font-weight:700;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping{display:flex!important;justify-content:space-between;align-items:center;gap:12px;font-size:16px;margin:0 0 30px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping a{text-decoration:underline;white-space:nowrap;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab{margin:0!important;background:#f4f4f4;padding:0 28px!important;border:0!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab:last-of-type{padding-bottom:20px!important;}
+/* Match the Scrub Tops accordion geometry exactly. */
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab *{font-family:Helvetica,Arial,sans-serif!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab{padding:0 28px!important;border-radius:4px 4px 0 0!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab + .product__block--collapsible_tab{border-radius:0!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab:last-of-type{padding-bottom:20px!important;border-radius:0 0 4px 4px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-parent,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-item,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab details.accordion-details{display:block;height:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-details__summary{position:relative;display:flex;height:auto;min-height:0;margin:0;padding:16px 0;box-sizing:border-box;align-items:center;border:0;box-shadow:none;line-height:1.4;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-details__summary::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:#707070;transform:scaleY(.5);transform-origin:bottom;pointer-events:none;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .look-accordion-divider{display:none!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-details__summary h2{margin:0;font:400 17px/1.4 Helvetica,Arial,sans-serif;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle{color:#707070;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle path{stroke:#707070;stroke-width:.5;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab:last-of-type{padding-bottom:16px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--collapsible_tab:not(:has(~ .product__block--collapsible_tab)){padding-bottom:16px!important;border-radius:0 0 4px 4px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look{border-top:1px solid #888;margin-top:34px;padding-top:30px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look h2{font-size:23px;font-weight:700;margin:0 0 24px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__panel{background:#f4f4f4;border-radius:5px;padding:16px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__item img{display:block;width:100%;aspect-ratio:148/185;object-fit:cover;border-radius:5px;}
+@media (min-width:1024px){
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]){--tops-scale:.7;max-width:none;padding-inline:8px 3.5%;padding-top:0;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])>.product{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,26%);gap:45px;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product .product__media-wrapper,product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product .product__info-wrapper{width:100%!important;max-width:none!important;min-width:0;padding:0;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__media-gallery{--media-item-gap:4px!important;position:static;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product--columns .product__media-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product--columns .product__media-item{width:100%!important;max-width:none!important;padding:0;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__media-gallery-viewer,product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__media-container{border-radius:0!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__media-container img{border-radius:0!important;}
+@media (max-width:767px){
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) :is(.product__media-gallery-viewer-wrap,.product__media-gallery-viewer,.product__media-container,.product__media,.product__media .media,.product__media img){
+    aspect-ratio:0.7236!important;
+  }
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__media-container{--aspect-ratio:0.7236!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) :is(.product__media-gallery-viewer,.product__media-container,.product__media,.product__media .media){
+    height:auto!important;
+  }
+}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__title{font-size:21px!important;font-weight:700!important;line-height:1.25;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .f-price,product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .f-price-item{font-size:16px!important;font-weight:400!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label{font-size:16px!important;font-weight:700!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label .name-variant,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label .variant__label-value{font-weight:400!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label > div > span{font-size:16px!important;line-height:1.4;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label > div > span.font-body-bold{font-weight:700!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--variant_picker .form__label > div > span[data-selected-swatch-value]{font-weight:400!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__title{font-size:calc(30px * var(--tops-scale));line-height:1.25;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__tax{display:none!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__buttons{width:100%!important;grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;}
+  product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__buttons .product-form__submit{width:100%!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__buttons{display:grid!important;grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;gap:12px!important;padding-top:0!important;margin-top:32px!important;width:100%!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__quantity{display:block!important;flex:0 0 32%!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__quantity .quantity,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__submit{height:47px!important;min-height:47px!important;border-radius:4px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__submit{font-size:16px!important;font-weight:700!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--custom_liquid:has(.tops-shipping){position:static!important; margin-top:16px!important;margin-bottom:16px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping{font-size:16px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping span,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping a{font-size:12px!important;line-height:1.4!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-shipping span{font-size:12px!important;line-height:1.4!important;}
+product-info[data-url*="scrub-pants"] .tops-shipping{margin-bottom:16px!important;}
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__buttons{margin-top:16px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look{border-top:1px solid #888;margin-top:34px;padding-top:30px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look h2{font-size:23px!important;line-height:1.2!important;font-weight:700!important;margin:0 0 24px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__panel{background:#f4f4f4;border-radius:8px;padding:16px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__item img{display:block;width:100%;aspect-ratio:148/185;object-fit:cover;border-radius:8px;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__item h3{font-size:14px!important;line-height:1.2!important;font-weight:700!important;text-align:center;min-height:38px;margin:12px 0 8px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__item>a:not(:first-child){display:block;text-align:center;font-size:14px!important;line-height:1.2;text-decoration:underline;}
+product-info[data-url*="scrub-pants"] .tops-look__item h3{font-size:12px!important;font-weight:700!important;}
+product-info[data-url*="scrub-pants"] .tops-look__item>a:not(:first-child){font-size:12px!important;font-weight:400!important;}
+product-info[data-url*="scrub-pants"] .tops-look__item h3{font-size:14px!important;}
+product-info[data-url*="scrub-pants"] .tops-look__item>a:not(:first-child){font-size:14px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__item select{width:100%;height:28px;min-height:28px;border:1px solid #888;border-radius:8px;background:#fff;padding:0 2px;margin-top:16px;font-size:12px!important;line-height:28px;text-align:center;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px;font-size:14px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__footer strong{font-weight:400;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-look__footer [data-look-add]{background:#881337;color:#fff;border:0;border-radius:8px;padding:14px 24px;font-size:14px!important;font-weight:700!important;flex:1;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__submit{font-weight:400!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__submit,
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__submit span{font-weight:400!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--addons{display:none!important;}
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons{margin-bottom:16px!important;}
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons + .product__block{margin-top:16px!important;}
+product-info[data-url*="scrub-pants"] .shopify-payment-button{display:none!important;}
+product-info[data-url*="scrub-pants"] .product-form__submit{box-shadow:none!important;}
+product-info[data-url*="scrub-pants"] .tops-find-size{display:flex;width:100%;height:47px;min-height:47px;justify-content:space-between;align-items:center;box-sizing:border-box;border:1px solid #555;border-radius:8px;background:#fff;padding:0 20px;margin-top:16px;font:400 16px/1.4 Helvetica,Arial,sans-serif;cursor:pointer;}
+product-info[data-url*="scrub-pants"] .tops-find-size > span[aria-hidden="true"]{display:inline-block;width:12px;height:20px;font-size:0;line-height:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='20' viewBox='0 0 12 20'%3E%3Cpath d='M3 5l5 5-5 5' fill='none' stroke='%23242424' stroke-width='.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px 20px no-repeat;}
+product-info[data-url*="scrub-pants"] .product__block--text,
+product-info[data-url*="scrub-pants"] .product__block--inventory{display:none!important;}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .form__label,
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .name-option{font-size:16px!important;}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .form__label .font-body-bold,
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .name-option{font-weight:700!important;}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .form__label [data-selected-swatch-value],
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .name-variant{font-weight:400!important;}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{font-size:14px!important;}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{font-size:12px!important;font-weight:400!important;text-decoration:underline!important}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{border:0!important;border-top:0!important;box-shadow:none!important;text-decoration-thickness:1px!important;text-underline-offset:2px!important}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;border-bottom:1px solid currentColor!important;border-radius:0!important;padding-bottom:1px!important}
+
+/* Pants: match the compact six-column size picker and remove the extra chart rule. */
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  gap:6px!important;
+}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor{
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:27px!important;
+  min-height:27px!important;
+  max-height:27px!important;
+  padding:0!important;
+  line-height:27px!important;
+  font-size:16px!important;
+}
+product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+  font-size:12px!important;
+  font-weight:400!important;
+  text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:none!important;
+  padding:0!important;
+}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor{
+  border-width:.5px!important;
+  border-radius:5px!important;
+  font-size:11px!important;
+}
+
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity .quantity,
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__submit{
+  height:41px!important;
+  min-height:41px!important;
+  max-height:41px!important;
+  border-radius:5px!important;
+}
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity .tops-quantity__trigger,
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__submit{
+  font-size:14px!important;
+}
+product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__quantity .tops-quantity__trigger,
+product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__submit{
+  font-size:14px!important;
+}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option{display:flex;align-items:center;font-size:16px!important;font-weight:700!important;line-height:1.2;margin-bottom:16px;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-variant{font-weight:400!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li{width:auto!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li{height:54px!important;min-height:54px!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{height:16px!important;min-height:16px!important;max-height:16px!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{height:54px!important;min-height:54px!important;max-height:54px!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{height:27px!important;min-height:27px!important;max-height:27px!important;font-size:16px!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{display:flex;align-items:center;justify-content:center;width:100%;height:54px!important;box-sizing:border-box;border:1px solid #777;border-radius:8px;font-size:20px!important;font-weight:700;background:#fff;color:#111;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{min-height:54px!important;max-height:54px!important;aspect-ratio:auto!important;padding:0!important;}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked) .swatch-anchor{border:1px solid #111;background:#000;color:#fff;padding:0;}
+/* Use the same compact quantity dropdown as Scrub Tops on the fanny pack page. */
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:47px;border:1px solid #2f2f2f;border-radius:4px;background:#fff;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity>input[name="quantity"]{display:none!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity .tops-quantity__trigger{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;height:100%;padding:0;border:0;background:transparent;font:400 16px/1.2 var(--font-body-family);cursor:pointer;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__trigger strong{font-weight:400;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__caret{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #242424;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__menu{position:absolute;z-index:20;left:50%;top:100%;bottom:auto;width:100%!important;left:0!important;right:0!important;transform:none!important;transform:translateX(-50%);display:grid;border:.5px solid #707070;background:#fff;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__menu{top:100%;bottom:auto;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__menu[hidden]{display:none;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__menu button{height:47px;border:0;background:#fff;font:400 16px/1 var(--font-body-family);cursor:pointer;}
+/* Keep hidden menus closed when later responsive rules force the menu to grid. */
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__menu[hidden]{display:none!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__buttons{display:grid!important;grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;align-items:stretch!important;gap:12px!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__submit{grid-column:2!important;grid-row:1!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__quantity{grid-column:1!important;grid-row:1!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons{margin-top:21px!important;padding-top:0!important;}
+product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__block--buy_buttons .product-form__buttons{margin-top:0!important;}
+}
+
+/* Use the same slim stroked chevron as the reference control. */
+product-info[data-url="/products/scrub-top"] .tops-find-size > span[aria-hidden="true"],
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-price > span[aria-hidden="true"] {
+  display: inline-block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 20px;
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='20' viewBox='0 0 12 20'%3E%3Cpath d='M3 5l5 5-5 5' fill='none' stroke='%23242424' stroke-width='.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px 20px no-repeat;
+}
+
+/* Match The Look's compact mobile add-to-cart controls. */
+@media(max-width:767px){
+  product-info[data-url*="fanny"] .product__tax,
+  body.product-template.fanny-bag .product__tax,
+  body.product-template.fanny-pack .product__tax{
+    display:none!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-bag .tops-shipping,
+  body.product-template.fanny-bag .tops-shipping * ,
+  body.product-template.fanny-pack .tops-shipping,
+  body.product-template.fanny-pack .tops-shipping *,
+  product-info[data-url*="fanny"] .tops-shipping,
+  product-info[data-url*="fanny"] .tops-shipping *{
+    font-size:12px!important;
+    line-height:1.4!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .tops-look__item select{
+    height:32px!important;
+    min-height:32px!important;
+    line-height:32px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    width:auto!important;
+    max-width:none!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    gap:0!important;
+    overflow:hidden!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:0 1 auto!important;
+    width:calc(100% - 120px)!important;
+    max-width:calc(100% - 120px)!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:0 0 55%!important;
+    width:auto!important;
+    min-width:0!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding:0 12px!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    box-shadow:inset 0 0 0 .25px #888!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    border:0!important;
+    box-shadow:inset 0 0 0 .25px #2f2f2f!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    border:.25px solid #2f2f2f!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-quantity__trigger,
+  body.product-template.fanny-pack .tops-quantity__trigger span,
+  body.product-template.fanny-pack .tops-quantity__trigger strong,
+  body.product-template.fanny-pack .tops-quantity__menu button{
+    font-weight:400!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    border:.5px solid #2f2f2f!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    border-width:.5px!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  body.product-template.fanny-pack .tops-quantity__menu{
+    background:#fff!important;
+    border:1px solid #2f2f2f!important;
+  }
+  body.product-template.fanny-pack .tops-quantity__menu button{
+    background:#fff!important;
+    color:#111!important;
+    border:0!important;
+  }
+}
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-quantity__menu{
+    width:100%!important;
+    min-width:100%!important;
+    box-sizing:border-box!important;
+  }
+  body.product-template.fanny-pack .tops-quantity__menu button{
+    width:100%!important;
+    height:47px!important;
+    min-height:47px!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-quantity__menu{
+    position:absolute!important;
+    display:grid!important;
+    left:50%!important;
+    right:auto!important;
+     
+    bottom:calc(100% + 8px)!important;
+    transform:translateX(-50%)!important;
+    width:100%!important;left:0!important;right:0!important;transform:none!important;
+    max-height:none!important;
+    z-index:999!important;
+  }
+  body.product-template.fanny-pack .tops-quantity__menu[hidden]{
+    display:none!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product-form__buttons input[type="number"],
+  body.product-template.fanny-pack .product-form__buttons input[name="quantity"]{
+    display:none!important;
+    visibility:hidden!important;
+    width:0!important;
+    height:0!important;
+  }
+  body.product-template.fanny-pack .product-form__buttons quantity-input.quantity,
+  body.product-template.fanny-pack .product-form__buttons .quantity-input.quantity{
+    position:relative!important;
+    overflow:visible!important;
+  }
+  body.product-template.fanny-pack .product-form__buttons quantity-input.quantity .tops-quantity__menu,
+  body.product-template.fanny-pack .product-form__buttons .quantity-input.quantity .tops-quantity__menu{
+    left:50%!important;
+    right:auto!important;
+     
+    top:100%!important;bottom:auto!important;
+    transform:translateX(-50%)!important;
+    z-index:100!important;
+  }
+}
+@media(max-width:767px){
+    min-width:0!important;
+    max-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+  body.product-template.fanny-pack .product-form__buttons,
+  body.product-template.fanny-pack .product-form__quantity,
+  body.product-template.fanny-pack .product-form__quantity .quantity{
+    overflow:visible!important;
+  }
+  body.product-template.fanny-pack .tops-quantity__menu{
+     
+    top:100%!important;bottom:auto!important;
+    z-index:100!important;
+  }
+}
+@media(max-width:767px){
+  product-info[data-url*="fanny"] .product-form__buttons,
+  product-info[data-url*="fanny"] .product-form__quantity,
+  product-info[data-url*="fanny"] .product-form__quantity .quantity{
+    overflow:visible!important;
+  }
+  product-info[data-url*="fanny"] .tops-quantity__menu{
+     
+    top:100%!important;bottom:auto!important;
+    z-index:50!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-bag .product-form__quantity .quantity,
+  body.product-template.fanny-pack .product-form__quantity .quantity,
+  product-info[data-url*="fanny"] .product-form__quantity .quantity{
+    height:47px!important;
+    min-height:47px!important;
+    max-height:47px!important;
+    border:1px solid #2f2f2f!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+    background:#fff!important;
+  }
+  body.product-template.fanny-bag .tops-quantity__trigger,
+  body.product-template.fanny-pack .tops-quantity__trigger,
+  product-info[data-url*="fanny"] .tops-quantity__trigger{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:16px!important;
+    width:100%!important;
+    height:100%!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+    font-size:16px!important;
+  }
+  body.product-template.fanny-bag .tops-quantity__caret,
+  body.product-template.fanny-pack .tops-quantity__caret,
+  product-info[data-url*="fanny"] .tops-quantity__caret{
+    display:block!important;
+    width:0!important;
+    height:0!important;
+    border-left:6px solid transparent!important;
+    border-right:6px solid transparent!important;
+    border-top:7px solid #242424!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .tpo_option-set-wrapper,
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .quantity>input[name="quantity"]{
+    display:none!important;
+  }
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__buttons,
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__quantity,
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__quantity .quantity{
+    overflow:visible!important;
+  }
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .tops-quantity__menu{
+     
+    top:100%!important;bottom:auto!important;
+    z-index:30!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .tops-look__footer [data-look-add]{
+    transform:none!important;
+    width:100%!important;
+    min-width:0!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .tops-look__footer [data-look-add]{
+    transform:translateX(60px)!important;
+    width:calc(100% - 60px)!important;
+    min-width:0!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__title{
+    font-size:26px!important;
+    font-weight:700!important;
+    line-height:1.2!important;
+  }
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__buttons{
+    display:grid!important;
+    grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;
+    gap:12px!important;
+    margin-top:16px!important;
+    padding-top:0!important;
+  }
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .tpo_option-set-wrapper{
+    display:none!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__quantity .quantity,
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__submit{
+    height:47px!important;
+    min-height:47px!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__buttons{
+    display:grid!important;
+    grid-template-columns:32% minmax(0,1fr)!important;
+    gap:9.6px!important;
+    margin-top:8px!important;
+    padding-top:0!important;
+  }
+  product-info[data-url="/products/scrub-top"] .product-form__quantity,
+  product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity,
+  product-info[data-url="/products/scrub-top"] .product-form__submit{
+    box-sizing:border-box;
+    height:44px!important;
+    min-height:44px!important;
+    max-height:44px!important;
+  }
+  product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity,
+  product-info[data-url="/products/scrub-top"] .product-form__submit{border-radius:4px!important;}
+  product-info[data-url="/products/scrub-top"] .tops-quantity__trigger{
+    font-size:12.8px!important;
+    gap:16px!important;
+  }
+  product-info[data-url="/products/scrub-top"] .tops-quantity__trigger strong{font-size:12.8px!important;}
+  product-info[data-url="/products/scrub-top"] .product-form__submit{
+    padding:8px;
+    font-size:12.8px!important;
+    line-height:1.2;
+    font-weight:700!important;
+  }
+}
+
+/* Prevent the delayed Easify options wrapper from adding a pants purchase grid row. */
+product-info[data-url*="scrub-pants"] .product-form__buttons > .tpo_option-set-wrapper{display:none!important;}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__title{
+    font-size:26px!important;
+    font-weight:700!important;
+  }
+  product-info[data-url*="scrub-pants"] .f-price,
+  product-info[data-url*="scrub-pants"] .f-price-item{
+    font-size:16px!important;
+    font-weight:400!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__tax,
+  product-info[data-url*="scrub-pants"] .product__block--text,
+  product-info[data-url*="scrub-pants"] .product__block--inventory{
+    display:none!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .form__label > div > span.font-body-bold{
+    font-weight:700!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+    font-size:11px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value{
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:12px!important;
+    width:100%!important;
+  }
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    border-width:.5px!important;
+    border-radius:5px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .tpo_option-set-wrapper,
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .shopify-payment-button,
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons shopify-accelerated-checkout{
+    display:none!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__buttons{
+    display:grid!important;
+    grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;
+    grid-template-rows:47px!important;
+    gap:12px!important;
+    align-items:stretch!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity,
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity .quantity,
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__submit{
+    height:47px!important;
+    min-height:47px!important;
+    max-height:47px!important;
+    box-sizing:border-box!important;
+    border-radius:5px!important;
+    border-width:.5px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+    text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;
+    border-bottom:1px solid currentColor!important;
+    box-shadow:none!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li,
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li label.swatch-anchor,
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{
+    height:54px!important;
+    min-height:54px!important;
+    max-height:54px!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"]) .tops-look__item select{
+    height:54px!important;
+    min-height:54px!important;
+    line-height:54px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+    font-size:14px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .form__label > div > span:first-child{
+    font-weight:700!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li,
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li label.swatch-anchor,
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor{
+    height:38px!important;
+    min-height:38px!important;
+    max-height:38px!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"]) .tops-look__item select{
+    height:38px!important;
+    min-height:38px!important;
+    line-height:38px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .open-size-chart,
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+    text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;
+    border:0!important;
+    box-shadow:none!important;
+    background:none!important;
+    position:relative!important;
+  }
+  product-info[data-url*="scrub-pants"] .open-size-chart::before,
+  product-info[data-url*="scrub-pants"] .open-size-chart::after{
+    display:none!important;
+    content:none!important;
+  }
+  product-info[data-url*="scrub-pants"] .open-size-chart{
+    background-image:linear-gradient(currentColor,currentColor)!important;
+    background-repeat:no-repeat!important;
+    background-position:left bottom!important;
+    background-size:100% 1px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons{
+    margin-top:16px!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__buttons{
+    margin-top:0!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__availability{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    text-align:center!important;
+    font-size:12px!important;
+    line-height:1.2!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3{
+    font-size:16px!important;
+    font-weight:700!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item>a:not(:first-child),
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item select{
+    font-size:13px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer strong{
+    font-weight:400!important;
+  }
+}
+@media (max-width: 767px){
+  body.product-template.scrub-pants .product-form__input .form__label,
+  body.product-template.scrub-pants .product-form__input .form__label > div,
+  body.product-template.scrub-pants .product-form__input [data-selected-swatch-value]{
+    font-size:16px!important;
+  }
+}
+@media (max-width: 767px){
+  body.product-template.scrub-pants .product-form__input .font-body-bold,
+  body.product-template.scrub-pants .product-form__input legend .font-body-bold,
+  body.product-template.scrub-pants .product-form__input label .font-body-bold{
+    font-weight:700!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product-form__input .font-body-bold{
+    font-weight:700!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .open-size-chart{
+    text-decoration:underline!important;
+    text-decoration-thickness:1px!important;
+    text-underline-offset:3px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    grid-template-columns:calc((100% - 6px)/3 + 60px) minmax(0,1fr)!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    display:grid!important;
+    grid-template-columns:calc((100% - 6px)/3 + 3px) minmax(0,1fr)!important;
+    column-gap:0!important;
+    align-items:center!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    grid-column:2!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product-form__buttons .quantity__input,
+  product-info[data-url*="scrub-pants"] .product-form__buttons input[name="quantity"]{
+    display:none!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__buttons .tops-quantity__trigger{
+    position:relative!important;
+    z-index:2!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product-form__buttons .tpo_option-set-wrapper{
+    display:none!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__buttons .product-form__quantity,
+  product-info[data-url*="scrub-pants"] .product-form__buttons .tops-quantity__trigger{
+    min-width:0!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__buttons .tops-quantity__trigger{
+    width:100%!important;
+    padding-left:10px!important;
+    padding-right:10px!important;
+    justify-content:center!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    justify-content:flex-end!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    margin-left:auto!important;
+    background:#881337!important;
+    color:#fff!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .product__block--addons{
+    display:none!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product__block--variant_picker .open-size-chart{
+    font-size:13px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product-form__quantity .quantity{
+    position:relative!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    height:47px!important;
+    min-height:47px!important;
+    border:1px solid #2f2f2f!important;
+    border-radius:5px!important;
+    background:#fff!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__quantity .tops-quantity__trigger{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:16px!important;
+    width:100%!important;
+    height:100%!important;
+    border:0!important;
+    background:transparent!important;
+    font:400 16px/1.2 var(--font-body-family)!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__quantity .tops-quantity__trigger strong{font-weight:400!important;}
+  product-info[data-url*="scrub-pants"] .product-form__quantity .tops-quantity__caret{
+    width:0!important;
+    height:0!important;
+    border-left:6px solid transparent!important;
+    border-right:6px solid transparent!important;
+    border-top:7px solid #242424!important;
+  }
+  product-info[data-url*="scrub-pants"] .tops-quantity__menu{
+     
+    top:100%!important;bottom:auto!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    transform:none!important;
+    z-index:30!important;
+    display:grid!important;
+    border:.5px solid #707070!important;
+    background:#fff!important;
+  }
+  product-info[data-url*="scrub-pants"] .tops-quantity__menu[hidden]{display:none!important;}
+  product-info[data-url*="scrub-pants"] .tops-quantity__menu button{
+    height:47px!important;
+    border:0!important;
+    background:#fff!important;
+    font:400 16px/1 var(--font-body-family)!important;
+  }
+}
+/* Keep the pants mobile purchase controls fluid at every phone width. */
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .product-form__buttons{
+    display:grid!important;
+    grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;
+    gap:12px!important;
+    overflow:visible!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__quantity,
+  product-info[data-url*="scrub-pants"] .product-form__submit,
+  product-info[data-url*="scrub-pants"] .product-form__quantity .quantity{
+    min-width:0!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__quantity .quantity{
+    position:relative!important;
+    overflow:visible!important;
+  }
+  product-info[data-url*="scrub-pants"] .product-form__quantity .tops-quantity__menu{
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    max-width:none!important;
+    transform:none!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3{
+    text-align:center!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item>a:not(:first-child){
+    display:block!important;
+    width:100%!important;
+    text-align:center!important;
+    text-decoration:underline!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item select{
+    display:block!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    border-radius:5px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__grid{
+    gap:10px!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3{
+    margin:10px 0!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item>a:not(:first-child){
+    margin:0 0 10px!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item select{
+    margin-top:0!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    margin-top:10px!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"]) .open-size-chart{
+    text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;
+    border:0!important;
+    box-shadow:none!important;
+    background-image:linear-gradient(currentColor,currentColor)!important;
+    background-repeat:no-repeat!important;
+    background-position:left bottom!important;
+    background-size:100% 1px!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"]) .open-size-chart::before,
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"]) .open-size-chart::after{
+    display:none!important;
+    content:none!important;
+  }
+}
+@media (max-width: 767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    min-width:0!important;
+    width:0!important;
+    flex:1 1 0!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+  }
+}
+@media (max-width: 767px){
+  .tops-look__availability{
+    margin:0!important;
+    color:#777!important;
+  }
+}
+@media (max-width: 767px){
+  product-info[data-url*="scrub-pants"] .tpo_option-set-wrapper,
+  product-info[data-url*="scrub-pants"] .product-form__buttons > .tpo_option-set-wrapper{
+    display:none!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__buttons{
+    grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;
+    overflow:visible!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity{
+    min-width:0!important;
+    overflow:visible!important;
+  }
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .tops-quantity__trigger{
+    min-width:0!important;
+    overflow:visible!important;
+    white-space:nowrap!important;
+  }
+}
+@media (max-width:767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    width:max-content!important;
+    min-width:0!important;
+    max-width:none!important;
+    padding:0 16px!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+    overflow:hidden!important;
+  }
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__footer [data-look-add]{
+    flex:1 1 0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+    gap:16px!important;
+    overflow:hidden!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    flex:1 1 0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding:0 16px!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+    white-space:nowrap!important;
+    background:#881337!important;
+    color:#fff!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+    justify-content:flex-end!important;
+    overflow:visible!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    flex:1 1 auto!important;
+    width:max-content!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding:0 16px!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.scrub-pants .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+    justify-content:flex-end!important;
+    overflow:visible!important;
+  }
+  body.product-template.scrub-pants .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    width:max-content!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding:0 16px!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    width:100%!important;
+    overflow:hidden!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    flex:0 1 auto!important;
+    width:calc(100% - 120px)!important;
+    max-width:calc(100% - 120px)!important;
+    min-width:0!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    display:flex!important;
+    width:100%!important;
+    justify-content:flex-end!important;
+    gap:16px!important;
+    overflow:visible!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    width:max-content!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    padding:0 12px!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+    white-space:nowrap!important;
+    background:#881337!important;
+    color:#fff!important;
+    font:700 14px/1.2 Inter,sans-serif!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    justify-content:space-between!important;
+    align-items:center!important;
+    overflow:hidden!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    flex:0 0 auto!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    padding:0 16px!important;
+    border-radius:4px!important;
+    box-sizing:border-box!important;
+    font:700 15px/1.2 Inter,sans-serif!important;
+    white-space:nowrap!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer > span{
+    flex:0 0 40%!important;
+    min-width:0!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    display:grid!important;
+    grid-template-columns:40% minmax(0,1fr)!important;
+    column-gap:16px!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    justify-content:initial!important;
+    align-items:center!important;
+    overflow:hidden!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer > span{
+    grid-column:1!important;
+    width:auto!important;
+    min-width:0!important;
+    white-space:nowrap!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    grid-column:2!important;
+    flex:none!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .tops-look__footer{
+    display:grid!important;grid-template-columns:40% minmax(0,1fr)!important;gap:16px!important;
+    width:100%!important;height:40px!important;margin:10px 0 0!important;padding:0!important;
+    align-items:center!important;overflow:visible!important;box-sizing:border-box!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer>span{
+    display:block!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;
+    white-space:nowrap!important;overflow:visible!important;flex:none!important;
+  }
+  body.product-template.fanny-pack .tops-look__footer [data-look-add]{
+    all:unset!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    grid-column:2!important;width:100%!important;height:40px!important;min-width:0!important;
+    margin:0!important;padding:0 16px!important;box-sizing:border-box!important;
+    border:0!important;border-radius:4px!important;background:#881337!important;color:#fff!important;
+    font:700 15px/1.2 Inter,sans-serif!important;white-space:nowrap!important;overflow:visible!important;
+    text-overflow:clip!important;cursor:pointer!important;
+  }
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-thumbails{display:none!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-viewer-wrap{padding-bottom:0!important;margin-bottom:0!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__info-wrapper{margin-top:0!important;padding-top:0!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--title{margin-top:0!important;padding-top:0!important;}
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next){
+    width:32px!important;height:32px!important;padding:0!important;border:0!important;border-radius:0!important;
+    background:transparent!important;box-shadow:none!important;opacity:1!important;
+  }
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev{inset-inline-start:6px!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next{inset-inline-end:6px!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next) svg{width:28px!important;height:28px!important;}
+}
+@media(max-width:767px){
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--price,
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--price .f-price,
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--price .f-price-item{
+    font-size:16px!important;
+    font-weight:400!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product__media-gallery-viewer-wrap .slider-controls button,
+  body.product-template.fanny-pack .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next),
+  body.product-template.fanny-bag .product__media-gallery-viewer-wrap .slider-controls button,
+  body.product-template.fanny-bag .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next){
+    appearance:none!important;-webkit-appearance:none!important;
+    background:transparent!important;background-color:transparent!important;
+    border:0!important;box-shadow:none!important;border-radius:0!important;
+    width:32px!important;height:32px!important;padding:0!important;
+  }
+  body.product-template.fanny-pack .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev,
+  body.product-template.fanny-bag .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev{left:4px!important;right:auto!important;}
+  body.product-template.fanny-pack .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next,
+  body.product-template.fanny-bag .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next{right:4px!important;left:auto!important;}
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product__media-gallery-thumbails,
+  body.product-template.fanny-bag .product__media-gallery-thumbails,
+  body.product-template.fanny-pack .product__media-gallery-thumbnails,
+  body.product-template.fanny-bag .product__media-gallery-thumbnails,
+  body.product-template.fanny-pack .product__media-thumbnails,
+  body.product-template.fanny-bag .product__media-thumbnails{
+    display:none!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product.product--columns,
+  body.product-template.fanny-bag .product.product--columns{gap:0!important;row-gap:0!important;}
+  body.product-template.fanny-pack .product__media-wrapper,
+  body.product-template.fanny-bag .product__media-wrapper{margin-bottom:0!important;padding-bottom:0!important;}
+  body.product-template.fanny-pack .product__media-gallery,
+  body.product-template.fanny-bag .product__media-gallery{margin-bottom:0!important;padding-bottom:0!important;}
+  body.product-template.fanny-pack .product__info-wrapper,
+  body.product-template.fanny-bag .product__info-wrapper{margin-top:0!important;padding-top:0!important;}
+}
+@media(max-width:767px){
+  body.product-template.fanny-pack .product__block--price,
+  body.product-template.fanny-pack .product__block--price * ,
+  body.product-template.fanny-bag .product__block--price,
+  body.product-template.fanny-bag .product__block--price * {
+    font-size:16px!important;
+    font-weight:400!important;
+  }
+}
+@media(max-width:767px){
+  product-info[data-url="/products/scrub-top"] .product-form__buttons{
+    display:grid!important;
+    grid-template-columns:minmax(0,32%) minmax(0,1fr)!important;
+    align-items:stretch!important;
+    gap:16px!important;
+  }
+  product-info[data-url="/products/scrub-top"] .product-form__quantity,
+  product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity,
+  product-info[data-url="/products/scrub-top"] .product-form__submit{
+    height:36px!important;
+    min-height:36px!important;
+    max-height:36px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor,
+  product-info[data-url="/products/scrub-top"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor{
+    height:32px!important;min-height:32px!important;max-height:32px!important;box-sizing:border-box!important;padding:0!important;
+  }
+  product-info[data-url="/products/scrub-top"] .tops-look__item select{
+    height:32px!important;min-height:32px!important;max-height:32px!important;line-height:32px!important;box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  [data-look-design] .look-size__options label{
+    height:32px!important;
+    min-height:32px!important;
+    max-height:32px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.signature-look .look-size__options label,
+  body.signature-look .look-size__options label{
+    height:32px!important;
+    min-height:32px!important;
+    max-height:32px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.scrub-top .attr-title-hover,
+  body.product-template.scrub-pants .attr-title-hover,
+  product-info[data-url*="scrub-top"] .attr-title-hover,
+  product-info[data-url*="scrub-pants"] .attr-title-hover{display:none!important;visibility:hidden!important;}
+}
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor{
+  font-weight:700!important;
+}
+@media(max-width:767px){
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value{
+    gap:3px!important;
+  }
+}
+@media(max-width:767px){
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value{gap:5px!important;}
+}
+@media(max-width:767px){
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value{gap:7px!important;}
+}
+@media(max-width:767px){
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value{gap:6px!important;}
+}
+@media(max-width:767px){
+  body.product-template.scrub-top .product__media-gallery-viewer-wrap,
+  body.product-template.scrub-top .product__media-gallery-viewer,
+  body.product-template.scrub-top .product__media-container,
+  body.product-template.scrub-top .product__media{
+    border-radius:0!important;
+    overflow:visible!important;
+  }
+}
+@media(min-width:768px){
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--buy_buttons{margin-bottom:16px!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){margin-top:0!important;margin-bottom:30px!important;padding-top:0!important;}
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .tops-shipping{margin-top:0!important;}
+}
+@media(min-width:768px){
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--buy_buttons{
+    margin:0!important;padding:0!important;min-height:0!important;height:auto!important;
+  }
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--buy_buttons .product-form__buttons{
+    margin:0!important;padding:0!important;
+  }
+  product-info:is([data-url="/products/fanny-bag"],[data-url="/products/fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    margin:16px 0 30px!important;padding:0!important;min-height:0!important;height:auto!important;
+  }
+}
+
+/* Final mobile override after all tops gallery rules. */
+@media (max-width: 767px) {
+  body.product-template.scrub-top .product__media-gallery-viewer-wrap,
+  body.product-template.scrub-top .product__media-gallery-viewer,
+  body.product-template.scrub-top .product__media-container,
+  body.product-template.scrub-top .product__media,
+  body.product-template.scrub-top .product__media img,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer-wrap,
+  product-info[data-url="/products/scrub-top"] .product__media-gallery-viewer,
+  product-info[data-url="/products/scrub-top"] .product__media-container,
+  product-info[data-url="/products/scrub-top"] .product__media,
+  product-info[data-url="/products/scrub-top"] .product__media img {
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+@media(min-width:768px){
+  body.product-template.fanny-pack .product-form__buttons,
+  body.product-template.fanny-bag .product-form__buttons{
+    margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--buy_buttons .product-form__buttons,
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__buttons{
+    margin-top:0!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    margin-top:-100px!important;
+  }
+}
+
+/* Final visual spacing for the desktop fanny purchase area. */
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    margin-top:-64px!important;
+    margin-bottom:30px!important;
+  }
+}
+
+/* Fanny pack desktop purchase spacing: 16px from the divider and shipping line. */
+@media (min-width:768px){
+  product-info[data-url*="fanny"] .product__block--buy_buttons{
+    margin:0!important;
+    padding:0!important;
+  }
+  product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__buttons{
+    margin-top:16px!important;
+    padding-top:0!important;
+  }
+  product-info[data-url*="fanny"] .product__block--custom_liquid:has(.tops-shipping){
+    margin:16px 0 0!important;
+    padding:0!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    margin-top:16px!important;margin-bottom:30px!important;position:static!important;transform:none!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    position:relative!important;top:-110px!important;margin-top:16px!important;margin-bottom:30px!important;transform:none!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    position:static!important; margin-top:16px!important;margin-bottom:30px!important;transform:none!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    position:static!important; transform:none!important;
+    margin-top:-100px!important;margin-bottom:130px!important;padding-top:0!important;padding-bottom:0!important;
+  }
+}
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    position:static!important; transform:none!important;
+    margin-top:0!important;margin-bottom:30px!important;padding:0!important;
+  }
+}
+
+/* Final visual spacing for the desktop fanny purchase area. */
+@media(min-width:768px){
+  body:has(product-info[data-url*="fanny-bag"]) .product__block--custom_liquid:has(.tops-shipping),
+  body:has(product-info[data-url*="fanny-pack"]) .product__block--custom_liquid:has(.tops-shipping){
+    margin-top:-64px!important;
+    margin-bottom:30px!important;
+  }
+}
+
+/* Desktop fanny purchase spacing. Keep one owner for each vertical gap.
+   The body + product-info scope beats the legacy body:has overrides. */
+@media (min-width:768px){
+  body product-info[data-url*="fanny"] .product__block--variant_picker{
+    margin-bottom:0!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--custom_liquid:empty{
+    display:none!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--buy_buttons{
+    margin:0!important;
+    padding:16px 0 0!important;
+    height:auto!important;
+    min-height:0!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .product-form,
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .main-product-form{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    min-height:0!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__buttons{
+    margin:0!important;
+    padding:0!important;
+    row-gap:0!important;
+  }
+  /* The options app injects an unused grid item on this accessory. */
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .tpo_option-set-wrapper{
+    display:none!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__quantity,
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__quantity .quantity,
+  body product-info[data-url*="fanny"] .product__block--buy_buttons .product-form__submit{
+    box-sizing:border-box!important;
+    margin-block:0!important;
+    height:47px!important;
+    min-height:47px!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--custom_liquid:has(.tops-shipping){
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    margin:16px 0 30px!important;
+    padding:0!important;
+    height:auto!important;
+    min-height:0!important;
+  }
+  body product-info[data-url*="fanny"] .tops-shipping{
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+  }
+}
+
+/* Position the desktop divider between the rendered swatch and quantity edges.
+   Keep the original border's layout space so controls and shipping do not move. */
+@media(min-width:768px){
+  body product-info[data-url*="fanny"] .product__block--variant_picker[data-fanny-divider-ready]{
+    position:relative;
+    border-bottom-color:transparent!important;
+  }
+  body product-info[data-url*="fanny"] .product__block--variant_picker[data-fanny-divider-ready]::after{
+    content:"";
+    position:absolute;
+    pointer-events:none;
+    left:0;
+    right:0;
+    top:var(--fanny-divider-center);
+    height:1px;
+    background:#999;
+    transform:translateY(-50%);
+  }
+}
+
+/* Keep the scrub top mobile shipping copy below the purchase controls. */
+@media (max-width: 767px) {
+  html body product-info[data-url*="scrub-top"] .product__block--buy_buttons,
+  html body product-info[data-url*="scrub-top"] .product-form__buttons {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html body product-info[data-url*="scrub-top"] .product__block--buy_buttons .product-form__buttons {
+    position: relative !important;
+    border-top: 1px solid #707070 !important;
+    margin-top: 16px !important;
+    padding-top: 16px !important;
+  }
+
+  html body product-info[data-url*="scrub-top"] .product__block--buy_buttons .product-form__buttons::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  html body product-info[data-url*="scrub-top"] .product__block--custom_liquid:has(.tops-shipping) {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 8px 0 16px !important;
+    padding: 0 !important;
+  }
+
+  html body product-info[data-url*="scrub-top"] .tops-shipping {
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+}
+
+
+/* ========================================================
+   FIX SCRUB TOP MOBILE BESPOKE EMBROIDERY & BUY BUTTONS LAYOUT
+   ======================================================== */
+@media screen and (max-width: 767px) {
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .vivnook-embroidery,
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .vivnook-embroidery__entry {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .vivnook-embroidery__entry-card {
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .product__block--buy_buttons .product-form__buttons,
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .product-form__buttons {
+    display: grid !important;
+    grid-template-columns: 32% minmax(0, 1fr) !important;
+    gap: 9.6px !important;
+    margin-top: 16px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid #707070 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    clear: both !important;
+  }
+
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .product__block--custom_liquid:has(.tops-shipping),
+  html body product-info:is([data-url*="scrub-top"], [data-url="/products/scrub-top"]) .tops-shipping {
+    margin-top: 8px !important;
+    margin-bottom: 16px !important;
+    padding-top: 0 !important;
+    clear: both !important;
+    position: static !important;
+  }
+}
+
+/* Shop the Look: Sold out options styling inside dropdown and clean below */
+.tops-look__select-wrap {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Hide any stray sold-out availability text below select */
+.tops-look__availability,
+product-info .tops-look__availability,
+[data-look-design] .tops-look__availability,
+[data-look-availability],
+article.tops-look__item > p,
+article.tops-look__item > span:not(.tops-look__strike) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Sold-out select box text turns gray */
+.tops-look__item select.is-sold-out,
+product-info .tops-look__item select.is-sold-out,
+[data-look-design] .tops-look__item select.is-sold-out {
+  color: #888888 !important;
+}
+
+/* Dropdown native options that are sold out turn gray with strikethrough */
+.tops-look__item select option.is-sold-out,
+.tops-look__item select option:disabled,
+.tops-look__item select option[data-available="false"] {
+  color: #888888 !important;
+  text-decoration: line-through !important;
+}
+
+/* Strikethrough line overlay matching text width precisely */
+.tops-look__strike {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.tops-look__select-wrap.is-sold-out .tops-look__strike {
+  display: flex !important;
+}
+
+.tops-look__strike-text {
+  position: relative !important;
+  display: inline-block !important;
+  color: transparent !important;
+  font-size: 13px !important;
+  line-height: normal !important;
+  user-select: none !important;
+}
+
+.tops-look__strike-text::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 50% !important;
+  height: 1px !important;
+  background-color: #888888 !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Unified Shop the Look footer button across Tops, Pants, and Fanny Pack on Mobile */
+@media screen and (max-width: 767px) {
+  body.product-template.scrub-top .tops-look__footer,
+  body.product-template.fanny-pack .tops-look__footer,
+  body.product-template.fanny-bag .tops-look__footer,
+  body.product-template.scrub-pants .tops-look__footer,
+  product-info:is([data-url*="scrub-top"], [data-url*="fanny"], [data-url*="scrub-pants"]) .tops-look__footer {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: flex-end !important;
+    overflow: visible !important;
+  }
+
+  body.product-template.scrub-top .tops-look__footer [data-look-add],
+  body.product-template.fanny-pack .tops-look__footer [data-look-add],
+  body.product-template.fanny-bag .tops-look__footer [data-look-add],
+  body.product-template.scrub-pants .tops-look__footer [data-look-add],
+  product-info:is([data-url*="scrub-top"], [data-url*="fanny"], [data-url*="scrub-pants"]) .tops-look__footer [data-look-add] {
+    flex: 0 0 auto !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    line-height: 36px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding: 0 16px !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+    border-radius: 4px !important;
+    border: 0 !important;
+    background: #881337 !important;
+    color: #ffffff !important;
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+  }
+
+  body.product-template.scrub-top .tops-look__footer [data-look-add] *,
+  body.product-template.fanny-pack .tops-look__footer [data-look-add] *,
+  body.product-template.fanny-bag .tops-look__footer [data-look-add] *,
+  body.product-template.scrub-pants .tops-look__footer [data-look-add] *,
+  product-info:is([data-url*="scrub-top"], [data-url*="fanny"], [data-url*="scrub-pants"]) .tops-look__footer [data-look-add] * {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-transform: none !important;
+  }
+}
+
+/* Force 36px height on pants quantity box and Add to Cart button on desktop & mobile */
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity .quantity,
+product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__submit,
+product-info[data-url*="scrub-pants"] .product-form__quantity .quantity,
+product-info[data-url*="scrub-pants"] .product-form__submit {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  line-height: 36px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 767px) {
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__quantity .quantity,
+  product-info[data-url*="scrub-pants"] .product__block--buy_buttons .product-form__submit,
+  product-info[data-url*="scrub-pants"] .product-form__quantity .quantity,
+  product-info[data-url*="scrub-pants"] .product-form__submit {
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    line-height: 36px !important;
+  }
+}
+
+/* Scrub Pants mobile: Find My Size button styling */
+@media (max-width: 767px) {
+  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #000000 !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size > span:first-child {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    color: #000000 !important;
+  }
+  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size > span[aria-hidden="true"] {
+    color: #000000 !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+}
+/* The Look product names: responsive mobile typography */
+/* The Look product names: responsive mobile typography */
+
+/* Mobile width: 401px–767px */
+@media (min-width: 401px) and (max-width: 767px) {
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3 {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile width: 360px–400px */
+@media (min-width: 360px) and (max-width: 400px) {
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3 {
+    font-size: 14px !important;
+  }
+}
+
+/* Mobile width: below 360px */
+@media (max-width: 359px) {
+  product-info:is([data-url="/products/scrub-top"],[data-url*="scrub-pants"],[data-url*="fanny"]) .tops-look__item h3 {
+    font-size: 12px !important;
+  }
+}

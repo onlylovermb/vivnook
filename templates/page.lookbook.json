@@ -1,0 +1,556 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_pMpjM4": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_fFbrFP": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "THE VACATION SHOP"
+          }
+        },
+        "heading_ypkcNL": {
+          "type": "heading",
+          "settings": {
+            "heading": "Making you <em>to shine</em>",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_NwXq99": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Transition your style with ease.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_3T7neJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fFbrFP",
+        "heading_ypkcNL",
+        "text_NwXq99",
+        "button_3T7neJ"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.content-overlay--middle-left {align-items: center; } .rich-text {text-align: center; }}"
+      ],
+      "settings": {
+        "container": "full",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "rich_text_ziifBx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_r4XzjJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our clothes are designed to honor and support the female body",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_r4XzjJ"
+      ],
+      "custom_css": [
+        ".rich-text__heading {max-width: 812px; margin: 0 auto;}",
+        "@media (min-width: 768px) and (max-width: 1279px) {.rich-text-section {padding-bottom: 6rem; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_content_n9PVWc": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_h4WRGJ": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "heading": "For female shapes only",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none",
+            "subheading": "Care for Your Skin",
+            "description": "",
+            "button_label": "Shop All Products",
+            "button_style": "btn--primary",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "large",
+            "color_scheme_mobile": "scheme-inverse",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "width": "50%",
+            "alignment": "start",
+            "block_custom_class": ""
+          }
+        },
+        "collections_riqdQg": {
+          "type": "collections",
+          "settings": {
+            "collection_list": [
+              "shorts",
+              "jackets"
+            ],
+            "hide_collection_name": false,
+            "button_label": "",
+            "button_style": "btn--primary",
+            "limit": 4,
+            "columns": 2,
+            "column_gap": "extra-small",
+            "row_gap": "inherit",
+            "enable_slider": true,
+            "pcard_image_ratio": "adapt",
+            "columns_mobile": "1",
+            "swipe_on_mobile": true,
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_h4WRGJ",
+        "collections_riqdQg"
+      ],
+      "custom_css": [
+        ".card-media__content {padding-bottom: 4rem;}",
+        ".card-media__heading {max-width: 243px;}",
+        ".f-grid--gap-large {--row-gap-mobile: 4.8rem;}",
+        "@media (max-width: 767px) {.collection-item-slider + .collection-item-slider {margin-top: 4.8rem; }}",
+        "@media (min-width: 768px) {.card-media__content {padding-bottom: 5rem; } .card-media__heading {max-width: 303px; }}",
+        "@media (min-width: 1280px) {.card-media__content {padding-bottom: 8.7rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": true,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "column_gap": "large",
+        "row_gap": "extra-large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "collection_list_YWNL4A": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_dJF99K": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "featured_collection_ktAhgt": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "featured_collection_chjm49": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "featured_collection_dTTnKH": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_dJF99K",
+        "featured_collection_ktAhgt",
+        "featured_collection_chjm49",
+        "featured_collection_dTTnKH"
+      ],
+      "custom_css": [
+        ".rich-text__text {--text-margin-top: 1.6rem;}",
+        "@media (max-width: 767px) {.collection-card__info button {display: none; }}",
+        "@media (min-width: 768px) {.collection-card__wrapper {border: 0.1rem solid rgb(var(--color-border)); border-radius: var(--blocks-radius); } .collection-card__image {border-bottom-right-radius: 0; border-bottom-left-radius: 0; margin: -1px; } .collection-card__inner {padding: 0 2.4rem 2.4rem; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "layout": "standard",
+        "subheading": "",
+        "heading": "Challenging the outdoor norm",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "description": "<p>Not sure where to start? Try these collections:</p>",
+        "text_size": "text-lg",
+        "card_color_inherited": true,
+        "show_product_count": true,
+        "show_icon": true,
+        "card_style": "",
+        "card_image_ratio": "3/4",
+        "content_alignment": "left",
+        "columns_desktop": 4,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_content_wTy4Hf": {
+      "type": "custom-content",
+      "blocks": {
+        "image_3Vyfkn": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_zCVw34": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_8drUYb": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3Vyfkn",
+        "image_zCVw34",
+        "image_8drUYb"
+      ],
+      "custom_css": [
+        ".section__header {--header-padding-bottom: 10rem; --header-padding-bottom-mobile: 4.8rem;}",
+        ".section__heading {max-width: 700px; margin: 0 auto;}",
+        ".section__description {max-width: 932px; margin-left: auto; margin-right: auto;}",
+        ".media-wrapper {border-radius: unset;}",
+        "@media (max-width: 767px) {.section--custom-content {padding-inline: var(--container-offset); }}"
+      ],
+      "settings": {
+        "container": "full",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "heading": "Sustainability is a mindset that guides all of our decision-making",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "THE TIRED MAN",
+        "description": "<p>Considered one of Denmark’s greatest and most influential architects, Mogens Lassen pioneered Danish Functionalism, taking his cues from Bauhaus sensibilities. His interior designs are a natural continuation of his architectural approach and add energy and atmosphere to everyday living spaces and tasks. From decorative objects to larger furniture designs, his designs delicately balance presence without drawing undue attention, finding their natural place in any space.</p>",
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "swipe_on_mobile": true,
+        "columns_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "products_bundle_QGJW7b": {
+      "type": "products-bundle",
+      "blocks": {
+        "product_tAWqrF": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "",
+            "horizontal_position": 37,
+            "vertical_position": 42
+          }
+        },
+        "product_r7GjhR": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "",
+            "horizontal_position": 54,
+            "vertical_position": 73
+          }
+        },
+        "product_tPd6nB": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "",
+            "horizontal_position": 48,
+            "vertical_position": 7
+          }
+        }
+      },
+      "block_order": [
+        "product_tAWqrF",
+        "product_r7GjhR",
+        "product_tPd6nB"
+      ],
+      "custom_css": [
+        ".section__heading {max-width: 350px; margin: 0 auto;}",
+        "@media (min-width: 1024px) {.products-bundle__image {order: 2; }}",
+        "@media (min-width: 1024px) and (max-width: 1279px) {.product-bundle-card__image {flex: 0 0 8rem; } .products-bundle__content {padding-inline: 0 5rem; } .products-bundle__image .media-wrapper {--aspect-ratio: 0.71 !important; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Layering with basic pieces designed",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "Mix & Max",
+        "description": "",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "vivnook_product_video_split": {
+      "type": "vivnook-product-video-split",
+      "settings": {
+        "aria_label": "Product and video feature",
+        "product_title": "Free your form, secure your tools",
+        "product_subtitle": "Designed separately. Styled together.",
+        "product_button_label": "Explore The Fanny Pack",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "video_controls": false,
+        "media_overlay_text": ""
+      }
+    },
+    "favorite_products_bYMWYG": {
+      "type": "favorite-products",
+      "blocks": {
+        "product_cXzgXi": {
+          "type": "product",
+          "settings": {
+            "text": "<p>“Rectangular elm wood bench. Due to the origin of the materials, the colour may vary slightly...”</p>",
+            "author": "Jenny Wilson",
+            "bio": "New Mexico"
+          }
+        },
+        "product_kMHt9W": {
+          "type": "product",
+          "settings": {
+            "text": "<p>Took it out of the box, and didn’t take it off, so cosy! It is warm and feels good, the wool does not sting at all.</p>",
+            "author": "Ava Johnson",
+            "bio": "France"
+          }
+        },
+        "product_hXjzr4": {
+          "type": "product",
+          "settings": {
+            "text": "<p>Gave it to my mum as Christmas gift. She loves it and wears it then skiing, going biking.</p>",
+            "author": "Ethan Mitchell",
+            "bio": "Italy"
+          }
+        }
+      },
+      "block_order": [
+        "product_cXzgXi",
+        "product_kMHt9W",
+        "product_hXjzr4"
+      ],
+      "custom_css": [
+        ".testimonial__bio {opacity: 0.6;}",
+        ".slider-controls {gap: 1.2rem;}",
+        "@media (min-width: 768px) {.section-favorite-products.slider-enabled .section__header-wrap {--header-padding-bottom: 6rem; }}",
+        "@media (min-width: 1280px) {.favorite-product__testimonial {padding-bottom: 6.1rem; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "heading": "Our favorite products",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "pcard_image_ratio": "",
+        "image_ratio": "adapt",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_overlay_aQGpYA": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_jcbgyq": {
+          "type": "heading",
+          "settings": {
+            "heading": "The best of <em>Iceland & dreams</em>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_PYFD6D": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explorer and marketing director, born and raised in Northern Finland.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_GrzeCx": {
+          "type": "button",
+          "settings": {
+            "button_label": "shop now",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jcbgyq",
+        "text_PYFD6D",
+        "button_GrzeCx"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".rich-text__heading {max-width: 472px;}",
+        ".rich-text__text {max-width: 567px;}",
+        "@media (max-width: 767px) {.rich-text__heading {margin: 0 auto; } .content-overlay--middle-left {align-items: center; } .rich-text {text-align: center; }}"
+      ],
+      "settings": {
+        "container": "full",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "video_hero_UcFApa": {
+      "type": "video-hero",
+      "blocks": {
+        "subheading_WgHr3g": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Discover the Latest Trendsv"
+          }
+        },
+        "heading_adminh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Campaign<em> for Season</em>",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "button_QqEDaE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_WgHr3g",
+        "heading_adminh",
+        "button_QqEDaE"
+      ],
+      "custom_css": [
+        "@media (min-width: 768px) and (max-width: 1279px) {.media--large {height: 50rem; }}"
+      ],
+      "settings": {
+        "container": "full",
+        "description": "",
+        "video_height": "large",
+        "overlay_opacity": 30,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "video_mobile_height": "large",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_pMpjM4",
+    "rich_text_ziifBx",
+    "custom_content_n9PVWc",
+    "collection_list_YWNL4A",
+    "custom_content_wTy4Hf",
+    "products_bundle_QGJW7b",
+    "vivnook_product_video_split",
+    "favorite_products_bYMWYG",
+    "image_with_text_overlay_aQGpYA",
+    "video_hero_UcFApa"
+  ]
+}

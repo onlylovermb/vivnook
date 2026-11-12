@@ -1,0 +1,15 @@
+.section-image-gallery .social-icon {
+  background: #fff;
+  color: #000;
+  pointer-events: none;
+}
+.section-image-gallery .content-overlay {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .section-image-gallery .media-wrapper:hover .content-overlay {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,34 @@
+{% comment %}
+  Renders a text with highlight words.
+
+  Accepts:
+  - text: {String} Text to render
+  - style: {String} Highlight text style
+
+  Usage:
+  {% render 'highlight-text', text: "This is <em>highlight text</em>", style: 'underline' %}
+{% endcomment %}
+{%- liquid
+  assign text = text | default: ''
+  assign style = style | default: 'none'
+
+  if style == 'none'
+    echo text
+  else
+    assign base_css_class = 'highlight-text'
+    assign svg = ''
+
+    case style
+      when 'underline'
+        assign css_class = base_css_class | append: ' highlight-text--underline'
+    endcase
+
+    assign em_open_tag = '<em is="highlight-text" class="' | append: css_class | append: '">'
+    assign em_close_tag = svg | append: '</em>'
+
+    assign highlight_text = text | replace: '<em>', em_open_tag
+    assign highlight_text = highlight_text | replace: '</em>', em_close_tag
+
+    echo highlight_text
+  endif
+-%}

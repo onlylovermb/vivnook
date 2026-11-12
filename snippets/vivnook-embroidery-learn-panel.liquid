@@ -1,0 +1,21 @@
+<section
+  id="{{ dialog_id }}-panel-{{ type }}"
+  class="vivnook-embroidery-learn__panel"
+  role="tabpanel"
+  aria-labelledby="{{ dialog_id }}-tab-{{ type }}"
+  data-vivnook-panel="{{ type }}"
+  {% unless active %}hidden{% endunless %}
+>
+  <div class="vivnook-embroidery-learn__media">
+    {%- if image != blank -%}
+      {{- image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 48vw, 100vw', alt: type | append: ' embroidery' -}}
+    {%- else -%}
+      {{- 'product-1' | placeholder_svg_tag -}}
+    {%- endif -%}
+  </div>
+  <div class="vivnook-embroidery-learn__content">
+    <p class="vivnook-embroidery__eyebrow">{{ type }} embroidery</p>
+    <h3>{{ type | upcase }}</h3>
+    <div class="rte">{{ description }}</div>
+  </div>
+</section>

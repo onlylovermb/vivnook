@@ -1,0 +1,52 @@
+{{ 'section-vivnook-confession.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'vivnook-profile.js' | asset_url }}" defer></script>
+<script src="{{ 'vivnook-confession.js' | asset_url }}" defer></script>
+<section class="vivnook-confession section section--padding" style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <vivnook-confession class="page-width" data-identities-url="{{ 'vivnook-identities.json' | asset_url }}" data-asset-url-template="{{ 'VIVNOOK_ASSET_FILENAME' | asset_url }}">
+    <div class="nook-confession-paper">
+      <p class="nook-confession-eyebrow">THE NOOK / LEAVE YOUR SHIFT HERE</p>
+      <h2 id="ConfessionHeading-{{ section.id }}">SHIFT CONFESSION</h2>
+      <p class="nook-confession-identity" data-confession-identity>OFF-DUTY PLAYER · <button type="button" data-find-identity>ROLE UNASSIGNED</button></p>
+      <p>Selected stories are brought to life by Vivnook artists.</p>
+      <form method="post" data-story-form aria-labelledby="ConfessionHeading-{{ section.id }}">
+        <label class="visually-hidden" for="ConfessionStory-{{ section.id }}">Your shift story</label>
+        <textarea id="ConfessionStory-{{ section.id }}" name="story" rows="7" data-story aria-describedby="ConfessionCounter-{{ section.id }} ConfessionPrivacy-{{ section.id }}" placeholder="What happened on your shift today? Write it down, leave it here, and go get some rest." required></textarea>
+        <div class="nook-confession-counter" id="ConfessionCounter-{{ section.id }}" data-counter>0 / 600</div>
+        <p class="nook-confession-privacy" id="ConfessionPrivacy-{{ section.id }}">Stories are shared anonymously. Please leave out real names, hospitals, clinics, or other identifying details.</p>
+        <p class="nook-confession-notice">Only your anonymous story may be shared. Your contact email stays private.</p>
+        <div class="nook-confession-trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off" data-website></label></div>
+        <button type="submit" class="btn nook-confession-primary" disabled>DROP IT <span aria-hidden="true">↗</span></button>
+        <noscript>Please enable JavaScript to submit your story privately.</noscript>
+        <p data-status role="status" aria-live="polite"></p>
+      </form>
+      <button type="button" class="nook-confession-session" data-forget hidden>Forget this browser</button>
+    </div>
+    <dialog class="nook-confession-dialog" aria-labelledby="ConfessionDialogHeading-{{ section.id }}" data-dialog>
+      <button type="button" class="nook-confession-close" data-close aria-label="Close submission dialog">×</button>
+      <p class="nook-confession-eyebrow">A LITTLE SOMETHING FOR YOUR STORY</p>
+      <h2 id="ConfessionDialogHeading-{{ section.id }}">WHERE SHOULD<br>WE FIND YOU?</h2>
+      <p>If your confession is selected, we’ll send a one-time 15% off code to this email. The code expires 30 days after creation.</p>
+      <form method="post" data-submit-form>
+        <label for="ConfessionEmail-{{ section.id }}">Your email</label>
+        <input id="ConfessionEmail-{{ section.id }}" data-email name="email" type="email" autocomplete="email" maxlength="254" placeholder="your@email.com" required>
+        <label class="nook-confession-permission"><input type="checkbox" data-permission required><span>I confirm this story contains no patient-identifying or confidential information and allow Vivnook to adapt it anonymously.</span></label>
+        <p class="nook-confession-fine">This does not subscribe you to marketing emails.</p>
+        <p class="nook-confession-fine" data-verification-note hidden>Verify your email once, then return here to send your story. Your story is not submitted yet.</p>
+        <button type="submit" class="btn nook-confession-primary" data-submit>SEND CONFESSION</button>
+        <p data-dialog-status role="status" aria-live="polite"></p>
+      </form>
+      <p class="nook-confession-secondary">Keep an eye on your inbox. Your shift story might make it out of the breakroom.</p>
+      <img data-character-art class="nook-confession-character" alt="" width="240" height="154" hidden>
+    </dialog>
+  </vivnook-confession>
+</section>
+{% schema %}
+{
+  "name": "Nook Confession",
+  "settings": [
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding", "default": 64 }
+  ],
+  "presets": [{ "name": "Nook Confession" }]
+}
+{% endschema %}

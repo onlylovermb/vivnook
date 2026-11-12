@@ -1,0 +1,645 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "breadcrumbs_BMDgDV": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "rich_text_wee3pg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_TdWiT6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Welcome to Nomad",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_b3Febh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dine in the comfort of the Harbour Dining Chair, shaped for support when sitting for extended periods.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TdWiT6",
+        "text_b3Febh"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 547px; margin: 0 auto; --text-margin-top: 1.2rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 70,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_overlay_kEHHr7": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "container": "full",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "rich_text_GJmkd8": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_XDfEty": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "THE TIRED MAN"
+          }
+        },
+        "heading_m8bqUF": {
+          "type": "heading",
+          "settings": {
+            "heading": "The outdoor industry has traditionally been centered around a male-oriented",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_aRNYRA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Considered one of Denmark’s greatest and most influential architects, Mogens Lassen pioneered Danish Functionalism, taking his cues from Bauhaus sensibilities. His interior designs are a natural continuation of his architectural approach and add energy and atmosphere to everyday living spaces and tasks. From decorative objects to larger furniture designs, his designs delicately balance presence without drawing undue attention, finding their natural place in any space.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_XDfEty",
+        "heading_m8bqUF",
+        "text_aRNYRA"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 932px; margin: 0 auto;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_EKk7hw": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_waBJjm": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "For female shapes only"
+          }
+        },
+        "heading_NwLYwf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Designed to honor and support the female body",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_8a6FTj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The dining room is a gathering place to come together and connect over cooking and conversation. Whether hosting a dinner party for friends or enjoying a mid-week meal with family, its ambiance sets the tone for memorable experiences – and it is here where rituals and traditions are upheld.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_waBJjm",
+        "heading_NwLYwf",
+        "text_8a6FTj"
+      ],
+      "custom_css": [
+        "@media (min-width: 1024px) {.image-with-text__inner {--padding-x: 5rem; }}",
+        "@media (min-width: 1280px) {.image-with-text__inner {--padding-x: 7rem; padding-right: var(--padding-x); }}",
+        "@media (max-width: 767.98px) {.image-with-text__inner {padding-top: 3.2rem; }}"
+      ],
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "scrolling_promotion_m7Tatf": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text_VTUzJb": {
+          "type": "text",
+          "settings": {
+            "text": "FIND INSPRATION",
+            "text_size": "hd1",
+            "font_weight": "font-heading",
+            "font_style": "normal",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_WLmjda": {
+          "type": "image",
+          "settings": {
+            "image_height": 32,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 24
+          }
+        },
+        "text_VKQznw": {
+          "type": "text",
+          "settings": {
+            "text": "DESIGN FOR LIVING",
+            "text_size": "hd1",
+            "font_weight": "font-heading",
+            "font_style": "normal",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_TeVRBN": {
+          "type": "image",
+          "settings": {
+            "image_height": 32,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 24
+          }
+        },
+        "text_MqeFDp": {
+          "type": "text",
+          "settings": {
+            "text": "UNIQUE FURNITURE",
+            "text_size": "hd1",
+            "font_weight": "font-heading",
+            "font_style": "normal",
+            "letter_spacing": 0,
+            "text_opacity": 100,
+            "text_style": "normal",
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "text_VTUzJb",
+        "image_WLmjda",
+        "text_VKQznw",
+        "image_TeVRBN",
+        "text_MqeFDp"
+      ],
+      "custom_css": [
+        ".promotion__text {opacity: 0.2;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "vertical_alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.2,
+        "h_spacing": 48,
+        "v_spacing": 0,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_divider": false,
+        "divider_layout": "vertical",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_px8mCX": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_MABX6X": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "For female shapes only"
+          }
+        },
+        "heading_U9q9LQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Designed to honor and support the female body",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_X9LdU3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The dining room is a gathering place to come together and connect over cooking and conversation. Whether hosting a dinner party for friends or enjoying a mid-week meal with family, its ambiance sets the tone for memorable experiences – and it is here where rituals and traditions are upheld.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_MABX6X",
+        "heading_U9q9LQ",
+        "text_X9LdU3"
+      ],
+      "custom_css": [
+        "@media (min-width: 1024px) {.image-with-text__inner {--padding-x: 5rem; }}",
+        "@media (min-width: 1280px) {.image-with-text__inner {--padding-x: 7rem; padding-left: var(--padding-x); }}",
+        "@media (max-width: 767.98px) {.image-with-text__inner {padding-top: 3.2rem; }}"
+      ],
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "collapsible_tabs_XDXbgE": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "image_card_TyGMHb": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "desktop_image_position": "left",
+            "image_width": 50,
+            "alignment": "center",
+            "image_extend": true,
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "card_link": "",
+            "order_first": true
+          }
+        },
+        "heading_fEbK6H": {
+          "type": "heading",
+          "settings": {
+            "heading": "With sustainability in mind",
+            "heading_size": "h1",
+            "sub_heading": "Safety Ingredients"
+          }
+        },
+        "collapsible_item_pzCjnw": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "How long does shipping take?",
+            "content": "<p>Your sales managers will go into the field feeling energized, excited, and inspired. We are a full service business development group – we build strategies and systems. </p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": true
+          }
+        },
+        "collapsible_item_JDNMMw": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Does my piece come in any packaging?",
+            "content": "<p>Discover Eco-Friendly Packaging Options for Every Product Variation.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_aGaY3k": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Do you ship internationally?",
+            "content": "<p>Unlock Global Opportunities with International Shipping Options.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_kwDPq7": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "What payment methods do you accept?",
+            "content": "<p>Discover Secure Payment Methods for Your Online Shopping Needs.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_TyGMHb",
+        "heading_fEbK6H",
+        "collapsible_item_pzCjnw",
+        "collapsible_item_JDNMMw",
+        "collapsible_item_aGaY3k",
+        "collapsible_item_kwDPq7"
+      ],
+      "custom_css": [
+        ".f-grid--gap-extra-large {--row-gap-mobile: 4.8rem;}",
+        "@media (max-width: 767px) {.collapsible-tabs__wrapper > .f-column {width: 100%; } .collapsible-tabs__content-col {padding-bottom: 4.8rem; }}",
+        "@media (min-width: 768px) {.accordion-parent {max-width: 570px; } .collapsible-tabs__content-col {align-items: flex-end; padding: 4.8rem calc(var(--gap-x, 0) / 2); }}",
+        "@media (min-width: 1024px) {.collapsible-tabs__content-col {padding: 8rem calc(var(--gap-x, 0) / 2); }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-109459d5-6769-4016-a989-c8066fbdf2f1",
+        "header_layout": "vertical",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "extra-large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "scheme-1",
+        "item_heading_font": "heading",
+        "item_heading_size": "h3",
+        "item_icon_size": "extra-large",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "multicolumn_AhrcYx": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_fYWDdA": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_Hac99A": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_VLnbDw": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_zqMyEK": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_UaJLhn": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_tzffcG": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_fYWDdA",
+        "column_Hac99A",
+        "column_VLnbDw",
+        "column_zqMyEK",
+        "column_UaJLhn",
+        "column_tzffcG"
+      ],
+      "custom_css": [
+        ".multicolumn-card__image {margin-bottom: 0;}",
+        ".spacing--large {--header-padding-bottom-large: 2rem;}",
+        ".f-grid--gap-extra-large {--column-gap: 9rem; --column-gap-mobile: 2.15rem; --row-gap-mobile: 2.4rem;}",
+        "@media (max-width: 767px) {.multicolumn__items {grid-template-columns: repeat(3, minmax(0, 1fr)); --col-number: 3; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "Featured in Press",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "left",
+        "columns_desktop": 6,
+        "column_gap": "extra-large",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "multicolumn_eCbRk8": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_kUAaAz": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "Cashmere edit",
+            "heading_size": "h3",
+            "text": "<p>Indulge in the luxury of cashmere with our curated collection of timeless, refined pieces.</p>",
+            "text_size": "text-base",
+            "button_label": "Shop now",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_k6mp9b": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "New Arrivals",
+            "heading_size": "h3",
+            "text": "<p>Discover our just-arrived collection of innovative design and craftsmanship.</p>",
+            "text_size": "text-base",
+            "button_label": "Shop now",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_k6qnUy": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_width": "full",
+            "title": "Back In Stock",
+            "heading_size": "h3",
+            "text": "<p>Shop popular products now back in stock. Don’t miss your favorites—order today.</p>",
+            "text_size": "text-base",
+            "button_label": "Shop now",
+            "button_style": "btn--underline",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_kUAaAz",
+        "column_k6mp9b",
+        "column_k6qnUy"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 71rem; margin: auto;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Spring styles to wear together or apart, whatever the weather.",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "left",
+        "columns_desktop": 3,
+        "column_gap": "extra-large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumbs_BMDgDV",
+    "rich_text_wee3pg",
+    "image_with_text_overlay_kEHHr7",
+    "rich_text_GJmkd8",
+    "image_with_text_EKk7hw",
+    "scrolling_promotion_m7Tatf",
+    "image_with_text_px8mCX",
+    "collapsible_tabs_XDXbgE",
+    "multicolumn_AhrcYx",
+    "multicolumn_eCbRk8"
+  ]
+}

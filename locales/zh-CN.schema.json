@@ -1,0 +1,4481 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "settings_schema": {
+    "global": {
+      "settings": {
+        "font_family_options": {
+          "label": "字体系列",
+          "info": "选择不同的字体会影响商店的速度。 [了解有关系统字体的详细信息。](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)",
+          "options__1": {
+            "label": "正文字体"
+          },
+          "options__2": {
+            "label": "标题字体"
+          }
+        },
+        "title_font": {
+          "label": "标题字体系列"
+        },
+        "font_weight": {
+          "label": "字体粗细",
+          "options__1": {
+            "label": "光"
+          },
+          "options__2": {
+            "label": "常规的"
+          },
+          "options__3": {
+            "label": "中等的"
+          },
+          "options__4": {
+            "label": "半粗体"
+          },
+          "options__5": {
+            "label": "大胆的"
+          },
+          "options__6": {
+            "label": "格外大胆"
+          },
+          "options__7": {
+            "label": "黑色的"
+          }
+        },
+        "header__border": {
+          "content": "边界"
+        },
+        "header__shadow": {
+          "content": "阴影"
+        },
+        "blur": {
+          "label": "模糊"
+        },
+        "header__corner_radius": {
+          "content": "圆角半径"
+        },
+        "corner_radius": {
+          "header": {
+            "content": "圆角半径"
+          },
+          "buttons_corner_radius": {
+            "label": "纽扣"
+          },
+          "inputs_corner_radius": {
+            "label": "输入"
+          },
+          "blocks_corner_radius": {
+            "label": "积木"
+          },
+          "badges_corner_radius": {
+            "label": "徽章"
+          },
+          "pcard_corner_radius": {
+            "label": "产品卡"
+          },
+          "options__1": {
+            "label": "正方形"
+          },
+          "options__2": {
+            "label": "略圆"
+          },
+          "options__3": {
+            "label": "圆形的"
+          },
+          "options__4": {
+            "label": "圆形"
+          },
+          "options__5": {
+            "label": "丸"
+          }
+        },
+        "horizontal_offset": {
+          "label": "水平偏移"
+        },
+        "vertical_offset": {
+          "label": "垂直偏移"
+        },
+        "thickness": {
+          "label": "厚度"
+        },
+        "opacity": {
+          "label": "不透明度"
+        },
+        "image_padding": {
+          "label": "图像填充"
+        },
+        "image_ratio": {
+          "label": "图像比例",
+          "thumbnail": {
+            "label": "缩略图比例"
+          },
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "正方形 (1:1)"
+          },
+          "options__3": {
+            "label": "肖像 (3:4)"
+          },
+          "options__4": {
+            "label": "风景 (4:3)"
+          },
+          "options__5": {
+            "label": "2:3"
+          },
+          "options__6": {
+            "label": "16:9"
+          },
+          "options__7": {
+            "label": "使用全局设置"
+          },
+          "options__8": {
+            "label": "适应第一张图片"
+          }
+        },
+        "text_color_options": {
+          "label": "文字颜色"
+        },
+        "content_spacing": {
+          "options__1": {
+            "label": "小的"
+          },
+          "options__2": {
+            "label": "中等的"
+          },
+          "options__3": {
+            "label": "大的"
+          },
+          "label": "内容间距"
+        },
+        "content_position": {
+          "options__1": {
+            "label": "左上方"
+          },
+          "options__2": {
+            "label": "顶部中心"
+          },
+          "options__3": {
+            "label": "右上"
+          },
+          "options__4": {
+            "label": "中左"
+          },
+          "options__5": {
+            "label": "中中心"
+          },
+          "options__6": {
+            "label": "中右"
+          },
+          "options__7": {
+            "label": "左下方"
+          },
+          "options__8": {
+            "label": "底部中心"
+          },
+          "options__9": {
+            "label": "右下角"
+          },
+          "group__1": {
+            "label": "下图"
+          },
+          "group__2": {
+            "label": "叠加在图像上"
+          },
+          "options__10": {
+            "label": "下图"
+          },
+          "label": "内容位置",
+          "desktop": {
+            "label": "桌面内容位置"
+          },
+          "mobile": {
+            "label": "移动内容位置"
+          }
+        },
+        "content_alignment": {
+          "options__1": {
+            "label": "左边"
+          },
+          "options__2": {
+            "label": "中心"
+          },
+          "options__3": {
+            "label": "正确的"
+          },
+          "label": "内容对齐",
+          "desktop": {
+            "label": "桌面内容对齐"
+          },
+          "mobile": {
+            "label": "移动内容对齐"
+          }
+        },
+        "text_alignment": {
+          "options__1": {
+            "label": "左边"
+          },
+          "options__2": {
+            "label": "中心"
+          },
+          "options__3": {
+            "label": "正确的"
+          },
+          "options__4": {
+            "label": "继承"
+          },
+          "label": "文本对齐"
+        },
+        "vertical_alignment": {
+          "label": "垂直对齐",
+          "options__1": {
+            "label": "顶部"
+          },
+          "options__2": {
+            "label": "中间"
+          },
+          "options__3": {
+            "label": "底部"
+          }
+        },
+        "text_transform": {
+          "label": "文本变换",
+          "options__1": {
+            "label": "普通的"
+          },
+          "options__2": {
+            "label": "标题案例"
+          },
+          "options__3": {
+            "label": "大写"
+          },
+          "options__4": {
+            "label": "小写"
+          }
+        },
+        "button": {
+          "button_height": {
+            "label": "高度"
+          }
+        },
+        "grid": {
+          "name": "网格设置",
+          "gap": "柱间隙",
+          "gap_options": {
+            "options__01": {
+              "label": "无间隙"
+            },
+            "options__02": {
+              "label": "特小号"
+            },
+            "options__03": {
+              "label": "小的"
+            },
+            "options__04": {
+              "label": "中等的"
+            },
+            "options__05": {
+              "label": "大的"
+            },
+            "options__06": {
+              "label": "特大号"
+            }
+          }
+        }
+      }
+    },
+    "general": {
+      "name": "一般的",
+      "settings": {
+        "header__rtl": {
+          "content": "从右到左支持"
+        },
+        "enable_rtl": {
+          "label": "启用RTL"
+        },
+        "language_support_rtl": {
+          "label": "支持 RTL 的语言",
+          "info": "输入 ISO 语言代码，以逗号分隔。留空即可对所有语言启用。 [检查 ISO 语言代码](https://www.loc.gov/standards/iso639-2/php/code_list.php)"
+        },
+        "enable_back_to_top": {
+          "label": "启用返回顶部按钮"
+        }
+      }
+    },
+    "product_cards": {
+      "name": "产品卡",
+      "settings": {
+        "style": {
+          "label": "风格",
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "卡片"
+          }
+        },
+        "show_second_image_on_hover": {
+          "label": "悬停时显示第二张图像"
+        },
+        "show_color_swatches": {
+          "label": "显示色样"
+        },
+        "show_vendor": {
+          "label": "显示供应商"
+        },
+        "show_type": {
+          "label": "演出类型"
+        },
+        "action_show_add_to_cart": {
+          "label": "启用快速添加按钮"
+        },
+        "action_show_quick_view": {
+          "label": "启用快速查看按钮"
+        },
+        "header__overlay_settings": {
+          "content": "叠加设置"
+        },
+        "header__quick_add": {
+          "content": "快速添加按钮"
+        },
+        "header__quick_view": {
+          "content": "快速查看按钮"
+        },
+        "show_sold_out_badge": {
+          "label": "显示已售完徽章"
+        },
+        "show_sale_badge": {
+          "label": "显示销售徽章"
+        },
+        "sale_badge_type": {
+          "label": "销售徽章类型",
+          "options__1": {
+            "label": "文本"
+          },
+          "options__2": {
+            "label": "百分比"
+          },
+          "options__3": {
+            "label": "固定值"
+          }
+        },
+        "choose_options_action": {
+          "label": "“选择选项”操作",
+          "options__1": {
+            "label": "打开弹出窗口"
+          },
+          "options__2": {
+            "label": "前往产品页面"
+          }
+        },
+        "mobile_layout": {
+          "content": "移动布局"
+        },
+        "pcard_color_scheme": {
+          "label": "卡片配色方案"
+        },
+        "pcard_overlay_color_scheme": {
+          "label": "叠加配色方案"
+        },
+        "pcard_button_style": {
+          "label": "快速添加按钮样式"
+        },
+        "quickview_button_style": {
+          "label": "快速查看按钮样式"
+        },
+        "mobile_hide_quick_add": {
+          "label": "隐藏移动设备上的快速添加按钮"
+        },
+        "color_swatches": {
+          "header": {
+            "content": "色样"
+          },
+          "enable_color_swatches": {
+            "label": "启用色样"
+          },
+          "maximum_swatches_to_show": {
+            "label": "显示的最大样本数"
+          },
+          "swatches_type": {
+            "label": "样本类型",
+            "options__1": {
+              "label": "色样"
+            },
+            "options__2": {
+              "label": "变体图像"
+            },
+            "options__3": {
+              "label": "Shopify 样本"
+            },
+            "info": "变体图像模式要求每个变体都有对应的图像。"
+          }
+        },
+        "sale_badge": {
+          "header": {
+            "content": "销售徽章"
+          }
+        }
+      }
+    },
+    "collection_cards": {
+      "name": "收藏卡",
+      "settings": {
+        "style": {
+          "label": "风格",
+          "options__0": {
+            "label": "使用全局设置"
+          },
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "卡片"
+          }
+        },
+        "product_count": {
+          "label": "显示产品数量"
+        },
+        "show_icon": {
+          "label": "显示图标"
+        }
+      }
+    },
+    "blog_cards": {
+      "name": "博客卡",
+      "settings": {
+        "blog_cards_show_date": {
+          "label": "显示日期"
+        },
+        "blog_cards_show_excerpt": {
+          "label": "显示摘录"
+        },
+        "blog_cards_show_button": {
+          "label": "显示了解更多按钮"
+        }
+      }
+    },
+    "colors": {
+      "name": "颜色",
+      "settings": {
+        "header__general": {
+          "content": "一般的"
+        },
+        "header__text": {
+          "content": "文字颜色"
+        },
+        "primary_accent": {
+          "label": "强调色"
+        },
+        "border": {
+          "label": "边框颜色"
+        },
+        "header__background": {
+          "content": "背景"
+        },
+        "background": {
+          "label": "背景1"
+        },
+        "secondary_background": {
+          "label": "背景2"
+        },
+        "text": {
+          "label": "文本"
+        },
+        "header__button_1": {
+          "content": "主按钮"
+        },
+        "header__button_2": {
+          "content": "辅助按钮"
+        },
+        "header__button_hover": {
+          "content": "按钮悬停"
+        },
+        "button_background": {
+          "label": "按钮背景"
+        },
+        "button_border": {
+          "label": "按钮边框"
+        },
+        "button_label": {
+          "label": "按钮标签"
+        },
+        "button_hover": {
+          "label": "背景和边框"
+        },
+        "button_label_hover": {
+          "label": "按钮标签"
+        },
+        "shadow": {
+          "label": "阴影"
+        },
+        "header__form_input": {
+          "content": "表单输入"
+        },
+        "form_field_background": {
+          "label": "背景"
+        },
+        "form_field_label": {
+          "label": "文本"
+        },
+        "header__product": {
+          "content": "产品"
+        },
+        "product_price_sale": {
+          "label": "销售价格"
+        },
+        "badges": {
+          "text_color": {
+            "label": "文字颜色"
+          },
+          "background_color": {
+            "label": "背景颜色"
+          },
+          "hot_badge": {
+            "content": "热门徽章"
+          },
+          "new_badge": {
+            "content": "新徽章"
+          },
+          "sale_badge": {
+            "content": "销售徽章"
+          },
+          "sold_out_badge": {
+            "content": "已售完徽章"
+          }
+        },
+        "header__other_colors": {
+          "content": "其他颜色"
+        },
+        "cart_bubble_color": {
+          "label": "购物车泡沫背景"
+        },
+        "color_keyboard_focus": {
+          "label": "键盘焦点"
+        }
+      }
+    },
+    "logo": {
+      "name": "标识",
+      "settings": {
+        "logo_image": {
+          "label": "标识"
+        },
+        "logo_transparent": {
+          "label": "标志透明"
+        },
+        "logo_width": {
+          "label": "标志宽度"
+        },
+        "favicon": {
+          "label": "网站图标图像",
+          "info": "将缩小至 32 x 32px"
+        },
+        "mobile_layout": {
+          "content": "移动布局"
+        }
+      }
+    },
+    "typography": {
+      "name": "版式",
+      "settings": {
+        "type_header_font": {
+          "label": "字体",
+          "info": "选择不同的字体会影响商店的速度。 [了解有关系统字体的详细信息。](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "heading_scale": {
+          "label": "字体大小比例"
+        },
+        "heading_mobile_scale": {
+          "label": "移动端字体大小比例"
+        },
+        "heading_letter_spacing": {
+          "label": "字母间距"
+        },
+        "heading_uppercase": {
+          "label": "大写标题"
+        },
+        "display_heading": {
+          "content": "显示标题",
+          "info": "用于显示标题",
+          "font_size": {
+            "label": "底座尺寸"
+          },
+          "uppercase": {
+            "label": "大写显示标题"
+          }
+        },
+        "subheading": {
+          "content": "副标题",
+          "info": "字体粗细取决于所选字体"
+        },
+        "buttons": {
+          "header": {
+            "content": "纽扣"
+          },
+          "uppercase": {
+            "label": "大写标签"
+          }
+        },
+        "header__product_title": {
+          "content": "产品卡片标题"
+        },
+        "pcard_title_uppercase": {
+          "label": "大写产品标题"
+        },
+        "navigation": {
+          "header": {
+            "content": "导航"
+          },
+          "uppercase": {
+            "label": "大写导航"
+          }
+        },
+        "header__body_font": {
+          "content": "身体"
+        },
+        "header__heading_font": {
+          "content": "标题"
+        },
+        "type_body_font": {
+          "label": "字体",
+          "info": "选择不同的字体会影响商店的速度。 [了解有关系统字体的详细信息。](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "bolder_font_weight": {
+          "label": "加粗字体粗细",
+          "info": "用于突出显示某些标题和标签"
+        },
+        "body_font_size": {
+          "label": "底座尺寸"
+        }
+      }
+    },
+    "buttons": {
+      "name": "纽扣"
+    },
+    "animations": {
+      "name": "动画",
+      "settings": {
+        "enable_page_transition": {
+          "label": "启用页面转换"
+        },
+        "enable_animation": {
+          "label": "启用动画"
+        },
+        "enable_scroll_animations": {
+          "label": "启用滚动动画",
+          "info": "启用后，元素在滚动进入视图时产生动画效果。"
+        },
+        "enable_hover_image": {
+          "label": "启用图片悬停效果",
+          "info": "启用后，产品卡片、合集及其他媒体中的图片会在悬停时放大或切换。"
+        }
+      }
+    },
+    "social-media": {
+      "name": "社交媒体",
+      "settings": {
+        "header__sharing": {
+          "content": "共享选项"
+        },
+        "share_on_facebook": {
+          "label": "在脸书上分享"
+        },
+        "share_on_twitter": {
+          "label": "分享到Twitter"
+        },
+        "share_on_pinterest": {
+          "label": "在 Pinterest 上分享"
+        },
+        "header": {
+          "content": "社交账号"
+        },
+        "social_twitter_link": {
+          "label": "X/推特",
+          "info": "https://x.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "兴趣",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "抖音",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "豆瓣",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "快照",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "维梅奥",
+          "info": "https://vimeo.com/shopify"
+        }
+      }
+    },
+    "search_input": {
+      "name": "搜索行为",
+      "settings": {
+        "header": {
+          "content": "搜索建议"
+        },
+        "predictive_search_enabled": {
+          "label": "启用搜索建议"
+        },
+        "predictive_search_show_vendor": {
+          "label": "显示产品供应商",
+          "info": "启用搜索建议后可见。"
+        },
+        "predictive_search_show_price": {
+          "label": "显示产品价格",
+          "info": "启用搜索建议后可见。"
+        },
+        "number_results_to_show": {
+          "label": "要显示的结果数量"
+        },
+        "header__1": {
+          "content": "建议"
+        },
+        "most_searched_keyworkds": {
+          "label": "搜索次数最多的关键词",
+          "info": "向客户推荐您商店中搜索次数最多的关键字。例如：T恤、连衣裙、黑色"
+        },
+        "products_recommendations": {
+          "label": "产品推荐"
+        }
+      }
+    },
+    "currency_format": {
+      "name": "货币格式",
+      "settings": {
+        "content": "货币代码",
+        "paragraph": "购物车和结账价格始终显示货币代码。示例：1.00 美元。",
+        "currency_code_enabled": {
+          "label": "显示货币代码"
+        }
+      }
+    },
+    "cart": {
+      "name": "大车",
+      "settings": {
+        "cart_type": {
+          "label": "推车类型",
+          "drawer": {
+            "label": "抽屉"
+          },
+          "page": {
+            "label": "页"
+          },
+          "notification": {
+            "label": "弹出通知"
+          }
+        },
+        "cart_icon": {
+          "label": "购物车图标",
+          "options__1": {
+            "label": "购物车"
+          },
+          "options__2": {
+            "label": "购物包"
+          }
+        },
+        "show_vendor": {
+          "label": "显示供应商"
+        },
+        "show_cart_note": {
+          "label": "启用购物车备注"
+        },
+        "cart_drawer": {
+          "header": "推车抽屉",
+          "collection": {
+            "label": "收藏",
+            "info": "当购物车抽屉为空时可见。"
+          }
+        },
+        "header": {
+          "content": "购物车空的建议"
+        },
+        "cart_empty_message": {
+          "label": "留言"
+        },
+        "collection_list": {
+          "label": "收藏清单"
+        },
+        "header__1": {
+          "content": "免费送货目标"
+        },
+        "paragraph__1": {
+          "content": "确保您已正确配置[运费](/admin/settings/shipping)"
+        },
+        "free_shipping_minimum_amount": {
+          "label": "免运费最低金额",
+          "info": "在[主题设置](/editor?context=theme&category=cart)中设置免费送货的最低金额。",
+          "help": "仅使用数字输入金额。如使用多种货币，请将每个货币代码与其金额分隔开（例如：USD:100, EUR:95, JPY:13000） 请包含店铺的默认货币，以便其他货币可回退使用。"
+        }
+      }
+    },
+    "layout": {
+      "name": "布局",
+      "settings": {
+        "page_width": {
+          "label": "页宽"
+        },
+        "header__section_heading": {
+          "content": "章节标题"
+        },
+        "section_heading_alignment": {
+          "label": "文本对齐"
+        },
+        "section_heading_alignment_mobile": {
+          "label": "移动设备上的文本对齐方式"
+        },
+        "spacing_grid_horizontal": {
+          "label": "水平空间"
+        },
+        "spacing_grid_vertical": {
+          "label": "垂直空间"
+        }
+      }
+    },
+    "color_swatches": {
+      "name": "色样",
+      "settings": {
+        "enable_color_swatch": {
+          "label": "启用色样"
+        },
+        "color_swatch_trigger": {
+          "label": "色样触发",
+          "info": "定义哪个是颜色选项。用逗号分隔。例如。颜色,颜色"
+        },
+        "swatch_list": {
+          "label": "样本列表",
+          "info": "每条规则必须独占一行。"
+        }
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "padding": {
+        "section_padding_heading": "部分填充",
+        "padding_top": "顶部填充",
+        "padding_bottom": "底部填充"
+      },
+      "container": {
+        "label": "容器",
+        "options__fixed": {
+          "label": "固定宽度"
+        },
+        "options__full": {
+          "label": "全屏宽度"
+        },
+        "options__narrow": {
+          "label": "狭窄的"
+        },
+        "options__small": {
+          "label": "小的"
+        }
+      },
+      "colors": {
+        "label": "配色方案",
+        "container": {
+          "label": "容器配色方案"
+        }
+      },
+      "use_color_scheme_in_container": {
+        "label": "在容器中使用配色方案"
+      },
+      "text_size": {
+        "title": {
+          "label": "标题大小"
+        },
+        "heading": {
+          "label": "标题大小"
+        },
+        "text": {
+          "label": "字体大小"
+        },
+        "description": {
+          "label": "描述尺寸"
+        },
+        "options__hd1": {
+          "label": "显示xl"
+        },
+        "options__hd2": {
+          "label": "显示lg"
+        },
+        "options__hd3": {
+          "label": "显示MD"
+        },
+        "options__h1": {
+          "label": "标题 2xl"
+        },
+        "options__h2": {
+          "label": "标题 xl"
+        },
+        "options__h3": {
+          "label": "标题lg"
+        },
+        "options__h4": {
+          "label": "标题MD"
+        },
+        "options__h5": {
+          "label": "标题 sm"
+        },
+        "options__h6": {
+          "label": "标题 xs"
+        },
+        "options__subheading": {
+          "label": "副标题"
+        },
+        "options__inherit": {
+          "label": "继承"
+        },
+        "options__base": {
+          "label": "底座尺寸"
+        },
+        "options__small": {
+          "label": "小的"
+        },
+        "options__large": {
+          "label": "大的"
+        }
+      },
+      "heading_size": {
+        "label": "标题大小",
+        "options__0": {
+          "label": "特小号"
+        },
+        "options__1": {
+          "label": "小的"
+        },
+        "options__2": {
+          "label": "中等的"
+        },
+        "options__3": {
+          "label": "大的"
+        },
+        "options__4": {
+          "label": "特大号"
+        }
+      },
+      "heading_tag": {
+        "label": "标题标签",
+        "options__1": {
+          "label": "H1"
+        },
+        "options__2": {
+          "label": "H2"
+        },
+        "options__3": {
+          "label": "H3"
+        },
+        "options__4": {
+          "label": "H4"
+        },
+        "options__5": {
+          "label": "H5"
+        },
+        "options__6": {
+          "label": "H6"
+        },
+        "info": "为SEO和搜索引擎的抓取目的指定标题标签类型。"
+      },
+      "text_alignment": {
+        "label": "文本对齐",
+        "options__1": {
+          "label": "左边"
+        },
+        "options__2": {
+          "label": "中心"
+        },
+        "options__3": {
+          "label": "正确的"
+        }
+      },
+      "custom_font_weight": {
+        "label": "字体粗细",
+        "options__1": {
+          "label": "字体标题"
+        },
+        "options__2": {
+          "label": "字体主体"
+        },
+        "options__3": {
+          "label": "字体加粗"
+        },
+        "options__4": {
+          "label": "字体粗体"
+        }
+      },
+      "font_style": {
+        "label": "字体样式",
+        "options__1": {
+          "label": "普通的"
+        },
+        "options__2": {
+          "label": "斜体"
+        }
+      },
+      "general": {
+        "name": "一般的"
+      },
+      "content": {
+        "name": "内容"
+      },
+      "card_settings": {
+        "name": "卡设置"
+      },
+      "section_header": {
+        "content": "节标题"
+      },
+      "highlight_text": {
+        "header": {
+          "content": "突出显示文本"
+        },
+        "paragraph": {
+          "content": "要为文本添加动画突出显示，只需将其用斜体括起来即可。单击编辑器中的“I”按钮可在突出显示文本时切换斜体。"
+        },
+        "settings": {
+          "highlight_style": {
+            "label": "突出显示的文本",
+            "options__1": {
+              "label": "没有任何"
+            },
+            "options__2": {
+              "label": "强调"
+            }
+          }
+        }
+      },
+      "heading": {
+        "label": "标题",
+        "name": "标题",
+        "content": "标题"
+      },
+      "subheading": {
+        "label": "副标题",
+        "name": "副标题"
+      },
+      "description": {
+        "label": "描述"
+      },
+      "text": {
+        "name": "文本",
+        "label": "文本"
+      },
+      "link": {
+        "label": "关联"
+      },
+      "button": {
+        "label": "按钮",
+        "name": "按钮",
+        "header": {
+          "content": "按钮设置"
+        },
+        "button_label": {
+          "label": "按钮标签",
+          "info": "留空以隐藏按钮"
+        },
+        "button_link": {
+          "label": "按钮链接"
+        },
+        "button_style": {
+          "label": "纽扣款式",
+          "options__1": {
+            "label": "主按钮"
+          },
+          "options__2": {
+            "label": "辅助按钮"
+          },
+          "options__3": {
+            "label": "白色按钮"
+          },
+          "options__4": {
+            "label": "下划线按钮"
+          },
+          "options__5": {
+            "label": "带边框的图标按钮"
+          },
+          "options__6": {
+            "label": "空白按钮"
+          }
+        }
+      },
+      "show_button_on_section_heading": {
+        "label": "显示在桌面上的标题部分"
+      },
+      "divider": {
+        "content": "分区分隔线",
+        "settings": {
+          "show_divider": {
+            "label": "显示分隔线"
+          },
+          "divider_width": {
+            "label": "分隔线宽度"
+          }
+        }
+      },
+      "image": {
+        "label": "图像",
+        "name": "图像",
+        "content": "图像"
+      },
+      "first_image": {
+        "label": "第一张图片"
+      },
+      "second_image": {
+        "label": "第二张图片"
+      },
+      "third_image": {
+        "label": "第三张图片"
+      },
+      "fourth_image": {
+        "label": "第四张图片"
+      },
+      "fifth_image": {
+        "label": "第五张图片"
+      },
+      "image_mobile": {
+        "label": "图片手机"
+      },
+      "image_overlay_opacity": {
+        "label": "图像叠加不透明度"
+      },
+      "image_position": {
+        "label": "图像位置",
+        "desktop": {
+          "label": "桌面图像位置"
+        },
+        "options__1": {
+          "label": "左边"
+        },
+        "options__2": {
+          "label": "正确的"
+        },
+        "info": "Ensure the position is less than or equal to the total number of products per page. Otherwise, this block will not appear"
+      },
+      "image_width": {
+        "label": "图片宽度",
+        "desktop": {
+          "label": "桌面图像宽度"
+        },
+        "mobile": {
+          "label": "移动图像宽度"
+        }
+      },
+      "background_image": {
+        "label": "背景图"
+      },
+      "card_link": {
+        "label": "卡片链接"
+      },
+      "video_type": {
+        "label": "视频类型",
+        "options__1": {
+          "label": "外部的"
+        },
+        "options__2": {
+          "label": "Shopify 托管"
+        }
+      },
+      "shopify_video": {
+        "label": "Shopify 托管的视频"
+      },
+      "external_video": {
+        "label": "外部视频网址"
+      },
+      "video_alt": {
+        "label": "视频替代文本"
+      },
+      "layout": {
+        "label": "布局",
+        "options__1": {
+          "label": "垂直的"
+        },
+        "options__2": {
+          "label": "水平的"
+        },
+        "options__3": {
+          "label": "立柱"
+        },
+        "options__4": {
+          "label": "左栏"
+        },
+        "options__5": {
+          "label": "右栏"
+        }
+      },
+      "grid": {
+        "name": "网格设置",
+        "product_limit": "显示的最大产品数",
+        "columns_desktop": {
+          "label": "桌面上的列数",
+          "options__1": {
+            "label": "1 列"
+          },
+          "options__2": {
+            "label": "2 列"
+          }
+        },
+        "column_gap": {
+          "label": "柱间隙",
+          "options__xl": {
+            "label": "特大号"
+          },
+          "options__lg": {
+            "label": "大的"
+          },
+          "options__md": {
+            "label": "中等的"
+          },
+          "options__sm": {
+            "label": "小的"
+          },
+          "options__xs": {
+            "label": "特小号"
+          },
+          "options__none": {
+            "label": "没有任何"
+          }
+        },
+        "row_gap": {
+          "label": "行距",
+          "options__xl": {
+            "label": "特大号"
+          },
+          "options__lg": {
+            "label": "大的"
+          },
+          "options__md": {
+            "label": "中等的"
+          },
+          "options__sm": {
+            "label": "小的"
+          },
+          "options__xs": {
+            "label": "特小号"
+          },
+          "options__none": {
+            "label": "没有任何"
+          },
+          "options__inherit": {
+            "label": "与柱间隙相同"
+          }
+        }
+      },
+      "custom_classes": {
+        "label": "定制课程"
+      },
+      "form": {
+        "placeholder": {
+          "label": "占位符"
+        },
+        "required": {
+          "label": "必需的"
+        },
+        "label": {
+          "label": "标签"
+        },
+        "text": {
+          "name": "文本"
+        },
+        "phone": {
+          "name": "电话"
+        },
+        "textarea": {
+          "name": "文本区"
+        },
+        "checkbox": {
+          "name": "复选框"
+        },
+        "radio": {
+          "name": "收音机"
+        },
+        "select": {
+          "name": "选择"
+        }
+      },
+      "carousel": {
+        "name": "轮播设置",
+        "enable_carousel": "在桌面上启用轮播",
+        "show_dots": "显示分页",
+        "show_nav": "显示导航",
+        "autoplay": "自动旋转内容",
+        "autoplay_delay": "每隔一段时间更换一次幻灯片",
+        "pagination_position": {
+          "label": "控制位置",
+          "options__1": {
+            "label": "左下方"
+          },
+          "options__2": {
+            "label": "底部中心"
+          },
+          "options__3": {
+            "label": "右下角"
+          },
+          "options__4": {
+            "label": "左下"
+          },
+          "options__5": {
+            "label": "中心下方"
+          },
+          "options__6": {
+            "label": "右下"
+          }
+        }
+      },
+      "mobile": {
+        "name": "移动布局",
+        "columns_mobile": {
+          "label": "移动设备上的列数",
+          "options__1": {
+            "label": "1 列"
+          },
+          "options__2": {
+            "label": "2 列"
+          }
+        },
+        "swipe_on_mobile": {
+          "label": "在移动设备上启用滑动功能"
+        }
+      },
+      "design": {
+        "label": "设计",
+        "options__1": {
+          "label": "设计1"
+        },
+        "options__2": {
+          "label": "设计2"
+        }
+      },
+      "product_cards": {
+        "header": "产品卡"
+      },
+      "collection": {
+        "label": "收藏",
+        "title": {
+          "label": "标题",
+          "info": "留空以使用集合的标题"
+        },
+        "description": {
+          "label": "描述",
+          "info": "留空以使用集合的描述"
+        }
+      },
+      "blog": {
+        "label": "博客"
+      },
+      "header__block_settings": {
+        "content": "区块设置"
+      },
+      "block_width": {
+        "label": "集装箱宽度"
+      },
+      "enable_sticky_column": {
+        "label": "在桌面上启用粘性列"
+      },
+      "custom_attr": {
+        "header": "自定义属性",
+        "custom_class": "定制课程",
+        "custom_id": "自定义ID"
+      },
+      "icon": {
+        "label": "图标",
+        "options__1": {
+          "label": "没有任何"
+        },
+        "options__2": {
+          "label": "证书"
+        },
+        "options__3": {
+          "label": "三叶草"
+        },
+        "options__4": {
+          "label": "五彩纸屑"
+        },
+        "options__5": {
+          "label": "货币圈美元"
+        },
+        "options__6": {
+          "label": "滴管"
+        },
+        "options__7": {
+          "label": "齿轮"
+        },
+        "options__8": {
+          "label": "礼物"
+        },
+        "options__9": {
+          "label": "地球"
+        },
+        "options__10": {
+          "label": "心"
+        },
+        "options__11": {
+          "label": "包裹"
+        },
+        "options__12": {
+          "label": "四星"
+        },
+        "options__13": {
+          "label": "卡车"
+        },
+        "options__14": {
+          "label": "统治者"
+        },
+        "options__15": {
+          "label": "检查圆圈"
+        },
+        "options__16": {
+          "label": "地图别针"
+        },
+        "options__17": {
+          "label": "标签"
+        },
+        "options__18": {
+          "label": "回收"
+        },
+        "options__19": {
+          "label": "查看"
+        },
+        "options__20": {
+          "label": "左上箭头"
+        },
+        "options__21": {
+          "label": "云"
+        },
+        "options__22": {
+          "label": "密封检查"
+        },
+        "options__23": {
+          "label": "下降半底"
+        }
+      },
+      "icon_size": {
+        "label": "图标大小",
+        "options__1": {
+          "label": "特小号"
+        },
+        "options__2": {
+          "label": "小的"
+        },
+        "options__3": {
+          "label": "额外介质"
+        },
+        "options__4": {
+          "label": "中等的"
+        },
+        "options__5": {
+          "label": "大的"
+        },
+        "options__6": {
+          "label": "特大号"
+        }
+      },
+      "mobile_settings": {
+        "content": "手机设置"
+      },
+      "content_settings": {
+        "content": "内容设置"
+      },
+      "overlay_opacity": {
+        "label": "叠加不透明度"
+      },
+      "position": {
+        "vertical": {
+          "label": "垂直位置"
+        },
+        "horizontal": {
+          "label": "水平位置"
+        }
+      },
+      "product": {
+        "label": "产品"
+      },
+      "hotspot": {
+        "content": "热点"
+      },
+      "products": {
+        "label": "产品"
+      },
+      "collections": {
+        "label": "收藏"
+      },
+      "desktop_height": {
+        "label": "桌面高度"
+      },
+      "mobile_height": {
+        "label": "移动高度"
+      },
+      "height": {
+        "options__1": {
+          "label": "适应图像"
+        },
+        "options__2": {
+          "label": "特小号"
+        },
+        "options__3": {
+          "label": "小的"
+        },
+        "options__4": {
+          "label": "中等的"
+        },
+        "options__5": {
+          "label": "额外介质"
+        },
+        "options__6": {
+          "label": "大的"
+        },
+        "options__7": {
+          "label": "特大号"
+        },
+        "options__8": {
+          "label": "汽车"
+        }
+      },
+      "enable_parallax_effect": {
+        "label": "启用视差效果"
+      },
+      "parallax_direction": {
+        "label": "视差方向",
+        "options__1": {
+          "label": "垂直的"
+        },
+        "options__2": {
+          "label": "水平的"
+        },
+        "options__3": {
+          "label": "飞涨"
+        }
+      },
+      "header__slider_settings": {
+        "content": "滑块设置"
+      },
+      "slider_position": {
+        "label": "滑块位置",
+        "desktop": {
+          "label": "桌面滑块位置"
+        },
+        "options__1": {
+          "label": "左边"
+        },
+        "options__2": {
+          "label": "正确的"
+        }
+      },
+      "content_width": {
+        "label": "桌面内容宽度"
+      },
+      "icon_style": {
+        "label": "图标风格"
+      },
+      "custom_color": {
+        "use_custom_color": {
+          "label": "使用自定义颜色"
+        },
+        "custom_color": {
+          "label": "定制颜色"
+        }
+      },
+      "custom_width": {
+        "header": {
+          "content": "定制宽度"
+        },
+        "use_custom_width": {
+          "label": "使用自定义宽度"
+        },
+        "desktop_width": {
+          "label": "桌面宽度"
+        },
+        "mobile_width": {
+          "label": "移动宽度"
+        }
+      },
+      "extend_to_screen_edge": {
+        "label": "延伸到屏幕边缘"
+      }
+    },
+    "announcement-bar": {
+      "name": "公告栏",
+      "settings": {
+        "auto_rotate": {
+          "label": "自动轮播公告"
+        },
+        "autoplay_speed": {
+          "label": "改变每一个"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "公告",
+          "settings": {
+            "text": {
+              "label": "文本"
+            },
+            "link": {
+              "label": "关联"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "公告栏"
+      }
+    },
+    "apps": {
+      "name": "应用",
+      "settings": {
+        "include_margins": {
+          "label": "使节边距与主题相同"
+        }
+      },
+      "presets": {
+        "name": "应用"
+      }
+    },
+    "collection-list": {
+      "name": "收藏清单",
+      "settings": {
+        "layout": {
+          "name": "布局",
+          "label": "布局",
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "分裂"
+          }
+        },
+        "card_color_inherited": {
+          "name": "使用部分配色方案"
+        }
+      }
+    },
+    "collections-slider": {
+      "name": "收藏滑块"
+    },
+    "collections-showcase": {
+      "name": "藏品展示",
+      "settings": {
+        "header__collection_settings": {
+          "content": "收藏设置"
+        }
+      }
+    },
+    "collection-image-showcase": {
+      "name": "馆藏形象展示"
+    },
+    "product-tabs": {
+      "name": "产品选项卡",
+      "settings": {
+        "header__view_all_btn": {
+          "content": "查看全部按钮"
+        },
+        "show_all_button_on_top": {
+          "label": "显示在桌面上的标题部分"
+        },
+        "grid_layout": {
+          "label": "网格布局",
+          "info": "当列数超过2时此设置有效，并且轮播设置被禁用。",
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "网格混合"
+          }
+        },
+        "header__tabs": {
+          "content": "选项卡设置"
+        },
+        "tabs_nav_style": {
+          "label": "导航风格",
+          "options__1": {
+            "label": "设计1"
+          },
+          "options__2": {
+            "label": "设计2"
+          }
+        }
+      },
+      "blocks": {
+        "tab": {
+          "name": "标签",
+          "settings": {
+            "title": {
+              "label": "选项卡名称",
+              "info": "留空以使用集合名称"
+            },
+            "collection": {
+              "label": "收藏"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "产品选项卡"
+      }
+    },
+    "testimonials": {
+      "name": "感言",
+      "settings": {
+        "card_settings": {
+          "name": "卡设置",
+          "layout": {
+            "label": "布局",
+            "options__1": {
+              "label": "布局1"
+            },
+            "options__2": {
+              "label": "布局2"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "testimonial": {
+          "name": "感言",
+          "settings": {
+            "show_image": {
+              "label": "显示图像"
+            },
+            "content": {
+              "label": "内容"
+            },
+            "author": {
+              "label": "作者"
+            },
+            "bio": {
+              "label": "简介"
+            },
+            "product": {
+              "label": "产品"
+            },
+            "icon": {
+              "label": "图标",
+              "options__1": {
+                "label": "没有任何"
+              },
+              "options__2": {
+                "label": "1 星"
+              },
+              "options__3": {
+                "label": "2星"
+              },
+              "options__4": {
+                "label": "3 星"
+              },
+              "options__5": {
+                "label": "4 星"
+              },
+              "options__6": {
+                "label": "5 星"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "收藏清单"
+      }
+    },
+    "contact-form": {
+      "name": "联系表",
+      "blocks": {
+        "image_card": {
+          "name": "形象卡",
+          "mobile_settings_header": "手机设置",
+          "settings": {
+            "show_text_below": "显示图片下方的内容"
+          }
+        },
+        "custom_field": {
+          "name": "自定义字段",
+          "paragraph": "自定义字段用于通过您的联系表单收集自定义信息。",
+          "select_header": {
+            "content": "选择",
+            "info": "要求字段类型为“选择”。"
+          },
+          "checkbox_header": {
+            "content": "复选框",
+            "info": "要求字段类型为复选框。"
+          },
+          "radio_header": {
+            "content": "收音机",
+            "info": "要求字段类型为 Radio。"
+          },
+          "settings": {
+            "field_type": {
+              "label": "字段类型",
+              "info": "电话字段类型只能添加一次。",
+              "options__1": {
+                "label": "文本"
+              },
+              "options__2": {
+                "label": "文本区"
+              },
+              "options__3": {
+                "label": "电话"
+              },
+              "options__4": {
+                "label": "选择"
+              },
+              "options__5": {
+                "label": "复选框"
+              },
+              "options__6": {
+                "label": "收音机"
+              }
+            },
+            "full_width": {
+              "label": "全屏宽度"
+            },
+            "checkbox_checked_value": {
+              "label": "检查值"
+            },
+            "checkbox_uncheck_value": {
+              "label": "取消选中值"
+            },
+            "select_options": {
+              "label": "选项",
+              "info": "每个选项均以逗号分隔（例如：选项 1、选项 2、选项 3）。"
+            },
+            "radio_options": {
+              "label": "选项",
+              "info": "每个选项均以逗号分隔（例如：选项 1、选项 2、选项 3）。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "联系表"
+      }
+    },
+    "custom-liquid": {
+      "name": "定制液体",
+      "settings": {
+        "custom_liquid": {
+          "label": "液体码",
+          "info": "添加应用程序片段或其他代码以创建高级自定义。 [了解更多](https://shopify.dev/docs/api/liquid)"
+        }
+      },
+      "presets": {
+        "name": "定制液体"
+      }
+    },
+    "featured-blog": {
+      "name": "博客文章",
+      "settings": {
+        "blog_setting_header": "博客设置",
+        "post_limit": {
+          "label": "要显示的博客文章数"
+        },
+        "show_button": {
+          "label": "显示按钮"
+        },
+        "show_date": {
+          "label": "显示日期"
+        },
+        "show_excerpt": {
+          "label": "显示摘录"
+        }
+      },
+      "blocks": {
+        "tags": {
+          "settings": {
+            "limit": {
+              "label": "要显示的博客标签数量"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "博客文章"
+      }
+    },
+    "featured-collection": {
+      "name": "精选合集",
+      "settings": {
+        "show_collection_description": {
+          "label": "显示管理员的集合描述"
+        },
+        "show_all_button_on_top": {
+          "label": "显示在标题部分"
+        }
+      },
+      "presets": {
+        "name": "精选合集"
+      }
+    },
+    "featured-product": {
+      "name": "特色产品",
+      "settings": {
+        "product": {
+          "label": "产品"
+        }
+      },
+      "presets": {
+        "name": "特色产品"
+      }
+    },
+    "footer": {
+      "name": "页脚",
+      "blocks": {
+        "general": {
+          "mobile_settings_header": "手机设置",
+          "settings": {
+            "block_width": {
+              "label": "宽度 （％）"
+            },
+            "image_width": {
+              "label": "图片宽度"
+            },
+            "open_default": {
+              "label": "打开默认"
+            }
+          }
+        },
+        "link_list": {
+          "name": "菜单",
+          "settings": {
+            "menu": {
+              "label": "菜单",
+              "info": "仅显示顶级菜单项。"
+            }
+          }
+        },
+        "contact_information": {
+          "name": "联系信息",
+          "settings": {
+            "address": {
+              "label": "地址"
+            },
+            "working_hours": {
+              "label": "工作时间"
+            },
+            "email": {
+              "label": "电子邮件"
+            },
+            "phone": {
+              "label": "电话"
+            }
+          }
+        },
+        "image_text": {
+          "name": "图片和文字"
+        },
+        "newsletter": {
+          "name": "通讯",
+          "settings": {
+            "newsletter_term": {
+              "label": "条款和政策文本"
+            },
+            "form_width": {
+              "label": "表单宽度（像素）"
+            },
+            "order_first": {
+              "label": "先下单"
+            }
+          }
+        }
+      },
+      "settings": {
+        "header__1": {
+          "content": "电子邮件注册",
+          "info": "订阅者会自动添加到您的“接受营销”客户列表中。 [了解更多](https://help.shopify.com/manual/customers/manage-customers)"
+        },
+        "header__2": {
+          "content": "社交媒体图标",
+          "info": "要显示您的社交媒体帐户，请在[主题设置](/editor?context=theme&category=social%20media)中链接它们。"
+        },
+        "show_social": {
+          "label": "显示社交媒体图标"
+        },
+        "header__3": {
+          "content": "国家/地区选择器"
+        },
+        "header__4": {
+          "info": "要添加国家/地区，请转到您的[市场设置](/admin/settings/markets) or [Read How-to](https://foxecom.link/nxqz-w)"
+        },
+        "enable_country_selector": {
+          "label": "启用国家/地区选择器"
+        },
+        "header__5": {
+          "content": "语言选择器"
+        },
+        "header__6": {
+          "info": "要添加语言，请转到您的[语言设置](/admin/settings/linguals)"
+        },
+        "enable_language_selector": {
+          "label": "启用语言选择器"
+        },
+        "header__7": {
+          "content": "支付方式"
+        },
+        "payment_enable": {
+          "label": "显示付款图标"
+        },
+        "margin_top": {
+          "label": "上边距"
+        },
+        "header__9": {
+          "content": "关注商店",
+          "info": "要允许客户从您的店面在 Shop 应用上关注您的商店，必须启用 Shop Pay。 [了解更多](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
+        },
+        "enable_follow_on_shop": {
+          "label": "启用关注商店"
+        },
+        "header__10": {
+          "content": "页脚底部"
+        },
+        "footer_bottom_menu": {
+          "label": "菜单"
+        }
+      }
+    },
+    "header": {
+      "name": "标头",
+      "paragraph": {
+        "content": "在[主题设置](/editor?context=theme&category=logo)中编辑您的徽标。"
+      },
+      "settings": {
+        "menu": {
+          "label": "菜单"
+        },
+        "menu_mobile": {
+          "label": "菜单手机"
+        },
+        "menu_trigger": {
+          "label": "下拉菜单触发器",
+          "options__1": {
+            "label": "点击"
+          },
+          "options__2": {
+            "label": "徘徊"
+          }
+        },
+        "header_layout": {
+          "label": "标题布局",
+          "options__1": {
+            "label": "徽标左侧，菜单中心"
+          },
+          "options__2": {
+            "label": "徽标居中，菜单左侧"
+          },
+          "options__3": {
+            "label": "标志居中，菜单分割"
+          }
+        },
+        "header_sticky": {
+          "label": "标头粘性",
+          "options__1": {
+            "label": "没有任何"
+          },
+          "options__2": {
+            "label": "总是"
+          },
+          "options__3": {
+            "label": "向上滚动时"
+          }
+        },
+        "show_sperator_line": {
+          "label": "显示分隔线"
+        },
+        "hide_sperator_on_pages": {
+          "label": "在页面上隐藏分离器线",
+          "info": "输入模板名称或模板后缀。用逗号分开每个项目。例如：索引，收集，大约是..."
+        },
+        "transparent_header": {
+          "content": "透明标头",
+          "enable_transparent_header": {
+            "label": "启用透明标头"
+          },
+          "transparent_header_color": {
+            "label": "颜色"
+          }
+        },
+        "customer_account": {
+          "content": "客户账户",
+          "paragraph": "在客户账户设置中[管理可见性](/admin/settings/customer_accounts)。",
+          "menu": {
+            "label": "菜单"
+          }
+        },
+        "mobile_layout": {
+          "content": "移动布局"
+        },
+        "logo_mobile_position": {
+          "label": "标志位置",
+          "options__1": "左边",
+          "options__2": "中心"
+        },
+        "show_social_media_icons": {
+          "label": "显示媒体社交图标"
+        },
+        "enable_language_selector": {
+          "label": "启用语言选择器",
+          "info": "要添加语言，请转到[语言设置]。(/admin/settings/languages)"
+        },
+        "enable_country_selector": {
+          "label": "启用国家/地区选择器",
+          "info": "要添加国家/地区，请转到[市场设置](/admin/settings/markets) or [Read How-to](https://foxecom.link/nxqz-w)"
+        },
+        "enable_megamenu_mobile": {
+          "label": "启用mega菜单手机"
+        }
+      },
+      "blocks": {
+        "all": {
+          "menu_title": {
+            "label": "菜单项"
+          },
+          "menu_columns": {
+            "label": "菜单栏"
+          },
+          "banners": {
+            "label": "横幅"
+          },
+          "Cards": {
+            "label": "牌"
+          },
+          "promotions_width": {
+            "label": "宽度"
+          },
+          "promotion_columns": {
+            "label": "列数"
+          },
+          "link": {
+            "label": "关联"
+          }
+        },
+        "promotion_banner": {
+          "name": "横幅（大型菜单）",
+          "settings": {
+            "header__1": {
+              "label": "横幅#1"
+            },
+            "header__2": {
+              "label": "横幅 #2"
+            },
+            "header__3": {
+              "label": "横幅 #3"
+            },
+            "header__4": {
+              "label": "横幅 #4"
+            },
+            "header__5": {
+              "label": "横幅 #5"
+            }
+          }
+        },
+        "custom_card": {
+          "name": "自定义卡（大型菜单）",
+          "settings": {
+            "header__1": {
+              "label": "定制卡#1"
+            },
+            "header__2": {
+              "label": "定制卡#2"
+            },
+            "header__3": {
+              "label": "定制卡#3"
+            },
+            "header__4": {
+              "label": "定制卡#4"
+            },
+            "header__5": {
+              "label": "定制卡#5"
+            }
+          }
+        },
+        "product_list": {
+          "name": "产品列表（大型菜单）",
+          "header__1": {
+            "content": "产品列表"
+          },
+          "settings": {
+            "show_menu_column_divider": {
+              "label": "显示菜单列分隔线"
+            }
+          }
+        }
+      }
+    },
+    "breadcrumbs": {
+      "name": "面包屑"
+    },
+    "image-with-text": {
+      "name": "带文字的图像",
+      "settings": {
+        "layout": {
+          "options__1": {
+            "label": "图片优先"
+          },
+          "options__2": {
+            "label": "图片第二"
+          },
+          "label": "桌面图像放置"
+        }
+      },
+      "presets": {
+        "name": "带文字的图像"
+      }
+    },
+    "main-account": {
+      "name": "帐户"
+    },
+    "main-activate-account": {
+      "name": "帐号激活"
+    },
+    "main-addresses": {
+      "name": "地址"
+    },
+    "main-article": {
+      "name": "博客文章",
+      "settings": {
+        "featured_image": {
+          "name": "特色图片"
+        },
+        "related_posts": {
+          "name": "相关文章",
+          "show_related_posts": {
+            "label": "显示相关帖子"
+          }
+        },
+        "comments": {
+          "label": "评论"
+        }
+      },
+      "blocks": {
+        "title": {
+          "name": "标题",
+          "settings": {
+            "show_date": {
+              "label": "显示日期"
+            },
+            "show_author": {
+              "label": "显示作者"
+            },
+            "show_blog": {
+              "label": "显示博客"
+            }
+          }
+        },
+        "content": {
+          "name": "内容"
+        },
+        "share": {
+          "name": "分享",
+          "settings": {
+            "show_tags": {
+              "label": "标签"
+            },
+            "show_share": {
+              "label": "显示分享按钮"
+            }
+          }
+        },
+        "navigation": {
+          "name": "导航"
+        }
+      }
+    },
+    "main-blog": {
+      "name": "博客文章",
+      "settings": {},
+      "blocks": {
+        "tags": {
+          "name": "标签"
+        },
+        "featured_post": {
+          "name": "特色帖子",
+          "paragraph": "显示每页的第一篇文章"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "收藏横幅",
+      "settings": {
+        "show_collection_image": {
+          "label": "显示收集图像"
+        },
+        "paragraph": {
+          "content": "通过编辑您的收藏来添加描述或图像。 [了解更多](https://help.shopify.com/manual/products/collections/collection-layout)"
+        },
+        "settings_header": {
+          "label": "设置"
+        },
+        "image_position": {
+          "label": "图像位置",
+          "options__1": {
+            "label": "顶部"
+          },
+          "options__2": {
+            "label": "正确的"
+          },
+          "options__3": {
+            "label": "底部"
+          },
+          "options__4": {
+            "label": "左边"
+          },
+          "options__5": {
+            "label": "使用图像作为背景"
+          }
+        },
+        "mobile_settings_header": {
+          "label": "手机设置"
+        }
+      },
+      "blocks": {
+        "collection_info": {
+          "name": "收藏信息",
+          "settings": {
+            "show_description": {
+              "label": "显示集合描述"
+            }
+          }
+        },
+        "empty_space": {
+          "name": "空的空间",
+          "settings": {
+            "desktop_height": {
+              "label": "桌面高度"
+            },
+            "mobile_height": {
+              "label": "移动高度"
+            }
+          }
+        }
+      }
+    },
+    "main-collection-product-grid": {
+      "name": "产品网格",
+      "settings": {
+        "products_per_page": {
+          "label": "每页产品数"
+        },
+        "columns_desktop": {
+          "label": "桌面上的列数"
+        },
+        "enable_filtering": {
+          "label": "启用过滤",
+          "info": "使用搜索和发现应用程序自定义过滤器。 [了解更多](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
+        },
+        "filter_type": {
+          "label": "桌面过滤器布局",
+          "options__1": {
+            "label": "水平的"
+          },
+          "options__2": {
+            "label": "垂直的"
+          },
+          "options__3": {
+            "label": "抽屉"
+          },
+          "info": "抽屉是默认的移动布局。"
+        },
+        "enable_sorting": {
+          "label": "启用排序"
+        },
+        "image_ratio": {
+          "label": "图像比例",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "肖像"
+          },
+          "options__3": {
+            "label": "正方形"
+          }
+        },
+        "show_secondary_image": {
+          "label": "悬停时显示第二张图像"
+        },
+        "show_vendor": {
+          "label": "显示供应商"
+        },
+        "header__1": {
+          "content": "过滤和排序"
+        },
+        "header__3": {
+          "content": "产品卡"
+        },
+        "enable_tags": {
+          "label": "启用过滤",
+          "info": "使用搜索和发现应用程序自定义过滤器。 [了解更多](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
+        },
+        "quick_add": {
+          "label": "快速添加",
+          "info": "批量针对大量购买的商品进行了优化。",
+          "options": {
+            "option_1": "没有任何",
+            "option_2": "标准",
+            "option_3": "大部分"
+          }
+        },
+        "header_mobile": {
+          "content": "移动布局"
+        },
+        "columns_mobile": {
+          "label": "移动设备上的列数",
+          "options__1": {
+            "label": "1 列"
+          },
+          "options__2": {
+            "label": "2 列"
+          }
+        },
+        "pagination": {
+          "label": "分页",
+          "options__1": {
+            "label": "无穷"
+          },
+          "options__2": {
+            "label": "加载更多按钮"
+          },
+          "options__3": {
+            "label": "按数字分页"
+          }
+        },
+        "expand_filter_groups": {
+          "label": "展开过滤器组",
+          "info": "每个组过滤器均以逗号分隔。考试：价格、颜色、尺寸"
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "收藏列表页面",
+      "settings": {
+        "title": {
+          "label": "标题"
+        },
+        "sort": {
+          "label": "对集合进行排序：",
+          "options__1": {
+            "label": "按字母顺序，A-Z"
+          },
+          "options__2": {
+            "label": "按字母顺序，Z-A"
+          },
+          "options__3": {
+            "label": "日期，从新到旧"
+          },
+          "options__4": {
+            "label": "日期，从旧到新"
+          },
+          "options__5": {
+            "label": "产品数量，从高到低"
+          },
+          "options__6": {
+            "label": "产品数量，从低到高"
+          }
+        },
+        "image_ratio": {
+          "label": "图像比例",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "肖像"
+          },
+          "options__3": {
+            "label": "正方形"
+          },
+          "info": "通过编辑您的收藏来添加图像。 [了解更多](https://help.shopify.com/manual/products/collections)"
+        },
+        "columns_desktop": {
+          "label": "桌面上的列数"
+        },
+        "header_mobile": {
+          "content": "移动布局"
+        },
+        "columns_mobile": {
+          "label": "移动设备上的列数",
+          "options__1": {
+            "label": "1 列"
+          },
+          "options__2": {
+            "label": "2 列"
+          }
+        }
+      }
+    },
+    "main-login": {
+      "name": "登录",
+      "shop_login_button": {
+        "enable": "启用使用商店登录"
+      }
+    },
+    "main-order": {
+      "name": "命令"
+    },
+    "main-page": {
+      "name": "页"
+    },
+    "main-password-footer": {
+      "name": "密码页脚"
+    },
+    "main-password-header": {
+      "name": "密码标头",
+      "settings": {
+        "logo_header": {
+          "content": "标识"
+        },
+        "logo_help": {
+          "content": "在主题设置中编辑您的徽标。"
+        }
+      }
+    },
+    "main-password": {
+      "name": "主密码",
+      "settings": {
+        "bg_color": {
+          "label": "背景颜色"
+        },
+        "bg_image": {
+          "label": "背景图"
+        },
+        "text_color": {
+          "label": "文字颜色"
+        },
+        "show_overlay": {
+          "label": "显示叠加层"
+        },
+        "full_screen": {
+          "label": "全屏"
+        },
+        "logo": {
+          "name": "标识",
+          "width": {
+            "label": "宽度"
+          },
+          "image": {
+            "label": "图像"
+          }
+        },
+        "heading": {
+          "name": "标题",
+          "label": "标题"
+        },
+        "newsletter": {
+          "name": "通讯",
+          "heading": {
+            "label": "标题"
+          },
+          "subheading": {
+            "label": "副标题"
+          },
+          "label": "标签"
+        },
+        "social": {
+          "name": "社会的",
+          "title": "标题"
+        },
+        "copyright": {
+          "name": "版权"
+        },
+        "content_message": {
+          "name": "内容留言",
+          "header": "密码留言",
+          "info": "在您的[在线商店偏好设置](/admin/online_store/preferences) 中设置的消息"
+        }
+      }
+    },
+    "main-product": {
+      "name": "产品信息",
+      "blocks": {
+        "text": {
+          "name": "文本",
+          "settings": {
+            "text": {
+              "label": "文本"
+            },
+            "text_style": {
+              "label": "文字样式",
+              "options__1": {
+                "label": "身体"
+              },
+              "options__2": {
+                "label": "字幕"
+              },
+              "options__3": {
+                "label": "大写"
+              }
+            }
+          }
+        },
+        "title": {
+          "name": "标题"
+        },
+        "price": {
+          "name": "价格"
+        },
+        "inventory": {
+          "name": "库存状况",
+          "settings": {
+            "text_style": {
+              "label": "文字样式",
+              "options__1": {
+                "label": "身体"
+              },
+              "options__2": {
+                "label": "字幕"
+              },
+              "options__3": {
+                "label": "大写"
+              }
+            },
+            "inventory_threshold": {
+              "label": "库存门槛低",
+              "info": "选择 0 则始终显示有库存（如果有）。"
+            },
+            "show_inventory_quantity": {
+              "label": "显示库存数量"
+            }
+          }
+        },
+        "quantity_selector": {
+          "name": "数量选择器"
+        },
+        "variant_picker": {
+          "name": "变体选择器",
+          "settings": {
+            "picker_type": {
+              "label": "风格",
+              "options__1": {
+                "label": "下拉菜单"
+              },
+              "options__2": {
+                "label": "按钮"
+              }
+            },
+            "button_style": {
+              "label": "形状",
+              "options__1": {
+                "label": "普通的"
+              },
+              "options__2": {
+                "label": "圆圈"
+              },
+              "options__3": {
+                "label": "正方形"
+              }
+            },
+            "button_size": {
+              "label": "尺寸"
+            },
+            "header__color_swatches": {
+              "content": "样本",
+              "paragraph": {
+                "content": "色板是小型视觉指示器，显示可供客户使用的产品的颜色、图案和材料。要应用样本，请将样式设置为“按钮”"
+              }
+            },
+            "enable_color_swatches": {
+              "label": "启用色样",
+              "info": "要求变体选择器样式为“按钮”。"
+            },
+            "swatch_type": {
+              "label": "风格",
+              "options__1": {
+                "label": "色样"
+              },
+              "options__2": {
+                "label": "变体图像"
+              },
+              "options__3": {
+                "label": "Shopify 样本"
+              },
+              "options__4": {
+                "label": "文本"
+              }
+            },
+            "size_chart": {
+              "content": "尺码表设置",
+              "form_option_title": {
+                "label": "尺寸选项标题",
+                "info": "输入您想要显示尺寸指南按钮的选项标题，以逗号分隔"
+              },
+              "from_page": {
+                "label": "页面内容",
+                "info": "从所选页面的内容中获取尺码表。该内容将覆盖上面的内容。"
+              },
+              "custom": {
+                "content": "定制尺寸表",
+                "info": "显示特定系列或产品的不同尺码表。"
+              },
+              "paragraph_2": {
+                "content": "使用命名空间和键为产品创建自定义元字段：“foxtheme.size_chart”。 [添加元字段](/admin/metafields/product)"
+              }
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "购买按钮",
+          "settings": {
+            "show_quantity_selector": {
+              "label": "显示数量选择器"
+            },
+            "show_dynamic_checkout": {
+              "label": "显示动态结帐按钮",
+              "info": "使用商店中提供的付款方式，客户可以看到他们的首选选项，例如 PayPal 或 Apple Pay。 [了解更多](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+            },
+            "show_gift_card_recipient": {
+              "label": "显示礼品卡的收件人信息表",
+              "info": "允许买家在预定日期发送礼品卡以及个人消息。 [了解更多](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+            }
+          }
+        },
+        "pickup_availability": {
+          "name": "提供接送服务"
+        },
+        "description": {
+          "name": "描述"
+        },
+        "sku": {
+          "name": "存货单位",
+          "settings": {
+            "text_style": {
+              "label": "文字样式",
+              "options__1": {
+                "label": "身体"
+              },
+              "options__2": {
+                "label": "字幕"
+              },
+              "options__3": {
+                "label": "大写"
+              }
+            }
+          }
+        },
+        "collapsible_tab": {
+          "name": "折叠排",
+          "settings": {
+            "heading": {
+              "info": "包括解释内容的标题。",
+              "label": "标题"
+            },
+            "content": {
+              "label": "行内容"
+            },
+            "page": {
+              "label": "页面中的行内容"
+            },
+            "default_open": {
+              "label": "默认打开"
+            }
+          }
+        },
+        "popup": {
+          "name": "弹出窗口",
+          "settings": {
+            "link_label": {
+              "label": "链接标签"
+            },
+            "page": {
+              "label": "页"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "配套产品",
+          "settings": {
+            "paragraph": {
+              "content": "要选择互补产品，请添加搜索和发现应用程序。 [了解更多](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)"
+            },
+            "heading": {
+              "label": "标题"
+            },
+            "make_collapsible_row": {
+              "label": "显示为可折叠行"
+            },
+            "icon": {
+              "info": "显示可折叠行时可见。"
+            },
+            "product_list_limit": {
+              "label": "显示的最大产品数"
+            },
+            "products_per_page": {
+              "label": "每页产品数量"
+            },
+            "product_card": {
+              "heading": "产品卡"
+            },
+            "enable_quick_add": {
+              "label": "启用快速添加按钮"
+            }
+          }
+        },
+        "icon_with_text": {
+          "name": "带文字的图标",
+          "settings": {
+            "layout": {
+              "label": "布局",
+              "options__1": {
+                "label": "水平的"
+              },
+              "options__2": {
+                "label": "垂直的"
+              }
+            },
+            "content": {
+              "label": "内容",
+              "info": "为每列或行选择一个图标或添加图像。"
+            },
+            "heading": {
+              "info": "将标题标签留空以隐藏图标列。"
+            },
+            "icon_1": {
+              "label": "第一个图标"
+            },
+            "image_1": {
+              "label": "第一张图片"
+            },
+            "heading_1": {
+              "label": "第一个标题"
+            },
+            "icon_2": {
+              "label": "第二个图标"
+            },
+            "image_2": {
+              "label": "第二张图片"
+            },
+            "heading_2": {
+              "label": "第二标题"
+            },
+            "icon_3": {
+              "label": "第三个图标"
+            },
+            "image_3": {
+              "label": "第三张图片"
+            },
+            "heading_3": {
+              "label": "第三标题"
+            }
+          }
+        },
+        "addons": {
+          "name": "插件按钮",
+          "settings": {
+            "header__share": {
+              "content": "社交分享"
+            },
+            "header__question": {
+              "content": "提问表格"
+            },
+            "show_share": {
+              "label": "显示社交分享"
+            },
+            "featured_image_info": {
+              "content": "如果您在社交媒体帖子中包含链接，则该页面的特色图像将显示为预览图像。 [了解更多](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)。"
+            },
+            "title_info": {
+              "content": "预览图像中包含商店标题和描述。 [了解更多](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)。"
+            },
+            "ask_question": {
+              "label": "显示提问表格",
+              "content": "此表单会将所有提交内容发送到您商店的发件人电子邮件地址。您可以在 Shopify 后台的[商店详细信息](/admin/settings/general) 设置页面中更改发件人电子邮件地址。"
+            }
+          }
+        },
+        "badges": {
+          "name": "徽章和标签",
+          "settings": {
+            "header__tags": {
+              "content": "有效的自定义标签"
+            },
+            "header__badges": {
+              "content": "产品徽章"
+            },
+            "show_sale_badge": {
+              "label": "显示销售徽章"
+            },
+            "show_soldout_badge": {
+              "label": "显示已售完徽章"
+            },
+            "sale_badge_type": {
+              "label": "销售徽章类型",
+              "options__1": {
+                "label": "文本"
+              },
+              "options__2": {
+                "label": "百分比"
+              },
+              "options__3": {
+                "label": "固定值"
+              }
+            }
+          }
+        },
+        "shipping": {
+          "name": "船运",
+          "settings": {
+            "deliver_text": "发送文本",
+            "deliver_days": {
+              "label": "交付于：",
+              "info": "天（+/- 2 天）"
+            },
+            "date_format": {
+              "label": "日期格式",
+              "info": "示例：%m/%d [在此处详细了解日期格式。](http://strftime.net/)"
+            }
+          }
+        },
+        "line_item_property": {
+          "name": "行项目属性",
+          "settings": {
+            "line_item_property_info": {
+              "content": "行项目属性用于收集添加到购物车中的项目的自定义信息。"
+            },
+            "required": {
+              "label": "必需的"
+            },
+            "property_type": {
+              "label": "类型",
+              "options__1": {
+                "label": "文本"
+              },
+              "options__2": {
+                "label": "Textarea"
+              },
+              "options__3": {
+                "label": "选择"
+              },
+              "options__4": {
+                "label": "复选框"
+              },
+              "options__5": {
+                "label": "收音机"
+              }
+            },
+            "property_name": {
+              "label": "标签"
+            },
+            "property_placeholder": {
+              "label": "占位符"
+            },
+            "property_radio_layout": {
+              "label": "布局",
+              "options__1": {
+                "label": "垂直的"
+              },
+              "options__2": {
+                "label": "水平的"
+              }
+            },
+            "property_options": {
+              "label": "选项",
+              "info": "输入按逗号隔开的广播按钮的选项。"
+            },
+            "property_checked_value": {
+              "label": "检查值"
+            },
+            "property_uncheck_value": {
+              "label": "未选中的值"
+            }
+          }
+        }
+      },
+      "settings": {
+        "header": {
+          "content": "媒体",
+          "info": "了解有关[媒体类型的详细信息。](https://help.shopify.com/manual/products/product-media)"
+        },
+        "enable_sticky_info": {
+          "label": "在桌面上启用粘性内容"
+        },
+        "gallery_layout": {
+          "label": "桌面布局",
+          "options__1": {
+            "label": "堆叠式"
+          },
+          "options__2": {
+            "label": "网格混合"
+          },
+          "options__3": {
+            "label": "网格 2 列"
+          },
+          "options__4": {
+            "label": "水平缩略图轮播"
+          },
+          "options__5": {
+            "label": "垂直缩略图轮播"
+          }
+        },
+        "media_size": {
+          "label": "桌面介质宽度",
+          "info": "媒体会自动针对移动设备进行优化。",
+          "options__1": {
+            "label": "小的"
+          },
+          "options__2": {
+            "label": "中等的"
+          },
+          "options__3": {
+            "label": "大的"
+          }
+        },
+        "mobile_thumbnails": {
+          "label": "移动布局",
+          "options__1": {
+            "label": "显示缩略图"
+          },
+          "options__2": {
+            "label": "隐藏缩略图"
+          }
+        },
+        "enable_image_zoom": {
+          "label": "启用图像缩放"
+        },
+        "enable_video_looping": {
+          "label": "启用视频循环"
+        },
+        "default_product_image": {
+          "label": "占位图片",
+          "info": "当产品没有媒体时，用作占位图片。"
+        }
+      }
+    },
+    "sticky-atc-bar": {
+      "name": "粘性添加到购物车栏",
+      "settings": {
+        "visibility": {
+          "label": "能见度",
+          "options__1": {
+            "label": "在所有设备上显示"
+          },
+          "options__2": {
+            "label": "仅在桌面上显示"
+          },
+          "options__3": {
+            "label": "仅在移动设备上显示"
+          },
+          "options__4": {
+            "label": "隐藏"
+          }
+        },
+        "show_atc_button": {
+          "label": "显示添加到购物车按钮"
+        },
+        "show_dynamic_checkout_buttons": {
+          "label": "显示动态结账按钮"
+        },
+        "show_quantity": {
+          "label": "显示数量选择器"
+        }
+      }
+    },
+    "main-register": {
+      "name": "登记"
+    },
+    "main-reset-password": {
+      "name": "重设密码"
+    },
+    "main-search": {
+      "name": "搜索结果",
+      "settings": {
+        "columns_desktop": {
+          "label": "桌面上的列数"
+        },
+        "image_ratio": {
+          "label": "图像比例",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "肖像"
+          },
+          "options__3": {
+            "label": "正方形"
+          }
+        },
+        "show_secondary_image": {
+          "label": "悬停时显示第二张图像"
+        },
+        "show_vendor": {
+          "label": "显示供应商"
+        },
+        "header__1": {
+          "content": "产品卡"
+        },
+        "header__2": {
+          "content": "博客卡",
+          "info": "博客卡样式也适用于搜索结果中的页面卡。要更改卡片样式，请更新您的主题设置。"
+        },
+        "article_show_date": {
+          "label": "显示日期"
+        },
+        "article_show_author": {
+          "label": "显示作者"
+        },
+        "article_show_except": {
+          "label": "显示摘录"
+        },
+        "article_show_readmore": {
+          "label": "显示“阅读更多”按钮"
+        },
+        "header_mobile": {
+          "content": "移动布局"
+        },
+        "columns_mobile": {
+          "label": "移动设备上的列数",
+          "options__1": {
+            "label": "1 列"
+          },
+          "options__2": {
+            "label": "2 列"
+          }
+        }
+      }
+    },
+    "main-404": {
+      "name": "404 页面"
+    },
+    "multicolumn": {
+      "name": "多列",
+      "settings": {
+        "image_width": {
+          "label": "图片宽度",
+          "options__1": {
+            "label": "列的全宽"
+          },
+          "options__2": {
+            "label": "大的"
+          },
+          "options__3": {
+            "label": "中等的"
+          },
+          "options__4": {
+            "label": "小的"
+          },
+          "options__5": {
+            "label": "原来的"
+          },
+          "options__6": {
+            "label": "特大号"
+          }
+        },
+        "mobile_layout": {
+          "label": "布局",
+          "options__1": {
+            "label": "垂直的"
+          },
+          "options__2": {
+            "label": "水平的"
+          }
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "柱子",
+          "settings": {
+            "show_image": {
+              "label": "显示图像"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "多列"
+      }
+    },
+    "newsletter": {
+      "name": "电子邮件注册",
+      "form_settings_header": "表单设置",
+      "presets": {
+        "name": "电子邮件注册"
+      }
+    },
+    "layered-images-with-text": {
+      "name": "带文字的分层图像"
+    },
+    "favorite-products": {
+      "name": "最喜欢的产品",
+      "blocks": {
+        "product": {
+          "settings": {
+            "quote": {
+              "label": "引用"
+            },
+            "author": {
+              "label": "作者"
+            },
+            "bio": {
+              "label": "简介"
+            }
+          }
+        }
+      }
+    },
+    "related-products": {
+      "name": "相关产品",
+      "settings": {
+        "paragraph__1": {
+          "content": "动态推荐使用订单和产品信息来随着时间的推移而改变和改进。 [了解更多](https://help.shopify.com/themes/development/recommended-products)"
+        }
+      }
+    },
+    "recently-viewed-products": {
+      "name": "最近浏览的产品"
+    },
+    "products-showcase": {
+      "name": "产品展示",
+      "settings": {
+        "products": {
+          "label": "产品"
+        },
+        "pcard_description_display": {
+          "label": "显示说明",
+          "options__1": {
+            "label": "没有任何"
+          },
+          "options__2": {
+            "label": "1 行"
+          },
+          "options__3": {
+            "label": "2行"
+          },
+          "options__4": {
+            "label": "3行"
+          }
+        }
+      },
+      "presets": {
+        "name": "产品展示"
+      }
+    },
+    "featured-products-tab": {
+      "name": "特色产品选项卡",
+      "blocks": {
+        "tab": {
+          "name": "标签",
+          "settings": {
+            "title": {
+              "label": "选项卡名称"
+            },
+            "description": {
+              "label": "选项卡说明"
+            },
+            "products": {
+              "label": "产品"
+            },
+            "collection": {
+              "label": "收藏",
+              "info": "如果产品列表为空，则将显示集合产品。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "特色产品选项卡"
+      }
+    },
+    "product-list-with-details": {
+      "name": "包含详细信息的产品列表",
+      "settings": {
+        "product_details": {
+          "content": "产品详情"
+        }
+      }
+    },
+    "lookbook-common": {
+      "settings": {
+        "header__image_settings": {
+          "content": "图像设置"
+        },
+        "annotation_color": {
+          "label": "热点颜色",
+          "options__1": {
+            "label": "光"
+          },
+          "options__2": {
+            "label": "黑暗的"
+          }
+        }
+      },
+      "blocks": {
+        "product": {
+          "name": "产品",
+          "settings": {
+            "select_product": {
+              "label": "选择产品"
+            },
+            "header__hotspot": {
+              "content": "热点"
+            },
+            "offset_top": {
+              "label": "垂直对齐"
+            },
+            "offset_left": {
+              "label": "水平对齐"
+            },
+            "header__hotspot_mobile": {
+              "content": "手机上的热点",
+              "paragraph__1": "如果图像移动可用，则调整移动设备上的热点位置。"
+            }
+          }
+        }
+      }
+    },
+    "lookbook-banner": {
+      "name": "造型册横幅",
+      "presets": {
+        "name": "造型册横幅"
+      },
+      "settings": {
+        "header__scrolling_settings": {
+          "content": "滚动促销设置"
+        },
+        "scrolling_direction": {
+          "label": "方向",
+          "options__1": {
+            "label": "开始"
+          },
+          "options__2": {
+            "label": "结尾"
+          }
+        },
+        "scrolling_speed": {
+          "label": "速度"
+        },
+        "pause_on_hover": {
+          "label": "悬停时暂停滚动"
+        }
+      },
+      "blocks": {
+        "scrolling_text": {
+          "name": "滚动文本",
+          "settings": {
+            "text": {
+              "label": "文本"
+            },
+            "link": {
+              "label": "关联"
+            }
+          }
+        }
+      }
+    },
+    "lookbook-slider": {
+      "name": "Lookbook滑块",
+      "settings": {
+        "product_per_slide": {
+          "label": "每行产品数"
+        }
+      },
+      "presets": {
+        "name": "Lookbook滑块"
+      }
+    },
+    "lookbook-cards": {
+      "name": "画册卡"
+    },
+    "image-comparison": {
+      "name": "图像滑块之前/之后",
+      "settings": {
+        "header__image_settings": {
+          "content": "图像设置之前/之后"
+        },
+        "direction": {
+          "label": "方向",
+          "options__1": {
+            "label": "水平的"
+          },
+          "options__2": {
+            "label": "垂直的"
+          }
+        },
+        "image_height": {
+          "label": "图像高度",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "小的"
+          },
+          "options__3": {
+            "label": "中等的"
+          },
+          "options__4": {
+            "label": "大的"
+          }
+        },
+        "image_heading_style": {
+          "label": "图片标题样式",
+          "options__1": {
+            "label": "徽章"
+          },
+          "options__2": {
+            "label": "纯文本"
+          }
+        },
+        "product": {
+          "label": "产品"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "图像",
+          "settings": {
+            "heading": {
+              "label": "图片标题"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "图像滑块之前/之后"
+      }
+    },
+    "media-with-collection": {
+      "name": "媒体与收藏",
+      "settings": {
+        "header__image_settings": {
+          "content": "图像设置"
+        },
+        "media_position": {
+          "label": "桌面媒体位置",
+          "options__1": {
+            "label": "左边"
+          },
+          "options__2": {
+            "label": "正确的"
+          }
+        },
+        "product_per_slide": {
+          "label": "每行产品数"
+        }
+      },
+      "presets": {
+        "name": "媒体与收藏"
+      }
+    },
+    "rich-text": {
+      "name": "富文本",
+      "presets": {
+        "name": "富文本"
+      }
+    },
+    "video": {
+      "name": "视频",
+      "settings": {
+        "heading": {
+          "label": "标题"
+        },
+        "cover_image": {
+          "label": "封面图片"
+        },
+        "video": {
+          "label": "视频"
+        },
+        "enable_video_looping": {
+          "label": "启用视频循环"
+        },
+        "enable_video_autoplay": {
+          "label": "启用视频自动播放",
+          "info": "视频会自动静音以允许自动播放。"
+        },
+        "header__1": {
+          "content": "Shopify 托管的视频"
+        },
+        "header__2": {
+          "content": "或者从 URL 嵌入视频"
+        },
+        "paragraph": {
+          "content": "当未选择 Shopify 托管的视频时显示。"
+        },
+        "video_url": {
+          "label": "网址",
+          "info": "使用 YouTube 或 Vimeo URL"
+        },
+        "description": {
+          "label": "视频替代文本",
+          "info": "为使用屏幕阅读器的客户描述该视频。 [了解更多](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video)"
+        },
+        "video_ratio": {
+          "label": "视频比例",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "正方形 (1:1)"
+          },
+          "options__3": {
+            "label": "风景 (4:3)"
+          },
+          "options__4": {
+            "label": "肖像 (4:5)"
+          },
+          "options__5": {
+            "label": "宽屏 (16:9)"
+          },
+          "options__6": {
+            "label": "垂直 (9:16)"
+          }
+        },
+        "video_height": {
+          "label": "视频高度",
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "特小号"
+          },
+          "options__3": {
+            "label": "小的"
+          },
+          "options__4": {
+            "label": "中等的"
+          },
+          "options__5": {
+            "label": "额外介质"
+          },
+          "options__6": {
+            "label": "大的"
+          },
+          "options__7": {
+            "label": "特大号"
+          },
+          "options__8": {
+            "label": "汽车"
+          }
+        },
+        "video_placement": {
+          "label": "桌面视频放置",
+          "info": "视频优先是默认的移动布局。",
+          "options__1": {
+            "label": "视频优先"
+          },
+          "options__2": {
+            "label": "视频第二"
+          }
+        }
+      }
+    },
+    "slideshow": {
+      "name": "幻灯片",
+      "settings": {
+        "slide_height": {
+          "label": "滑块高度",
+          "options__1": {
+            "label": "适应第一张图片"
+          },
+          "options__2": {
+            "label": "小的"
+          },
+          "options__3": {
+            "label": "中等的"
+          },
+          "options__4": {
+            "label": "大的"
+          }
+        },
+        "layout": {
+          "label": "布局",
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "居中"
+          },
+          "options__3": {
+            "label": "分裂"
+          }
+        },
+        "pagination_position": {
+          "label": "控制位置",
+          "options__1": {
+            "label": "里面"
+          },
+          "options__2": {
+            "label": "外部"
+          }
+        },
+        "show_text_below": {
+          "label": "在移动设备上显示图片下方的内容"
+        },
+        "image_overlay_opacity": {
+          "label": "图像叠加不透明度"
+        },
+        "accessibility": {
+          "content": "无障碍",
+          "label": "幻灯片说明",
+          "info": "为使用屏幕阅读器的客户描述幻灯片。"
+        }
+      },
+      "blocks": {
+        "slide_item": {
+          "name": "图片幻灯片",
+          "settings": {
+            "image_desktop": {
+              "label": "桌面图片",
+              "info": "建议 1920 x 900 像素"
+            },
+            "image_mobile": {
+              "label": "手机图片",
+              "info": "建议 600 x 480 像素"
+            },
+            "header__content": {
+              "content": "内容设置"
+            },
+            "box_align": {
+              "label": "桌面内容位置",
+              "info": "位置会针对移动设备自动优化。",
+              "options__1": {
+                "label": "左上方"
+              },
+              "options__2": {
+                "label": "顶部中心"
+              },
+              "options__3": {
+                "label": "右上"
+              },
+              "options__4": {
+                "label": "中左"
+              },
+              "options__5": {
+                "label": "中间中心"
+              },
+              "options__6": {
+                "label": "中右"
+              },
+              "options__7": {
+                "label": "左下方"
+              },
+              "options__8": {
+                "label": "底部中心"
+              },
+              "options__9": {
+                "label": "右下角"
+              }
+            },
+            "show_text_box": {
+              "label": "在桌面上显示容器"
+            },
+            "show_content_in_container": {
+              "label": "在容器中显示内容"
+            },
+            "text_alignment": {
+              "label": "桌面内容对齐",
+              "option_1": {
+                "label": "左边"
+              },
+              "option_2": {
+                "label": "中心"
+              },
+              "option_3": {
+                "label": "正确的"
+              }
+            },
+            "text_alignment_mobile": {
+              "label": "移动内容对齐",
+              "options__1": {
+                "label": "左边"
+              },
+              "options__2": {
+                "label": "中心"
+              },
+              "options__3": {
+                "label": "正确的"
+              }
+            }
+          }
+        },
+        "slide_video": {
+          "name": "视频幻灯片"
+        }
+      },
+      "presets": {
+        "name": "幻灯片"
+      }
+    },
+    "custom-content": {
+      "name": "定制内容",
+      "settings": {},
+      "blocks": {
+        "image_card": {
+          "name": "形象卡"
+        },
+        "common": {
+          "settings": {
+            "full_column_height": {
+              "label": "全柱高度"
+            }
+          }
+        },
+        "text_card_with_image": {
+          "name": "带图像的文本卡"
+        },
+        "lookbook_card": {
+          "name": "造型卡",
+          "settings": {
+            "header__modal_settings": {
+              "content": "模态设置"
+            }
+          }
+        },
+        "promotion_card": {
+          "name": "促销卡",
+          "settings": {
+            "card_layout": {
+              "label": "布局",
+              "options__1": {
+                "label": "之间的空间"
+              },
+              "options__2": {
+                "label": "垂直分割"
+              }
+            }
+          }
+        },
+        "collections": {
+          "name": "收藏",
+          "settings": {
+            "collection_list": {
+              "label": "收藏清单"
+            },
+            "hide_collection_name": {
+              "label": "隐藏集合名称"
+            }
+          }
+        },
+        "collection_card": {
+          "name": "收藏卡",
+          "settings": {
+            "card_width": {
+              "label": "卡片宽度",
+              "options__1": {
+                "label": "全屏宽度"
+              },
+              "options__2": {
+                "label": "窄幅"
+              }
+            }
+          }
+        },
+        "image_with_text": {
+          "header": {
+            "content": "形象徽章"
+          }
+        }
+      }
+    },
+    "collage-tabs": {
+      "name": "拼贴标签",
+      "settings": {
+        "tab_settings": {
+          "content": "选项卡设置"
+        },
+        "desktop_navigation_alignment": {
+          "label": "桌面导航对齐",
+          "options__1": {
+            "label": "左边"
+          },
+          "options__2": {
+            "label": "中心"
+          },
+          "options__3": {
+            "label": "正确的"
+          }
+        },
+        "desktop_image_width": {
+          "label": "桌面图像宽度"
+        }
+      },
+      "blocks": {
+        "tab": {
+          "name": "标签",
+          "settings": {
+            "navigation_title": {
+              "label": "导航标题"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "拼贴标签"
+      }
+    },
+    "collapsible-tabs": {
+      "name": "可折叠标签",
+      "settings": {
+        "header__image_card": {
+          "content": "图像卡设置"
+        },
+        "header__collapsible_tab": {
+          "content": "可折叠标签"
+        },
+        "item_style": {
+          "label": "风格",
+          "options__1": {
+            "label": "标准"
+          },
+          "options__2": {
+            "label": "卡片"
+          }
+        }
+      },
+      "blocks": {
+        "collapsible_item": {
+          "name": "可折叠标签",
+          "settings": {
+            "heading": {
+              "info": "包括解释内容的标题。",
+              "label": "标题"
+            },
+            "content": {
+              "label": "可折叠的选项卡内容"
+            },
+            "custom_liquid": {
+              "label": "定制液体",
+              "info": "添加应用程序片段或其他代码以创建高级自定义。 [了解更多]（https://shopify.dev/docs/api/liquid）"
+            },
+            "page": {
+              "label": "页面中的选项卡内容"
+            },
+            "open": {
+              "label": "默认打开"
+            }
+          }
+        },
+        "heading": {
+          "name": "标题"
+        },
+        "image_card": {
+          "name": "形象卡",
+          "settings": {
+            "desktop_image_position": {
+              "label": "桌面图像位置",
+              "options__1": {
+                "label": "左边"
+              },
+              "options__2": {
+                "label": "正确的"
+              }
+            },
+            "desktop_image_width": {
+              "label": "桌面图像宽度"
+            },
+            "order_first": {
+              "label": "在可折叠选项卡上方显示卡片"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "可折叠标签"
+      }
+    },
+    "popup": {
+      "name": "弹出窗口",
+      "settings": {
+        "enable": {
+          "label": "使能够"
+        },
+        "show_for_homepage_only": {
+          "label": "仅在主页上显示"
+        },
+        "show_for_visitors_only": {
+          "label": "仅供参观者参观"
+        },
+        "trigger_open": {
+          "label": "触发器自动打开",
+          "options__1": {
+            "label": "页面加载后立即打开"
+          },
+          "options__2": {
+            "label": "页面加载后延迟5秒"
+          },
+          "options__3": {
+            "label": "客户向下滚动"
+          },
+          "info": "最后一个选项仅适用于桌面。在移动设备上，页面加载后将出现弹出窗口。"
+        },
+        "repeat_open": {
+          "label": "自动重复打开",
+          "options__1": {
+            "label": "不重复"
+          },
+          "options__2": {
+            "label": "每30分钟一班"
+          },
+          "options__3": {
+            "label": "每1小时一次"
+          },
+          "options__4": {
+            "label": "每 6 小时"
+          },
+          "options__5": {
+            "label": "每12小时一次"
+          },
+          "options__6": {
+            "label": "每天"
+          },
+          "options__7": {
+            "label": "每3天一次"
+          },
+          "options__8": {
+            "label": "每周"
+          },
+          "options__9": {
+            "label": "每两周一次"
+          },
+          "options__10": {
+            "label": "每个月"
+          },
+          "info": "再次出现弹出窗口之前的时间"
+        },
+        "width": {
+          "label": "集装箱宽度"
+        },
+        "header__teaser_button": {
+          "content": "预告片按钮",
+          "info": "允许客户手动打开弹出窗口。"
+        },
+        "show_teaser": {
+          "label": "显示预告片按钮"
+        },
+        "teaser_popup_bg": {
+          "label": "预告片弹出背景"
+        },
+        "teaser_popup_text": {
+          "label": "预告片弹出文本"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "标题"
+        },
+        "text": {
+          "name": "文本"
+        },
+        "image": {
+          "name": "图像",
+          "settings": {
+            "image_position": {
+              "label": "图像位置",
+              "options__1": {
+                "label": "顶部"
+              },
+              "options__2": {
+                "label": "左边"
+              }
+            }
+          }
+        },
+        "form": {
+          "name": "通讯形式"
+        },
+        "button": {
+          "name": "按钮"
+        },
+        "code": {
+          "name": "优惠码",
+          "settings": {
+            "code": {
+              "label": "优惠码",
+              "info": "给顾客一个折扣代码。 [查看折扣码](/admin/discounts)"
+            },
+            "apply_button": "应用按钮",
+            "apply_button_info": "当客户点击此按钮时，此折扣将在结帐时应用。"
+          }
+        },
+        "socials": {
+          "name": "社交链接"
+        }
+      }
+    },
+    "highlight-text-with-image": {
+      "name": "用图像突出显示文本",
+      "settings": {
+        "text": {
+          "info": "在您希望图像出现的位置使用特定的占位符格式“[imgX]”。 X 是图像索引。例如：“[img1]”将被第一张图像替换。"
+        }
+      },
+      "blocks": {
+        "image": {
+          "settings": {
+            "image_link": {
+              "label": "图片链接"
+            },
+            "image_width": {
+              "label": "图片宽度"
+            },
+            "image_width_mobile": {
+              "label": "图像宽度移动"
+            }
+          }
+        }
+      }
+    },
+    "hero": {
+      "name": "英雄",
+      "settings": {
+        "image_height": {
+          "label": "图像高度",
+          "options__0": {
+            "label": "汽车"
+          },
+          "options__1": {
+            "label": "适应图像"
+          },
+          "options__2": {
+            "label": "大的"
+          },
+          "options__3": {
+            "label": "额外介质"
+          },
+          "options__4": {
+            "label": "中等的"
+          },
+          "options__5": {
+            "label": "小的"
+          },
+          "options__6": {
+            "label": "特小号"
+          }
+        }
+      }
+    },
+    "press": {
+      "name": "按",
+      "settings": {
+        "header__press": {
+          "content": "印刷机设置"
+        }
+      },
+      "blocks": {
+        "press": {
+          "name": "按"
+        }
+      }
+    },
+    "card-images": {
+      "name": "卡片图像",
+      "settings": {
+        "enable_equal_height": {
+          "label": "使卡片高度相等"
+        },
+        "enable_slider": {
+          "label": "启用轮播"
+        }
+      }
+    },
+    "feature-list": {
+      "name": "功能列表",
+      "item_settings_header": "项目设定",
+      "presets": {
+        "name": "功能列表"
+      }
+    },
+    "scrolling-promotion": {
+      "name": "滚动促销",
+      "settings_header": "设置",
+      "settings": {
+        "direction": {
+          "label": "方向",
+          "options__1": {
+            "label": "开始"
+          },
+          "options__2": {
+            "label": "结尾"
+          }
+        },
+        "pause_on_hover": {
+          "label": "悬停时暂停滚动"
+        },
+        "divider_layout": {
+          "label": "分隔线布局",
+          "options__1": {
+            "label": "垂直的"
+          },
+          "options__2": {
+            "label": "盒装"
+          }
+        },
+        "speed": {
+          "label": "速度"
+        },
+        "h_spacing": {
+          "label": "水平间距"
+        },
+        "v_spacing": {
+          "label": "垂直间距"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "图像",
+          "settings": {
+            "image_height": {
+              "label": "图像高度"
+            },
+            "image_rounded": {
+              "label": "图像呈圆形"
+            },
+            "image_link": {
+              "label": "关联"
+            }
+          }
+        },
+        "text": {
+          "name": "文本",
+          "settings": {
+            "text_link": {
+              "label": "关联"
+            },
+            "text_style": {
+              "label": "文字样式",
+              "options__1": {
+                "label": "普通的"
+              },
+              "options__2": {
+                "label": "中风"
+              }
+            }
+          }
+        },
+        "html": {
+          "name": "超文本标记语言",
+          "settings": {
+            "html": {
+              "label": "超文本标记语言"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "滚动促销"
+      }
+    },
+    "store-locator": {
+      "name": "商店定位器",
+      "blocks": {
+        "location": {
+          "name": "地点",
+          "settings": {
+            "show_image": {
+              "label": "显示图像"
+            },
+            "image_width": {
+              "label": "桌面上的图像宽度 (px)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "商店定位器"
+      }
+    },
+    "empty-space": {
+      "name": "空的空间",
+      "settings": {
+        "page_width": {
+          "label": "页宽",
+          "options__1": {
+            "label": "页宽"
+          },
+          "options__2": {
+            "label": "页面宽度变窄"
+          },
+          "options__3": {
+            "label": "全屏宽度"
+          }
+        },
+        "show_line": {
+          "label": "显示线路"
+        }
+      },
+      "presets": {
+        "name": "空的空间"
+      }
+    },
+    "video-hero": {
+      "name": "视频英雄"
+    },
+    "products-bundle": {
+      "name": "产品捆绑"
+    },
+    "cart-drawer": {
+      "name": "推车抽屉",
+      "settings": {
+        "show_cart_note": {
+          "label": "显示购物车备注"
+        },
+        "show_shipping_rates_calculator": {
+          "label": "显示运费计算器"
+        },
+        "show_cart_discount": {
+          "label": "显示购物车折扣"
+        },
+        "header": {
+          "content": "免费送货目标"
+        },
+        "paragraph": {
+          "content": "确保您已正确配置[运费](/admin/settings/shipping)"
+        },
+        "show_free_shipping_goal": {
+          "label": "显示全球免运费"
+        },
+        "free_shipping_minimum_amount": {
+          "label": "免运费最低金额"
+        },
+        "header__1": {
+          "content": "购物车推荐"
+        },
+        "enable_cart_recommendations": {
+          "label": "启用购物车推荐"
+        },
+        "cart_recommendations_heading": {
+          "label": "标题"
+        },
+        "cart_recommendations_limit": {
+          "label": "展示产品"
+        }
+      }
+    },
+    "search-drawer": {
+      "name": "搜索抽屉",
+      "settings": {
+        "drawer_position": {
+          "label": "抽屉位置",
+          "options__right": {
+            "label": "右侧"
+          },
+          "options__top": {
+            "label": "顶部"
+          }
+        }
+      }
+    },
+    "quick-view": {
+      "name": "快速浏览"
+    },
+    "video-with-text": {
+      "name": "视频加文字"
+    },
+    "image-gallery": {
+      "name": "图片库",
+      "settings": {
+        "social_media": {
+          "label": "社交媒体",
+          "options__none": {
+            "label": "没有任何"
+          }
+        }
+      }
+    },
+    "image-with-text-overlay": {
+      "name": "带文字叠加的图像"
+    },
+    "main-cart": {
+      "name": "主推车",
+      "blocks": {
+        "free_shipping_goal": {
+          "name": "免费送货目标"
+        },
+        "subtotal": {
+          "name": "小计"
+        },
+        "buttons": {
+          "name": "结账按钮"
+        },
+        "cart_note": {
+          "name": "购物车备注"
+        },
+        "cart_shipping_rate": {
+          "name": "计算器运费"
+        },
+        "cart_discount": {
+          "name": "购物车折扣"
+        }
+      }
+    },
+    "mobile-sticky-bar": {
+      "name": "手机导航栏",
+      "settings": {
+        "paragraph": {
+          "content": "此部分仅在移动设备上显示。请切换至手机视图。"
+        },
+        "header_settings": {
+          "content": "设置"
+        },
+        "enable_sticky_bar": {
+          "label": "启用移动粘滞栏"
+        },
+        "show_text": {
+          "content": "显示按钮标签"
+        }
+      },
+      "blocks": {
+        "home": {
+          "name": "家",
+          "settings": {
+            "paragraph": {
+              "content": "链接到主页。"
+            }
+          }
+        },
+        "cart": {
+          "name": "大车",
+          "settings": {
+            "paragraph": {
+              "content": "打开购物车抽屉。"
+            }
+          }
+        },
+        "search": {
+          "name": "搜索",
+          "settings": {
+            "paragraph": {
+              "content": "打开搜索抽屉。"
+            }
+          }
+        },
+        "products": {
+          "name": "产品",
+          "settings": {
+            "collection": {
+              "info": "如果没有选择集合，该按钮将链接到“全部”集合。"
+            }
+          }
+        }
+      }
+    },
+    "image-with-text-columns": {
+      "name": "带有文本列的图像",
+      "settings": {
+        "layout_gap": {
+          "label": "差距"
+        }
+      },
+      "presets": {
+        "name": "带有文本列的图像"
+      }
+    },
+    "countdown-timer": {
+      "name": "倒计时器",
+      "settings": {
+        "header_settings": {
+          "content": "内容设置"
+        }
+      },
+      "blocks": {
+        "timer": {
+          "name": "倒计时器",
+          "settings": {
+            "header__evergreen": {
+              "content": "常青设置"
+            },
+            "header__fixed_time": {
+              "content": "固定时间设置"
+            },
+            "type": {
+              "label": "倒计时型",
+              "options__1": {
+                "label": "常绿"
+              },
+              "options__2": {
+                "label": "固定时间"
+              }
+            },
+            "evergreen_duration": {
+              "label": "期间",
+              "options__every_2_hrs": {
+                "label": "每2小时一次"
+              },
+              "options__every_6_hrs": {
+                "label": "每 6 小时"
+              },
+              "options__every_12_hrs": {
+                "label": "每12小时一次"
+              },
+              "options__every_24_hrs": {
+                "label": "每天"
+              },
+              "options__every_week": {
+                "label": "每周"
+              },
+              "options__every_month": {
+                "label": "每个月"
+              }
+            },
+            "time": {
+              "label": "结束时间",
+              "info": "日期格式：YYYY/MM/DD HH:MM 或 YYYY/MM/DD HH:MM AA。",
+              "paragraph": "示例日期格式：2024/06/30 23:59 或 2024/06/30 11:59 PM"
+            },
+            "style": {
+              "label": "风格",
+              "options__1": {
+                "label": "仅有号码"
+              },
+              "options__2": {
+                "label": "数字与文字"
+              }
+            },
+            "number_size": {
+              "label": "号码大小",
+              "options__1": {
+                "label": "小的"
+              },
+              "options__2": {
+                "label": "中等的"
+              },
+              "options__3": {
+                "label": "大的"
+              }
+            }
+          }
+        },
+        "image": {
+          "settings": {
+            "image_desktop_width": {
+              "label": "桌面图像宽度"
+            },
+            "image_desktop_vertical": {
+              "label": "桌面垂直位置"
+            },
+            "image_desktop_horizontal": {
+              "label": "桌面水平位置"
+            }
+          }
+        }
+      }
+    },
+    "quick-order-list": {
+      "name": "快速订单列表",
+      "settings": {
+        "show_image": {
+          "label": "显示图像"
+        },
+        "show_sku": {
+          "label": "显示Sku"
+        }
+      }
+    }
+  }
+}

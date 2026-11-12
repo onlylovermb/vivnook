@@ -1,0 +1,25 @@
+<div class="vivnook-embroidery-option-wrap" data-vivnook-option-wrap="{{ type | downcase }}">
+  <button
+    class="vivnook-embroidery-option"
+    type="button"
+    data-vivnook-option="{{ type | downcase }}"
+    aria-pressed="false"
+    {% if disabled %}disabled aria-disabled="true"{% endif %}
+  >
+    <span class="vivnook-embroidery-option__icon" aria-hidden="true">+</span>
+    <span class="vivnook-embroidery-option__copy">
+      <strong>{{ name }}</strong>
+      <small>
+        <span data-vivnook-option-description>Embroidery</span>
+        <span data-vivnook-option-edit hidden><u>Edit</u> {{ edit_price }}</span>
+        <span data-vivnook-option-conflict hidden></span>
+      </small>
+    </span>
+    <span class="vivnook-embroidery-option__price" data-vivnook-option-price>{{ price }}</span>
+  </button>
+  {%- if type == 'text' or type == 'icon' or type == 'logo' -%}
+    <button class="vivnook-embroidery-option__delete" type="button" data-vivnook-option-delete data-vivnook-remove-{{ type }} aria-label="Remove {{ name }} embroidery" hidden>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  {%- endif -%}
+</div>

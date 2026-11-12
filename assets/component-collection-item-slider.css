@@ -1,0 +1,29 @@
+.collection-item-slider {
+  gap: 2.4rem;
+}
+.collection-item-slider + .collection-item-slider {
+  margin-top: 3.2rem;
+}
+.collection-item-slider__footer {
+  margin-top: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .collection-item-slider {
+    gap: 3.2rem;
+  }
+  .collection-item-slider + .collection-item-slider {
+    margin-top: 6rem;
+  }
+  .collection-item-slider__header .swiper-button-prev,
+  .collection-item-slider__header .swiper-button-next {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+  }
+  .collection-item-slider__footer {
+    margin-top: 2.8rem;
+  }
+}

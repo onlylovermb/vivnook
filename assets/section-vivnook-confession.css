@@ -1,0 +1,27 @@
+.vivnook-confession{background:#f5f1e8;color:#302820}vivnook-confession{display:block}
+.nook-confession-paper{max-width:880px;margin:auto;padding:clamp(24px,5vw,64px);background:#fffcf5;border:1px solid #d9cebc;border-top:5px solid #881337;box-shadow:6px 6px 0 #e7dfd0}
+.nook-confession-eyebrow{font-size:12px;letter-spacing:.16em;font-weight:700;color:#776a5d;margin:0 0 16px}
+.nook-confession-paper h2,.nook-confession-dialog h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.02em;color:#881337;margin:0 0 24px}
+.nook-confession-identity{font-size:13px;line-height:1.6;letter-spacing:.04em;font-weight:700;border-bottom:1px dashed #c9bda9;padding-bottom:20px}
+.nook-confession-identity button,.nook-confession-session{font:inherit;text-decoration:underline;text-underline-offset:4px;background:none;border:0;padding:0;cursor:pointer}
+.nook-confession-paper textarea{display:block;box-sizing:border-box;width:100%;min-height:200px;margin-top:24px;padding:20px;border:1px solid #c9bda9;border-radius:0;background:#f9f5ec;color:#302820;font:inherit;line-height:1.7;resize:vertical}
+.nook-confession-paper textarea::placeholder{color:#81786d;font-style:italic;opacity:1}
+.nook-confession-counter{text-align:right;font-size:13px;margin:8px 0 20px;font-variant-numeric:tabular-nums}
+.nook-confession-privacy,.nook-confession-notice,.nook-confession-fine{font-size:13px;line-height:1.6;color:#65584d}
+.nook-confession-primary{display:inline-flex;align-items:center;justify-content:center;gap:32px;min-height:48px;padding:14px 28px;background:#881337!important;color:#fff7e8!important;border:0;font-weight:700;letter-spacing:.06em;cursor:pointer;margin-top:16px}
+.nook-confession-primary:disabled{opacity:.6;cursor:wait}.nook-confession-session{font-size:12px;color:#65584d;margin-top:12px}
+.nook-confession-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.nook-confession-dialog{box-sizing:border-box;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;margin:auto;padding:36px;background:#fffcf5;border:1px solid #c9bda9;border-top:5px solid #881337;color:#302820}
+.nook-confession-dialog::backdrop,.vivnook-profile-verify::backdrop{background:rgb(32 22 18 / .65)}
+.nook-confession-close{position:absolute;top:8px;right:12px;width:44px;height:44px;background:none;border:0;font-size:28px;cursor:pointer}
+.nook-confession-dialog>.nook-confession-eyebrow{padding-right:32px}
+.nook-confession-dialog h2{font-size:32px;margin-top:24px}.nook-confession-dialog p{line-height:1.6}
+.nook-confession-dialog input[type=email]{box-sizing:border-box;width:100%;font:inherit;padding:14px;border:1px solid #b6a997;background:#fff;margin:8px 0 20px}
+.nook-confession-permission{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.6}.nook-confession-permission input{flex:none;margin-top:5px;width:16px;height:16px;accent-color:#881337}
+.nook-confession-secondary{font-size:13px;color:#65584d;max-width:290px}
+.nook-confession-character{display:block;margin:16px 0 0 auto;max-width:48%;height:auto;object-fit:contain;transform:rotate(-4deg)}
+.nook-confession-character[hidden]{display:none}.nook-confession-dialog [role=status]{font-size:14px;overflow-wrap:anywhere}
+.vivnook-profile-verify{box-sizing:border-box;max-width:480px;width:calc(100vw - 32px);padding:32px;background:#fffcf5;color:#302820;border:2px solid #881337}
+.vivnook-profile-verify button{margin:12px 12px 0 0}
+vivnook-confession :focus-visible,.vivnook-profile-verify :focus-visible{outline:3px solid #287391;outline-offset:3px}
+@media(max-width:600px){.nook-confession-paper{padding:24px 20px;box-shadow:3px 3px 0 #e7dfd0}.nook-confession-dialog{padding:28px 22px}.nook-confession-primary{width:100%}.nook-confession-paper textarea{padding:14px;min-height:220px}}

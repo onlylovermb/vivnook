@@ -1,0 +1,103 @@
+{%- liquid
+  assign swatch_file_extension = 'png'
+  assign swatch_count = 0
+  assign max_swatch_count = settings.pcard_maximum_swatches_to_show
+-%}
+<div class="product-card__swatches flex flex-wrap items-center gap-2">
+  <ul class="swatches swatches--product-card flex flex-wrap items-center{% if settings.pcard_swatches_type == 'variant_image' %} swatches--variant-image{% endif %}">
+    {%- for swatch_pass in (1..2) -%}
+      {%- for value in color_option.values -%}
+        {%- liquid
+          assign render_value = false
+          assign is_selected = false
+          if swatch_pass == 1 and value == selected_color
+            assign render_value = true
+            assign is_selected = true
+          elsif swatch_pass == 2 and value != selected_color
+            assign render_value = true
+          endif
+          unless render_value
+            continue
+          endunless
+
+          assign swatch_variant = blank
+          assign first_swatch_variant = blank
+          for candidate_variant in product.variants
+            if candidate_variant.options[color_option_index] == value
+              if first_swatch_variant == blank
+                assign first_swatch_variant = candidate_variant
+              endif
+              if swatch_variant == blank and candidate_variant.available
+                assign swatch_variant = candidate_variant
+              endif
+            endif
+          endfor
+          if swatch_variant == blank
+            assign swatch_variant = first_swatch_variant
+          endif
+
+          assign swatch_media = swatch_variant.featured_media
+          assign swatch_second_image = blank
+          for candidate_variant in product.variants
+            if candidate_variant.options[color_option_index] == value and candidate_variant.featured_media != blank
+              if swatch_media == blank
+                assign swatch_media = candidate_variant.featured_media
+              elsif swatch_second_image == blank and candidate_variant.featured_media.id != swatch_media.id
+                assign swatch_second_image = candidate_variant.featured_media.preview_image
+              endif
+            endif
+          endfor
+          if swatch_media == blank
+            assign swatch_media = product.featured_media
+          endif
+          assign swatch_image = swatch_media.preview_image | default: swatch_media
+
+          assign swatch_count = swatch_count | plus: 1
+          assign swatch_title = product.title | append: ' - ' | append: value
+          assign card_title = product.title | append: ' — ' | append: value
+          assign swatch_url = product.url | split: '?' | first | append: '?variant=' | append: swatch_variant.id
+          assign swatch = blank
+          if value.swatch != blank
+            assign swatch = value.swatch
+          endif
+          if settings.pcard_swatches_type == 'variant_image' and swatch_variant.image
+            assign swatch = swatch_variant
+          endif
+          if settings.pcard_swatches_type == 'color_swatch'
+            assign swatch = blank
+          endif
+        -%}
+        {%- if swatch_count <= max_swatch_count -%}
+          <li data-tooltip>
+            {%- render 'swatch',
+              href: swatch_url,
+              title: swatch_title,
+              value: value,
+              file_extension: swatch_file_extension,
+              swatch: swatch,
+              tooltip: value,
+              selected: is_selected,
+              card_swatch: true,
+              card_url: swatch_url,
+              card_title: card_title,
+              card_color: value,
+              card_image: swatch_image,
+              card_second_image: swatch_second_image
+            -%}
+            <template data-vivnook-card-price>
+              {%- render 'price',
+                product: product,
+                alignment: settings.pcard_content_alignment,
+                use_variant: true,
+                representative_variant: swatch_variant
+              -%}
+            </template>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  </ul>
+  {%- if swatch_count > max_swatch_count -%}
+    <a href="{{ product.url }}" class="reversed-link">+{{ swatch_count | minus: max_swatch_count }}</a>
+  {%- endif -%}
+</div>

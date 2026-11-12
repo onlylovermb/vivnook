@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_eH8UNf": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .vn-kb{--burg:#7d203b;--ink:#111;--line:#e5e5e5;background:#f7f7f7;color:var(--ink);padding:48px 5vw 72px;font-family:inherit}.vn-kb__wrap{max-width:1180px;margin:auto}.vn-kb__crumbs{font-size:13px;color:#777;margin-bottom:42px}.vn-kb__crumbs a{color:inherit}.vn-kb h1{font-size:clamp(36px,5vw,64px);margin:0 0 14px;letter-spacing:-.04em}.vn-kb__lead{font-size:18px;color:#555;max-width:720px;line-height:1.6}.vn-kb__notice{background:#fff;padding:26px 28px;margin:42px 0 56px;border-left:3px solid var(--burg);box-shadow:0 6px 18px #00000012}.vn-kb__notice h2{font-size:24px;margin:0 0 10px}.vn-kb__notice p{margin:0;color:#555;line-height:1.6}.vn-kb__section{border-top:1px solid var(--line);padding-top:34px}.vn-kb__section h2{font-size:30px;margin:0 0 22px}.vn-kb__articles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.vn-kb__article{display:block;background:#fff;padding:24px;text-decoration:none;color:inherit;box-shadow:0 5px 16px #0000000d;transition:.2s}.vn-kb__article:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00000014}.vn-kb__article h3{font-size:19px;margin:0 0 8px}.vn-kb__article p{margin:0;color:#666;line-height:1.5}.vn-kb__cta{text-align:center;border-top:1px solid var(--line);margin-top:58px;padding-top:42px}.vn-kb__button{display:inline-flex;background:#111;color:#fff;padding:14px 24px;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-size:12px}@media(max-width:749px){.vn-kb{padding:32px 18px 52px}.vn-kb__articles{grid-template-columns:1fr}.vn-kb__lead{font-size:16px}.vn-kb__notice{padding:22px 20px}}\n</style>\n\n<section class=\"vn-kb\"><div class=\"vn-kb__wrap\">\n  <nav class=\"vn-kb__crumbs\"><a href=\"/pages/help-center\">Help Center Home</a> / Returns &amp; Exchanges</nav>\n  <h1>Returns &amp; Exchanges</h1>\n  <p class=\"vn-kb__lead\">Find answers about return eligibility, exchange requests, damaged items and refunds.</p>\n\n  <div class=\"vn-kb__notice\">\n    <h2>Before starting a return</h2>\n    <p>Please review the return requirements for your order and contact us before sending any item back. We will guide you through the next steps.</p>\n  </div>\n\n  <div class=\"vn-kb__section\"><h2>Returns &amp; Exchanges FAQ</h2><div class=\"vn-kb__articles\">\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-returns-faq\"><h3>View all returns questions</h3><p>Browse the complete Returns &amp; Exchanges FAQ.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-return-policy\"><h3>What is your return policy?</h3><p>Return windows, eligibility requirements and exclusions.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-start-a-return\"><h3>How do I start a return?</h3><p>Contact details and the information needed to request a return.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-exchanges\"><h3>Can I exchange an item?</h3><p>How exchange requests are handled and when they are available.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-damaged-wrong-item\"><h3>What if my item is damaged or incorrect?</h3><p>What to do if your order arrives damaged, defective or different from what you ordered.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-refund-timing\"><h3>When will I receive my refund?</h3><p>Refund review, approval and processing timelines.</p></a>\n  </div></div>\n\n  <div class=\"vn-kb__cta\"><h2>Need more help?</h2><p>Our team is here to help with your return or exchange.</p><a class=\"vn-kb__button\" href=\"https://azbi0u-6f.myshopify.com/pages/contact\">Contact Us</a></div>\n</div></section>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_eH8UNf"
+  ]
+}

@@ -1,0 +1,345 @@
+{{ 'section-vivnook-identity-card.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --identity-height-desktop: {{ section.settings.height_desktop | default: 720 }}px;
+    --identity-height-mobile: {{ section.settings.height_mobile | default: 900 }}px;
+    --identity-title-desktop: {{ section.settings.title_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --identity-title-mobile: {{ section.settings.title_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --identity-body-desktop: {{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --identity-body-mobile: {{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --identity-title-weight: {{ section.settings.title_weight | default: 400 }};
+    --identity-body-weight: {{ section.settings.body_weight | default: 400 }};
+    --identity-left-width-desktop: {{ section.settings.left_width_desktop | default: 50 }}%;
+    --identity-left-height-desktop: {{ section.settings.left_height_desktop | default: 100 }}%;
+    --identity-left-x-desktop: {{ section.settings.left_x_desktop | default: 0 }}%;
+    --identity-left-y-desktop: {{ section.settings.left_y_desktop | default: 0 }}%;
+    --identity-right-width-desktop: {{ section.settings.right_width_desktop | default: 50 }}%;
+    --identity-right-height-desktop: {{ section.settings.right_height_desktop | default: 100 }}%;
+    --identity-right-x-desktop: {{ section.settings.right_x_desktop | default: 0 }}%;
+    --identity-right-y-desktop: {{ section.settings.right_y_desktop | default: 0 }}%;
+    --identity-left-width-mobile: {{ section.settings.left_width_mobile | default: 100 }}%;
+    --identity-left-height-mobile: {{ section.settings.left_height_mobile | default: 100 }}%;
+    --identity-left-x-mobile: {{ section.settings.left_x_mobile | default: 0 }}%;
+    --identity-left-y-mobile: {{ section.settings.left_y_mobile | default: 0 }}%;
+    --identity-right-width-mobile: {{ section.settings.right_width_mobile | default: 100 }}%;
+    --identity-right-height-mobile: {{ section.settings.right_height_mobile | default: 100 }}%;
+    --identity-right-x-mobile: {{ section.settings.right_x_mobile | default: 0 }}%;
+    --identity-right-y-mobile: {{ section.settings.right_y_mobile | default: 0 }}%;
+    --identity-activated-x-desktop: {{ section.settings.activated_x_desktop | default: 0 }}px;
+    --identity-activated-y-desktop: {{ section.settings.activated_y_desktop | default: 0 }}px;
+    --identity-activated-x-mobile: {{ section.settings.activated_x_mobile | default: 0 }}px;
+    --identity-activated-y-mobile: {{ section.settings.activated_y_mobile | default: 0 }}px;
+  }
+{% endstyle %}
+<style>
+  @font-face {
+    font-family: 'Pixeltype';
+    src: url('{{ 'Pixeltype.ttf' | asset_url }}') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+<style>
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .vivnook-identity-card-generator__grid {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+
+    #shopify-section-{{ section.id }} .vivnook-badge-experience {
+      order: 1 !important;
+      width: var(--identity-left-width-mobile, 100%) !important;
+      height: var(--identity-left-height-mobile, 100%) !important;
+      margin: 0 auto !important;
+      transform: translate(
+        var(--identity-left-x-mobile, 0%),
+        var(--identity-left-y-mobile, 0%)
+      ) !important;
+    }
+
+    #shopify-section-{{ section.id }} .vivnook-identity-card-generator__intro {
+      order: 2 !important;
+      width: var(--identity-right-width-mobile, 100%) !important;
+      height: var(--identity-right-height-mobile, 100%) !important;
+      margin: 32px auto 0 !important;
+      transform: translate(
+        var(--identity-right-x-mobile, 0%),
+        var(--identity-right-y-mobile, 0%)
+      ) !important;
+    }
+  }
+</style>
+<script src="{{ 'vivnook-profile.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'vivnook-identity-card.js' | asset_url }}" defer="defer"></script>
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+
+<div
+  class="section section--padding vivnook-identity-card-generator color-{{ section.settings.color_scheme }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  data-id="{{ section.id }}"
+>
+  <div class="page-width">
+    <vivnook-identity-card-generator
+      data-section-id="{{ section.id }}"
+      data-identities-url="{{ 'vivnook-identities.json' | asset_url }}"
+      data-card-assets-url="{{ 'vivnook-card-assets.json' | asset_url }}"
+      data-asset-url-template="{{ 'VIVNOOK_ASSET_FILENAME' | asset_url }}"
+      data-activate-endpoint="{{ section.settings.activate_endpoint | default: '/apps/vivnook-identity/activate' | escape }}"
+      data-retrieve-endpoint="{{ section.settings.retrieve_endpoint | default: '/apps/vivnook-identity/retrieve' | escape }}"
+      data-retrieve-consume-endpoint="{{ section.settings.retrieve_consume_endpoint | default: '/apps/vivnook-identity/retrieve/consume' | escape }}"
+      data-stage="landing"
+    >
+      <div class="vivnook-identity-card-generator__grid">
+        <div class="vivnook-identity-card-generator__intro">
+          <div class="vivnook-identity-card-generator__copy-state vivnook-identity-card-generator__copy-state--default" data-default-copy>
+            <p class="vivnook-identity-card-generator__eyebrow text-subheading">{{ section.settings.subtitle }}</p>
+
+            <div class="vivnook-identity-card-generator__marketing-content rte">
+              {{ section.settings.introduction }}
+              <ul class="vivnook-identity-card-generator__benefits" role="list">
+                <li>{{ section.settings.benefit_item_1 }}</li>
+                <li>{{ section.settings.benefit_item_2 }}</li>
+                <li>{{ section.settings.benefit_item_3 }}</li>
+                <li>{{ section.settings.benefit_item_4 }}</li>
+                <li>{{ section.settings.benefit_item_5 }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vivnook-identity-card-generator__copy-state vivnook-identity-card-generator__copy-state--activated" data-activated-copy>
+            <h2 class="vivnook-identity-card-generator__title {{ section.settings.heading_size }}">{{ section.settings.activated_heading | newline_to_br }}</h2>
+            <div class="vivnook-identity-card-generator__marketing-content rte">
+              {{ section.settings.activated_body | newline_to_br }}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="vivnook-badge-experience">
+          <div class="vivnook-identity-card-generator__card-stage">
+            <div class="vivnook-identity-card-generator__card" data-card-root>
+            <article class="vivnook-identity-card-generator__card-face vivnook-identity-card-generator__card-face--front" data-card-front>
+              <button
+                class="vivnook-badge-flipper"
+                type="button"
+                data-badge-flipper
+                data-artwork-state="cover"
+                data-action="reroll"
+                aria-label="Reroll your Vivnook identity"
+              >
+                <span class="vivnook-badge-card-face vivnook-badge-card-face--front">
+                  <span class="vivnook-identity-card-generator__art-placeholder" data-cover-placeholder data-card-placeholder aria-hidden="true">
+                    <span class="vivnook-identity-card-generator__art-mark">V</span>
+                    <span class="vivnook-identity-card-generator__art-label">The Nook</span>
+                  </span>
+                  <img class="vivnook-identity-card-generator__image vivnook-identity-card-generator__designer-png" data-card-front-image data-card-image data-cover-image loading="lazy" src="{{ 'vivnook-identity-cover.webp' | asset_url }}" alt="Vivnook identity cover" width="2400" height="1541" fetchpriority="high" decoding="async">
+                </span>
+              </button>
+              <div class="vivnook-identity-text-layer">
+                <p class="vivnook-identity-card-generator__card-kicker">Vivnook identity</p>
+                <h3 class="vivnook-identity-card-generator__card-name vivnook-identity-card-generator__user-name-overlay h2" data-card-name data-user-name-display>Find your Nook</h3>
+                <p class="vivnook-identity-card-generator__role" data-card-role>Your identity is waiting.</p>
+                <p class="vivnook-identity-card-generator__personality" data-card-personality>Shuffle to discover the healthcare character that feels familiar.</p>
+                <p class="vivnook-identity-card-generator__quote" data-card-quote>"Which Vivnook are you?"</p>
+                <div class="vivnook-identity-card-generator__card-meta">
+                  <p class="vivnook-identity-card-generator__card-edition" data-card-edition>Founding Nook - MVP</p>
+                  <p class="vivnook-identity-card-generator__card-id" data-card-id>member preview</p>
+                </div>
+              </div>
+            </article>
+            <section class="vivnook-identity-card-generator__card-face vivnook-identity-card-generator__card-face--activation" data-activation-panel aria-labelledby="VivnookActivationTitle-{{ section.id }}">
+              <img
+                class="vivnook-identity-card-generator__activation-bg"
+                data-activation-image
+                data-src="{{ 'vivnook-badge-activation-bg.webp' | asset_url }}"
+                alt=""
+                width="2400"
+                height="1540"
+                aria-hidden="true"
+              >
+              <div class="vivnook-identity-card-generator__activation-background" data-activation-background aria-hidden="true"></div>
+              <div class="vivnook-identity-card-generator__activation-content">
+                <button class="vivnook-identity-card-generator__activation-close" type="button" data-action="close-activation" aria-label="Close activation form">&times;</button>
+              <form id="VivnookActivationForm-{{ section.id }}" data-activation-form novalidate>
+                <div class="vivnook-identity-card-generator__field">
+                  <label class="visually-hidden" for="VivnookActivationName-{{ section.id }}">Name</label>
+                  <input class="vivnook-identity-card-generator__activation-input" id="VivnookActivationName-{{ section.id }}" name="name" type="text" autocomplete="name" placeholder="Enter Your Name" required data-activation-name data-user-name>
+                  <p class="vivnook-identity-card-generator__field-helper">*Printed directly onto your official badge</p>
+                </div>
+                <div class="vivnook-identity-card-generator__field">
+                  <label class="visually-hidden" for="VivnookActivationEmail-{{ section.id }}">Email</label>
+                  <input class="vivnook-identity-card-generator__activation-input" id="VivnookActivationEmail-{{ section.id }}" name="email" type="email" autocomplete="email" placeholder="Enter Your Email" required data-activation-email data-user-email>
+                </div>
+                <div class="vivnook-identity-card-generator__consent">
+                  <input id="VivnookActivationConsent-{{ section.id }}" name="consent" type="checkbox" data-activation-consent data-consent>
+                  <label for="VivnookActivationConsent-{{ section.id }}">Join the Vivnook Signal—Get exclusive new drops, secret community perks, and shift-survival guides.</label>
+                </div>
+                <p class="vivnook-identity-card-generator__form-error" data-activation-error role="alert"></p>
+                </form>
+              </div>
+            </section>
+            <section class="vivnook-identity-card-generator__card-face vivnook-identity-card-generator__card-face--retrieve" data-retrieve-panel aria-hidden="true">
+              <img
+                class="vivnook-identity-card-generator__retrieve-bg"
+                data-retrieve-image
+                data-src="{{ 'vivnook-badge-retrieve-bg.webp' | asset_url }}"
+                alt=""
+                width="2400"
+                height="1540"
+                aria-hidden="true"
+              >
+              <div class="vivnook-identity-card-generator__retrieve-content">
+                <button class="vivnook-identity-card-generator__activation-close" type="button" data-action="close-retrieve" aria-label="Close retrieve character">&times;</button>
+                <form id="VivnookRetrieveForm-{{ section.id }}" data-retrieve-form novalidate>
+                  <label class="visually-hidden" for="VivnookRetrieveEmail-{{ section.id }}">Email</label>
+                  <input class="vivnook-identity-card-generator__activation-input" id="VivnookRetrieveEmail-{{ section.id }}" name="email" type="email" autocomplete="email" placeholder="Enter Your Email" required data-retrieve-email>
+                  <p class="vivnook-identity-card-generator__retrieve-error" data-retrieve-error role="alert" aria-live="polite"></p>
+                </form>
+              </div>
+            </section>
+            </div>
+          </div>
+          <div class="vivnook-identity-card-generator__controls-stage">
+            <div class="vivnook-identity-card-generator__actions vivnook-badge-actions" data-badge-actions>
+              <button class="btn btn--primary" type="button" data-action="shuffle">{{ section.settings.shuffle_label }}</button>
+              <button class="btn btn--secondary" type="button" data-action="claim" hidden>{{ section.settings.claim_label }}</button>
+            </div>
+            <div class="vivnook-identity-card-generator__activation-actions" data-activation-actions hidden>
+              <button class="btn btn--primary" type="submit" form="VivnookActivationForm-{{ section.id }}" data-action="activate">ACTIVATE CHARACTER</button>
+              <button class="btn btn--underline" type="button" data-action="cancel-activation">maybe later</button>
+            </div>
+            <div class="vivnook-identity-card-generator__retrieve-actions" data-retrieve-actions hidden>
+              <button class="btn btn--primary" type="submit" form="VivnookRetrieveForm-{{ section.id }}" data-action="retrieve">RETRIEVE MY BADGE</button>
+            </div>
+            <div class="vivnook-identity-card-generator__retrieval">
+              <a class="vivnook-identity-card-generator__retrieval-link vivnook-retrieval-link" href="#retrieve-character">
+                <span class="vivnook-retrieval-prefix">Already badged?</span>
+                <span class="vivnook-retrieval-action">Retrieve your character</span>
+              </a>
+            </div>
+          </div>
+          <div class="vivnook-identity-card-generator__completed-actions" data-completed-actions hidden>
+            <button class="btn btn--primary" type="button" data-download-badge>DOWNLOAD HIGH-RES BADGE</button>
+            <button class="btn btn--underline" type="button" data-action="back-to-activation">back</button>
+          </div>
+          <div class="vivnook-identity-card-generator__interaction-messages vivnook-badge-status">
+            <div class="vivnook-identity-card-generator__message rte" data-message="revealed" hidden>
+              {{ section.settings.congratulations }}
+            </div>
+            <div class="vivnook-identity-card-generator__message rte" data-message="complete" hidden>
+              {{ section.settings.complete_message }}
+            </div>
+            <div class="vivnook-identity-card-generator__message rte" data-message="loading" hidden>
+              <p>Finding your identity...</p>
+            </div>
+            <div class="vivnook-identity-card-generator__message rte" data-message="error" hidden>
+              <p>We could not load the identities right now. Please try again.</p>
+            </div>
+          </div>
+            <button class="vivnook-identity-card-generator__activation-close" type="button" data-action="close-activation" aria-label="Close activation form">×</button>
+          {% comment %}
+          <div hidden aria-hidden="true" data-legacy-activation-panel>
+            <p class="vivnook-identity-card-generator__card-kicker">Badge activation</p>
+            <h3 id="VivnookActivationTitle-{{ section.id }}" class="vivnook-identity-card-generator__form-title h2">Activate your character</h3>
+            <form data-legacy-activation-form novalidate>
+              <div class="vivnook-identity-card-generator__field">
+                <label for="VivnookActivationName-{{ section.id }}">Name</label>
+                <input id="VivnookActivationName-{{ section.id }}" name="name" type="text" autocomplete="name" required data-legacy-activation-name>
+                <p class="vivnook-identity-card-generator__field-helper">*Printed directly onto your official badge</p>
+              </div>
+              <div class="vivnook-identity-card-generator__field">
+                <label for="VivnookActivationEmail-{{ section.id }}">Email</label>
+                <input id="VivnookActivationEmail-{{ section.id }}" name="email" type="email" autocomplete="email" required data-legacy-activation-email>
+              </div>
+              <div class="vivnook-identity-card-generator__consent">
+                <input id="VivnookActivationConsent-{{ section.id }}" name="consent" type="checkbox" data-legacy-activation-consent>
+                <label for="VivnookActivationConsent-{{ section.id }}">Join the Vivnook Signal—Get exclusive new drops, secret community perks, and shift-survival guides.</label>
+              </div>
+              <p class="vivnook-identity-card-generator__form-error" data-activation-error role="alert"></p>
+              <div class="vivnook-identity-card-generator__form-actions">
+                <button class="btn btn--primary" type="submit" data-action="activate">ACTIVATE CHARACTER</button>
+                <button class="btn btn--underline" type="button" data-action="cancel-activation">maybe later</button>
+              </div>
+            </form>
+          </div>
+          {% endcomment %}
+        </div>
+      </div>
+      <p class="vivnook-identity-card-generator__live-status" data-live-status aria-live="polite"></p>
+    </vivnook-identity-card-generator>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nook Identity Card",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "OFFICIAL VIVNOOK ON-CALL BADGE ISSUANCE" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "default": "h1", "options": [{ "value": "h2", "label": "Small" }, { "value": "h1", "label": "Medium" }, { "value": "hd3", "label": "Large" }, { "value": "hd2", "label": "Extra large" }] },
+    { "type": "richtext", "id": "introduction", "label": "Membership introduction", "default": "<p>Show the world your healthcare identity. Find the character that feels a little like you.</p>" },
+    { "type": "text", "id": "benefit_item_1", "label": "Benefit item 1", "default": "A recognized title in the Vivnook Universe" },
+    { "type": "text", "id": "benefit_item_2", "label": "Benefit item 2", "default": "A custom badge that speaks your unexpressed clinical truth" },
+    { "type": "text", "id": "benefit_item_3", "label": "Benefit item 3", "default": "A secret file about you, waiting in your inbox" },
+    { "type": "text", "id": "benefit_item_4", "label": "Benefit item 4", "default": "Your digital passport to an exclusive healthcare community" },
+    { "type": "text", "id": "benefit_item_5", "label": "Benefit item 5", "default": "A daily reminder to pause, off-load, and celebrate yourself" },
+    { "type": "richtext", "id": "congratulations", "label": "Congratulations text", "default": "<p>Welcome to The Nook. You are officially recognized as the identity on your card.</p>" },
+    { "type": "richtext", "id": "complete_message", "label": "Completion text", "default": "<p>Your place in The Nook is saved for this visit.</p>" },
+    { "type": "textarea", "id": "activated_heading", "label": "Activated state heading", "default": "OFFICIALLY ON-CALL.\nYOU’RE ONE OF US NOW." },
+    { "type": "text", "id": "activated_subtitle", "label": "Activated state subtitle", "default": "Your place in the Vivnook Universe is locked in." },
+    { "type": "textarea", "id": "activated_body", "label": "Activated state body text", "default": "Your custom On-Call Badge has been activated and sent to your inbox. Wear your title with pride, embrace the daily chaos, and remember to live, love, and celebrate every shift." },
+    { "type": "text", "id": "shuffle_label", "label": "Shuffle button label", "default": "REROLL" },
+    { "type": "text", "id": "claim_label", "label": "Claim button label", "default": "UNLOCK" },
+    { "type": "text", "id": "activate_endpoint", "label": "Activate endpoint URL", "default": "/apps/vivnook-identity/activate", "info": "Secure Shopify App Proxy endpoint." },
+    { "type": "text", "id": "retrieve_endpoint", "label": "Retrieve endpoint URL", "default": "/apps/vivnook-identity/retrieve", "info": "Secure Shopify App Proxy endpoint. Email verification is enabled in a later phase." },
+    { "type": "text", "id": "retrieve_consume_endpoint", "label": "Retrieve verification endpoint URL", "default": "/apps/vivnook-identity/retrieve/consume", "info": "Secure Shopify App Proxy endpoint for a verified one-time identity restore." },
+    { "type": "text", "id": "claim_position_label", "label": "Claim position button label", "default": "Claim position" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding", "default": 80 },
+    { "type": "checkbox", "id": "show_section_divider", "label": "Show section divider", "default": false },
+    { "type": "select", "id": "divider_width", "label": "Divider width", "default": "fixed", "options": [{ "value": "fixed", "label": "Page width" }, { "value": "full", "label": "Full width" }] },
+    { "type": "text", "id": "custom_class", "label": "Custom CSS class" },
+    { "type": "header", "content": "Identity card layout and typography" },
+    { "type": "range", "id": "height_desktop", "label": "Desktop section height", "min": 200, "max": 1400, "step": 20, "unit": "px", "default": 720 },
+    { "type": "range", "id": "height_mobile", "label": "Mobile section height", "min": 500, "max": 1400, "step": 10, "unit": "px", "default": 900 },
+    { "type": "range", "id": "title_desktop_scale", "label": "Title desktop scale", "min": 70, "max": 140, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "title_mobile_scale", "label": "Title mobile scale", "min": 70, "max": 130, "step": 5, "unit": "%", "default": 90 },
+    { "type": "range", "id": "body_desktop_scale", "label": "Body desktop scale", "min": 70, "max": 140, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "body_mobile_scale", "label": "Body mobile scale", "min": 70, "max": 130, "step": 5, "unit": "%", "default": 90 },
+    { "type": "select", "id": "title_weight", "label": "Title weight", "options": [{ "value": "300", "label": "Light" }, { "value": "400", "label": "Regular" }, { "value": "700", "label": "Bold" }], "default": "400" },
+    { "type": "select", "id": "body_weight", "label": "Body weight", "options": [{ "value": "300", "label": "Light" }, { "value": "400", "label": "Regular" }, { "value": "700", "label": "Bold" }], "default": "400" },
+    { "type": "range", "id": "left_width_desktop", "label": "Left card desktop width", "min": 35, "max": 100, "step": 1, "unit": "%", "default": 65 },
+    { "type": "range", "id": "left_height_desktop", "label": "Left card desktop height", "min": 50, "max": 100, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "left_x_desktop", "label": "Left card desktop horizontal position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "left_y_desktop", "label": "Left card desktop vertical position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "right_width_desktop", "label": "Right text desktop width", "min": 35, "max": 100, "step": 1, "unit": "%", "default": 65 },
+    { "type": "range", "id": "right_height_desktop", "label": "Right text desktop height", "min": 50, "max": 100, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "right_x_desktop", "label": "Right text desktop horizontal position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "right_y_desktop", "label": "Right text desktop vertical position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "left_width_mobile", "label": "Left card mobile width", "min": 70, "max": 170, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "left_height_mobile", "label": "Left card mobile height", "min": 40, "max": 140, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "left_x_mobile", "label": "Left card mobile horizontal position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "left_y_mobile", "label": "Left card mobile vertical position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "right_width_mobile", "label": "Right text mobile width", "min": 70, "max": 100, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "right_height_mobile", "label": "Right text mobile height", "min": 40, "max": 100, "step": 1, "unit": "%", "default": 100 },
+    { "type": "range", "id": "right_x_mobile", "label": "Right text mobile horizontal position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "range", "id": "right_y_mobile", "label": "Right text mobile vertical position", "min": -20, "max": 20, "step": 1, "unit": "%", "default": 0 },
+    { "type": "header", "content": "Activated text position (激活后标题与正文位置)" },
+    { "type": "range", "id": "activated_x_desktop", "label": "Activated text desktop horizontal position", "min": -100, "max": 100, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "activated_y_desktop", "label": "Activated text desktop vertical position", "min": -100, "max": 100, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "activated_x_mobile", "label": "Activated text mobile horizontal position", "min": -60, "max": 60, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "activated_y_mobile", "label": "Activated text mobile vertical position", "min": -60, "max": 60, "step": 2, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    { "name": "Nook Identity Card" }
+  ],
+  "disabled_on": { "groups": ["header", "footer", "custom.overlay"] }
+}
+{% endschema %}

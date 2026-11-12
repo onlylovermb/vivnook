@@ -1,0 +1,262 @@
+/* Loaded only by the rebuilt homepage; product templates keep their styles. */
+:root{--vivnook-home-background:#F4F4F4}
+.announcement-bar-section .announcement-bar{height:var(--announcement-height-desktop,50px)!important;min-height:0!important;padding-block:0!important;display:flex!important;align-items:center!important}
+.announcement-bar-section .announcement-bar__wrapper,.announcement-bar-section .swiper-wrapper,.announcement-bar-section .swiper-slide{height:100%!important}
+.header-section .header{height:var(--header-height-desktop,106px)!important;min-height:0!important;padding-block:0!important}
+.header-section:has(.header--transparent) .header{position:relative!important;background:#fff!important;color:#111!important;--header-background-opacity:1;--header-logo-opacity:1}
+.header-section .header__logo--image{--header-logo-opacity:1!important;color:#111!important}
+.header-section .header__logo--transparent{display:none!important}
+#MainContent{background:var(--vivnook-home-background)!important}
+#MainContent>.shopify-section{margin:0;clear:both}
+#MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:-34px!important;position:relative;z-index:1}
+#MainContent *,#MainContent *::before,#MainContent *::after{box-sizing:border-box}
+.home-rebuild-hero{position:relative;height:var(--home-hero-desktop-height,clamp(720px,48vw,980px));aspect-ratio:auto;overflow:hidden;color:#fff;background:#777}
+.home-rebuild-hero>img{width:100%;height:100%;object-fit:cover;display:block}
+.home-rebuild-hero__copy{position:absolute;inset:auto 20px 10%;text-align:center;text-shadow:0 1px 3px #0008}
+.home-rebuild-hero h1{font-family:var(--font-heading-family)!important;font-size:calc(30px * var(--home-hero-heading-desktop,1))!important;font-weight:var(--home-hero-heading-weight,400)!important;line-height:1.2;color:#fff;margin:0 0 12px}
+.home-rebuild-hero p{font-family:var(--font-body-family)!important;font-size:calc(16px * var(--home-hero-body-desktop,1))!important;font-weight:var(--home-hero-body-weight,400)!important;line-height:1.4;max-width:640px;margin:0 auto 22px}
+.home-rebuild-hero a{display:inline-flex;align-items:center;justify-content:center;width:var(--home-hero-button-desktop-width,250px)!important;height:var(--home-hero-button-desktop-height,48px)!important;min-width:0!important;min-height:0!important;box-sizing:border-box;border-radius:5px;background:#941239;color:#fff;padding:12px 24px;font-family:var(--font-body-family)!important;font-size:calc(16px * var(--home-hero-button-desktop,1))!important;font-weight:var(--home-hero-body-weight,400)!important;text-decoration:none;text-shadow:none}
+#MainContent .home-rebuild-hero.home-hero-heading-weight-300 h1{font-weight:300!important}#MainContent .home-rebuild-hero.home-hero-heading-weight-400 h1{font-weight:400!important}#MainContent .home-rebuild-hero.home-hero-heading-weight-700 h1{font-weight:700!important}
+#MainContent .home-rebuild-hero.home-hero-body-weight-300 p,#MainContent .home-rebuild-hero.home-hero-body-weight-300 a{font-weight:300!important}#MainContent .home-rebuild-hero.home-hero-body-weight-400 p,#MainContent .home-rebuild-hero.home-hero-body-weight-400 a{font-weight:400!important}#MainContent .home-rebuild-hero.home-hero-body-weight-700 p,#MainContent .home-rebuild-hero.home-hero-body-weight-700 a{font-weight:700!important}
+@media(max-width:749px){#MainContent .home-rebuild-hero h1{font-size:calc(30px * var(--home-hero-heading-mobile, .9))!important}#MainContent .home-rebuild-hero p{font-size:calc(16px * var(--home-hero-body-mobile, .9))!important}#MainContent .home-rebuild-hero a{font-size:calc(16px * var(--home-hero-button-mobile, .9))!important;width:var(--home-hero-button-mobile-width,250px)!important;min-width:0!important;height:var(--home-hero-button-mobile-height,48px)!important;min-height:0!important}}
+@media(max-width:749px){#MainContent .home-rebuild-hero h1{font-size:calc(30px * var(--home-hero-heading-mobile, .9))!important}#MainContent .home-rebuild-hero p{font-size:calc(16px * var(--home-hero-body-mobile, .9))!important}#MainContent .home-rebuild-hero a{font-size:calc(16px * var(--home-hero-button-mobile, .9))!important;width:var(--home-hero-button-mobile-width,250px)!important;min-width:0!important;height:var(--home-hero-button-mobile-height,48px)!important;min-height:0!important}}
+#MainContent .products-bundle,#MainContent .products-bundle.section--padding{max-width:none;padding-top:0!important;padding-bottom:0!important;width:100%}
+#MainContent .products-bundle .section--padding{padding-top:0!important}
+#MainContent .vivnook-product-video-split{height:56.25vw;max-height:none;gap:0;border:0}
+#MainContent .vivnook-product-video-split__product{grid-column:1;background:var(--vivnook-home-background)!important}
+#MainContent .vivnook-product-video-split__media{grid-column:2}
+#MainContent .vivnook-product-video-split__product-image{mix-blend-mode:multiply!important;object-fit:contain!important}
+#MainContent .vivnook-product-video-split__product-inner{height:100%;justify-content:center}
+#MainContent .vivnook-product-video-split__product-image{width:100%!important;height:25%!important;flex:0 0 25%;object-fit:contain!important}
+#MainContent .vivnook-product-video-split__product h2{margin-top:40px}
+#MainContent .vivnook-product-video-split__product p{max-width:580px}
+#MainContent .vivnook-product-video-split__button,#MainContent .vivnook-scrubs-feature__content a{width:250px;min-height:48px;justify-content:center;align-items:center;font-family:var(--font-body-family)!important;font-size:calc(16px * var(--module-button-scale,1))!important;font-weight:var(--module-button-weight,400)!important;line-height:1.3;margin-top:40px;padding:10px 16px}
+#MainContent .vivnook-scrubs-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:56.25vw;gap:0;background:var(--vivnook-home-background)!important;overflow:hidden}
+#MainContent .vivnook-fabric-lab,
+#MainContent .vivnook-fabric-lab__left,
+#MainContent .vivnook-fabric-lab__intro,
+#MainContent .vivnook-scrubs-feature__content{background:var(--vivnook-home-background)!important}
+#MainContent .vivnook-scrubs-feature>.vivnook-scrubs-feature__image{height:100%;min-height:0;position:relative;aspect-ratio:auto}
+#MainContent .vivnook-scrubs-feature>.vivnook-scrubs-feature__image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#MainContent .vivnook-scrubs-feature__side{display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);height:100%;min-height:0}
+#MainContent .vivnook-scrubs-feature__content{padding:24px 8%;min-height:0;overflow:auto}
+#MainContent .vivnook-scrubs-feature__content h2{font-family:var(--font-heading-family)!important;font-size:calc(30px * var(--module-heading-scale,1))!important;font-weight:var(--module-heading-weight,400)!important;line-height:1.25}
+#MainContent .vivnook-scrubs-feature__body{font-family:var(--font-body-family)!important;font-size:calc(16px * var(--module-body-scale,1))!important;font-weight:var(--module-body-weight,400)!important;line-height:1.4;max-width:580px;margin:16px 0 0}
+#MainContent .vivnook-scrubs-feature__image--secondary{position:relative;min-height:0;overflow:hidden}
+#MainContent .vivnook-scrubs-feature__image--secondary img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#MainContent .vivnook-scrubs-feature__fabric-copy{font-family:var(--font-body-family)!important;font-size:calc(16px * var(--module-body-scale,1))!important;font-weight:var(--module-body-weight,400)!important;line-height:1.35;left:5%;bottom:8%}
+#MainContent .vivnook-atelier-concierge{background:var(--vivnook-home-background)!important;padding:70px 6%}
+#MainContent .vivnook-atelier-concierge__grid{grid-template-columns:1fr 1fr;gap:10%;position:relative}
+#MainContent .vivnook-atelier-concierge__grid:before{position:absolute;left:50%;top:35%;height:30%;grid-column:auto;grid-row:auto}
+#MainContent .vivnook-atelier-concierge__body p{font-size:16px!important}
+#MainContent .vivnook-atelier-concierge__body p:first-child{font-size:23px!important}
+#MainContent .vivnook-atelier-concierge__item h2{display:none!important}
+#MainContent .vivnook-atelier-concierge__body,
+#MainContent .vivnook-atelier-concierge__body p{color:#2f2f2f!important;font-family:var(--font-body-family)!important}
+#MainContent .vivnook-atelier-concierge__body p:first-child{font-family:var(--font-heading-family)!important;font-size:calc(23px * var(--module-heading-scale,1))!important;font-weight:var(--module-heading-weight,400)!important;line-height:1.25}
+#MainContent .vivnook-atelier-concierge__body p:not(:first-child){font-family:var(--font-body-family)!important;font-size:calc(16px * var(--module-body-scale,1))!important;font-weight:var(--module-body-weight,400)!important;line-height:1.4}
+#MainContent .vivnook-customer-review{position:relative;clear:both;background:var(--vivnook-home-background)!important;padding:90px 4% 16px;margin-top:-34px!important}
+#MainContent .vivnook-customer-review__card svg{visibility:hidden}
+#MainContent .home-identity{background:var(--vivnook-home-background)!important}
+#MainContent .home-identity .image-with-text__wrapper,#MainContent .home-identity .image-with-text__inner,#MainContent .home-identity .image-with-text__content{background:var(--vivnook-home-background)!important}
+#MainContent .home-identity h2{font-family:var(--font-heading-family)!important;font-size:calc(30px * var(--module-heading-scale,1))!important;font-weight:var(--module-heading-weight,400)!important;line-height:1.25}
+#MainContent .home-identity p{font-family:var(--font-body-family)!important;font-size:calc(16px * var(--module-body-scale,1))!important;font-weight:var(--module-body-weight,400)!important}
+#MainContent .shopify-section:has(.vivnook-faq-contact){background:#F4F4F4!important}
+#MainContent .vivnook-faq-contact{width:90%;margin:0 auto 41px;padding-block:70px;background:#EBEBEB!important}
+#MainContent .vivnook-finale-banner,
+#MainContent .vivnook-finale-banner__copy{background:var(--vivnook-home-background)!important}
+
+/* FAQ contact controls */
+#MainContent .vivnook-faq-contact {
+  align-items: center;
+}
+#MainContent .vivnook-faq-contact__intro {
+  height: var(--faq-intro-height-desktop, 100%) !important;
+  transform: translate(var(--faq-intro-x-desktop, 0%), var(--faq-intro-y-desktop, 0%));
+}
+#MainContent .vivnook-faq-contact__intro h2 {
+  width: var(--faq-title-width-desktop, 520px) !important;
+  max-width: 100% !important;
+  font-size: calc(23px * var(--faq-title-desktop, 1)) !important;
+  font-weight: var(--faq-title-weight, 400) !important;
+}
+#MainContent .vivnook-faq-contact__intro p {
+  max-width: var(--faq-intro-width-desktop, 360px) !important;
+  font-size: calc(13px * var(--faq-body-desktop, 1)) !important;
+  font-weight: var(--faq-body-weight, 400) !important;
+}
+#MainContent .vivnook-faq-contact__intro a {
+  width: var(--faq-button-width-desktop, 180px) !important;
+  height: var(--faq-button-height-desktop, 40px) !important;
+  transform: translate(var(--faq-button-x-desktop, 0%), var(--faq-button-y-desktop, 0%));
+  font-size: 16px !important;
+  font-weight: var(--faq-body-weight, 400) !important;
+}
+#MainContent .vivnook-faq-contact__list {
+  width: var(--faq-list-width-desktop, 700px);
+  height: var(--faq-list-height-desktop, 100%) !important;
+  transform: translate(var(--faq-list-x-desktop, 0%), var(--faq-list-y-desktop, 0%));
+}
+#MainContent .vivnook-faq-contact__list::before {
+  width: var(--faq-line-width-desktop, 1px) !important;
+}
+#MainContent .vivnook-faq-contact__item {
+  border -bottom-width: var(--faq-line-width-desktop, 1px) !important;
+}
+#MainContent .vivnook-faq-contact__item summary {
+  font-size: calc(16px * var(--faq-body-desktop, 1)) !important;
+  font-weight: var(--faq-body-weight, 400) !important;
+}
+#MainContent .vivnook-faq-contact__item summary b {
+  width: var(--faq-plus-size-desktop, 20px) !important;
+  height: var(--faq-plus-size-desktop, 20px) !important;
+  flex-basis: var(--faq-plus-size-desktop, 20px) !important;
+}
+#MainContent .vivnook-faq-contact__item summary b::before,
+#MainContent .vivnook-faq-contact__item summary b::after {
+  top: calc(var(--faq-plus-size-desktop, 20px) / 2) !important;
+  width: var(--faq-plus-size-desktop, 20px) !important;
+}
+#MainContent .vivnook-faq-contact__item summary b::before,
+#MainContent .vivnook-faq-contact__item summary b::after {
+  height: var(--faq-line-width-desktop, 1px) !important;
+}
+#MainContent .vivnook-faq-contact__answer {
+  max-width: var(--faq-list-width-desktop, 700px);
+  font-size: calc(14px * var(--faq-body-desktop, 1)) !important;
+  font-weight: var(--faq-body-weight, 400) !important;
+}
+@media(max-width:749px){
+ #MainContent .vivnook-faq-contact{width:100%;margin:0;padding-block:70px;background:#EBEBEB!important}
+ .home-rebuild-hero{height:var(--home-hero-mobile-height,680px)!important;aspect-ratio:auto!important}.home-rebuild-hero>img{object-position:50% 50%}.home-rebuild-hero__copy{bottom:7%}
+ #MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:-20px!important}
+ #MainContent .vivnook-product-video-split{height:auto;grid-template-columns:1fr}
+ #MainContent .vivnook-product-video-split__product{grid-column:1;grid-row:2;height:auto;min-height:480px;padding:32px 24px}
+ #MainContent .vivnook-product-video-split__product-image{height:200px!important;flex-basis:200px}
+ #MainContent .vivnook-product-video-split__media{grid-column:1;grid-row:1;height:125vw}
+ #MainContent .vivnook-product-video-split{display:flex!important;flex-direction:column!important}
+ #MainContent .vivnook-product-video-split__media{order:1!important;grid-row:auto!important}
+ #MainContent .vivnook-product-video-split__product{order:2!important;grid-row:auto!important}
+ #MainContent .vivnook-scrubs-feature{height:auto;grid-template-columns:1fr}
+ #MainContent .vivnook-scrubs-feature>.vivnook-scrubs-feature__image{height:125vw}
+ #MainContent .vivnook-scrubs-feature__side{height:auto;grid-template-rows:auto auto}
+ #MainContent .vivnook-scrubs-feature__content{padding:50px 24px;overflow:visible}
+ #MainContent .vivnook-scrubs-feature__image--secondary{height:75vw;min-height:290px}
+ #MainContent .vivnook-scrubs-feature__image--secondary{width:100vw!important;margin-left:calc(50% - 50vw)!important}
+ #MainContent .vivnook-scrubs-feature__content a,#MainContent .vivnook-product-video-split__button{margin-top:30px}
+ #MainContent .vivnook-atelier-concierge__grid{grid-template-columns:1fr;gap:50px}
+ #MainContent .vivnook-customer-review{padding:55px 16px 16px}
+ #MainContent .vivnook-faq-contact{min-height:var(--faq-height-mobile,900px)!important}
+ #MainContent .vivnook-faq-contact{width:100%!important;max-width:100vw!important;margin-inline:auto!important;padding-inline:20px!important;grid-template-columns:minmax(0,1fr)!important;overflow:hidden!important}
+ #MainContent .vivnook-faq-contact__intro,#MainContent .vivnook-faq-contact__list{min-width:0!important;width:100%!important;max-width:100%!important;margin-inline:0!important}
+ #MainContent .vivnook-faq-contact__intro h2{font-size:calc(23px * var(--faq-title-mobile,.9))!important;font-weight:var(--faq-title-weight,400)!important;transform:translateX(var(--faq-title-x-mobile,0%))!important}
+ #MainContent .vivnook-faq-contact__intro p{width:100%!important;max-width:100%!important;font-size:calc(13px * var(--faq-body-mobile,.9))!important;font-weight:var(--faq-body-weight,400)!important;text-align:left!important;transform:translateX(var(--faq-body-x-mobile,0%))!important}
+ #MainContent .vivnook-faq-contact__intro a{position:relative;left:var(--faq-button-x-mobile,0px)!important;width:var(--faq-button-width-mobile,180px)!important;height:var(--faq-button-height-mobile,40px)!important;transform:translateY(var(--faq-button-y-mobile,0%))!important;font-size:14.4px!important}
+ #MainContent .vivnook-faq-contact__list{width:100%!important;max-width:100%!important}
+ #MainContent .vivnook-faq-contact__item summary{font-size:calc(13px * var(--faq-body-mobile,.9))!important;font-weight:var(--faq-body-weight,400)!important}
+ #MainContent .vivnook-faq-contact__item summary b{width:var(--faq-plus-size-mobile,20px)!important;height:var(--faq-plus-size-mobile,20px)!important;flex-basis:var(--faq-plus-size-mobile,20px)!important}
+ #MainContent .vivnook-faq-contact__item summary b::before,#MainContent .vivnook-faq-contact__item summary b::after{top:calc(var(--faq-plus-size-mobile,20px)/2)!important;width:var(--faq-plus-size-mobile,20px)!important}
+ #MainContent .vivnook-faq-contact__item{border-bottom-width:var(--faq-line-width-mobile,1px)!important}
+ #MainContent .vivnook-faq-contact__list::before{width:var(--faq-line-width-mobile,1px)!important}
+ #MainContent .vivnook-faq-contact__item summary b::before,#MainContent .vivnook-faq-contact__item summary b::after{height:var(--faq-line-width-mobile,1px)!important}
+ #MainContent .vivnook-faq-contact__answer{font-size:calc(14px * var(--faq-body-mobile,.9))!important;font-weight:var(--faq-body-weight,400)!important}
+}
+
+/* Atelier concierge controls */
+#MainContent .vivnook-atelier-concierge{height:var(--atelier-height-desktop,620px);min-height:0}
+#MainContent .vivnook-atelier-concierge__item h2{display:block!important;margin:0 0 14px;font-family:var(--font-heading-family)!important;font-size:calc(30px * var(--atelier-heading-desktop,1))!important;font-weight:var(--atelier-heading-weight,400)!important;line-height:1.25!important}
+#MainContent .vivnook-atelier-concierge__image{width:var(--atelier-image-width-desktop,300px);height:var(--atelier-image-height-desktop,300px);aspect-ratio:auto}
+#MainContent .vivnook-atelier-concierge__body,
+#MainContent .vivnook-atelier-concierge__body p,
+#MainContent .vivnook-atelier-concierge__body p:first-child,
+#MainContent .vivnook-atelier-concierge__body p:not(:first-child){font-family:var(--font-body-family)!important;font-size:calc(16px * var(--atelier-body-desktop,1))!important;font-weight:var(--atelier-body-weight,400)!important;line-height:1.4!important}
+#MainContent .vivnook-atelier-concierge__body p:first-child{font-size:calc(16px * var(--atelier-subtitle-desktop,1))!important;font-weight:var(--atelier-subtitle-weight,400)!important}
+@media(min-width:750px){
+  #MainContent .vivnook-atelier-concierge__grid{grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr)!important;align-items:start!important;column-gap:clamp(30px,6vw,110px)!important;row-gap:0!important}
+  #MainContent .vivnook-atelier-concierge__grid:before{grid-column:2!important;grid-row:1!important;position:static!important;align-self:center!important;width:1px!important;height:110px!important}
+  #MainContent .vivnook-atelier-concierge__item{display:flex!important;flex-direction:column!important;align-items:center!important}
+  #MainContent .vivnook-atelier-concierge__item h2{min-height:37.5px!important;margin-bottom:14px!important}
+  #MainContent .vivnook-atelier-concierge__image{flex:0 0 auto!important;margin:0 auto 16px!important;overflow:hidden!important}
+  #MainContent .vivnook-atelier-concierge__image img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+}
+@media(max-width:749px){
+  #MainContent .vivnook-atelier-concierge{height:var(--atelier-height-mobile,760px)}
+  #MainContent .vivnook-atelier-concierge__item h2{font-size:calc(30px * var(--atelier-heading-mobile,.9))!important}
+  #MainContent .vivnook-atelier-concierge__image{width:var(--atelier-image-width-mobile,300px);height:var(--atelier-image-height-mobile,300px)}
+  #MainContent .vivnook-atelier-concierge__body,
+  #MainContent .vivnook-atelier-concierge__body p,
+  #MainContent .vivnook-atelier-concierge__body p:first-child,
+  #MainContent .vivnook-atelier-concierge__body p:not(:first-child){font-size:calc(16px * var(--atelier-body-mobile,.9))!important}
+  #MainContent .vivnook-atelier-concierge__body p:first-child{font-size:calc(16px * var(--atelier-subtitle-mobile,.9))!important}
+}
+
+/* Product bundle typography and button controls. */
+#MainContent .products-bundle-section .look-bundle__heading{font-size:calc(30px * var(--bundle-heading-desktop,1))!important;font-weight:var(--bundle-heading-weight,400)!important}
+#MainContent .products-bundle-section .look-bundle__details h3{font-size:calc(23px * var(--bundle-product-title-desktop,1))!important;font-weight:var(--bundle-heading-weight,400)!important}
+#MainContent .products-bundle-section .look-bundle__details p,
+#MainContent .products-bundle-section .look-bundle__details select{font-size:calc(16px * var(--bundle-body-desktop,1))!important;font-weight:var(--bundle-body-weight,400)!important}
+#MainContent .products-bundle-section .look-bundle__purchase{transform:translateY(var(--bundle-button-desktop-y,0px))!important}
+#MainContent .products-bundle-section .look-bundle__purchase .btn{width:var(--bundle-button-desktop-width,250px)!important;height:var(--bundle-button-desktop-height,48px)!important;min-height:0!important;padding:0!important;font-size:calc(16px * var(--bundle-button-desktop,1))!important;font-weight:var(--bundle-body-weight,400)!important;display:inline-flex;align-items:center;justify-content:center}
+#MainContent .products-bundle-section.bundle-heading-weight-300 .look-bundle__heading,#MainContent .products-bundle-section.bundle-heading-weight-300 .look-bundle__details h3{font-weight:300!important}
+#MainContent .products-bundle-section.bundle-heading-weight-400 .look-bundle__heading,#MainContent .products-bundle-section.bundle-heading-weight-400 .look-bundle__details h3{font-weight:400!important}
+#MainContent .vivnook-atelier-concierge__body p:first-child{font-size:16px!important}
+  #MainContent .products-bundle-section .look-bundle__heading{font-size:30px!important}
+  #MainContent .products-bundle-section .look-bundle__details h3{font-size:calc(18px * var(--bundle-product-title-mobile,.9))!important}
+  #MainContent .products-bundle-section .look-bundle__details p,#MainContent .products-bundle-section .look-bundle__details select{font-size:calc(16px * var(--bundle-body-mobile,.9))!important}
+  #MainContent .products-bundle-section .look-bundle__purchase{transform:translateY(var(--bundle-button-mobile-y,0px))!important}
+  #MainContent .products-bundle-section .look-bundle__purchase .btn{width:var(--bundle-button-mobile-width,250px)!important;height:var(--bundle-button-mobile-height,48px)!important;font-size:calc(16px * var(--bundle-button-mobile,.9))!important}
+}
+
+/* Product bundle controls. Desktop remains a 50/50 split; mobile heights are independent. */
+#MainContent .products-bundle-section .products-bundle,
+#MainContent .products-bundle-section .look-bundle{
+  height:var(--bundle-desktop-height,720px)!important;
+  max-height:none!important;
+}
+#MainContent .products-bundle-section .look-bundle__models,
+#MainContent .products-bundle-section .look-bundle__shop{height:100%!important;min-height:0!important}
+@media(max-width:749px){
+  #MainContent .products-bundle-section .products-bundle,
+  #MainContent .products-bundle-section .look-bundle{height:auto!important}
+  #MainContent .products-bundle-section .look-bundle__models{height:var(--bundle-mobile-left-height,600px)!important;min-height:0!important;aspect-ratio:auto!important}
+  #MainContent .products-bundle-section .look-bundle__shop{height:var(--bundle-mobile-right-height,760px)!important;min-height:0!important}
+}
+/* The Look 购买按钮：电脑端文字 16px */
+@media (min-width: 750px) {
+  #MainContent .products-bundle-section .look-bundle__purchase .btn {
+    font-size: 16px !important;
+  }
+}
+/* FAQ Contact：电脑端两块正文统一为 16px */
+@media (min-width: 750px) {
+
+  /* 左侧说明文字 */
+  #MainContent .vivnook-faq-contact__intro p {
+    font-size: 16px !important;
+  }
+
+  /* 右侧 FAQ 问题文字 */
+  #MainContent .vivnook-faq-contact__item summary {
+    font-size: 16px !important;
+  }
+
+}
+/* FAQ Contact 左侧标题：电脑端 30px */
+@media (min-width: 750px) {
+  #MainContent .vivnook-faq-contact__intro h2 {
+    font-size: 30px !important;
+  }
+}
+/* The Look 标题：电脑端 30px */
+@media (min-width: 750px) {
+  #MainContent .products-bundle-section .look-bundle__heading {
+    font-size: 30px !important;
+  }
+}
+
+/* The Look 标题：手机端 27px */
+@media (max-width: 749px) {
+  #MainContent .products-bundle-section .look-bundle__heading {
+    font-size: 27px !important;
+  }
+}

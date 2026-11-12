@@ -1,0 +1,1623 @@
+/* The reference is displayed at roughly 2/3 of its annotated design size.
+   Scale typography/spacing together while preserving the 72:26 composition. */
+@font-face{font-family:'Look Inter';src:url('look-inter-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:'Look DM Sans';src:url('look-dm-sans-latin.woff2') format('woff2');font-style:normal;font-weight:100 1000;font-display:swap}
+[data-look-design]{--look-scale:1;--look-rule:#707070;--font-body-family:'Look Inter',Inter,sans-serif;--font-heading-family:'Look Inter',Inter,sans-serif;font-family:var(--font-body-family);color:#242424;max-width:none;padding-inline:8px 3.5%;padding-top:24px}
+[data-look-design] .product__info-wrapper{padding-inline:0}
+[data-look-design] .product__info-wrapper,[data-look-design] .product__info-container{padding-inline-start:0!important;padding-inline-end:0!important;margin-inline-start:0!important}
+[data-look-design] .product__info-container{position:static}
+[data-look-design] .product__title{font-family:Helvetica,Arial,sans-serif!important;font-size:21px!important;font-weight:700!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+[data-look-design] .product__block{margin:0 0 calc(32px * var(--look-scale))}
+[data-look-design] .product__block--title{margin-bottom:16px!important}
+[data-look-design] .product__text{font-size:16px!important;line-height:1.4;letter-spacing:0}
+[data-look-design] .product__block--price{margin-top:0!important;margin-bottom:16px!important}
+[data-look-design] .product__block--price .f-price,[data-look-design] .product__block--price .f-price-item,[data-look-design] .product__block--price .f-price-item--regular{font-family:Helvetica,Arial,sans-serif!important;font-size:21px!important;font-weight:400!important;line-height:1.25}
+@media (max-width: 767px) {
+  [data-look-design] .product__block--price .f-price,[data-look-design] .product__block--price .f-price-item,[data-look-design] .product__block--price .f-price-item--regular{font-size:21px!important;line-height:1.25!important}
+}
+[data-look-design] .product__tax:empty,[data-look-design] .product__block--custom_liquid:empty{display:none}
+[data-look-design] .product__block--variant_picker{margin-top:0!important;padding-top:0!important;padding-bottom:0!important;margin-bottom:0!important;border-bottom:0!important}
+[data-look-design] .product__block--variant_picker .form__label,[data-look-design] .look-size__heading{font-family:var(--font-body-family);font-size:18px!important;line-height:1.4;letter-spacing:0}
+[data-look-design] .product__block--variant_picker .form__label,[data-look-design] .product__block--variant_picker .form__label .font-body-bold,[data-look-design] .look-size__heading strong{font-weight:700!important}
+[data-look-design] .product__block--variant_picker .form__label [data-selected-swatch-value]{font-weight:400!important}
+/* Globo replaces the native variant label on the live storefront. */
+[data-look-design] .product__block--variant_picker .globo-swatch-product-detail .swatch--gl{margin-bottom:0!important}
+[data-look-design] .product__block--variant_picker .globo-swatch-product-detail .name-option[data-name="Color"]{font-family:var(--font-body-family)!important;font-size:18px!important;font-weight:700!important;font-style:normal!important;line-height:1!important;letter-spacing:0!important}
+[data-look-design] .product__block--variant_picker .globo-swatch-product-detail .name-option[data-name="Color"] .name-variant{font-family:inherit!important;font-size:inherit!important;font-weight:400!important;line-height:inherit!important;letter-spacing:inherit!important}
+[data-look-design] .product__block--variant_picker .globo-swatch-product-detail .name-option[data-name="Color"] .name-variant>span{font-family:inherit!important;font-size:inherit!important;font-weight:400!important}
+[data-look-design] .main-product-form{display:block}
+[data-look-design] .look-components{display:block}
+[data-look-design] .look-component{padding:0 0 16px!important;margin:0 0 16px!important;border-bottom:.5px solid var(--look-rule)}
+[data-look-design] .look-component--bag{border-bottom:0!important;margin-bottom:0!important;padding-bottom:0!important}
+[data-look-design] .look-component--top{border-bottom:0!important;margin-bottom:0!important;padding-bottom:0!important}
+[data-look-design] .look-card{display:flex;align-items:center;gap:calc(17px * var(--look-scale));padding:calc(9px * var(--look-scale)) calc(14px * var(--look-scale));background:#f4f4f4;border-radius:4px;min-height:calc(111px * var(--look-scale))}
+[data-look-design] .look-card__image{width:calc(91.5px * var(--look-scale));height:calc(91.5px * var(--look-scale));aspect-ratio:1/1;flex-shrink:0;object-fit:cover;border-radius:4px}
+[data-look-design] .look-component--bag .look-card__image{object-fit:cover;border-radius:4px}
+[data-look-design] .look-card__copy{min-width:0;display:flex;flex-direction:column;gap:16px!important;row-gap:16px!important;margin:0!important;padding:0!important}
+[data-look-design] .look-card h2{font:700 14px/1.3 var(--font-body-family);font-size:14px!important;margin:0;letter-spacing:0}
+[data-look-design] .look-card a,[data-look-design] .look-card__reviews{font-size:12px!important;line-height:1.4;margin:0}
+[data-look-design] .look-card a,[data-look-design] .look-size__chart{text-decoration:underline;text-underline-offset:2px}
+[data-look-design] .look-size{border:0;padding:0;margin:16px 0 0;min-width:0}
+[data-look-design] .look-size__heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:18px!important;line-height:1;margin:0 0 8px!important;padding:0}
+[data-look-design] .look-size__chart{font:400 12px/1 var(--font-body-family);font-size:12px!important;height:auto;min-height:0;padding:0;background:none;border:0;cursor:pointer}
+[data-look-design] .look-size__options{margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:calc(7px * var(--look-scale));position:relative}
+[data-look-design] .look-size__options label{display:grid;place-items:center;min-height:calc(38px * var(--look-scale));border:.5px solid #707070;border-radius:4px;font-size:calc(16px * var(--look-scale));font-weight:700;cursor:pointer;position:relative}
+[data-look-design] .look-size__options input:checked+label{border-color:#242424;box-shadow:inset 0 0 0 1px #242424;background:#f4f4f4}
+[data-look-design] .look-size__options input:focus-visible+label{outline:2px solid #881337;outline-offset:3px}
+[data-look-design] .look-size__options input:disabled+label,
+[data-look-design] .look-size__options label:is(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]) {
+  border-color: #d2d2d2 !important;
+  color: #9e9e9e !important;
+  background-color: #fff !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
+[data-look-design] .look-size__options input:disabled+label:before,
+[data-look-design] .look-size__options label:is(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):before {
+  display: none !important;
+  content: none !important;
+}
+[data-look-design] .look-size__options input:disabled+label:after,
+[data-look-design] .look-size__options label:is(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cline x1='0' y1='0' x2='100' y2='100' stroke='%23b8b8b8' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  pointer-events: none !important;
+  border-radius: inherit !important;
+  z-index: 2 !important;
+}
+[data-look-design] .look-find-size{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:calc(47px * var(--look-scale));margin-top:4px!important;padding:8px calc(26px * var(--look-scale));border:1px solid #2f2f2f;border-radius:4px;background:#fff;font:400 calc(16px * var(--look-scale))/1.4 var(--font-body-family);cursor:pointer}
+/* Use a stroked chevron instead of a font glyph for consistent 0.5px lines. */
+[data-look-design] .look-find-size>span[aria-hidden="true"]{display:inline-block;flex-shrink:0;width:12px;height:20px;vertical-align:middle;font-size:0;line-height:0;color:#707070;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='20' viewBox='0 0 12 20'%3E%3Cpath d='M3 5l5 5-5 5' fill='none' stroke='%23707070' stroke-width='.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px 20px no-repeat}
+[data-look-design] .vivnook-embroidery{padding:0 0 16px!important;margin:16px 0 16px!important;border-bottom:1px solid #707070!important}
+[data-look-design] .vivnook-embroidery__entry-heading{margin-bottom:calc(16px * var(--look-scale))}
+[data-look-design] .vivnook-embroidery__entry-title p{font:700 16px/1.4 var(--font-body-family)!important}
+[data-look-design] .vivnook-embroidery__learn-trigger{font:400 calc(16px * var(--look-scale))/1.4 var(--font-body-family);text-transform:capitalize}
+[data-look-design] .vivnook-embroidery__entry-card{display:flex;align-items:center;justify-content:space-between;gap:12px;box-sizing:border-box;width:100%;min-width:0;max-width:100%;min-height:calc(47px * var(--look-scale));padding:8px calc(26px * var(--look-scale));border:1px solid #2f2f2f;border-radius:4px;background:white;font:400 calc(16px * var(--look-scale))/1.4 var(--font-body-family);overflow:hidden}
+[data-look-design] .vivnook-embroidery__entry-card>span:last-child{color:inherit;font-weight:400}
+[data-look-design] .vivnook-embroidery__entry-card>span:first-child{flex:1 1 auto;min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+[data-look-design] .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 1 auto;min-width:0;max-width:48%;white-space:nowrap}
+[data-look-design] .vivnook-length-adjustment{margin-top:4px!important;font-size:calc(16px * var(--look-scale))}
+[data-look-design] .vivnook-length-adjustment__option{padding:6px 18px;background:#f4f4f4;border-radius:4px;text-decoration:underline;font-weight:300}
+[data-look-design] .look-component__notice{font-size:12px;margin:12px 0 0}
+[data-look-design] .product-form__buttons{display:flex!important;gap:calc(12px * var(--look-scale));align-items:stretch;min-height:36px;height:36px}
+[data-look-design] .product-form__buttons>.product-form__quantity{display:block!important;flex:0 0 32%;width:32%;min-width:0;height:36px!important;min-height:36px!important;max-height:36px!important}
+[data-look-design] .product-form__buttons>.product-form__buttons{display:flex!important;flex:1 1 auto;width:auto;min-width:0;height:36px!important;min-height:36px!important;max-height:36px!important}
+[data-look-design] .product-form__buttons>.product-form__buttons .product-form__submit{width:100%}
+[data-look-design] .look-quantity-select{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:36px!important;min-height:36px!important;max-height:36px!important;box-sizing:border-box!important;border:1px solid #2f2f2f;border-radius:4px;background:#fff;font:400 12px/1.2 var(--font-body-family);font-size:12px!important;cursor:pointer}
+[data-look-design] .look-quantity-select span{white-space:nowrap;font-size:12px!important}
+[data-look-design] .look-quantity-select select{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;font:inherit;min-width:2ch;padding:0 16px 0 0;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 7px) 50%,calc(100% - 3px) 50%;background-size:4px 4px,4px 4px;background-repeat:no-repeat;cursor:pointer}
+[data-look-design] .look-quantity-select{position:relative;display:block}
+[data-look-design] .look-quantity-select__trigger{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;height:100%;min-height:inherit;padding:0;border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:12px!important;cursor:pointer}
+[data-look-design] .look-quantity-select__trigger span,[data-look-design] .look-quantity-select__trigger strong{font-size:12px!important}
+[data-look-design] .look-quantity-select__trigger:focus,[data-look-design] .look-quantity-select__trigger:focus-visible{outline:0;box-shadow:none}
+[data-look-design] .look-quantity-select__caret{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #2F2F2F}
+[data-look-design] .look-quantity-select__menu,
+.look-quantity-select__menu,
+product-info[data-url*="scrub-pants"] .look-quantity-select__menu{position:absolute!important;z-index:999!important;left:0!important;right:0!important;top:100%!important;bottom:auto!important;width:100%!important;min-width:100%!important;max-width:100%!important;transform:none!important;box-sizing:border-box!important;display:grid;max-height:calc(36px * 9);overflow-y:auto;border:0.5px solid #707070;background:#fff;pointer-events:auto!important}
+[data-look-design] .look-quantity-select__menu{scrollbar-width:none;-ms-overflow-style:none}
+[data-look-design] .look-quantity-select__menu::-webkit-scrollbar{display:none;width:0;height:0}
+[data-look-design] .look-quantity-select__menu[hidden]{display:none!important}
+[data-look-design] .look-quantity-select__menu button,
+.look-quantity-select__menu button{display:grid;place-items:center;width:100%!important;height:36px!important;min-height:36px!important;padding:0;border:0;background:#fff;color:#2f2f2f;font:400 12px/1 var(--font-body-family);font-size:12px!important;cursor:pointer;text-align:center;box-sizing:border-box!important}
+
+/* Keep the real quantity control clickable, visible, and above surrounding elements in all views */
+[data-look-quantity-picker],
+[data-look-design] [data-look-quantity-picker],
+product-info[data-url*="scrub-pants"] [data-look-quantity-picker]{position:relative;z-index:30;overflow:visible;pointer-events:auto}
+.look-quantity-select__trigger,
+[data-look-design] .look-quantity-select__trigger,
+product-info[data-url*="scrub-pants"] .look-quantity-select__trigger{position:relative;z-index:31;pointer-events:auto;cursor:pointer}
+.look-quantity-select__trigger,
+.look-quantity-select__trigger span,
+.look-quantity-select__trigger strong,
+product-info[data-url*="scrub-pants"] .look-quantity-select__trigger,
+product-info[data-url*="scrub-pants"] .look-quantity-select__trigger span,
+product-info[data-url*="scrub-pants"] .look-quantity-select__trigger strong{font-weight:400!important}
+.look-quantity-select__menu,
+[data-look-design] .look-quantity-select__menu,
+product-info[data-url*="scrub-pants"] .look-quantity-select__menu{z-index:100;pointer-events:auto}
+[data-look-quantity-picker] .look-quantity-select__menu[hidden]{display:none!important}
+
+[data-look-design] .quantity{width:100%;min-height:36px;height:36px;max-height:36px;border:1px solid #2f2f2f;border-radius:3px;box-sizing:border-box}
+[data-look-design] .quantity__button{width:26px;padding:5px}
+[data-look-design] .quantity__input{font:400 12px/1 var(--font-body-family);padding:0;min-width:0}
+[data-look-design] .product-form__submit{flex:1;min-width:0;min-height:36px;height:36px;max-height:36px;padding:0 8px;background:#881337;color:#fff;border:1px solid #881337;border-radius:4px;font:700 14px/1.2 var(--font-body-family);font-size:14px!important;box-sizing:border-box;text-transform:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+[data-look-design] .product-form__submit:before{background:#881337}
+[data-look-design] .look-shipping{display:flex;justify-content:space-between;gap:12px;font-size:12px!important;line-height:1.4;margin:8px 0 16px!important}
+[data-look-design] .look-shipping a{white-space:nowrap;text-decoration:underline}
+/* Keep dividers on the summary so they remain visible when details are closed. */
+[data-look-design] .product__block--collapsible_tab{margin:0!important;background:#f4f4f4;padding:0 calc(28px * var(--look-scale))!important;border:0!important;border-radius:4px}
+[data-look-design] .product__block--collapsible_tab + .product__block--collapsible_tab{border-radius:0}
+[data-look-design] .product__block--collapsible_tab:first-of-type{border-radius:4px 4px 0 0}
+[data-look-design]:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--collapsible_tab:first-of-type{margin-top:0!important}
+[data-look-design] .product__block--buy_buttons + .product__block--collapsible_tab{margin-top:16px!important}
+[data-look-design] .product__block--collapsible_tab:last-child{border-radius:0 0 4px 4px}
+[data-look-design] .product__block--collapsible_tab .accordion-parent,[data-look-design] .product__block--collapsible_tab .accordion-item,[data-look-design] .product__block--collapsible_tab details.accordion-details{display:block;height:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none}
+[data-look-design] .product__block--collapsible_tab .accordion-details__summary{position:relative;display:flex;height:auto;min-height:0;margin:0;padding:16px 0;box-sizing:border-box;align-items:center;border:0;box-shadow:none;line-height:1.4}
+[data-look-design] .product__block--collapsible_tab .accordion-details__summary::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:#707070;transform:scaleY(.5);transform-origin:bottom;pointer-events:none}
+[data-look-design] .product__block--collapsible_tab .look-accordion-divider{display:none!important}
+[data-look-design] .product__block--collapsible_tab .accordion-details__summary h2{margin:0;font:400 17px/1.4 Helvetica,Arial,sans-serif}
+[data-look-design] .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle{color:#707070}
+[data-look-design] .product__block--collapsible_tab .accordion-details__summary .icon-plus-toggle path{stroke:#707070;stroke-width:.5}
+[data-look-design] .product__block--collapsible_tab:not(.product__block--collapsible_tab + .product__block--collapsible_tab) .accordion-details__summary{padding-top:16px!important}
+[data-look-design] .product__block--collapsible_tab:last-child{padding-bottom:16px!important;border-radius:0 0 4px 4px}
+[data-look-design] .tpo_option-set-wrapper{display:none!important}
+@media(min-width:1024px){
+  [data-look-design]{--look-scale:1}
+  [data-look-design]>.product{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,26%);gap:45px}
+  [data-look-design] .product .product__media-wrapper,[data-look-design] .product .product__info-wrapper{width:100%;max-width:none;min-width:0;padding:0}
+  [data-look-design] .product__media-gallery{--media-item-gap:4px!important;position:static}
+  [data-look-design] .product__media-gallery-viewer,[data-look-design] .product__media-container{border-radius:0}
+  [data-look-design] .product__media-container{aspect-ratio:442/542}
+  @media (max-width:767px){
+    [data-look-design] :is(.product__media-gallery-viewer-wrap,.product__media-gallery-viewer,.product__media-container,.product__media,.product__media .media,.product__media img){aspect-ratio:0.7236!important;}
+    [data-look-design] .product__media-container{--aspect-ratio:0.7236!important;}
+    [data-look-design] :is(.product__media-gallery-viewer,.product__media-container,.product__media,.product__media .media){height:auto!important;}
+  }
+  [data-look-design] .product__media-container .media{width:100%;height:100%;padding:0}
+  [data-look-design] .product__media-container img{width:100%;height:100%;object-fit:cover}
+}
+@media(max-width:1023px){
+  [data-look-design]{--look-scale:.8;padding:16px}
+  [data-look-design]>.product{display:block}
+  [data-look-design] .product .product__media-wrapper,[data-look-design] .product .product__info-wrapper{width:100%;max-width:none;padding:0}
+  [data-look-design] .product__media-gallery-viewer-wrap{padding-bottom:0!important}
+  [data-look-design] .product__info-wrapper{margin-top:0!important;padding-top:0!important}
+  [data-look-design] .look-size__options label,[data-look-design] .look-find-size{min-height:44px}
+  [data-look-design] .product-form__submit,[data-look-design] .quantity{min-height:36px;height:36px;max-height:36px}
+  [data-look-design] .look-size__chart{padding:0}
+}
+
+/* Match the mobile product-detail rail used by the scrub top, pants, and fanny pages. */
+@media(max-width:767px){
+  [data-look-design] .product__title{
+    font-size:21px!important;
+    line-height:1.25!important;
+  }
+  [data-look-design] .product__block--variant_picker .form__label,
+  [data-look-design] .look-size__heading,
+  [data-look-design] .product__block--variant_picker .globo-swatch-product-detail .name-option[data-name="Color"],
+  [data-look-design] .vivnook-embroidery__entry-title p{
+    font-size:16px!important;
+  }
+  [data-look-design] .product__info-wrapper{
+    box-sizing:border-box;
+    border-inline:0;
+  }
+
+  /* Keep the mobile breadcrumb visible above The Look's gallery. */
+  body.product-template.signature-look .section--breadcrumb,
+  body.signature-look .section--breadcrumb,
+  body:has([data-look-design]) .section--breadcrumb{
+    position:relative!important;
+    z-index:2!important;
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    margin:0!important;
+    padding:0 0 5px!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  body.product-template.signature-look .section--breadcrumb .page-width,
+  body.signature-look .section--breadcrumb .page-width,
+  body:has([data-look-design]) .section--breadcrumb .page-width{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0 16px!important;
+    min-height:0!important;
+  }
+  body.product-template.signature-look .section--breadcrumb .breadcrumbs,
+  body.signature-look .section--breadcrumb .breadcrumbs,
+  body:has([data-look-design]) .section--breadcrumb .breadcrumbs{
+    position:static!important;
+    top:auto!important;
+    display:flex!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    white-space:normal!important;
+  }
+}
+
+/* Match the product-page breadcrumb-to-gallery spacing used by scrub tops,
+   pants, and the fanny pack. The Look's own section padding was adding an
+   extra 16px on mobile and 24px on desktop after the breadcrumb. */
+@media(min-width:768px){
+  body:has([data-look-design]) .section--breadcrumb{
+    margin-top:0!important;
+    margin-bottom:3px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    min-height:0!important;
+  }
+  body:has([data-look-design]) .section--breadcrumb .page-width{
+    padding-inline:8px 3.5%!important;
+    padding-top:24px!important;
+    padding-bottom:0!important;
+    min-height:0!important;
+  }
+  body:has([data-look-design]) .section--breadcrumb .breadcrumbs{
+    padding-block:0!important;
+  }
+  body:has([data-look-design]) [data-look-design]{
+    padding-top:0!important;
+  }
+}
+
+@media(max-width:767px){
+  body:has([data-look-design]) .section--breadcrumb{
+    margin-top:0!important;
+    margin-bottom:0!important;
+    padding-top:0!important;
+    padding-bottom:5px!important;
+    min-height:0!important;
+  }
+  body:has([data-look-design]) [data-look-design]{
+    padding-top:0!important;
+  }
+}
+
+@media(min-width:1600px){[data-look-design]{--look-scale:1}}
+
+[data-look-design] .vivnook-embroidery__entry{padding:0;border:0;gap:0}
+[data-look-design] .look-components:not(:has(.vivnook-embroidery)) .look-component--top{padding-bottom:16px!important;margin-bottom:16px!important;border-bottom:.5px solid #707070}
+[data-look-design] .product__media-container>.product__media{width:100%}
+[data-look-design] .product__media-gallery-thumbails{display:none!important}
+[data-look-design] .vivnook-embroidery__entry-title p{text-transform:none;letter-spacing:0}
+
+@media(min-width:1024px){
+[data-look-design] .product--columns .product__media-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+[data-look-design] .product--columns .product__media-wrapper,[data-look-design] .product--columns .product__info-wrapper{width:100%!important;max-width:none!important;flex:0 0 auto!important}
+[data-look-design] .product--columns .product__media-item{width:100%!important;max-width:none!important;padding:0}
+[data-look-design] .product--columns .product__media-gallery-viewer{margin:0}
+}
+
+[data-look-design] .vivnook-length-adjustment{border:0;padding:0}
+[data-look-design] .vivnook-length-adjustment__option{width:100%;font-size:12px!important;font-weight:300!important}
+[data-look-design] .look-shipping{gap:8px;white-space:normal!important}
+[data-look-design] .look-shipping span{white-space:normal!important;flex:1 1 auto;min-width:0}
+/* Saved fit recommendations and the requested inseam notice. */
+[data-look-design] .look-size:has(.vivnook-inline-size-reference:not([hidden]))>.look-find-size{display:none}
+[data-look-design] .vivnook-inline-size-reference{background:#f4f4f4;border-radius:4px;padding:10px 16px!important;margin:8px 0 0!important;margin-top:8px!important;margin-bottom:0!important;gap:12px 8px;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;grid-template-columns:max-content minmax(0,1fr) max-content}
+[data-look-design] .look-reference__header{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+[data-look-design] .look-reference__preference{min-width:0}
+[data-look-design] .look-reference__preference .vivnook-smart-size-chart__fit-guidance{display:inline;margin:0;font:inherit;font-weight:300!important}
+[data-look-design] .look-reference__edit{display:inline-flex;align-items:center;gap:3px;height:auto;min-height:0;padding:0;border:0;border-radius:0;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;text-decoration:underline;flex-shrink:0}
+[data-look-design] .look-reference__edit svg{width:1em;height:1em;flex:0 0 1em;display:block}
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels>span{grid-row:2;font:inherit;font-weight:300!important}
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels>span strong{font-weight:700!important}
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar{display:flex;grid-row:2;height:7px;border-radius:99px;overflow:hidden;background:#e2e2e2}
+[data-look-design] .vivnook-inline-size-reference [data-vivnook-inline-reference-primary-bar]{background:#881337}
+[data-look-design] .vivnook-inline-size-reference [data-vivnook-inline-reference-secondary-bar]{background:#e2e2e2}
+[data-look-design] .vivnook-inline-size-reference .look-reference__note{grid-column:1/-1;grid-row:3;margin:0;color:inherit;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;text-decoration:underline}
+[data-look-design] .vivnook-length-adjustment{background:#f4f4f4;border-radius:4px;padding:10px 16px;gap:8px;margin-top:4px!important}
+[data-look-design] .vivnook-length-adjustment{padding:10px 16px!important}
+[data-look-design] .vivnook-embroidery{padding-top:0!important}
+[data-look-design] .look-component__notice{display:none!important}
+[data-look-design] .vivnook-length-adjustment__option{padding:0;background:none;font-weight:300!important;font-size:12px!important}
+[data-look-design] [data-vivnook-length-adjustment-height-notice]{display:none!important}
+[data-look-design] .vivnook-length-adjustment__notice--confirmation{margin:0 0 0 calc(1.7rem + .75rem);max-width:none;color:#881337;font:300 12px/1.25 Helvetica,Arial,sans-serif!important;font-weight:300!important}
+[data-look-design] .vivnook-length-adjustment__option input{appearance:none;background:#fff;border:.5px solid #707070;border-radius:3px;position:relative;flex-shrink:0}
+[data-look-design] .vivnook-length-adjustment__option input:checked{background:#fff!important;border-color:#707070!important;box-shadow:none!important}
+[data-look-design] .vivnook-length-adjustment__option input:focus,[data-look-design] .vivnook-length-adjustment__option input:focus-visible{box-shadow:none!important}
+[data-look-design] .vivnook-length-adjustment__option input:checked::after{content:"";position:absolute;width:6px;height:11px;border:solid #000;border-width:0 3px 3px 0;left:5px;top:0;transform:rotate(35deg)}
+[data-look-design] .vivnook-length-adjustment__option input:focus-visible{outline:2px solid #881337;outline-offset:3px}
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels{font:inherit}
+/* The Look desktop sticky quantity control */
+@media (min-width: 768px) {
+  [data-look-design] .sticky-atc-bar--signature-look .quantity {
+    width: 12.5rem !important;
+    min-width: 12.5rem !important;
+    max-width: 12.5rem !important;
+    flex: 0 0 12.5rem !important;
+  }
+}
+
+/* Keep the embroidery entry and configurator. Hide only the optional
+   "What can I add?" learn-more link on product pages. */
+body.product-template.scrub-top .vivnook-embroidery__inline-link,
+body.product-template.scrub-pants .vivnook-embroidery__inline-link,
+body:has([data-look-design]) .vivnook-embroidery__inline-link,
+body:has(product-info[data-url="/products/scrub-top"]) .vivnook-embroidery__inline-link,
+body:has(product-info[data-url*="scrub-pants"]) .vivnook-embroidery__inline-link{
+  display:none!important;
+}
+.signature-sticky-active header.header{transform:translateY(-100%)!important;transition:transform .25s ease!important;pointer-events:none}
+.signature-sticky-active header.header + *{ }
+@media (min-width: 768px) {
+  [data-look-design] .sticky-atc-bar--signature-look quantity-input,
+  [data-look-design] .sticky-atc-bar--signature-look .quantity-input{display:flex!important;width:12.5rem!important;min-width:12.5rem!important;max-width:12.5rem!important;flex:0 0 12.5rem!important}
+  [data-look-design] .sticky-atc-bar--signature-look [id^="QuantitySticky-"]{display:flex!important;width:12.5rem!important;min-width:12.5rem!important;max-width:12.5rem!important;flex:0 0 12.5rem!important}
+  .sticky-atc-bar--signature-look quantity-input,
+  .sticky-atc-bar--signature-look .quantity-input,
+  .sticky-atc-bar--signature-look [id^="QuantitySticky-"],
+  .sticky-atc-bar--signature-look .quantity{display:flex!important;width:12.5rem!important;min-width:12.5rem!important;max-width:12.5rem!important;flex:0 0 12.5rem!important}
+}
+
+/* Scrub Top & Scrub Pants unified inline size recommendation card */
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference{
+  display:grid!important;grid-template-columns:max-content minmax(0,1fr) max-content!important;
+  grid-template-rows:max-content max-content max-content!important;align-items:center!important;
+  align-content:start!important;width:100%!important;box-sizing:border-box!important;
+  margin:4px 0 0!important;padding:12px 16px!important;gap:8px 8px!important;row-gap:8px!important;
+  background:#f4f4f4!important;border-radius:8px!important;font:400 12px/1.4 Helvetica,Arial,sans-serif!important;
+  min-height:0!important;height:auto!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference[hidden]{
+  display:none!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference h3:not(.look-reference__note){
+  display:none!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__header{
+  grid-column:1/-1!important;grid-row:1!important;display:flex!important;align-items:baseline!important;
+  justify-content:space-between!important;gap:8px!important;margin:0!important;padding:0!important;min-height:0!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__preference{
+  min-width:0!important;white-space:nowrap!important;font:inherit!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__preference strong{
+  font-weight:700!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__preference .vivnook-smart-size-chart__fit-guidance{
+  display:inline!important;margin:0!important;font:inherit!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__edit{
+  display:inline-flex!important;align-items:center!important;gap:3px!important;height:auto!important;min-height:0!important;
+  padding:0!important;border:0!important;background:none!important;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;
+  text-decoration:underline!important;flex-shrink:0!important;cursor:pointer!important;box-shadow:none!important;line-height:1.4!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__edit svg{
+  width:1em!important;height:1em!important;flex:0 0 1em!important;display:block!important;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='3' y='3' width='11' height='14' rx='1.5' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3Cpath d='m7 12 6.8-6.8a1.6 1.6 0 0 1 2.2 2.2L9.2 14H7v-2Z' fill='white' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .look-reference__edit svg>*{
+  display:none!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels{
+  display:contents!important;font:inherit!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels>span{
+  grid-row:2!important;font:inherit!important;white-space:nowrap!important;align-self:center!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar{
+  display:flex!important;grid-column:2!important;grid-row:2!important;height:7px!important;min-width:0!important;
+  border-radius:99px!important;overflow:hidden!important;background:#e2e2e2!important;align-self:center!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference [data-vivnook-inline-reference-primary-bar]{
+  background:#881337!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference [data-vivnook-inline-reference-secondary-bar]{
+  background:#e2e2e2!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .vivnook-inline-size-reference .look-reference__note{
+  display:block!important;grid-column:1/-1!important;grid-row:3!important;margin:0!important;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;text-decoration:underline!important;cursor:pointer!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .tops-find-size{
+  display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:1!important;
+  margin-top:4px!important;
+}
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-top"]) .tops-find-size[hidden]{
+  display:none!important;
+}
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery,
+product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry{margin-bottom:0!important;padding-bottom:0!important;border-bottom:0!important}
+
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment{display:grid;gap:8px;width:100%;margin:4px 0 0!important;padding:10px 16px!important;border:0;background:#f4f4f4;border-radius:8px;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option{display:inline-flex;width:fit-content;align-items:center;gap:12px;padding:0;background:none;font:300 12px/1.4 Helvetica,Arial,sans-serif!important;font-weight:300!important;text-decoration:underline;cursor:pointer}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input{appearance:none;width:34px;height:34px;margin:0;background:#fff;border:.5px solid #707070;border-radius:4px;position:relative;flex-shrink:0;cursor:pointer}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input:checked::after{content:"";position:absolute;width:9px;height:17px;border:solid #000;border-width:0 4px 4px 0;left:9px;top:3px;transform:rotate(35deg)}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__notice--confirmation{margin:0 0 0 20px;max-width:none;color:#881337;font:300 12px/1.25 Helvetica,Arial,sans-serif!important;font-weight:300!important}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment,
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment *{font-size:12px!important}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__notice--confirmation{font-size:12px!important}
+product-info[data-url*="scrub-pants"] [data-vivnook-length-adjustment-height-notice]{display:none!important}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input{width:17px!important;height:17px!important}
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input:checked::after{width:5px!important;height:9px!important;left:4px!important;top:1px!important;border-width:0 2px 2px 0!important}
+[data-look-design], [data-look-design] *{font-family:Helvetica,Arial,sans-serif!important}
+@media(max-width:767px){
+  body.product-template.signature-look .look-size__options label,
+  body.signature-look .look-size__options label{
+    height:32px!important;
+    min-height:32px!important;
+    max-height:32px!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.signature-look .look-size__options input:checked+label,
+  body.signature-look .look-size__options input:checked+label{
+    background:#000!important;
+    color:#fff!important;
+    border-color:#000!important;
+    box-shadow:none!important;
+  }
+}
+@media(max-width:767px){
+  body.product-template.signature-look .look-size__options,
+  body.signature-look .look-size__options{
+    gap:12px!important;
+  }
+  body.product-template.signature-look .look-size__options label,
+  body.signature-look .look-size__options label{
+    border-radius:5px!important;
+    font-weight:700!important;
+  }
+}
+body.product-template.signature-look .look-size__options input:checked+label,
+body.signature-look .look-size__options input:checked+label{
+  background:#000!important;
+  color:#fff!important;
+  border-color:#000!important;
+  box-shadow:none!important;
+}
+@media(max-width:767px){
+  body.product-template.signature-look .product__media-gallery-viewer-wrap .swiper-pagination,
+  body.signature-look .product__media-gallery-viewer-wrap .swiper-pagination,
+  body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-pagination,
+  body.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-pagination{display:none!important;}
+  body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next),
+  body.signature-look .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev,.swiper-button-next){
+    width:32px!important;height:32px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+  }
+  body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev,
+  body.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev{left:8px!important;right:auto!important;}
+  body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next,
+  body.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next{right:8px!important;left:auto!important;}
+}
+
+/* ========================================================
+   THE LOOK: EXACT PARITY WITH SCRUB TOPS & UNIFIED 16PX SPACING
+   ======================================================== */
+
+/* 1. Size option boxes on The Look: exactly match Scrub Tops */
+[data-look-design] .look-size__options,
+body.product-template.signature-look .look-size__options,
+body.signature-look .look-size__options {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+[data-look-design] .look-size__options label,
+body.product-template.signature-look .look-size__options label,
+body.signature-look .look-size__options label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 29px !important;
+  min-height: 29px !important;
+  max-height: 29px !important;
+  line-height: 29px !important;
+  border: 0.5px solid #707070 !important;
+  border-radius: 4px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  cursor: pointer !important;
+  position: relative !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+}
+
+@media (hover: hover) {
+  [data-look-design] .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover,
+  body.product-template.signature-look .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover,
+  body.signature-look .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+  }
+}
+
+[data-look-design] .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled),
+body.product-template.signature-look .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled),
+body.signature-look .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled) {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 0.5px solid #000 !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+/* Tooltips disabled to match Scrub Tops */
+[data-look-design] .look-size__options .look-size__tooltip,
+body.product-template.signature-look .look-size__options .look-size__tooltip,
+body.signature-look .look-size__options .look-size__tooltip,
+[data-look-design] .look-size__options [data-tooltip]::before,
+[data-look-design] .look-size__options [data-tooltip]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure Size Chart matches Scrub Tops */
+[data-look-design] .look-size__chart,
+body.product-template.signature-look .look-size__chart,
+body.signature-look .look-size__chart {
+  text-transform: none !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  color: #111 !important;
+}
+
+@media (max-width: 767px) {
+  [data-look-design] .look-size__options,
+  body.product-template.signature-look .look-size__options,
+  body.signature-look .look-size__options {
+    gap: 5px !important;
+  }
+  [data-look-design] .look-size__options label,
+  body.product-template.signature-look .look-size__options label,
+  body.signature-look .look-size__options label {
+    height: 27px !important;
+    min-height: 27px !important;
+    max-height: 27px !important;
+    line-height: 27px !important;
+    font-size: 12px !important;
+    border: 0.5px solid #707070 !important;
+    border-radius: 4px !important;
+  }
+  [data-look-design] .look-size__options .look-size__tooltip,
+  body.product-template.signature-look .look-size__options .look-size__tooltip,
+  body.signature-look .look-size__options .look-size__tooltip {
+    display: none !important;
+  }
+  [data-look-design] .look-size__chart,
+  body.product-template.signature-look .look-size__chart,
+  body.signature-look .look-size__chart {
+    font-size: 12px !important;
+  }
+}
+
+/* 2. Fit Preference / Size Recommendation Card: exactly match Scrub Tops */
+[data-look-design] .vivnook-inline-size-reference,
+body.product-template.signature-look .vivnook-inline-size-reference,
+body.signature-look .vivnook-inline-size-reference {
+  display: grid !important;
+  grid-template-columns: max-content minmax(0, 1fr) max-content !important;
+  grid-template-rows: max-content max-content max-content !important;
+  align-items: center !important;
+  align-content: start !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 8px 0 0 !important;
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+  padding: 12px 16px !important;
+  gap: 8px 8px !important;
+  row-gap: 8px !important;
+  background: #f4f4f4 !important;
+  border-radius: 8px !important;
+  font: 300 12px/1.4 Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 12px !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference *,
+body.product-template.signature-look .vivnook-inline-size-reference *,
+body.signature-look .vivnook-inline-size-reference * {
+  font-family: Helvetica, Arial, sans-serif !important;
+}
+
+[data-look-design] .look-reference__header,
+body.product-template.signature-look .look-reference__header,
+body.signature-look .look-reference__header {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+}
+
+[data-look-design] .look-reference__preference,
+body.product-template.signature-look .look-reference__preference,
+body.signature-look .look-reference__preference {
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+}
+
+[data-look-design] .look-reference__preference strong,
+body.product-template.signature-look .look-reference__preference strong,
+body.signature-look .look-reference__preference strong {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+[data-look-design] .look-reference__preference .vivnook-smart-size-chart__fit-guidance,
+body.product-template.signature-look .look-reference__preference .vivnook-smart-size-chart__fit-guidance,
+body.signature-look .look-reference__preference .vivnook-smart-size-chart__fit-guidance {
+  display: inline !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  line-height: 1.4 !important;
+}
+
+[data-look-design] .look-reference__edit,
+body.product-template.signature-look .look-reference__edit,
+body.signature-look .look-reference__edit {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  font: 300 12px/1.4 Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 12px !important;
+  text-decoration: underline !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  line-height: 1.4 !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels,
+body.product-template.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels,
+body.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels {
+  display: contents !important;
+  font-size: 12px !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span,
+body.product-template.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span,
+body.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span {
+  grid-row: 2 !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  white-space: nowrap !important;
+  align-self: center !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span strong,
+body.product-template.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span strong,
+body.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels > span strong {
+  font-weight: 700 !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar,
+body.product-template.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar,
+body.signature-look .vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar {
+  display: flex !important;
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  height: 7px !important;
+  min-width: 0 !important;
+  border-radius: 99px !important;
+  overflow: hidden !important;
+  background: #e2e2e2 !important;
+  align-self: center !important;
+}
+
+[data-look-design] .vivnook-inline-size-reference .look-reference__note,
+body.product-template.signature-look .vivnook-inline-size-reference .look-reference__note,
+body.signature-look .vivnook-inline-size-reference .look-reference__note {
+  display: block !important;
+  grid-column: 1 / -1 !important;
+  grid-row: 3 !important;
+  margin: 0 !important;
+  font: 300 12px/1.4 Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+/* 3. Bespoke Embroidery Entry Card on The Look: exactly match Scrub Tops */
+[data-look-design] .vivnook-embroidery__entry,
+body.product-template.signature-look product-info .vivnook-embroidery__entry,
+body.signature-look product-info .vivnook-embroidery__entry {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  gap: 8px !important;
+}
+
+[data-look-design] .vivnook-embroidery__entry-card,
+body.product-template.signature-look product-info .vivnook-embroidery__entry-card,
+body.signature-look product-info .vivnook-embroidery__entry-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 16px !important;
+  border: 1px solid #2f2f2f !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+[data-look-design] .vivnook-embroidery__entry-card > span:first-child,
+body.product-template.signature-look product-info .vivnook-embroidery__entry-card > span:first-child,
+body.signature-look product-info .vivnook-embroidery__entry-card > span:first-child {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: capitalize !important;
+  letter-spacing: 0.05em !important;
+  color: #111 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+[data-look-design] .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price,
+body.product-template.signature-look product-info .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price,
+body.signature-look product-info .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: capitalize !important;
+  color: #111 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+}
+
+[data-look-design] .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"],
+body.product-template.signature-look product-info .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"],
+body.signature-look product-info .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"],
+[data-vivnook-embroidery-host="signature-look"] .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* 4. Find My Size button on The Look */
+[data-look-design] .look-find-size,
+body.product-template.signature-look .look-find-size,
+body.signature-look .look-find-size {
+  box-sizing: border-box !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 16px !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  border-radius: 4px !important;
+  margin-top: 4px !important;
+}
+
+/* 5. The Look horizontal dividers: exactly 16px above & 16px below */
+[data-look-design] .look-component,
+body.product-template.signature-look .look-component,
+body.signature-look .look-component {
+  border-bottom: 1px solid #707070 !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 16px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+[data-look-design] .look-component--bag,
+body.product-template.signature-look .look-component--bag,
+body.signature-look .look-component--bag {
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* When embroidery is present on Top, the divider goes under the embroidery block */
+[data-look-design] .look-components:has(.vivnook-embroidery) .look-component--top,
+body.product-template.signature-look .look-components:has(.vivnook-embroidery) .look-component--top,
+body.signature-look .look-components:has(.vivnook-embroidery) .look-component--top {
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-look-design] .vivnook-embroidery,
+body.product-template.signature-look product-info .vivnook-embroidery,
+body.signature-look product-info .vivnook-embroidery {
+  border-bottom: 1px solid #707070 !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 16px !important;
+  margin-top: 16px !important;
+  padding-top: 0 !important;
+}
+
+:is(.cart-drawer, .cart, [data-vivnook-cart-editor]) .vivnook-embroidery {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+}
+
+/* All Product Pages: Add to Cart button height 36px, font size 14px */
+html body product-info .product__block--buy_buttons .product-form__submit,
+html body product-info .product-form__submit,
+html body .main-product-form .product-form__submit,
+html body product-info .product-form__buttons .product-form__submit,
+html body [data-look-design] .product-form__submit,
+product-info .product__block--buy_buttons .product-form__submit,
+product-info .product-form__submit,
+.main-product-form .product-form__submit,
+product-info .product-form__buttons .product-form__submit,
+[data-look-design] .product-form__submit {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html body product-info .product__block--buy_buttons .product-form__submit span,
+html body product-info .product-form__submit span,
+html body .main-product-form .product-form__submit span,
+html body .product-form__buttons .product-form__submit span,
+html body [data-look-design] .product-form__submit span,
+product-info .product__block--buy_buttons .product-form__submit span,
+product-info .product-form__submit span,
+.main-product-form .product-form__submit span,
+.product-form__buttons .product-form__submit span,
+[data-look-design] .product-form__submit span {
+  font-size: 14px !important;
+  text-transform: none !important;
+}
+
+/* All Product Pages: Quantity selector matches 36px height */
+html body product-info .product__block--buy_buttons .product-form__quantity,
+html body product-info .product__block--buy_buttons .product-form__quantity .quantity,
+html body product-info .product-form__buttons .product-form__quantity,
+html body product-info .product-form__buttons .product-form__quantity .quantity,
+html body [data-look-design] .product-form__buttons > .product-form__quantity,
+html body [data-look-design] .product-form__buttons > .product-form__quantity .quantity,
+html body [data-look-design] .look-quantity-select,
+html body [data-look-design] .look-quantity-select__trigger,
+product-info .product__block--buy_buttons .product-form__quantity,
+product-info .product__block--buy_buttons .product-form__quantity .quantity,
+product-info .product-form__buttons .product-form__quantity,
+product-info .product-form__buttons .product-form__quantity .quantity,
+[data-look-design] .product-form__buttons > .product-form__quantity,
+[data-look-design] .product-form__buttons > .product-form__quantity .quantity,
+[data-look-design] .look-quantity-select,
+[data-look-design] .look-quantity-select__trigger,
+.look-quantity-select,
+.look-quantity-select__trigger {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  box-sizing: border-box !important;
+}
+
+/* 6. Pants page size option buttons: exactly match Scrub Tops */
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li {
+  width: auto !important;
+  height: 29px !important;
+  min-height: 29px !important;
+  max-height: 29px !important;
+}
+
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor,
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor,
+product-info[data-url*="scrub-pants"] .product-form__input--button input[type=radio] + label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 29px !important;
+  min-height: 29px !important;
+  max-height: 29px !important;
+  line-height: 29px !important;
+  border: 0.5px solid #707070 !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: #000 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+}
+
+@media (hover: hover) {
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor:not(.disabled):not(.sold-out):hover,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor:not(.disabled):not(.sold-out):hover,
+  product-info[data-url*="scrub-pants"] .product-form__input--button input[type=radio]:not(:disabled):not(.disabled) + label:not(.disabled):not([aria-disabled="true"]):hover {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+  }
+}
+
+product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked:not(:disabled):not(.disabled)) .swatch-anchor,
+product-info[data-url*="scrub-pants"] .product-form__input--button input[type=radio]:checked:not(:disabled):not(.disabled) + label:not(.disabled):not([aria-disabled="true"]) {
+  background: #000 !important;
+  color: #fff !important;
+  border: 0.5px solid #000 !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 767px) {
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value {
+    gap: 5px !important;
+  }
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li {
+    height: 27px !important;
+    min-height: 27px !important;
+    max-height: 27px !important;
+  }
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value .swatch-anchor,
+  product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] ul.value li label.swatch-anchor,
+  product-info[data-url*="scrub-pants"] .product-form__input--button input[type=radio] + label {
+    height: 27px !important;
+    min-height: 27px !important;
+    max-height: 27px !important;
+    line-height: 27px !important;
+    font-size: 12px !important;
+    border: 0.5px solid #707070 !important;
+    border-radius: 4px !important;
+  }
+}
+
+/* Pants page & Pant size internal gaps: exactly 8px */
+product-info[data-url*="scrub-pants"] .vivnook-inline-size-reference,
+body:has(product-info[data-url*="scrub-pants"]) .vivnook-inline-size-reference,
+body.product-template.scrub-pants .vivnook-inline-size-reference,
+body.scrub-pants .vivnook-inline-size-reference,
+[data-look-design] [data-look-size="pant"] .vivnook-inline-size-reference {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+product-info[data-url*="scrub-pants"] .vivnook-length-adjustment,
+body:has(product-info[data-url*="scrub-pants"]) .vivnook-length-adjustment,
+body.product-template.scrub-pants .vivnook-length-adjustment,
+body.scrub-pants .vivnook-length-adjustment,
+[data-look-design] [data-look-size="pant"] .vivnook-length-adjustment,
+[data-look-design] .vivnook-length-adjustment {
+  margin-top: 8px !important;
+}
+
+/* ========================================================
+   UNIFIED 12PX FONT SIZE SETTINGS & 14PX CARD TITLES
+   ======================================================== */
+[data-look-design] .look-card h2,
+.look-card__copy h2,
+[data-look-design] .look-card .look-card__copy h2,
+.look-card h2 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  min-height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 767px) {
+  [data-look-design] .look-card h2,
+  .look-card__copy h2,
+  [data-look-design] .look-card .look-card__copy h2,
+  .look-card h2 {
+    font-size: 14px !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+[data-look-design] .look-card a,
+.look-card__copy a,
+[data-look-design] .look-card .look-card__copy a,
+.look-card a {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+[data-look-design] .look-size__chart,
+body.product-template.signature-look .look-size__chart,
+body.signature-look .look-size__chart,
+.look-size__chart {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+[data-look-design] .look-reference__edit,
+body.product-template.signature-look .look-reference__edit,
+body.signature-look .look-reference__edit,
+.look-reference__edit,
+.look-reference__edit span {
+  font-size: 12px !important;
+  font-weight: 300 !important;
+}
+
+[data-look-design] .look-quantity-select,
+[data-look-design] .look-quantity-select__trigger,
+[data-look-design] .look-quantity-select__trigger span,
+[data-look-design] .look-quantity-select__trigger strong,
+[data-look-design] .look-quantity-select__menu button,
+.look-quantity-select,
+.look-quantity-select__trigger,
+.look-quantity-select__trigger span,
+.look-quantity-select__trigger strong {
+  font-size: 12px !important;
+}
+
+/* ========================================================
+   THE LOOK SPACING ADJUSTMENTS:
+   图一 (Image 1): Fanny Pack card to Buy Buttons = 16px
+   图二 (Image 2): Color swatches to first card = 16px
+   ======================================================== */
+[data-look-design] .product__block--variant_picker,
+body.product-template.signature-look .product__block--variant_picker,
+body.signature-look .product__block--variant_picker,
+[data-look-design] .globo-swatch-product-detail,
+body.product-template.signature-look .globo-swatch-product-detail,
+body.signature-look .globo-swatch-product-detail {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 16px !important;
+  border-bottom: 0 !important;
+}
+
+[data-look-design] .look-components,
+body.product-template.signature-look .look-components,
+body.signature-look .look-components,
+[data-look-design] .look-component--top,
+body.product-template.signature-look .look-component--top,
+body.signature-look .look-component--top {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+[data-look-design] .look-component--bag,
+body.product-template.signature-look .look-component--bag,
+body.signature-look .look-component--bag {
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-look-design] .look-components,
+body.product-template.signature-look .look-components,
+body.signature-look .look-components {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+[data-look-design] .product__block--buy_buttons .product-form__buttons,
+body.product-template.signature-look product-info .product-form__buttons,
+body.signature-look product-info .product-form__buttons {
+  margin-top: 16px !important;
+}
+
+
+
+/* ========================================================
+   UNIFIED DESKTOP PRODUCT TITLE ALIGNMENT WITH GALLERY TOP
+   Ensures the product title aligns flush with the top of the
+   product image gallery on desktop across all product pages.
+   ======================================================== */
+@media screen and (min-width: 768px) {
+  product-info .product__info-wrapper,
+  .product .product__info-wrapper,
+  [data-look-design] .product__info-wrapper {
+    align-self: start !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  product-info .product__info-container,
+  .product .product__info-container,
+  [data-look-design] .product__info-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Empty blocks before title must occupy zero vertical space */
+  product-info .product__block:empty,
+  product-info .product__block--badges:empty,
+  product-info .product__block--badges:not(:has(*)),
+  product-info .product__badges:empty,
+  product-info .product__badges:not(:has(*)),
+  product-info .product__block--custom_liquid:empty,
+  product-info .product__block--custom_liquid:not(:has(*:not(script):not(style):not(link))),
+  .product .product__block:empty,
+  .product .product__block--badges:empty,
+  .product .product__block--badges:not(:has(*)),
+  .product .product__badges:empty,
+  .product .product__badges:not(:has(*)),
+  .product .product__block--custom_liquid:empty,
+  .product .product__block--custom_liquid:not(:has(*:not(script):not(style):not(link))),
+  [data-look-design] .product__block:empty,
+  [data-look-design] .product__block--badges:empty,
+  [data-look-design] .product__block--badges:not(:has(*)),
+  [data-look-design] .product__badges:empty,
+  [data-look-design] .product__badges:not(:has(*)) {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+  }
+
+  product-info .product__block--title,
+  .product .product__block--title,
+  [data-look-design] .product__block--title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  product-info .product__block--title .product__title,
+  product-info .product__title,
+  .product .product__block--title .product__title,
+  .product .product__title,
+  [data-look-design] .product__title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* Scrub Pants: Pant Size font size matches Color (18px desktop, 16px mobile) */
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl:not(:first-child) .name-option,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .name-option[data-name="Size"],
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .form__label,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .name-option,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading],
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading] > span.font-body-bold,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl:not(:first-child) .name-option,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .name-option[data-name="Size"],
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .form__label,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .name-option,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading],
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading] > span.font-body-bold {
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 767px) {
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .name-option,
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .swatch--gl:not(:first-child) .name-option,
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .globo-swatch-product-detail .name-option[data-name="Size"],
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .form__label,
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--variant_picker .name-option,
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading],
+  html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) [data-vivnook-size-heading] > span.font-body-bold {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* ==========================================================================
+   UNIFIED BUY BUTTONS & QUANTITY SELECTORS (ALL PDPs)
+   Height: 36px, Font Size: 14px, Casing: Natural (text-transform: none)
+   ========================================================================== */
+html body product-info .product__block--buy_buttons .product-form__buttons,
+html body product-info .product-form__buttons,
+html body [data-look-design] .product-form__buttons,
+html body .product__block--buy_buttons .product-form__buttons,
+html body .main-product-form .product-form__buttons {
+  min-height: 36px !important;
+  height: auto !important;
+  max-height: none !important;
+  align-items: stretch !important;
+  box-sizing: border-box !important;
+}
+
+html body product-info .product__block--buy_buttons .product-form__quantity,
+html body product-info .product-form__buttons .product-form__quantity,
+html body product-info .product-form__quantity,
+html body [data-look-design] .product-form__quantity,
+html body [data-look-design] .look-quantity-select,
+html body [data-look-design] .quantity,
+html body product-info .look-quantity-select,
+html body product-info .quantity,
+html body .product-form__quantity,
+html body .product-form__quantity .quantity,
+html body .product-form__quantity .look-quantity-select {
+  display: block !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+html body product-info .look-quantity-select__trigger,
+html body [data-look-design] .look-quantity-select__trigger,
+html body .look-quantity-select__trigger {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  line-height: 36px !important;
+  font-size: 12px !important;
+  box-sizing: border-box !important;
+}
+
+html body product-info .quantity__button,
+html body product-info .quantity__input,
+html body .quantity__button,
+html body .quantity__input {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  line-height: 36px !important;
+  box-sizing: border-box !important;
+}
+
+html body product-info .quantity__input,
+html body .quantity__input {
+  font-size: 14px !important;
+}
+
+html body product-info .product__block--buy_buttons .product-form__submit,
+html body product-info .product-form__submit,
+html body product-info .product-form__buttons .product-form__submit,
+html body .main-product-form .product-form__submit,
+html body .product-form__buttons .product-form__submit,
+html body [data-look-design] .product-form__submit,
+html body .product-form__submit.btn,
+html body .product-form__submit.btn--primary,
+html body .product-form__submit.btn--secondary,
+html body [id^="ProductSubmitButton-"] {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  line-height: 36px !important;
+  font-size: 14px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  box-sizing: border-box !important;
+  text-transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html body product-info .product__block--buy_buttons .product-form__submit span,
+html body product-info .product-form__submit span,
+html body product-info .product-form__buttons .product-form__submit span,
+html body .main-product-form .product-form__submit span,
+html body .product-form__buttons .product-form__submit span,
+html body [data-look-design] .product-form__submit span,
+html body .product-form__submit.btn span,
+html body [id^="ProductSubmitButton-"] span {
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+}
+
+/* Shop the Look add to cart button: height 36px, font size 14px, natural case */
+html body [data-look-add],
+html body .tops-look__footer [data-look-add],
+html body button[data-look-add] {
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  line-height: 36px !important;
+  font-size: 14px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  box-sizing: border-box !important;
+  text-transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html body [data-look-add] *,
+html body .tops-look__footer [data-look-add] *,
+html body button[data-look-add] * {
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+}
+
+/* The Look card copy spacing: gap 16px between title and View Details */
+html body [data-look-design] .look-card__copy {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  row-gap: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body [data-look-design] .look-card h2,
+html body [data-look-design] .look-card__copy h2,
+html body .look-card__copy h2 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  min-height: 0 !important;
+  min-height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body [data-look-design] .look-card a,
+html body [data-look-design] .look-card__copy a,
+html body .look-card__copy a {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fix buy buttons row container height & prevent text/element overlap */
+html body product-info .product__block--buy_buttons,
+html body .product__block--buy_buttons {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+html body product-info .product-form__buttons,
+html body .product-form__buttons {
+  height: auto !important;
+  max-height: none !important;
+}
+
+html body product-info .product__block--custom_liquid:has(.tops-shipping),
+html body product-info .tops-shipping,
+html body .tops-shipping {
+  margin-top: 8px !important;
+  clear: both !important;
+  position: static !important;
+}
+
+/* ========================================================
+   SCRUB PANTS: STRICT 16PX GAP (BUY BUTTONS TO DETAILS TAB)
+   ======================================================== */
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--buy_buttons,
+body.product-template.scrub-pants product-info .product__block--buy_buttons,
+body.scrub-pants .product__block--buy_buttons,
+body:has(product-info[data-url*="scrub-pants"]) .product__block--buy_buttons,
+body:has(product-info[data-product-id="8345533579379"]) .product__block--buy_buttons,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--buy_buttons {
+  margin-bottom: 16px !important;
+  padding-bottom: 0 !important;
+}
+
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--buy_buttons .product-form,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--buy_buttons .main-product-form,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--buy_buttons .product-form__buttons {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--collapsible_tab:first-of-type,
+body.product-template.scrub-pants product-info .product__block--collapsible_tab:first-of-type,
+body.scrub-pants .product__block--collapsible_tab:first-of-type,
+body:has(product-info[data-url*="scrub-pants"]) .product__block--collapsible_tab:first-of-type,
+body:has(product-info[data-product-id="8345533579379"]) .product__block--collapsible_tab:first-of-type,
+product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .product__block--collapsible_tab:first-of-type,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"]) .product__block--buy_buttons + .product__block,
+html body product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"]) .product__block--buy_buttons + .product__block--collapsible_tab {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Desktop sticky ATC bar: strictly unify red button and quantity selector to 40px height */
+@media screen and (min-width: 768px) {
+  #shopify-section-sticky-atc-bar .product-form__submit,
+  #shopify-section-sticky-atc-bar .product-form__submit.btn,
+  #shopify-section-sticky-atc-bar .product-form__submit.btn--primary,
+  #shopify-section-sticky-atc-bar [data-vivnook-select-size],
+  #shopify-section-sticky-atc-bar .sticky-atc-bar__select-size,
+  html body .sticky-atc-bar .product-form__submit,
+  html body .sticky-atc-bar .product-form__submit.btn,
+  html body .sticky-atc-bar .product-form__submit.btn--primary,
+  html body .sticky-atc-bar--signature-look .product-form__submit,
+  html body .sticky-atc-bar--signature-look .product-form__submit.btn,
+  html body .sticky-atc-bar--signature-look .product-form__submit.btn--primary,
+  html body .sticky-atc-bar--signature-look .product-form__buttons .product-form__submit,
+  html body .sticky-atc-bar .product-form__buttons .product-form__submit {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    line-height: 40px !important;
+    font-size: 14px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+  }
+
+  #shopify-section-sticky-atc-bar .quantity,
+  #shopify-section-sticky-atc-bar [id^="QuantitySticky-"],
+  #shopify-section-sticky-atc-bar quantity-input,
+  html body .sticky-atc-bar .quantity,
+  html body .sticky-atc-bar--signature-look .quantity,
+  html body .sticky-atc-bar [id^="QuantitySticky-"],
+  html body .sticky-atc-bar--signature-look [id^="QuantitySticky-"] {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    align-self: center !important;
+  }
+
+  #shopify-section-sticky-atc-bar .quantity .quantity__button,
+  html body .sticky-atc-bar .quantity .quantity__button,
+  html body .sticky-atc-bar--signature-look .quantity .quantity__button {
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    box-sizing: border-box !important;
+  }
+
+  #shopify-section-sticky-atc-bar .quantity .quantity__input,
+  html body .sticky-atc-bar .quantity .quantity__input,
+  html body .sticky-atc-bar--signature-look .quantity .quantity__input {
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    line-height: 38px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Product media gallery arrows: force solid black on mobile & desktop */
+html body .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next),
+html body .product__media-gallery-viewer-wrap .slider-controls .swiper-button-prev,
+html body .product__media-gallery-viewer-wrap .slider-controls .swiper-button-next,
+html body [data-look-design] .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next),
+html body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next),
+html body.signature-look .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next) {
+  color: #000000 !important;
+  --swiper-theme-color: #000000 !important;
+  --swiper-navigation-color: #000000 !important;
+}
+
+html body .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next) svg,
+html body .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next) svg path,
+html body [data-look-design] .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next) svg,
+html body [data-look-design] .product__media-gallery-viewer-wrap .slider-controls :is(.swiper-button-prev, .swiper-button-next) svg path {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Hide tax included text under price */
+html body .product__tax,
+html body [data-look-design] .product__tax,
+html body product-info .product__tax {
+  display: none !important;
+}
+
+/* ========================================================
+   UNIFIED PRODUCT TITLE & PRICE: 21PX DESKTOP AND MOBILE
+   (The Look, Scrub Tops, Scrub Pants, Fanny Pack)
+   ======================================================== */
+html body product-info .product__title,
+html body product-info .product__block--title .product__title,
+html body .product__block--title .product__title,
+html body .product__title,
+html body [data-look-design] .product__title,
+html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__title {
+  font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 767px) {
+  html body product-info .product__title,
+  html body product-info .product__block--title .product__title,
+  html body .product__block--title .product__title,
+  html body .product__title,
+  html body [data-look-design] .product__title,
+  html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__title {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+html body product-info .product__block--price,
+html body product-info .product__block--price .f-price,
+html body product-info .product__block--price .f-price-item,
+html body product-info .product__block--price .f-price-item--regular,
+html body product-info .product__block--price .f-price-item--sale,
+html body .product__block--price,
+html body .product__block--price .f-price,
+html body .product__block--price .f-price-item,
+html body [data-look-design] .product__block--price .f-price,
+html body [data-look-design] .product__block--price .f-price-item,
+html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__block--price .f-price,
+html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__block--price .f-price-item {
+  font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 767px) {
+  html body product-info .product__block--price,
+  html body product-info .product__block--price .f-price,
+  html body product-info .product__block--price .f-price-item,
+  html body product-info .product__block--price .f-price-item--regular,
+  html body product-info .product__block--price .f-price-item--sale,
+  html body .product__block--price,
+  html body .product__block--price .f-price,
+  html body .product__block--price .f-price-item,
+  html body [data-look-design] .product__block--price .f-price,
+  html body [data-look-design] .product__block--price .f-price-item,
+  html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__block--price .f-price,
+  html body product-info:is([data-url*="scrub-top"], [data-url*="scrub-pants"], [data-url*="fanny"], [data-look-design]) .product__block--price .f-price-item {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+  }
+}
+

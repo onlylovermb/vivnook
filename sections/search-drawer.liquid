@@ -1,0 +1,60 @@
+<link
+  rel="stylesheet"
+  href="{{ 'search.css' | asset_url }}"
+  media="print"
+  fetchpriority="low"
+  onload="this.media='all'"
+>
+{%- if request.page_type != 'search' -%}
+  <script src="{{ 'search.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{% assign drawer_position = section.settings.drawer_position %}
+<search-drawer
+  id="SearchDrawer"
+  class="search-drawer drawer drawer--{{ drawer_position }}"
+  shopify-design-mode
+  hidden
+>
+  <div class="fixed-overlay" aria-controls="SearchDrawer"></div>
+  <div class="drawer__inner">
+    <button class="drawer__close-btn z-1" aria-controls="SearchDrawer" type="button">
+      {% render 'icon-close' %}
+    </button>
+    <div class="drawer__content flex flex-col h-full w-full">
+      <div class="drawer__header search-drawer__header">
+        <h2 class="drawer__heading h3 flex items-center">
+          {{ 'general.search.search' | t }}
+        </h2>
+      </div>
+      <div class="v-scrollable">
+        {%- render 'predictive-search', context: 'drawer', drawer_position: section.settings.drawer_position -%}
+      </div>
+    </div>
+  </div>
+</search-drawer>
+{% schema %}
+{
+  "name": "t:sections.search-drawer.name",
+  "settings": [
+    {
+      "type": "select",
+      "id": "drawer_position",
+      "label": "t:sections.search-drawer.settings.drawer_position.label",
+      "default": "right",
+      "options": [
+        {
+          "value": "right",
+          "label": "t:sections.search-drawer.settings.drawer_position.options__right.label"
+        },
+        {
+          "value": "top",
+          "label": "t:sections.search-drawer.settings.drawer_position.options__top.label"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  }
+}
+{% endschema %}

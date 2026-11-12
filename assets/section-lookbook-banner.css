@@ -1,0 +1,10 @@
+.section--lookbook-banner .scrolling-promotion {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 0;
+}
+.section--lookbook-banner .promotion__text {
+  color: var(--text-color, #000);
+}

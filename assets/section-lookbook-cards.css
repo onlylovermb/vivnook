@@ -1,0 +1,70 @@
+.section--lookbook-cards .section__header {
+  padding: 0;
+}
+.section--lookbook-cards .section__header-wrap {
+  padding-bottom: var(--header-padding-bottom);
+  gap: 4rem;
+}
+@media (max-width: 767.98px) {
+  .section--lookbook-cards .section__header-wrap {
+    padding-bottom: var(--header-padding-bottom-mobile);
+    gap: 2.4rem;
+  }
+}
+.section--lookbook-cards .section__image {
+  font-size: 0;
+}
+.section--lookbook-cards .section__image .media-wrapper {
+  width: calc(var(--image-width) * 0.66);
+}
+
+@media (min-width: 1024px) {
+  .section--lookbook-cards.section-header-standing-column .section__wrapper {
+    display: grid;
+    grid-template: minmax(0, auto) minmax(0, 1fr)/minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: var(--gap-x);
+  }
+  .section--lookbook-cards.section-header-standing-column .section__content {
+    grid-area: 1/2/end/end;
+  }
+  .section--lookbook-cards.section-header-standing-column .section__header {
+    --section-header-margin-bottom: 0;
+    row-gap: 4rem;
+  }
+  .section--lookbook-cards.section-header-standing-column .section__header-wrap {
+    padding: 0;
+    min-height: var(--heading-column-height, 0);
+  }
+  .section--lookbook-cards.section-header-standing-column .section__header--text {
+    text-align: start;
+  }
+  .section--lookbook-cards.section-header-standing-column.slider-enabled .section__content {
+    margin-inline-end: calc(-1 * var(--page-padding));
+  }
+  .section--lookbook-cards.section-header-standing-column.slider-enabled .f-column {
+    width: calc((100% - var(--page-padding) - (var(--col-number) - 1) * var(--gap-x)) / var(--col-number));
+  }
+}
+@media (min-width: 768px) {
+  .section--lookbook-cards .f-grid.swiper-wrapper {
+    display: flex;
+  }
+  .section--lookbook-cards .section__image .media-wrapper {
+    width: var(--image-width);
+  }
+  .section--lookbook-cards.section-header-standing-column .section__subheading {
+    margin-bottom: 2rem;
+  }
+  .section--lookbook-cards.section-header-standing-column .section__header--button {
+    text-align: start;
+    margin-top: 2.4rem;
+  }
+}
+@media (max-width: 1023.98px) {
+  .section--lookbook-cards .section__wrapper {
+    gap: 0;
+  }
+  .section--lookbook-cards .section__header--button {
+    display: none;
+  }
+}

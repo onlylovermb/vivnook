@@ -1,0 +1,281 @@
+{
+  "version": 1,
+  "identities": [
+    {
+      "id": "VH001",
+      "dossier_number": "01",
+      "character": {
+        "name": "Maggie",
+        "internal_id": "VN-2026-EDRE",
+        "title": "Executive Director of Repeated Explanations",
+        "slogan": "I’m out of words. And patience. Mostly words."
+      },
+      "profile": {
+        "outfit_uniform": "All-Black Vivnook Scrubs + Black Fanny Pack",
+        "pop_color_lining": "Soft Pink",
+        "signature_prop": "Metal Clipboard + Black-Framed Glasses + Wobbly Cowlick"
+      },
+      "personality": [
+        {
+          "key": "logical_rigor",
+          "label": "Logical Rigor",
+          "rating": 5
+        },
+        {
+          "key": "chart_aesthetics",
+          "label": "Chart Aesthetics",
+          "rating": 5
+        },
+        {
+          "key": "sarcasm_level",
+          "label": "Sarcasm Level",
+          "rating": 4
+        },
+        {
+          "key": "patience_for_dumb_questions",
+          "label": "Patience for Dumb Questions",
+          "rating": 1
+        },
+        {
+          "key": "hidden_softness",
+          "label": "Hidden Softness",
+          "rating": 3
+        }
+      ],
+      "dossier": {
+        "system_note": "If you’ve spent 40% of your shift repeating \"No, you cannot eat before surgery\" in 5 different polite tones, congratulations—you are Maggie.",
+        "story": "As the Executive Director of Repeated Explanations, Maggie possesses the superhuman ability to translate doctor-speak into plain human language. Her hair bun is tight, her glasses are polished, and her mental log of misplaced charts is immaculate. People think she’s strict, but she’s just tired of people asking where the ice machine is.",
+        "contrast": "Underneath her crisp All-Black Vivnook scrubs, Maggie has a secret outlet. Unzip her black waist pack, and a soft pink lining pops out. It’s her silent protest: \"I am 90% logic, 10% pure bubblegum, and 100% ready for my shift to end.\""
+      },
+      "email": {
+        "subject": "🔓 You’ve Unlocked: Maggie | Executive Director of Repeated Explanations",
+        "preview": "System Alert: Character Dossier #01 Unlocked."
+      },
+      "assets": {
+        "badge_front": "vivnook-badge-front-VH001.webp",
+        "badge_front_high_res": "vivnook-badge-front-VH001.png"
+      }
+    },
+    {
+      "id": "VH002",
+      "dossier_number": "05",
+      "character": {
+        "name": "Noah",
+        "internal_id": "VN-2026-EDUEL",
+        "title": "Executive Director of Unpaid Emotional Labor",
+        "slogan": "Your teddy bear is fine. I'm the one who needs ICU."
+      },
+      "profile": {
+        "outfit_uniform": "Forest Green Vivnook Scrubs + Forest Green Fanny Pack",
+        "pop_color_lining": "Warm Orange",
+        "signature_prop": "Stethoscope on Stuffed Bear + Orange Hair Flower + Orange Shoes"
+      },
+      "personality": [
+        {
+          "key": "unpaid_therapy_hours",
+          "label": "Unpaid Therapy Hours",
+          "rating": 5
+        },
+        {
+          "key": "teddy_bear_diagnosis_accuracy",
+          "label": "Teddy Bear Diagnosis Accuracy",
+          "rating": 5
+        },
+        {
+          "key": "deadpan_healing_energy",
+          "label": "Deadpan Healing Energy",
+          "rating": 5
+        },
+        {
+          "key": "apologizing_to_objects",
+          "label": "Apologizing to Objects",
+          "rating": 4
+        },
+        {
+          "key": "self_care_priority",
+          "label": "Self-Care Priority",
+          "rating": 1
+        }
+      ],
+      "dossier": {
+        "system_note": "If you’ve ever apologized to a rolling trash can after bumping into it, or spent 15 minutes seriously listening to a stuffed bear’s chest with a stethoscope just to keep a screaming kid quiet—you are Noah.",
+        "story": "As the Executive Director of Unpaid Emotional Labor, Noah is the unofficial therapist of the entire floor. She absorbs everyone’s panic, hands out heated blankets, and nods along to stories that have zero medical relevance. With her band-aid hair clip and sleepy expression, she looks adorably exhausted, but her quiet patience is a superpower that keeps the whole unit from crumbling.",
+        "contrast": "Anchored in grounded Forest Green Vivnook scrubs, her waist pack unzips to a burst of Warm Orange lining. It’s like a pocket-sized slice of fresh pumpkin pie—radiating heat and comfort when the hospital floor feels cold and clinical."
+      },
+      "email": {
+        "subject": "🔓 You’ve Unlocked: Noah | Executive Director of Unpaid Emotional Labor",
+        "preview": "System Alert: Character Dossier #05 Unlocked."
+      },
+      "assets": {
+        "badge_front": "vivnook-badge-front-VH002.webp",
+        "badge_front_high_res": "vivnook-badge-front-VH002.png"
+      }
+    },
+    {
+      "id": "VH003",
+      "dossier_number": "02",
+      "character": {
+        "name": "Bella",
+        "internal_id": "VN-2026-COEDO",
+        "title": "Chief OSCE Exam Disaster Officer",
+        "slogan": "Act confident. Ignore the bandage wrapped around your foot."
+      },
+      "profile": {
+        "outfit_uniform": "Burgundy Vivnook Scrubs + Burgundy Fanny Pack",
+        "pop_color_lining": "Sky Blue",
+        "signature_prop": "Full-body Bandage Wraps + Forehead Band-aid"
+      },
+      "personality": [
+        {
+          "key": "blushing_frequency",
+          "label": "Blushing Frequency",
+          "rating": 5
+        },
+        {
+          "key": "bandage_entanglement_risk",
+          "label": "Bandage Entanglement Risk",
+          "rating": 5
+        },
+        {
+          "key": "imposter_syndrome",
+          "label": "Imposter Syndrome",
+          "rating": 4
+        },
+        {
+          "key": "panic_induced_precision",
+          "label": "Panic-Induced Precision",
+          "rating": 4
+        },
+        {
+          "key": "cuteness_overload",
+          "label": "Cuteness Overload",
+          "rating": 5
+        }
+      ],
+      "dossier": {
+        "system_note": "If you’ve ever faked extreme confidence while secretly overthinking which way a bandage rolls, you are Bella.",
+        "story": "As the Chief OSCE Exam Disaster Officer, Bella’s shift is a series of \"fake it till you make it\" moments. She’s been tangled in her own pressure bandages, blushed redder than a hospital Exit sign, and overthought a simple handshake. But guess what? When a real emergency hits, her adrenaline kicks in, and she somehow saves the day—even with a band-aid stuck to her forehead.",
+        "contrast": "Dressed in rich Burgundy Vivnook scrubs, Bella’s waist pack unzips to a refreshing Sky Blue lining. That flash of blue is her personal panic button—a sudden splash of cool air when her face is burning at 100°C."
+      },
+      "email": {
+        "subject": "🔓 You’ve Unlocked: Bella | Chief OSCE Exam Disaster Officer",
+        "preview": "System Alert: Character Dossier #02 Unlocked."
+      },
+      "assets": {
+        "badge_front": "vivnook-badge-front-VH003.webp",
+        "badge_front_high_res": "vivnook-badge-front-VH003.png"
+      }
+    },
+    {
+      "id": "VH004",
+      "dossier_number": "03",
+      "character": {
+        "name": "Sienna",
+        "internal_id": "VN-2026-CEWTP",
+        "title": "Chief Executive of Walkie-Talkie PTSD",
+        "slogan": "I don't walk, I sprint. Blame the walkie-talkie."
+      },
+      "profile": {
+        "outfit_uniform": "Navy Blue Vivnook Scrubs + Navy Fanny Pack",
+        "pop_color_lining": "Lime Green",
+        "signature_prop": "Walkie-Talkie + Star Earrings + High Wavy Ponytail"
+      },
+      "personality": [
+        {
+          "key": "sprint_speed",
+          "label": "Sprint Speed",
+          "rating": 5
+        },
+        {
+          "key": "walkie_talkie_reflexes",
+          "label": "Walkie-Talkie Reflexes",
+          "rating": 5
+        },
+        {
+          "key": "dark_humor_power",
+          "label": "Dark Humor Power",
+          "rating": 5
+        },
+        {
+          "key": "sitting_still_ability",
+          "label": "Sitting Still Ability",
+          "rating": 1
+        },
+        {
+          "key": "adrenaline_level",
+          "label": "Adrenaline Level",
+          "rating": 5
+        }
+      ],
+      "dossier": {
+        "system_note": "If a sudden walkie-talkie static noise makes your heart jump straight into your throat, welcome to the club—you are Sienna.",
+        "story": "As the Chief Executive of Walkie-Talkie PTSD, Sienna has two speeds: Sprinting and Fast-Sprinting. She knows every shortcut in Hallway B, can spot a falling IV pole from 50 yards away, and uses dry humor as her primary coping mechanism.",
+        "contrast": "Running through the ward in sleek Navy Blue Vivnook scrubs, her unzipped waist pack flashes an Electric Lime Green lining. It looks like a high-voltage warning sign, perfectly matching her \"I’ve had 4 espresso shots and I’m ready to fight the day\" energy."
+      },
+      "email": {
+        "subject": "🔓 You’ve Unlocked: Sienna | Chief Executive of Walkie-Talkie PTSD",
+        "preview": "System Alert: Character Dossier #03 Unlocked."
+      },
+      "assets": {
+        "badge_front": "vivnook-badge-front-VH004.webp",
+        "badge_front_high_res": "vivnook-badge-front-VH004.png"
+      }
+    },
+    {
+      "id": "VH005",
+      "dossier_number": "04",
+      "character": {
+        "name": "JoJo",
+        "internal_id": "VN-2026-CLLSA",
+        "title": "Chief Liquid Life-Support Administrator",
+        "slogan": "Sleeping 2 hours and looking this hot is a medical miracle."
+      },
+      "profile": {
+        "outfit_uniform": "Terracotta (Rust Red) Vivnook Scrubs + Matching Fanny Pack",
+        "pop_color_lining": "Soft Lavender",
+        "signature_prop": "Trenta Iced Oat Latte + Golden Hoop Earrings + Purple Clogs"
+      },
+      "personality": [
+        {
+          "key": "iced_coffee_dependency",
+          "label": "Iced Coffee Dependency",
+          "rating": 5
+        },
+        {
+          "key": "hallway_runway_vibe",
+          "label": "Hallway Runway Vibe",
+          "rating": 5
+        },
+        {
+          "key": "clog_jibbitz_density",
+          "label": "Clog Jibbitz Density",
+          "rating": 5
+        },
+        {
+          "key": "night_shift_survival",
+          "label": "Night Shift Survival",
+          "rating": 4
+        },
+        {
+          "key": "hours_of_sleep",
+          "label": "Hours of Sleep",
+          "rating": 1,
+          "note": "2-3 hours"
+        }
+      ],
+      "dossier": {
+        "system_note": "If you classify a Trenta Iced Oat Latte as essential medical life-support equipment, congratulations—you are JoJo.",
+        "story": "As the Chief Liquid Life-Support Administrator, JoJo runs on caffeine and pure attitude. She survived a 12-hour night shift on 2 hours of sleep, yet her voluminous waves are intact, her golden hoop earrings are shining, and her purple clogs are styled to perfection. She refuses to let harsh fluorescent hospital lights ruin her aesthetic.",
+        "contrast": "Dressed in retro Terracotta Vivnook scrubs, her waist pack pops open to reveal a dreamy Lavender lining. It’s where she stashes her ultimate night-shift survival arsenal: hydrating lip balm, heavy-duty undereye concealer, and a burst of blush for instant glow."
+      },
+      "email": {
+        "subject": "🔓 You’ve Unlocked: JoJo | Chief Liquid Life-Support Administrator",
+        "preview": "System Alert: Character Dossier #04 Unlocked."
+      },
+      "assets": {
+        "badge_front": "vivnook-badge-front-VH005.webp",
+        "badge_front_high_res": "vivnook-badge-front-VH005.png"
+      }
+    }
+  ]
+}

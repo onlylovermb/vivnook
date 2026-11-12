@@ -1,0 +1,36 @@
+{{ 'section-vivnook-home-services.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --atelier-height-desktop: {{ section.settings.height_desktop | default: 620 }}px;
+    --atelier-height-mobile: {{ section.settings.height_mobile | default: 760 }}px;
+    --atelier-heading-desktop: {{ section.settings.heading_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --atelier-heading-mobile: {{ section.settings.heading_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --atelier-body-desktop: {{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --atelier-body-mobile: {{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --atelier-subtitle-desktop: {{ section.settings.subtitle_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --atelier-subtitle-mobile: {{ section.settings.subtitle_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --atelier-heading-weight: {{ section.settings.heading_weight | default: 400 }};
+    --atelier-body-weight: {{ section.settings.body_weight | default: 400 }};
+    --atelier-subtitle-weight: {{ section.settings.subtitle_weight | default: 400 }};
+    --atelier-image-width-desktop: {{ section.settings.image_width_desktop | default: 300 }}px;
+    --atelier-image-height-desktop: {{ section.settings.image_height_desktop | default: 300 }}px;
+    --atelier-image-width-mobile: {{ section.settings.image_width_mobile | default: 300 }}px;
+    --atelier-image-height-mobile: {{ section.settings.image_height_mobile | default: 300 }}px;
+  }
+{% endstyle %}
+<section class="vivnook-atelier-concierge" aria-label="{{ section.settings.aria_label | escape }}">
+  <div class="vivnook-atelier-concierge__grid">
+    {% for block in section.blocks %}
+      <article class="vivnook-atelier-concierge__item" {{ block.shopify_attributes }}>
+        {% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}
+        {% if block.settings.image != blank %}<a class="vivnook-atelier-concierge__image" href="{{ block.settings.link | default: '#' }}">{{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300, 600, 900', sizes: '(min-width: 750px) 22vw, 80vw' }}</a>{% else %}<div class="vivnook-atelier-concierge__image">{{ 'image' | placeholder_svg_tag }}</div>{% endif %}
+        <div class="vivnook-atelier-concierge__body">
+          {{ block.settings.body }}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{"name":"Atelier concierge","settings":[{"type":"text","id":"aria_label","label":"Accessibility label","default":"Atelier and Concierge services"},{"type":"header","content":"Layout and typography"},{"type":"range","id":"height_desktop","label":"Desktop section height","min":400,"max":1200,"step":10,"unit":"px","default":620},{"type":"range","id":"height_mobile","label":"Mobile section height","min":400,"max":1400,"step":10,"unit":"px","default":760},{"type":"range","id":"heading_desktop_scale","label":"Heading desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},{"type":"range","id":"heading_mobile_scale","label":"Heading mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},{"type":"range","id":"body_desktop_scale","label":"Body desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},{"type":"range","id":"body_mobile_scale","label":"Body mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},{"type":"select","id":"heading_weight","label":"Heading weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},{"type":"select","id":"body_weight","label":"Body weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},{"type":"range","id":"image_width_desktop","label":"Image desktop width","min":120,"max":700,"step":10,"unit":"px","default":300},{"type":"range","id":"image_height_desktop","label":"Image desktop height","min":120,"max":700,"step":10,"unit":"px","default":300},{"type":"range","id":"image_width_mobile","label":"Image mobile width","min":120,"max":700,"step":10,"unit":"px","default":300},{"type":"range","id":"image_height_mobile","label":"Image mobile height","min":120,"max":700,"step":10,"unit":"px","default":300}],"blocks":[{"type":"service","name":"Service","settings":[{"type":"text","id":"heading","label":"Heading","default":"The Atelier"},{"type":"image_picker","id":"image","label":"Image"},{"type":"richtext","id":"body","label":"Description","default":"<p>Add your service description here.</p>"},{"type":"url","id":"link","label":"Link"}]}],"max_blocks":2,"presets":[{"name":"Atelier concierge","blocks":[{"type":"service","settings":{"heading":"The Atelier"}},{"type":"service","settings":{"heading":"The Concierge"}}]}]}
+{% endschema %}

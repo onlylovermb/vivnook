@@ -1,0 +1,114 @@
+.vivnook-inline-size-reference {
+  display: grid;
+  grid-template-columns: max-content minmax(8rem, 1fr) max-content;
+  align-items: center;
+  column-gap: 1.2rem;
+  width: 100%;
+  margin: 1.4rem 0 2rem;
+  padding-inline: 0.8rem;
+}
+
+/* The product-page theme overrides use display:grid!important. Preserve the
+   semantic hidden state until FIND MY SIZE has produced a recommendation. */
+.vivnook-inline-size-reference[hidden],
+.tops-find-size[hidden] {
+  display: none !important;
+}
+
+.vivnook-inline-size-reference h3 {
+  grid-column: 1 / -1;
+  margin: 0 0 1rem;
+  color: rgba(var(--color-foreground), 0.62);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-style: normal;
+  font-weight: 300 !important;
+  line-height: 1.4;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels {
+  display: contents;
+  color: rgb(var(--color-foreground));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  line-height: 1.2;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels span {
+  white-space: nowrap;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels span strong {
+  font-weight: 700 !important;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels span:first-child {
+  grid-column: 1;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-labels span:last-child {
+  grid-column: 3;
+  text-align: right;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__reference-bar {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.vivnook-smart-size-chart__fit-guidance {
+  margin: 0.8rem 0 0;
+  color: rgb(var(--color-foreground));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  line-height: 1.35;
+}
+
+.vivnook-inline-size-reference .vivnook-smart-size-chart__fit-guidance {
+  grid-column: 1 / -1;
+}
+
+/* Signature Look uses one app block for several option groups. Keep those
+   groups visually connected instead of inheriting the app's generous gaps. */
+.product-template.signature-look .signature-look-option-group {
+  margin-block: 1.4rem !important;
+}
+
+.product-template.signature-look .signature-look-option-group--top {
+  margin-top: 1.6rem !important;
+}
+
+.product-template.signature-look .signature-look-option-group--bag {
+  margin-bottom: 1.2rem !important;
+}
+
+.product-template.signature-look .vivnook-inline-size-reference {
+  margin: 1.2rem 0 1rem;
+}
+
+@media (max-width: 749px) {
+  .vivnook-inline-size-reference {
+    grid-template-columns: max-content minmax(4rem, 1fr) max-content;
+    column-gap: 0.8rem;
+    margin: 1.2rem 0 1.8rem;
+    padding-inline: 0.4rem;
+  }
+
+  .product-template.signature-look .signature-look-option-group {
+    margin-block: 1.2rem !important;
+  }
+
+  .product-template.signature-look .vivnook-inline-size-reference {
+    margin: 1rem 0 0.8rem;
+  }
+
+  .vivnook-inline-size-reference h3 {
+    font-size: 1.05rem;
+  }
+}

@@ -1,0 +1,45 @@
+{%- liquid
+  if recommendations.performed and recommendations.products_count > 0
+    assign recommendations_products = recommendations.products
+  endif
+-%}
+<cart-drawer-products-recommendation
+  class="cart-drawer-products-recommendation flex flex-col gap-3 hidden"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section_id }}&product_id={{ product_id }}&limit={{ limit }}&intent=complementary"
+>
+  <div class="cart-drawer-products-recommendation__header flex items-center justify-between">
+    <p class="h5">{{ heading | escape }}</p>
+    {%- if recommendations.products_count > 1 -%}
+      <div class="slider-controls slider-controls--fraction-group">
+        <button
+          class="swiper-button-prev"
+          name="previous"
+          aria-label="{{ 'general.pagination.previous' | t }}"
+        >
+          {%- render 'icon-slider-prev', size: 'small' -%}
+        </button>
+        <div class="swiper-pagination"></div>
+        <button
+          class="swiper-button-next"
+          name="next"
+          aria-label="{{ 'general.pagination.next' | t }}"
+        >
+          {%- render 'icon-slider-next', size: 'small' -%}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+  {%- if recommendations.performed -%}
+    <div class="blocks-radius">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {%- for recommendation in recommendations_products -%}
+            <div class="swiper-slide">
+              {%- render 'card-product-list', product: recommendation -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</cart-drawer-products-recommendation>

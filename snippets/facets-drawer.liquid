@@ -1,0 +1,73 @@
+{%- liquid
+  assign active_values_count = 0
+
+  for filter in results.filters
+    if filter.type == 'price_range'
+      if filter.max_value.value != blank or filter.min_value.value != blank
+        assign active_values_count = active_values_count | plus: 1
+      endif
+    else
+      for active_value in filter.active_values
+        assign active_values_count = active_values_count | plus: 1
+      endfor
+    endif
+  endfor
+-%}
+
+<div class="facet-drawer-wrapper">
+  <button
+    class="btn btn--secondary flex items-center gap-2 facet-drawer-button"
+    type="button"
+    aria-controls="FacetDrawer"
+    aria-expanded="false"
+    data-facet-loading
+  >
+    {%- render 'icon-filters' -%}
+    <span>
+      {{ 'products.facets.filter_button' | t }}
+      <facet-count
+        {% if active_values_count == 0 %}
+          hidden
+        {% endif %}
+        >({{ active_values_count }})</facet-count
+      >
+    </span>
+    {%- render 'loading-spinner', size: 'small' -%}
+  </button>
+  <drawer-component id="FacetDrawer" role="dialog" class="drawer drawer--left" hidden>
+    <div class="fixed-overlay" aria-controls="FacetDrawer"></div>
+    <div class="drawer__inner">
+      <button class="drawer__close-btn z-1" aria-controls="FacetDrawer" type="button">
+        {% render 'icon-close', size: 'large' %}
+      </button>
+      <div class="drawer__content flex flex-col h-full w-full">
+        <div class="drawer__header facet-drawer__header flex items-center">
+          <h2 class="drawer__heading h3 flex items-center gap-3">
+            <span>{{ 'products.facets.filter_button' | t }}</span>
+          </h2>
+        </div>
+        <div class="drawer__body flex-grow v-scrollable" id="FacetFiltersContainer">
+          {%- if enable_sorting -%}
+            <div class="flex items-center gap-3 md:hidden facet-short-drawer" id="SortByContainerMobile">
+              {%- render 'facet-short', results: results, label_class: 'h4' -%}
+            </div>
+          {%- endif -%}
+          {%- render 'facets', context: 'drawer', results: results -%}
+          <div class="drawer__sticky drawer__sticky--bottom w-full z-1">
+            <button class="btn btn--primary w-full" type="button" aria-controls="FacetDrawer" aria-expanded="false">
+              <span>
+                {{ 'products.facets.apply' | t }}
+                <facet-count
+                  {% if active_values_count == 0 %}
+                    hidden
+                  {% endif %}
+                  >({{ active_values_count }})</facet-count
+                >
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </drawer-component>
+</div>

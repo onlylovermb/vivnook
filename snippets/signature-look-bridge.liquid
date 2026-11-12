@@ -1,0 +1,84 @@
+{%- liquid
+  assign top_product = all_products['scrub-top']
+  if shop.permanent_domain == 'vivnook-sf-integration-dev.myshopify.com'
+    assign pant_product = all_products['scrub-pants']
+    assign bag_product = all_products['fanny-bag']
+  else
+    assign pant_product = all_products['scrub-pants™']
+    assign bag_product = all_products['fanny-bag™']
+  endif
+  if bag_product == blank or bag_product.title == blank
+    assign bag_product = all_products['fanny-bag']
+  endif
+  if bag_product == blank or bag_product.title == blank
+    assign bag_product = all_products['fanny-pack']
+  endif
+-%}
+<script type="application/json" data-signature-look-variants>
+  {
+    "product": {
+      "id": {{ product.id | json }},
+      "title": {{ product.title | json }},
+      "image": {% if product.featured_image %}{{ product.featured_image | image_url: width: 240 | json }}{% else %}null{% endif %}
+    },
+    "look": [
+      {%- for variant in product.variants -%}
+        {"id":{{ variant.id | json }},"color":{{ variant.option1 | json }},"image":{% if variant.featured_image %}{{ variant.featured_image | image_url: width: 240 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "top": [
+      {%- for variant in top_product.variants -%}
+        {"id":{{ variant.id | json }},"color":{{ variant.option1 | json }},"size":{{ variant.option2 | json }},"available":{{ variant.available | json }},"image":{% if variant.featured_image %}{{ variant.featured_image | image_url: width: 240 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "pant": [
+      {%- for variant in pant_product.variants -%}
+        {"id":{{ variant.id | json }},"color":{{ variant.option1 | json }},"size":{{ variant.option2 | json }},"available":{{ variant.available | json }},"image":{% if variant.featured_image %}{{ variant.featured_image | image_url: width: 240 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "bag": [
+      {%- for variant in bag_product.variants -%}
+        {%- liquid
+          assign var_img = variant.featured_image | default: bag_product.featured_image
+          assign var_color = variant.option1 | downcase
+          if var_color contains 'black' and settings.vivnook_look_fanny_black != blank
+            assign var_img = settings.vivnook_look_fanny_black
+          elsif var_color contains 'navy' and settings.vivnook_look_fanny_navy_blue != blank
+            assign var_img = settings.vivnook_look_fanny_navy_blue
+          elsif var_color contains 'burgundy' and settings.vivnook_look_fanny_burgundy != blank
+            assign var_img = settings.vivnook_look_fanny_burgundy
+          endif
+        -%}
+        {"id":{{ variant.id | json }},"color":{{ variant.option1 | json }},"available":{{ variant.available | json }},"image":{% if var_img %}{{ var_img | image_url: width: 300 | json }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+{% style %}
+  .product-template.signature-look .signature-look-option--unavailable,
+  .product-template.signature-look .signature-look-option--unavailable *,
+  .product-template.signature-look input.signature-look-option--unavailable + label,
+  .product-template.signature-look input.signature-look-option--unavailable + label * { cursor: not-allowed !important; }
+  .product-template.signature-look .signature-look-option--unavailable:not(input):not(button):not(option):not(select) { overflow: hidden; position: relative; }
+  .product-template.signature-look .signature-look-option--color,
+  .product-template.signature-look .signature-look-option--color *,
+  .product-template.signature-look input.signature-look-option--color + label,
+  .product-template.signature-look input.signature-look-option--color + label * { filter: none !important; opacity: 1 !important; }
+  .product-template.signature-look .signature-look-option--size:not(input):not(button):not(option):not(select) { opacity: 0.45 !important; }
+  .product-template.signature-look .signature-look-unavailable-mark {
+    background: currentColor; display: block; height: 1px; inset-inline: 8%; opacity: 0.82 !important;
+    pointer-events: none; position: absolute; top: 50%; transform: rotate(-35deg); transform-origin: center; z-index: 2;
+  }
+  /* The shared variant picker supplies the single unavailable diagonal. */
+  .product-template.signature-look .signature-look-unavailable-mark { display: none !important; }
+  .product-template.signature-look .signature-look-option--color > .signature-look-unavailable-mark {
+    background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18); height: 2px; opacity: 1 !important;
+  }
+  .product-template.signature-look select option.signature-look-option--unavailable { color: #999; }
+  .product-template.signature-look .signature-look-bag-label .form__label { flex: 0 1 auto !important; }
+  .product-template.signature-look .signature-look-bag-hint {
+    color: rgba(var(--color-foreground), 0.62); font-size: 1.15rem; font-style: normal; font-weight: 400;
+    line-height: 1.35; margin-inline-start: 0.35rem;
+  }
+  @media (max-width: 749px) { .product-template.signature-look .signature-look-bag-hint { font-size: 1.05rem; } }
+{% endstyle %}

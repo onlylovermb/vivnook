@@ -1,0 +1,69 @@
+.vivnook-length-adjustment {
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.14);
+  color: rgb(var(--color-foreground));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+}
+
+.product-template.signature-look .vivnook-length-adjustment {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.vivnook-length-adjustment__option {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.vivnook-length-adjustment__option input {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0;
+  accent-color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.vivnook-length-adjustment__notice {
+  max-width: 58rem;
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.66);
+  font-size: 12px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+  line-height: 1.45;
+}
+
+.vivnook-length-adjustment__notice--confirmation {
+  color: rgb(var(--color-foreground));
+  font-size: 12px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+}
+
+.vivnook-length-adjustment [hidden] {
+  display: none !important;
+}
+
+@media (max-width: 749px) {
+  .vivnook-length-adjustment {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .vivnook-length-adjustment__option {
+    font-size: 1.15rem;
+  }
+}

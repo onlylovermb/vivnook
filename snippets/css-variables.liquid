@@ -1,0 +1,489 @@
+{%- liquid
+  assign body_font_weight = settings.type_body_font.weight
+  assign body_font_bolder_weight = settings.body_font_weight_bolder | default: '500'
+  assign heading_font_weight = settings.type_header_font.weight
+  assign subheading_font_weight = settings.subheading_font_weight
+  assign buttons_font_weight = settings.buttons_font_weight
+  assign pcard_title_font_weight = settings.pcard_title_font_weight
+  assign navigation_font_weight = settings.navigation_font_weight
+
+  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+  assign body_font_bolder = settings.type_body_font | font_modify: 'weight', body_font_bolder_weight
+  assign body_font_bolder_italic = body_font_bolder | font_modify: 'style', 'italic'
+  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+  assign heading_font_italic = settings.type_header_font | font_modify: 'style', 'italic'
+
+  assign body_font_medium = settings.type_body_font | font_modify: 'weight', '500'
+
+  assign body_line_height_scale = settings.body_font_size | minus: 16 | times: 0.025
+  assign body_line_height = 1.625 | plus: body_line_height_scale
+
+  assign heading_font_mobile_ratio = settings.heading_mobile_scale | divided_by: 100.00
+
+  assign buttons_radius = 0
+  assign buttons_height = settings.buttons_height | default: 48
+  assign inputs_radius = 0
+  assign textareas_radius = 0
+
+  case settings.buttons_corner_radius
+    when 'slightly'
+      assign buttons_radius = 5
+    when 'soft-pill'
+      assign buttons_radius = 10
+    when 'round'
+      assign buttons_radius = buttons_height | divided_by: 2
+  endcase
+
+  case settings.inputs_corner_radius
+    when 'slightly'
+      assign inputs_radius = 5
+      assign textareas_radius = 5
+    when 'soft-pill'
+      assign inputs_radius = 10
+      assign textareas_radius = 10
+    when 'round'
+      assign inputs_radius = buttons_height | divided_by: 2
+      assign textareas_radius = 16
+  endcase
+
+  assign blocks_radius = 0
+  assign medium_blocks_radius = 0
+  assign small_blocks_radius = 0
+
+  case settings.blocks_corner_radius
+    when 'slightly'
+      assign blocks_radius = 10
+      assign medium_blocks_radius = 8
+      assign small_blocks_radius = 5
+    when 'round'
+      assign blocks_radius = 20
+      assign medium_blocks_radius = 10
+      assign small_blocks_radius = 6
+  endcase
+
+  assign pcard_radius = 0
+  assign pcard_inner_radius = 0
+
+  case settings.pcard_corner_radius
+    when 'slightly'
+      assign pcard_radius = 10
+      assign pcard_inner_radius = 6
+    when 'round'
+      assign pcard_radius = 20
+      assign pcard_inner_radius = 10
+  endcase
+
+  assign badges_radius = 0
+  case settings.badges_corner_radius
+    when 'slightly'
+      assign badges_radius = 5
+  endcase
+
+  ## Font Size Heading
+  assign heading_scale = settings.heading_scale | divided_by: 100.0
+  assign heading_scale_mobile = settings.heading_scale_mobile | divided_by: 100.0
+  assign min_breakpoint = 767
+  assign max_breakpoint = 1280
+  assign root_font_size = 10.0
+  assign breakpoint_diff = max_breakpoint | minus: min_breakpoint
+
+  # Create array of heading configurations
+  # Format: [prefix, multiplier, min_fallback, base_size_multiplier]
+  assign heading_configs = 'hd1,0.1,4.8,display|hd2,0.08,3.84,display|hd3,0.06,2.88,display|h1,0,3.2,4.0|h2,0,2.56,3.2|h3,0,2.24,2.8|h4,0,1.76,2.2' | split: '|'
+
+  for config in heading_configs
+    assign config_parts = config | split: ','
+    assign prefix = config_parts[0]
+    assign multiplier = config_parts[1] | plus: 0
+    assign min_fallback = config_parts[2] | plus: 0
+    assign base_size = config_parts[3]
+
+    # Calculate max and min sizes
+    if base_size == 'display'
+      assign max_size = settings.display_heading_size | times: multiplier
+    else
+      assign base_size_num = base_size | plus: 0
+      assign max_size = base_size_num | times: heading_scale
+    endif
+
+    assign min_size = max_size | times: heading_scale_mobile | at_least: min_fallback
+
+    # Convert to pixels
+    assign min_px = min_size | times: root_font_size
+    assign max_px = max_size | times: root_font_size
+
+    # Calculate slope and coefficient
+    assign px_diff = max_px | minus: min_px
+    assign slope = px_diff | divided_by: breakpoint_diff
+    assign coefficient = slope | times: 100
+
+    # Calculate intercept
+    assign coefficient_times_min_breakpoint = coefficient | times: min_breakpoint
+    assign coefficient_divided = coefficient_times_min_breakpoint | divided_by: 100
+    assign intercept_px = min_px | minus: coefficient_divided
+    assign base_rem = intercept_px | divided_by: root_font_size
+
+    # Assign dynamic variables
+    assign min_var = prefix | append: '_min'
+    assign max_var = prefix | append: '_max'
+    assign coefficient_var = prefix | append: '_coefficient'
+    assign base_var = prefix | append: '_base'
+
+    assign temp = min_size
+    case min_var
+      when 'hd1_min'
+        assign hd1_min = temp
+      when 'hd2_min'
+        assign hd2_min = temp
+      when 'hd3_min'
+        assign hd3_min = temp
+      when 'h1_min'
+        assign h1_min = temp
+      when 'h2_min'
+        assign h2_min = temp
+      when 'h3_min'
+        assign h3_min = temp
+      when 'h4_min'
+        assign h4_min = temp
+    endcase
+
+    assign temp = max_size
+    case max_var
+      when 'hd1_max'
+        assign hd1_max = temp
+      when 'hd2_max'
+        assign hd2_max = temp
+      when 'hd3_max'
+        assign hd3_max = temp
+      when 'h1_max'
+        assign h1_max = temp
+      when 'h2_max'
+        assign h2_max = temp
+      when 'h3_max'
+        assign h3_max = temp
+      when 'h4_max'
+        assign h4_max = temp
+    endcase
+
+    assign temp = coefficient
+    case coefficient_var
+      when 'hd1_coefficient'
+        assign hd1_coefficient = temp
+      when 'hd2_coefficient'
+        assign hd2_coefficient = temp
+      when 'hd3_coefficient'
+        assign hd3_coefficient = temp
+      when 'h1_coefficient'
+        assign h1_coefficient = temp
+      when 'h2_coefficient'
+        assign h2_coefficient = temp
+      when 'h3_coefficient'
+        assign h3_coefficient = temp
+      when 'h4_coefficient'
+        assign h4_coefficient = temp
+    endcase
+
+    assign temp = base_rem
+    case base_var
+      when 'hd1_base'
+        assign hd1_base = temp
+      when 'hd2_base'
+        assign hd2_base = temp
+      when 'hd3_base'
+        assign hd3_base = temp
+      when 'h1_base'
+        assign h1_base = temp
+      when 'h2_base'
+        assign h2_base = temp
+      when 'h3_base'
+        assign h3_base = temp
+      when 'h4_base'
+        assign h4_base = temp
+    endcase
+  endfor
+%}
+{% style %}
+  {{ settings.type_body_font | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bolder | font_face: font_display: 'swap' }}
+  {{ body_font_bolder_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+  {{ body_font_medium | font_face: font_display: 'swap' }}
+  {{ settings.type_header_font | font_face: font_display: 'swap' }}
+  {{ heading_font_italic | font_face: font_display: 'swap'}}
+  {% liquid
+    if settings.subheading_font == 'heading'
+      if subheading_font_weight != heading_font_weight
+        assign extra_font_weight = settings.type_header_font | font_modify: 'weight', subheading_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    else
+      if subheading_font_weight != body_font_weight and subheading_font_weight != '700'
+        assign extra_font_weight = settings.type_body_font | font_modify: 'weight', subheading_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    endif
+
+    if settings.buttons_font == 'heading'
+      if buttons_font_weight != heading_font_weight
+        assign extra_font_weight = settings.type_header_font | font_modify: 'weight', buttons_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    else
+      if buttons_font_weight != body_font_weight and buttons_font_weight != '700'
+        assign extra_font_weight = settings.type_body_font | font_modify: 'weight', buttons_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    endif
+
+    if settings.pcard_title_font == 'heading'
+      if pcard_title_font_weight != heading_font_weight
+        assign extra_font_weight = settings.type_header_font | font_modify: 'weight', pcard_title_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    else
+      if pcard_title_font_weight != body_font_weight and pcard_title_font_weight != '700'
+        assign extra_font_weight = settings.type_body_font | font_modify: 'weight', pcard_title_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    endif
+
+    if settings.navigation_font == 'heading'
+      if navigation_font_weight != heading_font_weight
+        assign extra_font_weight = settings.type_header_font | font_modify: 'weight', navigation_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    else
+      if navigation_font_weight != body_font_weight and navigation_font_weight != '700'
+        assign extra_font_weight = settings.type_body_font | font_modify: 'weight', navigation_font_weight
+        echo extra_font_weight | font_face: font_display: 'swap'
+      endif
+    endif
+  %}
+
+  {% for scheme in settings.color_schemes -%}
+    {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+    {% if forloop.index == 1 -%}
+      :root,
+    {%- endif %}
+    {%- liquid
+    # Color lighten in hex: #666666
+    assign color_text_lighten_60 = scheme.settings.background | color_mix: scheme.settings.text, 40
+    assign color_text_lighten_19 = scheme.settings.background | color_mix: scheme.settings.text, 81
+    -%}
+    {%- capture css_vars -%}
+      --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+      --color-secondary-background: {{ scheme.settings.secondary_background.red }},{{ scheme.settings.secondary_background.green }},{{ scheme.settings.secondary_background.blue }};
+      --color-primary: {{ scheme.settings.primary_accent.red }},{{ scheme.settings.primary_accent.green }},{{ scheme.settings.primary_accent.blue }};
+      --color-text-heading: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+      --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+      --color-border: {{ scheme.settings.border.red }},{{ scheme.settings.border.green }},{{ scheme.settings.border.blue }};
+      --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
+      --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+      --color-secondary-button: {{ scheme.settings.secondary_button.red }},{{ scheme.settings.secondary_button.green }},{{ scheme.settings.secondary_button.blue }};
+      --color-secondary-button-border: {{ scheme.settings.secondary_button_border.red }},{{ scheme.settings.secondary_button_border.green }},{{ scheme.settings.secondary_button_border.blue }};
+      --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+      --color-button-hover-background: {{ scheme.settings.button_hover.red }},{{ scheme.settings.button_hover.green }},{{ scheme.settings.button_hover.blue }};
+      --color-button-hover-text: {{ scheme.settings.button_label_hover.red }},{{ scheme.settings.button_label_hover.green }},{{ scheme.settings.button_label_hover.blue }};
+      --color-button-before: {{ scheme.settings.button_hover | color_lighten: 20 }};
+      --color-field: {{ scheme.settings.form_field.red }},{{ scheme.settings.form_field.green }},{{ scheme.settings.form_field.blue }};
+      --color-field-text: {{ scheme.settings.form_field_label.red }},{{ scheme.settings.form_field_label.green }},{{ scheme.settings.form_field_label.blue }};
+      --color-link: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+      --color-link-hover: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+      --color-product-price-sale: {{ scheme.settings.product_price_sale.red }},{{ scheme.settings.product_price_sale.green }},{{ scheme.settings.product_price_sale.blue }};
+      --color-foreground-lighten-60: {{ color_text_lighten_60 }};
+      --color-foreground-lighten-19: {{ color_text_lighten_19 }};
+    {%- endcapture -%}
+    .color-{{ scheme.id }} {
+      {{ css_vars }}
+    }
+    @media (min-width: 768px) {
+      body .desktop-color-{{ scheme.id }} {
+        {{ css_vars }}
+        color: rgb(var(--color-foreground));
+        background-color: rgb(var(--color-background));
+      }
+    }
+    @media (max-width: 767px) {
+      body .mobile-color-{{ scheme.id }} {
+        {{ css_vars }}
+        color: rgb(var(--color-foreground));
+        background-color: rgb(var(--color-background));
+      }
+    }
+  {% endfor %}
+
+  {{ scheme_classes | prepend: 'body' }} {
+    color: rgb(var(--color-foreground));
+    background-color: rgb(var(--color-background));
+  }
+
+  :root {
+    /* Animation variable */
+    --animation-nav: .5s cubic-bezier(.6, 0, .4, 1);
+    --animation-default: .5s cubic-bezier(.3, 1, .3, 1);
+    --animation-fast: .3s cubic-bezier(.7, 0, .3, 1);
+    --transform-origin-start: left;
+    --transform-origin-end: right;
+    --duration-default: 200ms;
+    --duration-image: 1000ms;
+
+    --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --font-body-style: {{ settings.type_body_font.style }};
+    --font-body-weight: {{ settings.type_body_font.weight }};
+    --font-body-weight-bolder: {{ settings.body_font_weight_bolder }};
+    --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+    --font-body-size: {{ settings.body_font_size | divided_by: 10.0 }}rem;
+    --font-body-line-height: {{ body_line_height }};
+
+    --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    --font-heading-style: {{ settings.type_header_font.style }};
+    --font-heading-weight: {{ settings.type_header_font.weight }};
+    --font-heading-letter-spacing: {{ settings.heading_letter_spacing | divided_by: 100.0 }}em;
+    --font-heading-transform: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+    --font-heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+    --font-heading-mobile-scale: {{ settings.heading_scale | times: heading_font_mobile_ratio | divided_by: 100.0 }};
+
+    --font-hd1-transform:{% if settings.display_heading_uppercase %}uppercase{% else %}none{% endif %};
+
+    --font-subheading-family: {% if settings.subheading_font == 'heading' %}{{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }}{% else %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }}{% endif %};
+    --font-subheading-weight: {{ subheading_font_weight }};
+    --font-subheading-scale: {{ settings.subheading_scale | divided_by: 100.0 }};
+    --font-subheading-transform: {{ settings.subheading_transform }};
+    --font-subheading-letter-spacing: {{ settings.subheading_letter_spacing | divided_by: 100.0 }}em;
+
+    --font-navigation-family: {% if settings.navigation_font == 'heading' %}{{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }}{% else %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }}{% endif %};
+    --font-navigation-weight: {{ navigation_font_weight }};
+    --navigation-transform: {% if settings.navigation_uppercase %}uppercase{% else %}none{% endif %};
+
+    --font-button-family: {% if settings.buttons_font == 'heading' %}{{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }}{% else %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }}{% endif %};
+    --font-button-weight: {{ buttons_font_weight }};
+    --buttons-letter-spacing: {{ settings.buttons_letter_spacing | divided_by: 100.0 }}em;
+    --buttons-transform: {{ settings.buttons_transform }};
+    --buttons-height: {{ settings.buttons_height | divided_by: 10.0 }}rem;
+    --buttons-border-width: 1px;
+    --inputs-border-width: 1px;
+
+    --font-pcard-title-family: {% if settings.pcard_title_font == 'heading' %}{{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }}{% else %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }}{% endif %};
+    --font-pcard-title-style: {% if settings.pcard_title_font == 'heading' %}{{ settings.type_header_font.style }}{% else %}{{ settings.type_body_font.style }}{% endif %};
+    --font-pcard-title-weight: {{ pcard_title_font_weight }};
+    --font-pcard-title-scale: {{ settings.pcard_title_scale | divided_by: 100.0 }};
+    --font-pcard-title-transform: {% if settings.pcard_title_uppercase %}uppercase{% else %}none{% endif %};
+
+    --font-h1-size: clamp(
+      {{h1_min}}rem,
+      calc({{h1_coefficient | round: 6}}vw + {{h1_base | round: 6}}rem),
+      {{h1_max}}rem
+    );
+    --font-h2-size: clamp(
+      {{h2_min}}rem,
+      calc({{h2_coefficient | round: 6}}vw + {{h2_base | round: 6}}rem),
+      {{h2_max}}rem
+    );
+    --font-h3-size: clamp(
+      {{h3_min}}rem,
+      calc({{h3_coefficient | round: 6}}vw + {{h3_base | round: 6}}rem),
+      {{h3_max}}rem
+    );
+    --font-h4-size: clamp(
+      {{h4_min}}rem,
+      calc({{h4_coefficient | round: 6}}vw + {{h4_base | round: 6}}rem),
+      {{h4_max}}rem
+    );
+    --font-hd1-size: clamp(
+      {{hd1_min}}rem,
+      calc({{hd1_coefficient | round: 6}}vw + {{hd1_base | round: 6}}rem),
+      {{hd1_max}}rem
+    );
+    --font-hd2-size: clamp(
+      {{hd2_min}}rem,
+      calc({{hd2_coefficient | round: 6}}vw + {{hd2_base | round: 6}}rem),
+      {{hd2_max}}rem
+    );
+    --font-hd3-size: clamp(
+      {{hd3_min}}rem,
+      calc({{hd3_coefficient | round: 6}}vw + {{hd3_base | round: 6}}rem),
+      {{hd3_max}}rem
+    );
+    --font-h5-size: calc(var(--font-heading-scale) * 1.8rem);
+    --font-h6-size: calc(var(--font-heading-scale) * 1.6rem);
+    --font-subheading-size: calc(var(--font-subheading-scale) * var(--font-body-size));
+    --font-pcard-title-size: calc(var(--font-pcard-title-scale) * var(--font-body-size));
+
+    --color-badge-sale: {{ settings.color_badge_sale }};
+    --color-badge-sale-text: {{ settings.color_badge_sale_text }};
+    --color-badge-soldout: {{ settings.color_badge_soldout }};
+    --color-badge-soldout-text: {{ settings.color_badge_soldout_text }};
+    --color-badge-hot: {{ settings.color_badge_hot }};
+    --color-badge-hot-text: {{ settings.color_badge_hot_text }};
+    --color-badge-new: {{ settings.color_badge_new }};
+    --color-badge-new-text: {{ settings.color_badge_new_text }};
+    --color-cart-bubble: {{ settings.color_cart_bubble }};
+    --color-keyboard-focus: {{ settings.color_key_board_focus.rgb }};
+
+    --buttons-radius: {{ buttons_radius | divided_by: 10.0 }}rem;
+    --inputs-radius: {{ inputs_radius | divided_by: 10.0 }}rem;
+    --textareas-radius: {{ textareas_radius | divided_by: 10.0 }}rem;
+    --blocks-radius: {{ blocks_radius | divided_by: 10.0 }}rem;
+    --blocks-radius-mobile: {{ blocks_radius | times: 0.08 }}rem;
+    --small-blocks-radius: {{ small_blocks_radius | divided_by: 10.0 }}rem;
+    --medium-blocks-radius: {{ medium_blocks_radius | divided_by: 10.0 }}rem;
+    --pcard-radius: {{ pcard_radius | divided_by: 10.0 }}rem;
+    --pcard-inner-radius: {{ pcard_inner_radius | divided_by: 10.0 }}rem;
+    --badges-radius: {{ badges_radius | divided_by: 10.0 }}rem;
+
+    --page-width: {{ settings.page_width }}px;
+    --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+    --header-padding-bottom: 4rem;
+    --header-padding-bottom-mobile: 3.2rem;
+    --header-padding-bottom-large: 6rem;
+    --header-padding-bottom-large-lg: 4rem;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  html {
+    touch-action: manipulation;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    line-height: var(--font-body-line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    font-feature-settings: normal;
+  }
+  @media (min-width: {{ settings.page_width | plus: 75 }}px) {
+    .swiper-controls--outside {
+      --swiper-navigation-offset-x: calc((var(--swiper-navigation-size) + 2.7rem) * -1);
+    }
+  }
+{% endstyle %}
+
+{%- unless settings.type_body_font.system? -%}
+  {% comment %}theme-check-disable AssetPreload{% endcomment %}
+  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+  {% comment %}theme-check-enable AssetPreload{% endcomment %}
+{%- endunless -%}
+{%- unless settings.type_header_font.system? -%}
+  {% comment %}theme-check-disable AssetPreload{% endcomment %}
+  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+  {% comment %}theme-check-enable AssetPreload{% endcomment %}
+{%- endunless -%}

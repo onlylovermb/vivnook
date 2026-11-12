@@ -1,0 +1,150 @@
+{%- liquid
+  assign modal_id = 'lbcard__popup-' | append: block_id
+  assign image_ratio = image_ratio | default: '3/4'
+  assign alt = image.alt | default: shop.name | escape
+  assign loading = 'lazy'
+  assign fetchpriority = 'low'
+
+  assign heading_size = heading_size | default: 'h5'
+
+  if pcard_image_ratio == blank
+    assign pcard_image_ratio = settings.pcard_image_ratio | default: '1'
+  endif
+
+  assign color_scheme = color_scheme | default: 'scheme-1'
+  assign popup_color_scheme = popup_color_scheme | default: 'scheme-1'
+-%}
+<div class="lbcard block relative z-0 blocks-radius color-{{ color_scheme }}">
+  {%- if image != blank -%}
+    <div
+      class="media-wrapper blocks-radius"
+      style="--aspect-ratio:{{ image_ratio }};"
+    >
+      {{
+        image
+        | image_url: width: 1500
+        | image_tag:
+          loading: loading,
+          fetchpriority: fetchpriority,
+          class: 'motion-reduce w-full',
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          is: 'image-lazy',
+          alt: alt
+      }}
+    </div>
+  {%- else -%}
+    <div
+      class="media-wrapper blocks-radius bg-none"
+      style="--aspect-ratio:{{ image_ratio }};"
+    >
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+  <button
+    class="lbcard__popup-btn-trigger z-1 btn btn--icon-circle btn--primary"
+    aria-label="{{ 'products.product.view_product_list' | t }}"
+    aria-controls="{{ modal_id }}"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+  >
+    {%- render 'icon-cart', name: settings.cart_icon -%}
+  </button>
+  <lookbook-card id="{{ modal_id }}" class="lbcard__popup z-2 drawer modal">
+    <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
+    <div class="drawer__inner flex flex-col gap-4 color-{{ popup_color_scheme }}">
+      <div class="lbcard__popup-header shrink-0">
+        <h3 class="lbcard__popup-heading {{ heading_size }}">{{ heading }}</h3>
+        <button
+          class="lbcard__popup-btn-close btn--inherit drawer__close-btn"
+          aria-controls="{{ modal_id }}"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {%- render 'icon-close' -%}
+        </button>
+      </div>
+      <div class="lbcard__popup-body v-scrollable flex flex-col gap-4">
+        {%- if product_list != blank -%}
+          {%- for prod in product_list -%}
+            {%- liquid
+              assign prod_image_ratio = pcard_image_ratio
+              if prod_image_ratio == 'adapt'
+                if prod.featured_media != blank
+                  assign prod_image_ratio = prod.featured_media.aspect_ratio
+                else
+                  assign prod_image_ratio = '1'
+                endif
+              endif
+            -%}
+            <div class="lbcard__product flex items-center gap-2">
+              <a
+                class="lbcard__product-thumbnail shrink-0"
+                href="{{ product.url }}"
+                aria-label="{{ product.title | escape }}"
+                tabindex="-1"
+              >
+                <div
+                  class="media-wrapper blocks-radius-md bg-none"
+                  style="--aspect-ratio: {{ prod_image_ratio }};"
+                >
+                  {%- if prod.featured_media != blank -%}
+                    {%- liquid
+                      assign alt = prod.featured_media.alt | default: prod.title | escape
+                    -%}
+                    {{
+                      prod
+                      | image_url: width: 150
+                      | image_tag:
+                        loading: 'lazy',
+                        fetchpriority: 'low',
+                        class: 'motion-reduce',
+                        widths: '60, 75, 120, 150',
+                        is: 'image-lazy',
+                        alt: alt
+                    }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+              </a>
+              <div class="lbcard__product-info flex-1">
+                <h3 class="lbcard__product-title text-pcard-title text-limit-2-lines m-0">
+                  <a href="{{ prod.url }}" class="reversed-link">
+                    {{- prod.title -}}
+                  </a>
+                </h3>
+                <div class="lbcard__product-price">{% render 'price', product: prod %}</div>
+              </div>
+              <a href="{{ prod.url }}" class="btn btn--icon-circle btn--secondary">
+                {% render 'icon-caret-right', size: 'extra-small icon--thick' %}
+              </a>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- liquid
+            if pcard_image_ratio == 'adapt'
+              assign pcard_image_ratio = '1'
+            endif
+          -%}
+          {%- for i in (1..2) -%}
+            <div class="lbcard__product flex items-center gap-2">
+              <div class="lbcard__product-thumbnail shrink-0">
+                <div
+                  class="media-wrapper blocks-radius-md bg-none"
+                  style="--aspect-ratio: {{ pcard_image_ratio }};"
+                >
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              </div>
+              <div class="lbcard__product-info flex-1">
+                <h3 class="lbcard__product-title text-pcard-title text-limit-2-lines m-0">
+                  {{- 'onboarding.product_title' | t -}}
+                </h3>
+                <div class="lbcard__product-price">{% render 'price' %}</div>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </lookbook-card>
+</div>

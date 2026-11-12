@@ -1,0 +1,110 @@
+{%- liquid
+  unless limit
+    assign limit = menu.links.size
+  endunless
+  unless offset
+    assign offset = 0
+  endunless
+-%}
+
+<nav class="header__menu flex" role="navigation" aria-label="Primary">
+  <ul class="flex flex-wrap">
+    {%- for link in menu.links limit: limit offset: offset -%}
+      {%- liquid
+        assign enable_mega_menu = false
+        assign link_title_handle = link.title | handle
+        for block in blocks
+          assign menu_title_handle = block.settings.menu_title | handle
+          if menu_title_handle == link_title_handle
+            assign enable_mega_menu = true
+            assign mega_menu_block = block
+            break
+          endif
+        endfor
+      -%}
+      <li>
+        {%- if link.links != blank -%}
+          {%- if enable_mega_menu -%}
+            {% render 'mega-menu', link: link, block: mega_menu_block %}
+          {%- else -%}
+            <details
+              is="details-dropdown"
+              level="top"
+              trigger="{{ section.settings.menu_trigger }}"
+              {{ block.shopify_attributes }}
+            >
+              <summary data-link="{{ link.url }}" class="z-2">
+                <span class="menu__item flex items-center relative">
+                  <span class="reversed-link flex items-center font-navigation">
+                    {{- link.title | escape -}}
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.75 4.5L6 8.25L2.25 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </span>
+              </summary>
+              <div class="dropdown">
+                <div class="dropdown__container blocks-radius-bottom-left-right">
+                  <ul class="dropdown__nav" role="list">
+                    {%- for childlink in link.links -%}
+                      {%- if childlink.links != blank -%}
+                        <li class="relative">
+                          <details level="child" trigger="hover" is="details-dropdown">
+                            <summary data-link="{{ childlink.url }}" class="flex items-center justify-between gap-x-1">
+                              <a href="{{ childlink.url }}" class="reversed-link" tabindex="-1">
+                                {{- childlink.title | escape -}}
+                              </a>
+                              <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="-rotate-90"
+                              >
+                                <path d="M9.75 4.5L6 8.25L2.25 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                            </summary>
+                            <div class="dropdown">
+                              <div class="dropdown__container blocks-radius">
+                                <ul class="dropdown__nav" role="list">
+                                  {%- for grandchildlink in childlink.links -%}
+                                    <li>
+                                      <p>
+                                        <a class="reversed-link" href="{{ grandchildlink.url }}">
+                                          {{- grandchildlink.title | escape -}}
+                                        </a>
+                                      </p>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      {%- else -%}
+                        <li>
+                          <p>
+                            <a href="{{ childlink.url }}" class="reversed-link">{{ childlink.title | escape }}</a>
+                          </p>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          {%- endif -%}
+        {%- else -%}
+          {%- if enable_mega_menu -%}
+            {% render 'mega-menu', link: link, block: mega_menu_block %}
+          {%- else -%}
+            <a href="{{ link.url }}" class="menu__item flex relative z-2 font-navigation">
+              <span class="reversed-link">{{ link.title | escape }}</span>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

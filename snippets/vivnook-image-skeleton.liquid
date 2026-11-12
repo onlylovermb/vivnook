@@ -1,0 +1,26 @@
+<style>
+  .vivnook-image-skeleton #MainContent img:where([src], [srcset]):not([data-image-settled]) {
+    background-color: rgba(var(--color-foreground, 0, 0, 0), 0.08);
+  }
+</style>
+<script>
+  (() => {
+    const imageSelector = '#MainContent img:is([src], [srcset])';
+
+    function settleImage(event) {
+      if (event.target instanceof HTMLImageElement && event.target.matches(imageSelector)) {
+        event.target.setAttribute('data-image-settled', '');
+      }
+    }
+
+    document.addEventListener('load', settleImage, true);
+    document.addEventListener('error', settleImage, true);
+    document.addEventListener('DOMContentLoaded', () => {
+      for (const image of document.querySelectorAll(imageSelector)) {
+        if (image.complete) image.setAttribute('data-image-settled', '');
+      }
+    }, { once: true });
+
+    document.documentElement.classList.add('vivnook-image-skeleton');
+  })();
+</script>

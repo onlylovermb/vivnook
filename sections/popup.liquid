@@ -1,0 +1,580 @@
+{%- liquid
+  assign enable = section.settings.enable
+  assign show_for_homepage_only = section.settings.show_for_homepage_only
+  assign show_for_visitors_only = section.settings.show_for_visitors_only
+
+  assign should_show = enable
+  if show_for_visitors_only and customer
+    assign should_show = false
+  endif
+
+  if show_for_homepage_only and template != 'index'
+    assign should_show = false
+  endif
+
+  if request.design_mode
+    assign should_show = true
+  endif
+-%}
+{%- if should_show -%}
+  <link rel="stylesheet" href="{{ 'subscription-popup.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'subscription-popup.css' | asset_url | stylesheet_tag }}</noscript>
+  {%- liquid
+    assign trigger_open = section.settings.trigger_open
+    assign repeat_open = section.settings.repeat_open
+    assign alignment = section.settings.alignment
+    assign width = section.settings.width
+    assign show_teaser = section.settings.show_teaser
+    assign teaser_button_text = section.settings.teaser_button_text
+    assign image_block = section.blocks | where: 'type', 'image' | first
+
+    assign modal_css_class = ''
+
+    if image_block != blank
+      assign image = image_block.settings.image
+      assign image_position = image_block.settings.image_position
+      assign modal_css_class = ' subscription-popup__' | append: 'has-image'
+      assign modal_css_class = ' subscription-popup__' | append: 'image-' | append: image_position
+    else
+      assign modal_css_class = ' subscription-popup__' | append: 'no-image'
+    endif
+
+    assign modal_id = 'SubscriptionModal-' | append: section.id
+  -%}
+  <subscription-popup
+    id="{{ modal_id }}"
+    class="drawer modal subscription-popup{{ modal_css_class }}"
+    shopify-design-mode
+    hidden
+    data-trigger-open="{{ trigger_open }}"
+    data-repeat-open="{{ repeat_open }}"
+    style="--modal-width: {{ width | divided_by: 10.0 }}rem;"
+  >
+    <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
+    <div class="drawer__inner blocks-radius">
+      <button
+        class="drawer__close-btn"
+        aria-controls="{{ modal_id }}"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-close' %}
+      </button>
+      {%- render 'loading-spinner' -%}
+      <div class="drawer__body v-scrollable h-full">
+        <div class="flex flex-wrap text-{{ alignment }}">
+          {%- if image_block != blank -%}
+            {%- if image != blank -%}
+              {%- capture image_sizes -%}
+              {%- if image_block.settings.image_position == 'left' -%}(min-width: 1024px) {{ width | times: 0.47728 | floor }}px,{%- endif -%}(min-width: {{ width | plus: 32 }}px) {{ width }}px, calc(100vw - 3.2rem)
+              {%- endcapture -%}
+              <div
+                class="subscription-popup__image w-full media-wrapper"
+                style="--aspect-ratio: {{ image.aspect_ratio }}"
+              >
+                {{
+                  image
+                  | image_url: width: image.width
+                  | image_tag:
+                    loading: 'lazy',
+                    fetchpriority: 'low',
+                    class: 'motion-reduce',
+                    widths: '375, 420, 750, 840, 1100, 1500, 1780, 2000',
+                    sizes: image_sizes,
+                    is: 'image-lazy'
+                }}
+              </div>
+            {%- else -%}
+              <div class="subscription-popup__image w-full">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+          <div class="subscription-popup__blocks w-full flex flex-col justify-center">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'heading' -%}
+                  {%- unless block.settings.heading == blank -%}
+                    <div class="subscription-popup__title" {{ block.shopify_attributes }}>
+                      <{{ block.settings.heading_tag }} class="{{ block.settings.text_size }}">
+                        {{- block.settings.heading -}}
+                      </{{ block.settings.heading_tag }}>
+                    </div>
+                  {%- endunless -%}
+                {%- when 'text' -%}
+                  {%- unless block.settings.text == blank -%}
+                    <div
+                      class="subscription-popup__text rich-text__text rte {{ block.settings.text_size }}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{- block.settings.text -}}
+                    </div>
+                  {%- endunless -%}
+                {%- when 'form' -%}
+                  <div class="subscription-popup__form" {{ block.shopify_attributes }}>
+                    {% render 'newsletter-form',
+                      custom_id: 'Popup',
+                      hide_label: true,
+                      design: block.settings.design,
+                      button_label: block.settings.button_label
+                    %}
+                  </div>
+                {%- when 'button' -%}
+                  {% assign button_label = block.settings.button_label %}
+                  {% assign button_link = block.settings.button_link %}
+                  {%- unless button_label == blank -%}
+                    <div class="subscription-popup__cta" {{ block.shopify_attributes }}>
+                      <a
+                        class="btn btn--primary w-full"
+                        href="{{- button_link -}}"
+                        {% if button_link == blank %}
+                          disabled
+                        {% endif %}
+                      >
+                        {{- button_label -}}
+                      </a>
+                    </div>
+                  {%- endunless -%}
+                {%- when 'socials' -%}
+                  {%- assign content_align = 'flex-wrap' | append: ' justify-' | append: alignment -%}
+                  {%- render 'social-icons', class: content_align, size: 'large' -%}
+                {%- when 'code' -%}
+                  {%- liquid
+                    assign discount_code = block.settings.discount_code
+                    assign apply_button = block.settings.apply_button
+                  -%}
+                  {%- unless discount_code == blank -%}
+                    <div class="subscription-popup__code flex flex-col gap-3" {{ block.shopify_attributes }}>
+                      <input value="{{ discount_code }}" readonly class="form-control">
+                      <button
+                        class="btn btn--primary w-full btn-apply-coupon-code"
+                        data-code="{{ discount_code }}"
+                        data-copied-text="{{ 'general.share.copied' | t }}"
+                      >
+                        {{- apply_button -}}
+                      </button>
+                    </div>
+                  {%- endunless -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </subscription-popup>
+  {%- if show_teaser and teaser_button_text != blank -%}
+    <button
+      class="subscription-popup__teaser btn btn--primary btn--with-icon no-js-hidden"
+      role="button"
+      aria-haspopup="dialog"
+      aria-controls="{{ modal_id }}"
+      style="--color-teaser-popup-bg: {{ section.settings.teaser_popup_bg }};--color-teaser-popup-text: {{ section.settings.teaser_popup_text }};"
+    >
+      {% render 'icon-envelope-simple' %}
+      <span>{{- teaser_button_text -}}</span>
+    </button>
+  {%- endif -%}
+  <script src="{{ 'subscription-popup.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:sections.popup.name",
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/MlItUYN)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "t:sections.popup.settings.enable.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_for_homepage_only",
+      "label": "t:sections.popup.settings.show_for_homepage_only.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_for_visitors_only",
+      "label": "t:sections.popup.settings.show_for_visitors_only.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "trigger_open",
+      "label": "t:sections.popup.settings.trigger_open.label",
+      "options": [
+        {
+          "value": "immediately",
+          "label": "t:sections.popup.settings.trigger_open.options__1.label"
+        },
+        {
+          "value": "delay",
+          "label": "t:sections.popup.settings.trigger_open.options__2.label"
+        },
+        {
+          "value": "scroll_down",
+          "label": "t:sections.popup.settings.trigger_open.options__3.label"
+        }
+      ],
+      "default": "delay",
+      "info": "t:sections.popup.settings.trigger_open.info"
+    },
+    {
+      "type": "select",
+      "id": "repeat_open",
+      "label": "t:sections.popup.settings.repeat_open.label",
+      "info": "t:sections.popup.settings.repeat_open.info",
+      "options": [
+        {
+          "value": "no_repeat",
+          "label": "t:sections.popup.settings.repeat_open.options__1.label"
+        },
+        {
+          "value": "every_30_mins",
+          "label": "t:sections.popup.settings.repeat_open.options__2.label"
+        },
+        {
+          "value": "every_1_hr",
+          "label": "t:sections.popup.settings.repeat_open.options__3.label"
+        },
+        {
+          "value": "every_6_hrs",
+          "label": "t:sections.popup.settings.repeat_open.options__4.label"
+        },
+        {
+          "value": "every_12_hrs",
+          "label": "t:sections.popup.settings.repeat_open.options__5.label"
+        },
+        {
+          "value": "every_day",
+          "label": "t:sections.popup.settings.repeat_open.options__6.label"
+        },
+        {
+          "value": "every_3_days",
+          "label": "t:sections.popup.settings.repeat_open.options__7.label"
+        },
+        {
+          "value": "every_week",
+          "label": "t:sections.popup.settings.repeat_open.options__8.label"
+        },
+        {
+          "value": "every_2_weeks",
+          "label": "t:sections.popup.settings.repeat_open.options__9.label"
+        },
+        {
+          "value": "every_month",
+          "label": "t:sections.popup.settings.repeat_open.options__10.label"
+        }
+      ],
+      "default": "every_day"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "t:sections.popup.settings.width.label",
+      "min": 400,
+      "max": 900,
+      "step": 5,
+      "unit": "px",
+      "default": 880
+    },
+    {
+      "type": "header",
+      "content": "t:sections.popup.settings.header__teaser_button.content",
+      "info": "t:sections.popup.settings.header__teaser_button.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_teaser",
+      "label": "t:sections.popup.settings.show_teaser.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "teaser_button_text",
+      "label": "t:sections.all.button.button_label.label",
+      "default": "Newsletter"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.name"
+    },
+    {
+      "type": "color",
+      "id": "teaser_popup_bg",
+      "label": "t:sections.popup.settings.teaser_popup_bg.label",
+      "default": "#1437AA"
+    },
+    {
+      "type": "color",
+      "id": "teaser_popup_text",
+      "label": "t:sections.popup.settings.teaser_popup_text.label",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:sections.popup.blocks.image.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.all.image.label"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "t:sections.popup.blocks.image.settings.image_position.label",
+          "options": [
+            {
+              "value": "top",
+              "label": "t:sections.popup.blocks.image.settings.image_position.options__1.label"
+            },
+            {
+              "value": "left",
+              "label": "t:sections.popup.blocks.image.settings.image_position.options__2.label"
+            }
+          ],
+          "default": "top"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.popup.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.all.text.label",
+          "default": "Create attention for the heading"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ],
+          "default": "h1"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "t:sections.all.heading_tag.label",
+          "default": "h3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_tag.options__1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_tag.options__2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.heading_tag.options__3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.heading_tag.options__4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.heading_tag.options__5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:sections.all.heading_tag.options__6.label"
+            }
+          ],
+          "info": "t:sections.all.heading_tag.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.popup.blocks.text.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.all.text.label",
+          "default": "<p>Add details about your popup information to encourage successful action.</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "t:sections.popup.blocks.form.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "design",
+          "label": "t:sections.all.design.label",
+          "options": [
+            {
+              "value": "design-1",
+              "label": "t:sections.all.design.options__1.label"
+            },
+            {
+              "value": "design-2",
+              "label": "t:sections.all.design.options__2.label"
+            }
+          ],
+          "default": "design-1"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Subscribe"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "name": "t:sections.popup.blocks.code.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "t:sections.popup.blocks.code.settings.code.label",
+          "info": "t:sections.popup.blocks.code.settings.code.info"
+        },
+        {
+          "type": "text",
+          "id": "apply_button",
+          "label": "t:sections.popup.blocks.code.settings.apply_button",
+          "default": "Copy code",
+          "info": "t:sections.popup.blocks.code.settings.apply_button_info"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.popup.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        }
+      ]
+    },
+    {
+      "type": "socials",
+      "name": "t:sections.popup.blocks.socials.name",
+      "limit": 1
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "heading"
+      },
+      {
+        "type": "text"
+      },
+      {
+        "type": "form"
+      }
+    ]
+  }
+}
+{% endschema %}

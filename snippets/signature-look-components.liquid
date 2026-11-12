@@ -1,0 +1,131 @@
+{%- liquid
+  assign top_product = all_products['scrub-top']
+  assign pant_product = all_products['scrub-pants™']
+  assign bag_product = all_products['fanny-bag™']
+  if shop.permanent_domain == 'vivnook-sf-integration-dev.myshopify.com'
+    assign pant_product = all_products['scrub-pants']
+    assign bag_product = all_products['fanny-bag']
+  endif
+  if bag_product == blank or bag_product.title == blank
+    assign bag_product = all_products['fanny-bag']
+  endif
+  if bag_product == blank or bag_product.title == blank
+    assign bag_product = all_products['fanny-pack']
+  endif
+  assign kinds = 'top,pant,bag' | split: ','
+  assign sizes = 'XS,S,M,L,XL,2XL' | split: ','
+  assign selected_color = product.selected_or_first_available_variant.option1 | default: 'Black'
+-%}
+<div class="look-components" data-look-components>
+  {%- for kind in kinds -%}
+    {%- liquid
+      case kind
+        when 'top'
+          assign component = top_product
+          assign label = 'Top Size'
+        when 'pant'
+          assign component = pant_product
+          assign label = 'Pant Size'
+        when 'bag'
+          assign component = bag_product
+      endcase
+
+      assign card_image = component.featured_image
+      if kind == 'bag'
+        assign color_down = selected_color | downcase
+        if color_down contains 'black' and settings.vivnook_look_fanny_black != blank
+          assign card_image = settings.vivnook_look_fanny_black
+        elsif color_down contains 'navy' and settings.vivnook_look_fanny_navy_blue != blank
+          assign card_image = settings.vivnook_look_fanny_navy_blue
+        elsif color_down contains 'burgundy' and settings.vivnook_look_fanny_burgundy != blank
+          assign card_image = settings.vivnook_look_fanny_burgundy
+        else
+          for var in bag_product.variants
+            if var.option1 == selected_color and var.featured_image != blank
+              assign card_image = var.featured_image
+              break
+            endif
+          endfor
+        endif
+      else
+        for var in component.variants
+          if var.option1 == selected_color and var.featured_image != blank
+            assign card_image = var.featured_image
+            break
+          endif
+        endfor
+      endif
+    -%}
+    <div class="look-component look-component--{{ kind }}" data-look-component="{{ kind }}">
+      <div class="look-card">
+        {%- if card_image != blank -%}
+          {{ card_image | image_url: width: 300 | image_tag: class: 'look-card__image', loading: 'lazy', widths: '120, 240, 300', sizes: '120px' }}
+        {%- endif -%}
+        <div class="look-card__copy">
+          <h2>{{ component.title | escape }}</h2>
+          {%- if component.metafields.reviews.rating_count.value > 0 -%}
+            <p class="look-card__reviews">{{ component.metafields.reviews.rating.value }} ★ · {{ component.metafields.reviews.rating_count.value }} Reviews</p>
+          {%- endif -%}
+          <a href="{{ component.url }}">View Details<span class="visually-hidden">: {{ component.title | escape }}</span></a>
+        </div>
+      </div>
+      {%- unless kind == 'bag' -%}
+        <fieldset class="look-size" data-look-size="{{ kind }}">
+          <legend class="visually-hidden">{{ label }}</legend>
+          <div class="look-size__heading">
+            <span><strong>{{ label }}:</strong> <span data-look-selected-size>—</span></span>
+            <button type="button" class="look-size__chart" data-look-chart="{{ kind }}" aria-haspopup="dialog">Size Chart</button>
+          </div>
+          <div class="look-size__options">
+            {%- for size in sizes -%}
+              {%- liquid
+                assign is_size_unavailable = false
+                if kind == 'top'
+                  for variant in top_product.variants
+                    if variant.option1 == selected_color and variant.option2 == size
+                      unless variant.available
+                        assign is_size_unavailable = true
+                      endunless
+                      break
+                    endif
+                  endfor
+                elsif kind == 'pant'
+                  for variant in pant_product.variants
+                    if variant.option1 == selected_color and variant.option2 == size
+                      unless variant.available
+                        assign is_size_unavailable = true
+                      endunless
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
+              <input
+                class="visually-hidden{% if is_size_unavailable %} signature-look-option--unavailable signature-look-option--size disabled{% endif %}"
+                type="radio"
+                id="Look-{{ section.id }}-{{ kind }}-{{ size }}"
+                name="properties[{{ label }}]"
+                value="{{ size }}"
+                required
+                {% if is_size_unavailable %}disabled aria-disabled="true"{% endif %}
+              >
+              <label
+                for="Look-{{ section.id }}-{{ kind }}-{{ size }}"
+                class="{% if is_size_unavailable %}signature-look-option--unavailable signature-look-option--size disabled{% endif %}"
+                {% if is_size_unavailable %}aria-disabled="true"{% endif %}
+              >
+                {{- size -}}
+              </label>
+            {%- endfor -%}
+          </div>
+          <button type="button" class="look-find-size" data-look-find-size="{{ kind }}" aria-haspopup="dialog"><span>Find My Size</span><span aria-hidden="true">›</span></button>
+          <div data-look-recommendation="{{ kind }}"></div>
+          {%- if kind == 'pant' -%}<div data-look-length-host></div>{%- endif -%}
+        </fieldset>
+      {%- else -%}
+        <input type="hidden" name="properties[Fanny Pack Color]" data-look-bag-color value="{{ bag_product.selected_or_first_available_variant.option1 | escape }}">
+        <p class="look-component__notice" data-look-bag-notice hidden role="status"></p>
+      {%- endunless -%}
+    </div>
+  {%- endfor -%}
+</div>

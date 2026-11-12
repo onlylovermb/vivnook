@@ -1,0 +1,100 @@
+{{ 'section-vivnook-home-faq.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --faq-title-desktop: {{ section.settings.title_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --faq-title-mobile: {{ section.settings.title_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --faq-body-desktop: {{ section.settings.body_desktop_scale | default: 100 | divided_by: 100.0 }};
+    --faq-body-mobile: {{ section.settings.body_mobile_scale | default: 90 | divided_by: 100.0 }};
+    --faq-title-weight: {{ section.settings.title_weight | default: 400 }};
+    --faq-body-weight: {{ section.settings.body_weight | default: 400 }};
+    --faq-intro-height-desktop: {{ section.settings.intro_height_desktop | default: 100 }}%;
+    --faq-list-height-desktop: {{ section.settings.list_height_desktop | default: 100 }}%;
+    --faq-intro-x-desktop: {{ section.settings.intro_x_desktop | default: 0 }}%;
+    --faq-intro-y-desktop: {{ section.settings.intro_y_desktop | default: 0 }}%;
+    --faq-list-x-desktop: {{ section.settings.list_x_desktop | default: 0 }}%;
+    --faq-list-y-desktop: {{ section.settings.list_y_desktop | default: 0 }}%;
+    --faq-intro-width-desktop: {{ section.settings.intro_text_width_desktop | default: 360 }}px;
+    --faq-title-width-desktop: {{ section.settings.title_width_desktop | default: 520 }}px;
+    --faq-list-width-desktop: {{ section.settings.list_text_width_desktop | default: 700 }}px;
+    --faq-button-width-desktop: {{ section.settings.button_width_desktop | default: 180 }}px;
+    --faq-button-height-desktop: {{ section.settings.button_height_desktop | default: 40 }}px;
+    --faq-button-x-desktop: {{ section.settings.button_x_desktop | default: 0 }}%;
+    --faq-button-y-desktop: {{ section.settings.button_y_desktop | default: 0 }}%;
+    --faq-line-width-desktop: {{ section.settings.line_width_desktop | default: 1 }}px;
+    --faq-plus-size-desktop: {{ section.settings.plus_size_desktop | default: 20 }}px;
+    --faq-button-width-mobile: {{ section.settings.button_width_mobile | default: 180 }}px;
+    --faq-button-height-mobile: {{ section.settings.button_height_mobile | default: 40 }}px;
+    --faq-button-x-mobile: {{ section.settings.button_x_mobile | default: 0 }}px;
+    --faq-button-y-mobile: {{ section.settings.button_y_mobile | default: 0 }}%;
+    --faq-line-width-mobile: {{ section.settings.line_width_mobile | default: 1 }}px;
+    --faq-plus-size-mobile: {{ section.settings.plus_size_mobile | default: 20 }}px;
+    --faq-height-mobile: {{ section.settings.height_mobile | default: 900 }}px;
+    --faq-title-x-mobile: {{ section.settings.title_x_mobile | default: 0 }}%;
+    --faq-body-x-mobile: {{ section.settings.body_x_mobile | default: 0 }}%;
+    --faq-list-width-mobile: {{ section.settings.list_text_width_mobile | default: 630 }}px;
+    --faq-intro-body-width-mobile: {{ section.settings.intro_body_width_mobile | default: 630 }}px;
+  }
+{% endstyle %}
+<section class="vivnook-faq-contact" aria-label="{{ section.settings.aria_label | escape }}">
+  <div class="vivnook-faq-contact__intro">
+    <h2>{{ section.settings.intro_heading | escape }}</h2>
+    {% if section.settings.intro_text != blank %}<p>{{ section.settings.intro_text | escape | newline_to_br }}</p>{% endif %}
+    {% if section.settings.button_label != blank %}<a href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+  </div>
+  <div class="vivnook-faq-contact__list">
+    {% for block in section.blocks %}
+      <details class="vivnook-faq-contact__item" {{ block.shopify_attributes }}>
+        <summary><span>{{ block.settings.question | escape }}</span><b aria-hidden="true"></b></summary>
+        <div class="vivnook-faq-contact__answer">{{ block.settings.answer }}</div>
+      </details>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "FAQ contact",
+  "settings": [
+    {"type":"text","id":"aria_label","label":"Accessibility label","default":"Frequently asked questions"},
+    {"type":"text","id":"intro_heading","label":"Intro heading","default":"Check if you can find them here."},
+    {"type":"textarea","id":"intro_text","label":"Intro text","default":"We create safe products that really work and are designed to make you feel good."},
+    {"type":"text","id":"button_label","label":"Button label","default":"Contact Us"},
+    {"type":"url","id":"button_link","label":"Button link"},
+    {"type":"header","content":"FAQ contact layout and typography"},
+    {"type":"range","id":"title_desktop_scale","label":"Title desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"title_mobile_scale","label":"Title mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"range","id":"body_desktop_scale","label":"Body desktop scale","min":70,"max":140,"step":5,"unit":"%","default":100},
+    {"type":"range","id":"body_mobile_scale","label":"Body mobile scale","min":70,"max":130,"step":5,"unit":"%","default":90},
+    {"type":"select","id":"title_weight","label":"Title weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},
+    {"type":"select","id":"body_weight","label":"Body weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"700","label":"Bold"}],"default":"400"},
+    {"type":"range","id":"intro_height_desktop","label":"Left text area desktop height","min":50,"max":100,"step":1,"unit":"%","default":100},
+    {"type":"range","id":"list_height_desktop","label":"Right FAQ area desktop height","min":50,"max":100,"step":1,"unit":"%","default":100},
+    {"type":"range","id":"intro_x_desktop","label":"Left text desktop horizontal position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"intro_y_desktop","label":"Left text desktop vertical position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"list_x_desktop","label":"Right FAQ desktop horizontal position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"list_y_desktop","label":"Right FAQ desktop vertical position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"intro_text_width_desktop","label":"Left text line width desktop","min":220,"max":700,"step":10,"unit":"px","default":360},
+    {"type":"range","id":"title_width_desktop","label":"Intro title width desktop","min":280,"max":900,"step":10,"unit":"px","default":520},
+    {"type":"range","id":"list_text_width_desktop","label":"FAQ text line width desktop","min":300,"max":1000,"step":10,"unit":"px","default":700},
+    {"type":"range","id":"button_width_desktop","label":"Button desktop width","min":100,"max":500,"step":5,"unit":"px","default":180},
+    {"type":"range","id":"button_height_desktop","label":"Button desktop height","min":32,"max":100,"step":2,"unit":"px","default":40},
+    {"type":"range","id":"button_x_desktop","label":"Button desktop horizontal position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"button_y_desktop","label":"Button desktop vertical position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"line_width_desktop","label":"Divider line width desktop","min":0.1,"max":8,"step":0.1,"unit":"px","default":1},
+    {"type":"range","id":"plus_size_desktop","label":"Plus desktop size","min":12,"max":40,"step":1,"unit":"px","default":20},
+    {"type":"range","id":"button_width_mobile","label":"Button mobile width","min":100,"max":500,"step":5,"unit":"px","default":180},
+    {"type":"range","id":"button_height_mobile","label":"Button mobile height","min":32,"max":100,"step":2,"unit":"px","default":40},
+    {"type":"range","id":"button_x_mobile","label":"Button mobile horizontal position","min":-1000,"max":0,"step":10,"unit":"px","default":0},
+    {"type":"range","id":"button_y_mobile","label":"Button mobile vertical position","min":-20,"max":20,"step":1,"unit":"%","default":0},
+    {"type":"range","id":"line_width_mobile","label":"Divider line width mobile","min":0.1,"max":8,"step":0.1,"unit":"px","default":1},
+    {"type":"range","id":"plus_size_mobile","label":"Plus mobile size","min":12,"max":40,"step":1,"unit":"px","default":20}
+    ,{"type":"range","id":"height_mobile","label":"FAQ section mobile height","min":500,"max":1400,"step":10,"unit":"px","default":900}
+    ,{"type":"range","id":"title_x_mobile","label":"Intro title mobile horizontal position","min":-100,"max":0,"step":1,"unit":"%","default":0}
+    ,{"type":"range","id":"body_x_mobile","label":"Intro body mobile horizontal position","min":-100,"max":0,"step":1,"unit":"%","default":0}
+    ,{"type":"range","id":"intro_body_width_mobile","label":"Intro body width mobile","min":220,"max":700,"step":10,"unit":"px","default":630}
+    ,{"type":"range","id":"list_text_width_mobile","label":"FAQ line width mobile","min":220,"max":700,"step":10,"unit":"px","default":630}
+  ],
+  "blocks":[{"type":"faq","name":"Question","settings":[{"type":"text","id":"question","label":"Question","default":"What Is Your Return and Exchange Policy?"},{"type":"richtext","id":"answer","label":"Answer","default":"<p>Add the answer to this question.</p>"}]}],
+  "max_blocks":8,
+  "presets":[{"name":"FAQ contact","blocks":[{"type":"faq"},{"type":"faq"},{"type":"faq"},{"type":"faq"}]}]
+}
+{% endschema %}

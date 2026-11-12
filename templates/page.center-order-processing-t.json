@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_RRWfPR": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>.vn-article{background:#f7f7f7;color:#111;padding:42px 5vw 72px;font-family:inherit}.vn-article__wrap{max-width:1180px;margin:auto}.vn-article__crumbs{font-size:13px;color:#777;margin-bottom:34px}.vn-article__crumbs a{color:inherit}.vn-article__layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:52px}.vn-article__side{border-right:1px solid #e5e5e5;padding-right:28px}.vn-article__side a{display:block;padding:11px 12px;color:#555;text-decoration:none}.vn-article__side a.is-active{background:#fff;color:#111;font-weight:600}.vn-article__content{background:#fff;padding:48px 56px}.vn-article__content h1{font-size:clamp(34px,5vw,62px);line-height:1.05}.vn-article__updated{color:#777;font-size:14px;margin-bottom:38px}.vn-article__content p{font-size:17px;line-height:1.75}.vn-article__feedback{border-top:1px solid #e5e5e5;margin-top:46px;padding-top:28px}.vn-article__feedback button{background:#fff;border:1px solid #111;padding:12px 22px;margin-right:8px}.vn-article__feedback button.is-selected{background:#111;color:#fff}.vn-article__response{display:none;color:#777;font-size:13px}.vn-article__response.is-visible{display:block}.vn-article__contact{color:#111;text-decoration:underline}@media(max-width:749px){.vn-article__layout{display:block}.vn-article__side{border:0}.vn-article__side a{display:none}.vn-article__content{padding:30px 22px}}</style>\n<section class=\"vn-article\"><div class=\"vn-article__wrap\"><nav class=\"vn-article__crumbs\"><a href=\"/pages/help-center\">Help Center Home</a> / <a href=\"/pages/where-is-my-order\">Where Is My Order?</a> / <a href=\"/pages/help-center-order-tracking-faq\">Order Tracking FAQ</a> / Article</nav><div class=\"vn-article__layout\"><aside class=\"vn-article__side\"><h2>Articles in this section</h2><a href=\"/pages/help-center-track-order\">How can I track my order?</a><a href=\"/pages/help-center-tracking-email\">When will I receive my tracking information?</a><a href=\"/pages/help-center-order-not-shipped\">My order has not shipped yet. What should I do?</a><a href=\"/pages/help-center-order-delayed-lost-damaged\">My package is lost, damaged or delayed.</a><a href=\"/pages/help-center-change-address\">Can I change my shipping address?</a><a href=\"/pages/help-center-change-order-details\">Can I change my item, size or color?</a><a class=\"is-active\" href=\"/pages/help-center-order-processing-time\">What if my order is taking too long to process?</a></aside><article class=\"vn-article__content\"><h1>What if my order is taking too long to process?</h1><p class=\"vn-article__updated\">Updated October 2026</p><p>Standard, non-custom orders are usually processed within 1–3 business days. Custom and embroidered orders require an additional 5–10 business days. Orders are not processed on weekends or public holidays.</p><p>If your order has exceeded the applicable processing time, please contact us at support@vivnook.com with your order number. Our team will review the status and contact the logistics partner if necessary.</p><div class=\"vn-article__feedback\"><p>Was this article helpful?</p><button data-vn-feedback=\"yes\">Yes</button><button data-vn-feedback=\"no\">No</button><p class=\"vn-article__response\" data-vn-response></p><p>Have more questions? <a class=\"vn-article__contact\" href=\"https://azbi0u-6f.myshopify.com/pages/contact\">Contact Us</a></p></div></article></div></div></section><script>(function(){var b=document.querySelectorAll('[data-vn-feedback]'),r=document.querySelector('[data-vn-response]');b.forEach(function(x){x.onclick=function(){b.forEach(function(y){y.classList.remove('is-selected')});x.classList.add('is-selected');r.textContent=x.dataset.vnFeedback==='yes'?'Thank you — we’re glad this helped.':'Thank you for letting us know. We’ll keep improving our help content.';r.classList.add('is-visible')}})})();</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_RRWfPR"
+  ]
+}

@@ -1,0 +1,210 @@
+{%- liquid
+  case block.type
+    when 'promotion_banner'
+      assign promo_images = block.settings.promo_image_1 | append: ',' | append: block.settings.promo_image_2 | append: ',' | append: block.settings.promo_image_3 | append: ',' | append: block.settings.promo_image_4 | append: ',' | append: block.settings.promo_image_5
+      assign has_promo = false
+      unless promo_images == ',,,,'
+        assign has_promo = true
+      endunless
+    when 'custom_card'
+      assign promo_images = block.settings.promo_image_1 | append: ',' | append: block.settings.promo_image_2 | append: ',' | append: block.settings.promo_image_3 | append: ',' | append: block.settings.promo_image_4 | append: ',' | append: block.settings.promo_image_5
+      assign has_promo = false
+      unless promo_images == ',,,,'
+        assign has_promo = true
+      endunless
+    when 'product_list'
+      assign collections = block.settings.collections
+      assign product_list = block.settings.product_list
+      assign heading = block.settings.heading
+  endcase
+-%}
+
+<details is="menu-drawer-details" level="top">
+  <summary class="menu-drawer__item-link flex items-center justify-between">
+    <span>{{ link.title | escape }}</span>
+    {%- render 'icon-caret', size: 'medium' -%}
+  </summary>
+  <div class="menu-drawer__submenu absolute z-1 flex flex-col w-full h-full" data-parent>
+    <button type="button" class="menu-drawer__item-back-link font-navigation flex items-center gap-2 w-full">
+      {%- render 'icon-caret', size: 'small' -%}
+      {{ link.title | escape }}
+    </button>
+    <ul class="flex flex-col h-full v-scrollable" data-parent role="list">
+      {%- if collections != blank and block.type == 'product_list' and enable_mega_menu -%}
+        <div class="menu-drawer__item" level="child">
+          <ul role="list" class="grid gap-3">
+            {%- for collection in collections -%}
+              <li>
+                <a href="{{ collection.url }}" class="h3 reversed-link font-heading">
+                  {{- collection.title | escape -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      {%- for childlink in link.links -%}
+        <li class="menu-drawer__item" level="child">
+          {%- if childlink.links != blank -%}
+            <details is="menu-drawer-details">
+              <summary class="menu-drawer__item-link flex items-center justify-between">
+                <span>{{ childlink.title | escape }}</span>
+                {%- render 'icon-caret', size: 'medium' -%}
+              </summary>
+              <div class="menu-drawer__submenu absolute z-1 flex flex-col w-full h-full" data-parent>
+                <button
+                  type="button"
+                  class="menu-drawer__item-back-link font-navigation flex items-center gap-2 w-full"
+                >
+                  {%- render 'icon-caret', size: 'small' -%}
+                  {{ childlink.title | escape }}
+                </button>
+                <ul class="v-scrollable h-full w-full ss">
+                  {%- for grandchildlink in childlink.links -%}
+                    <li class="menu-drawer__item">
+                      <a
+                        href="{{ grandchildlink.url }}"
+                        class="menu-drawer__item-link flex items-center justify-between"
+                      >
+                        {{- grandchildlink.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </details>
+          {%- else -%}
+            <a
+              href="{{ childlink.url }}"
+              class="menu-drawer__item-link flex items-center justify-between"
+            >
+              {{- childlink.title -}}
+            </a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      {%- case block.type -%}
+        {%- when 'promotion_banner' -%}
+          {%- if has_promo and enable_mega_menu -%}
+            <div class="menu-drawer__promotions mega-menu__promotions-grid gap-4">
+              {%- for i in (1..5) -%}
+                {%- liquid
+                  assign __promo_image = 'promo_image_' | append: i
+                  assign __color_scheme = 'color_scheme_' | append: i
+                  assign __heading = 'heading_' | append: i
+                  assign __subheading = 'subheading_' | append: i
+                  assign __heading_size = 'heading_size_' | append: i
+                  assign __description = 'description_' | append: i
+                  assign __button_label = 'button_label_' | append: i
+                  assign __button_style = 'button_style_' | append: i
+                  assign __content_position = 'content_position_' | append: i
+                  assign __content_alignment = 'content_alignment_' | append: i
+                  assign __promotion_link = 'promotion_link_' | append: i
+
+                  assign promo_image = block.settings[__promo_image]
+                  assign color_scheme = block.settings[__color_scheme]
+                  assign heading = block.settings[__heading]
+                  assign subheading = block.settings[__subheading]
+                  assign heading_size = block.settings[__heading_size]
+                  assign description = block.settings[__description]
+                  assign button_label = block.settings[__button_label]
+                  assign button_style = block.settings[__button_style]
+                  assign content_position = block.settings[__content_position]
+                  assign content_alignment = block.settings[__content_alignment]
+                  assign promotion_link = block.settings[__promotion_link]
+
+                  if promo_image == blank
+                    continue
+                  endif
+                -%}
+                <div class="promotion-item" style="--index: {{ forloop.index }};">
+                  {% render 'card-image',
+                    image: promo_image,
+                    image_ratio: 'adapt',
+                    color_scheme: color_scheme,
+                    heading: heading,
+                    heading_size: heading_size,
+                    description: description,
+                    button_label: button_label,
+                    button_style: button_style,
+                    content_position: content_position,
+                    content_alignment: content_alignment,
+                    link: promotion_link,
+                    subheading: subheading
+                  %}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- when 'custom_card' -%}
+          {%- if has_promo and enable_mega_menu -%}
+            <div
+              class="menu-drawer__promotions mega-menu__promotions-grid gap-x-2 gap-y-4"
+              style="--promotion-columns: 2;"
+            >
+              {%- for i in (1..5) -%}
+                {%- liquid
+                  assign __promo_image = 'promo_image_' | append: i
+                  assign __heading = 'heading_' | append: i
+                  assign __heading_size = 'heading_size_' | append: i
+                  assign __description = 'description_' | append: i
+                  assign __button_style = 'button_style_' | append: i
+                  assign __promotion_link = 'promotion_link_' | append: i
+
+                  assign promo_image = block.settings[__promo_image]
+                  assign heading = block.settings[__heading]
+                  assign heading_size = block.settings[__heading_size]
+                  assign description = block.settings[__description]
+                  assign promotion_link = block.settings[__promotion_link]
+
+                  if promo_image == blank
+                    continue
+                  endif
+                -%}
+                <div class="promotion-item">
+                  {% render 'mega-custom-card',
+                    heading: heading,
+                    heading_size: heading_size,
+                    description: description,
+                    image: promo_image,
+                    link: promotion_link
+                  %}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- when 'product_list' -%}
+          {%- if product_list != blank and enable_mega_menu -%}
+            <div class="menu-drawer__promotions mega-menu__promotions">
+              <div class="block w-full">
+                {%- if heading != blank -%}
+                  <div
+                    class="mega-menu__product-list--header flex items-center justify-between promotion-item promotion-item--product"
+                    style="--index: 1;"
+                  >
+                    <h2 class="h4">{{ heading | escape }}</h2>
+                  </div>
+                {%- endif -%}
+                <div class="mega-menu__promotions-grid swipe-mobile f-grid--gap-medium">
+                  <div class="swipe-mobile__inner f-grid">
+                    {%- for product in product_list -%}
+                      <div
+                        class="promotion-item promotion-item--product"
+                        style="--index: {{ forloop.index }};"
+                      >
+                        {%- render 'card-product',
+                          product: product,
+                          enable_quick_view: false,
+                          enable_quick_add: false
+                        -%}
+                      </div>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+      {%- endcase -%}
+    </ul>
+  </div>
+</details>

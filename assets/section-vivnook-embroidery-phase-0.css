@@ -1,0 +1,33 @@
+.vivnook-embroidery-poc {
+  padding: 1.2rem;
+  border: 1px dashed currentColor;
+  border-radius: 0.4rem;
+}
+
+.vivnook-embroidery-poc__option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vivnook-embroidery-poc__option input {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin: 0;
+}
+
+.vivnook-embroidery-poc__note {
+  margin: 0.6rem 0 0;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.vivnook-embroidery-poc__status {
+  margin: 0.8rem 0 0;
+  color: rgb(var(--color-error, 190 30 45));
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.vivnook-embroidery-poc__status--error { color:#b8323c; }

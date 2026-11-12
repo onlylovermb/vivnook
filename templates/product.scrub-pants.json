@@ -1,0 +1,524 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": false,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 20,
+            "show_inventory_quantity": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 20,
+            "size_title": "size",
+            "size_chart_from_page": "product-size-chart"
+          }
+        },
+        "popup_F6EwRh": {
+          "type": "popup",
+          "disabled": true,
+          "settings": {
+            "text": "Size Chart",
+            "page": "size-chart-scrub-pants"
+          }
+        },
+        "custom_liquid_zbtydg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>.vivnook-fit-profile__hint,[data-vivnook-fit-hint]{display:none!important;}</style>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Your complete style",
+            "make_collapsible_row": true,
+            "icon": "tag",
+            "product_list_limit": 2,
+            "products_per_page": 2,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "icon": "none",
+            "content": "<p>Designed for long shifts with a clean, modern fit that moves with you.</p><p>• High-stretch knit waistband</p><p>• No drawstring</p><p>• Straight-leg fit</p><p>• Two front hand pockets</p><p>• One side cargo pocket</p><p>• One back pocket</p><p>• 4 pockets total</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Specs",
+            "icon": "none",
+            "content": "<p>Made with our signature EverTrue™ performance fabric.</p><p>• Four-way stretch</p><p>• Anti-wrinkle</p><p>• Lint-resistant</p><p>• Fade-resistant</p><p>• Abrasion-resistant finish</p><p><strong>Body</strong><br/>89% Polyester, 11% Spandex</p><p><strong>Contrast</strong><br/>50% Rayon, 45% Nylon, 5% Spandex</p><p><strong>Care</strong><br/>Machine wash warm, inside out, with like colors.<br/>Tumble dry low.<br/>Low heat iron if needed.<br/>Do not bleach or dry clean.<br/>Do not iron directly on embroidery.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "none",
+            "content": "<p>Free standard shipping on orders over US$100.</p><p>Standard orders are usually processed within 1–3 business days. Custom and embroidered orders require an additional 5–10 business days before shipping.</p><p><strong>Estimated transit time</strong><br/>United States: 7–12 business days<br/>Australia: 8–12 business days<br/>Europe: 6–10 business days<br/>Asia: 3–5 business days</p><p>Applicable VAT, GST or sales tax is shown at checkout where required. Vivnook covers applicable customs duties and import charges, so there are no surprise customs fees on delivery.</p><p>See our Shipping & Returns Policy for full details.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "tops_look": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'tops-shop-the-look' %}"
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "inventory",
+        "description",
+        "variant_picker",
+        "popup_F6EwRh",
+        "custom_liquid_zbtydg",
+        "buy_buttons",
+        "pickup_availability",
+        "complementary",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "tops_look",
+        "addons"
+      ],
+      "custom_css": [
+        ".f-price-item--sale {order: 0;}",
+        ".f-price__sale {column-gap: 1.6rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "gallery_layout": "columns",
+        "mobile_thumbnails": "hide",
+        "enable_image_zoom": false,
+        "enable_video_looping": true,
+        "vivnook_learn_more_url": "",
+        "vivnook_top_bust_image": "shopify://shop_images/01.webp",
+        "vivnook_shared_waist_image": "shopify://shop_images/02.webp",
+        "vivnook_pant_hip_image": "shopify://shop_images/03.webp",
+        "vivnook_pant_inseam_image": "shopify://shop_images/04.webp",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "scrub_fabric_laboratory": {
+      "type": "vivnook-scrub-fabric-laboratory",
+      "blocks": {
+        "feature_id4Xh9": {
+          "type": "feature",
+          "settings": {
+            "title": "01 / Ultra 4-Way Stretch Apparel",
+            "text": "Fluid, Adaptive Movement That Retains Its\nStructural Silhouette All Day Long."
+          }
+        },
+        "feature_D38aDw": {
+          "type": "feature",
+          "settings": {
+            "title": "02 / Anti-Wrinkle & Dryee",
+            "text": "Instant Crease Recovery That Keeps Your\nDesigner Medical Uniform Crisp And Professional."
+          }
+        },
+        "feature_DfKfJm": {
+          "type": "feature",
+          "settings": {
+            "title": "03 / Fade-Resistant Color Tech",
+            "text": "Deeply Saturated, Striking Pigments Engineered\nTo Endure Endless Industrial Laundering."
+          }
+        },
+        "feature_x6j6Vr": {
+          "type": "feature",
+          "settings": {
+            "title": "04 / Lint & Hair Repellent Finish",
+            "text": "An Invisible Microscopic Shield That Completely\nRepels Hair, Lint, And Clinic Particles."
+          }
+        }
+      },
+      "block_order": [
+        "feature_id4Xh9",
+        "feature_D38aDw",
+        "feature_DfKfJm",
+        "feature_x6j6Vr"
+      ],
+      "custom_css": [
+        "@media (min-width: 750px) {.vivnook-fabric-lab {grid-template-rows: calc(50vw * 5 / 4) !important; height: calc(50vw * 5 / 4) !important; } .vivnook-fabric-lab__left, .vivnook-fabric-lab__image {max-height: calc(50vw * 5 / 4) !important; }}",
+        ".vivnook-fabric-lab__image,.vivnook-fabric-lab__image video {aspect-ratio: 4/5 !important; object-fit: cover !important;}",
+        "@media (max-width: 749px) {.vivnook-fabric-lab, .vivnook-fabric-lab__image {height: auto !important; }}"
+      ],
+      "name": "EverTrue fabric lab",
+      "settings": {
+        "aria_label": "EverTrue fabric laboratory",
+        "heading": "The Fabric Laboratory",
+        "intro": "Introducing EverTrue™ textile technology. A luxury curation of high-performance healthcare textiles custom-engineered to breathe, stretch, and endure through the most high-intensity shifts. Where clinical utility meets an avant-garde silhouette.",
+        "feature_image": "shopify://shop_images/c359fa3fbc8ea0fa28fa701d6a177dfa.webp",
+        "video": "shopify://files/videos/红色替换.mp4",
+        "video_url": "",
+        "video_required": true,
+        "video_height": 400,
+        "video_height_mobile": 520,
+        "intro_title_size": 30,
+        "intro_title_size_mobile": 26,
+        "intro_title_weight": "400",
+        "intro_text_size": 14,
+        "intro_text_size_mobile": 13,
+        "intro_text_weight": "400",
+        "feature_title_size": 14,
+        "feature_title_size_mobile": 13,
+        "feature_title_weight": "400",
+        "feature_text_size": 14,
+        "feature_text_size_mobile": 13,
+        "feature_text_weight": "400"
+      }
+    },
+    "scrub_customer_review": {
+      "type": "vivnook-scrub-customer-review",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "caption": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8"
+      ],
+      "disabled": true,
+      "settings": {
+        "aria_label": "Customer Review",
+        "heading": "Customer Review"
+      }
+    },
+    "scrub_finale_banner": {
+      "type": "vivnook-scrub-finale-banner",
+      "custom_css": [
+        ".vivnook-finale-banner,.vivnook-finale-banner__copy {position: relative !important; z-index: 2 !important;}"
+      ],
+      "settings": {
+        "aria_label": "The Atelier and Finale banner",
+        "left_image": "shopify://shop_images/25a2ae4f3aeacec2f66ab92e67040928.png",
+        "left_heading": "Thoughtful Details, Better Care",
+        "right_image": "shopify://shop_images/aac65d016ca218544d481e800d820749.webp",
+        "right_heading": "Care for the Ones Who Care.",
+        "right_subheading": "Long shifts. Full days. Countless small acts of care.",
+        "right_body": "<p>We create workwear with thoughtful fits and considered details, so you can feel more like yourself in the work you do.</p>",
+        "left_heading_size": 30,
+        "left_heading_weight": 400,
+        "left_heading_size_mobile": 27,
+        "left_heading_weight_mobile": 400,
+        "left_subheading_size": 20,
+        "left_subheading_weight": 400,
+        "left_subheading_size_mobile": 18,
+        "left_subheading_weight_mobile": 400,
+        "left_body_size": 14,
+        "left_body_weight": 400,
+        "left_body_size_mobile": 14,
+        "left_body_weight_mobile": 400,
+        "left_vertical_position": -30,
+        "left_vertical_position_mobile": 0,
+        "right_heading_size": 30,
+        "right_heading_weight": 400,
+        "right_heading_size_mobile": 27,
+        "right_heading_weight_mobile": 400,
+        "right_subheading_size": 20,
+        "right_subheading_weight": 400,
+        "right_subheading_size_mobile": 18,
+        "right_subheading_weight_mobile": 400,
+        "right_body_size": 14,
+        "right_body_weight": 400,
+        "right_body_size_mobile": 14,
+        "right_body_weight_mobile": 400,
+        "right_vertical_position": 60,
+        "right_vertical_position_mobile": 50,
+        "left_detail_1_subtitle": "Made to Fit",
+        "left_detail_1_body": "<p>Complimentary hemming tailored to your height. Custom-altered items are final sale.</p>",
+        "left_detail_2_subtitle": "Delivery, Made Simple",
+        "left_detail_2_body": "<p>Reliable worldwide shipping, with delivery in 6–12 business days where available.</p>",
+        "left_detail_3_subtitle": "A Little More Peace of Mind",
+        "left_detail_3_body": "<p>Enjoy 14-day returns on eligible, unaltered items.</p>"
+      }
+    },
+    "testimonials_8JHr3L": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_FcWQfX": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant.”</p>",
+            "author": "Sophia Turner.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        },
+        "testimonial_6iRHQL": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Perfect fit, quality felt great, stylish lightweight jacket. Unfortunately I now want one in every color!”</p>",
+            "author": "Melissa H.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        },
+        "testimonial_WjkVJg": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>\"Such a nice piece! Looks good and feels good.But be prepared that it is not windstopping.100% wool would be even better, but it is anyway a nice product!\"</p>",
+            "author": "James Carter.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        },
+        "testimonial_ypLUpJ": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant.”</p>",
+            "author": "Sophia Turner.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        },
+        "testimonial_wWEETq": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>“Perfect fit, quality felt great, stylish lightweight jacket. Unfortunately I now want one in every color!”</p>",
+            "author": "Melissa H.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        },
+        "testimonial_DVfnxR": {
+          "type": "testimonial",
+          "settings": {
+            "show_image": true,
+            "text": "<p>\"Such a nice piece! Looks good and feels good.But be prepared that it is not windstopping.100% wool would be even better, but it is anyway a nice product!\"</p>",
+            "author": "James Carter.",
+            "bio": "Verified Buyer",
+            "product": "",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FcWQfX",
+        "testimonial_6iRHQL",
+        "testimonial_WjkVJg",
+        "testimonial_ypLUpJ",
+        "testimonial_wWEETq",
+        "testimonial_DVfnxR"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "People are talking",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "card_color_scheme": "",
+        "card_layout": "2",
+        "card_text_size": "text-base",
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "related_products_EgizAE": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading": "You may also like",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 4,
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "scrub_fabric_laboratory",
+    "scrub_customer_review",
+    "scrub_finale_banner",
+    "testimonials_8JHr3L",
+    "related_products_EgizAE"
+  ]
+}

@@ -1,0 +1,121 @@
+{% comment %}
+  Renders a section heading
+
+  Accepts:
+  - section_settings: {Object} Section settings
+  - header_alignment: {String} Text aligment on desktop devices (optional)
+  - header_alignment_mobile: {String} Text aligment on mobile devices (optional)
+  - header_layout: {String} Vertical or horizontal layout to display (optional)
+  - spacing: {String} Spacing between section heading and section content. Accept 'large', 'normal' (optional)
+  - description: {String} Custom text of description if given (optional)
+  - button_visible: {Boolean} Whether to show given button on section header (optional)
+  - button_label: {String} Text of button to show (optional)
+  - button_link: {String} Link of button to show (optional)
+  - button_style: {String} Style of button to show (optional)
+  - custom_css_class: {String} Adds a custom css class to the wrap element (optional)
+
+  Usage:
+  {% render 'section-heading', section_settings: section.settings %}
+{% endcomment %}
+{%- if section_settings.heading != blank
+  or section_settings.subheading != blank
+  or section_settings.description != blank
+-%}
+  {%- liquid
+    if header_alignment == blank
+      assign header_alignment = settings.section_header_alignment
+    endif
+
+    if header_alignment_mobile == blank
+      assign header_alignment_mobile = settings.section_header_alignment_mobile
+    endif
+
+    if header_alignment_mobile == 'inherit'
+      assign header_alignment_mobile = header_alignment
+    endif
+
+    if description == blank
+      assign description = section_settings.description | default: ''
+    endif
+    if description_size == blank
+      assign description_size = section_settings.description_size | default: 'text-base'
+    endif
+
+    if header_layout == blank
+      assign header_layout = section_settings.header_layout | default: 'vertical'
+    endif
+
+    assign header_class = 'section__header--' | append: header_layout
+    assign header_text_alignment = header_alignment
+    if header_layout == 'horizontal'
+      assign header_class = header_class | append: ' md:flex md:flex-col md:flex-row md:justify-between md:items-center gap-x-4'
+      if header_alignment == 'right'
+        assign header_class = header_class | append: ' md:flex-row-reverse'
+      elsif header_alignment == 'center'
+        assign header_text_alignment = 'left'
+      endif
+    endif
+
+    unless custom_css_class == blank
+      assign custom_css_class = custom_css_class | prepend: ' '
+    endunless
+
+    assign heading_tag = section_settings.heading_tag | default: 'h2'
+
+    assign motion_delay = motion_delay | default: 50
+  -%}
+  <div class="section__header {{ header_class }} spacing--{{ spacing | default: 'normal' }}{{ custom_css_class }}">
+    <div class="section__header--text text-{{ header_alignment_mobile }} md:text-{{ header_text_alignment }}">
+      {%- if section_settings.subheading != blank -%}
+        <p class="section__subheading text-subheading">
+          <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+            {{- section_settings.subheading -}}
+          </motion-element>
+        </p>
+        {%- assign motion_delay = motion_delay | plus: 50 -%}
+      {%- endif -%}
+      {%- if section_settings.heading != blank -%}
+        <{{ heading_tag }} class="section__heading{% if section_settings.heading_size %} {{ section_settings.heading_size }}{% endif %}">
+          <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+            {% render 'highlight-text',
+              text: section_settings.heading,
+              style: section_settings.heading_highlight_style
+            %}
+          </motion-element>
+        </{{ heading_tag }}>
+        {%- assign motion_delay = motion_delay | plus: 50 -%}
+      {%- endif -%}
+      {%- if description != blank -%}
+        <motion-element
+          class="section__description block rte {{ description_size }}"
+          data-motion="fade-up"
+          data-motion-delay="{{ motion_delay }}"
+        >
+          {{- description -}}
+        </motion-element>
+        {%- assign motion_delay = motion_delay | plus: 50 -%}
+      {%- endif -%}
+    </div>
+    {%- if button_visible and button_label != blank -%}
+      <motion-element
+        class="section__header--button block text-{{ header_alignment_mobile }} md:text-{{ header_alignment }}"
+        data-motion="fade-up"
+        data-motion-delay="{{ motion_delay }}"
+      >
+        <a
+          class="btn {{ button_style }}"
+          {% if button_link != blank %}
+            href="{{ button_link }}"
+          {% else %}
+            aria-disabled="true"
+            disabled
+          {% endif %}
+        >
+          {% render 'button-icon', name: button_icon %}
+          {{- button_label -}}
+        </a>
+      </motion-element>
+      {%- assign motion_delay = motion_delay | plus: 50 -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

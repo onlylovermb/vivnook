@@ -1,0 +1,212 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  {% liquid
+    assign size_option_name = block.settings.size_title | downcase
+    assign size_chart_content = product.metafields.foxtheme.size_chart.value.content
+    assign size_chart_modal_id = 'SizeChartModal-' | append: block.id
+
+    if size_chart_content == blank and block.settings.size_chart_from_page != blank
+      assign size_chart_content = pages[block.settings.size_chart_from_page].content
+    endif
+  %}
+  <script src="{{ 'variant-selects.js' | asset_url }}" defer="defer"></script>
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    data-url="{{ product.url }}"
+    data-update-url="{% if update_url == false %}false{% else %}true{% endif %}"
+  >
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign option_name_downcase = option.name | downcase
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        assign picker_type = block.settings.picker_type
+
+        assign attach_size_chart = false
+        if size_option_name contains option_name_downcase
+          assign attach_size_chart = true
+        endif
+
+        assign vivnook_fit_kind = blank
+        assign reverse_size_values = false
+        if attach_size_chart and product.template_suffix == 'scrub-top'
+          assign vivnook_fit_kind = 'top'
+        elsif attach_size_chart and product.template_suffix == 'scrub-pants'
+          assign vivnook_fit_kind = 'pant'
+          assign reverse_size_values = false
+        endif
+
+        if block.settings.picker_type == 'button' and settings.color_swatch_trigger != blank
+          assign color_swatch_trigger = settings.color_swatch_trigger | downcase | split: ','
+          assign has_color = color_swatch_trigger | where: option_name_downcase | first
+          unless block.settings.swatch_type == 'text'
+            if has_color != blank
+              assign picker_type = 'color'
+            elsif option_name_downcase contains 'colour'
+              assign color_swatch_trigger = color_swatch_trigger | replace: 'color', 'colour'
+              assign has_color = color_swatch_trigger | where: option_name_downcase | first
+              if has_color != blank
+                assign picker_type = 'color'
+              endif
+            endif
+          endunless
+        endif
+
+        if swatch_count > 0
+          if block.settings.picker_type == 'dropdown'
+            assign picker_type = 'swatch_dropdown'
+          else
+            if block.settings.swatch_type == 'shopify_swatch'
+              assign picker_type = 'swatch'
+            elsif block.settings.swatch_type == 'variant_image' or block.settings.swatch_type == 'color_swatch'
+              assign picker_type = 'color'
+            else
+              assign picker_type = 'button'
+            endif
+          endif
+        endif
+
+        assign wrap_class = 'product-form__input product-form__input--' | append: picker_type
+        case picker_type
+          when 'swatch', 'color', 'button'
+            assign is_fieldset_tag = true
+            assign wrap_class = wrap_class | append: ' js flex flex-wrap'
+            assign button_style = block.settings.button_style | default: 'standard'
+
+            if picker_type == 'button'
+              assign wrap_class = wrap_class | append: ' gap-3'
+              assign wrap_class = wrap_class | append: ' product-form__input--button-' | append: button_style
+            else
+              assign wrap_class = wrap_class | append: ' gap-4'
+              assign wrap_class = wrap_class | append: ' product-form__input--button-' | append: button_style
+            endif
+          else
+            assign is_fieldset_tag = false
+        endcase
+
+        assign tag_fieldset = 'fieldset'
+        assign tag_legend = 'legend'
+        unless is_fieldset_tag
+          assign tag_fieldset = 'div'
+          assign tag_legend = 'label'
+        endunless
+      -%}
+      <{{ tag_fieldset }}
+        class="{{ wrap_class }}"
+        {% if vivnook_fit_kind != blank %}data-vivnook-recommendation-anchor="{{ vivnook_fit_kind }}"{% endif %}
+        {% if picker_type == 'color' %}
+          data-swatch-type="{{ block.settings.swatch_type }}"
+        {% endif %}
+        style="--swatch-size: {{ block.settings.button_size | default: '40px' }}px;"
+      >
+        <{{ tag_legend }}
+          {% unless is_fieldset_tag %}
+            for="Option-{{ section.id }}-{{ forloop.index0 }}"
+          {% endunless %}
+          class="form__label"
+        >
+          <div class="flex flex-wrap gap-2"{% if vivnook_fit_kind != blank %} data-vivnook-size-heading data-vivnook-fit-kind="{{ vivnook_fit_kind }}"{% endif %}>
+            <span class="font-body-bold">
+              {%- if vivnook_fit_kind == 'top' -%}Top Size{%- elsif vivnook_fit_kind == 'pant' -%}Pant Size{%- else -%}{{ option.name }}{%- endif -%}:
+            </span>
+            <span data-selected-swatch-value="{{ option.name }}">
+              {{- option.selected_value -}}
+            </span>
+            {%- if vivnook_fit_kind != blank -%}
+              <!-- removed default fit profile hint -->
+            {%- endif -%}
+          </div>
+          {%- if vivnook_fit_kind != blank -%}
+            <button
+              type="button"
+              class="vivnook-fit-profile__trigger btn--link tracking-normal"
+              aria-controls="VivnookFitProfile-{{ section.id }}"
+              aria-haspopup="dialog"
+              data-vivnook-fit-trigger
+            >Fit Profile</button>
+          {%- endif -%}
+          {%- if size_chart_content != blank and attach_size_chart -%}
+            <button
+              class="open-size-chart no-js-hidden btn--link tracking-normal"
+              aria-controls="{% if vivnook_fit_kind != blank %}VivnookSmartSizeChart-{{ section.id }}{% else %}{{ size_chart_modal_id }}{% endif %}"
+              aria-haspopup="dialog"
+              {% if vivnook_fit_kind != blank %}data-vivnook-size-chart-trigger data-vivnook-chart-kind="{{ vivnook_fit_kind }}" hidden{% endif %}
+            >
+              {{ 'products.product.open_size_chart' | t }}
+            </button>
+          {%- endif -%}
+        </{{ tag_legend }}>
+        {%- case picker_type -%}
+          {%- when 'swatch', 'color', 'button' -%}
+            {% render 'product-variant-options',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: picker_type,
+              reverse_values: reverse_size_values
+            %}
+          {%- else -%}
+            <div class="select">
+              {%- if picker_type == 'swatch_dropdown' -%}
+                <span
+                  data-selected-value
+                  class="dropdown-swatch"
+                >
+                  {% comment %} {% render 'swatch', swatch: option.selected_value.swatch %} {% endcomment %}
+                </span>
+              {%- endif -%}
+              <select
+                id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                class="form-control form-control--select"
+                name="options[{{ option.name | escape }}]"
+                form="{{ product_form_id }}"
+              >
+                {% render 'product-variant-options',
+                  product: product,
+                  option: option,
+                  block: block,
+                  picker_type: picker_type
+                %}
+              </select>
+              {%- render 'icon-caret-down' -%}
+            </div>
+        {%- endcase -%}
+      </{{ tag_fieldset }}>
+    {%- endfor -%}
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+    <script type="application/json" data-product-variants>
+      {{ product.variants | json }}
+    </script>
+  </variant-selects>
+  {%- if size_chart_content != blank and vivnook_fit_kind == blank -%}
+    <div id="SizeChart-{{ section.id }}">
+      <basic-modal id="{{ size_chart_modal_id }}" class="drawer modal" style="--modal-width: 77rem;">
+        <div class="fixed-overlay" aria-controls="{{ size_chart_modal_id }}"></div>
+        <div class="drawer__inner">
+          <button
+            class="drawer__close-btn"
+            aria-controls="{{ size_chart_modal_id }}"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {% render 'icon-close' %}
+          </button>
+          <div class="drawer__body v-scrollable h-full rte">
+            {{ size_chart_content }}
+          </div>
+        </div>
+      </basic-modal>
+    </div>
+  {%- endif -%}
+{%- endunless -%}

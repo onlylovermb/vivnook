@@ -1,0 +1,34 @@
+{% comment %}
+  Renders quick view modal for the given product
+
+  Accepts:
+  - modal_id: {String} Unique id for modal
+  - product: {Object} Product object
+
+  Usage:
+  {% render 'quick-view-modal', modal_id: modal_id, product: product %}
+{% endcomment %}
+<quick-view-modal
+  id="{{ modal_id }}"
+  class="quick-view drawer drawer--right"
+  data-product-url="{{ product.url }}"
+  hidden
+>
+  {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {% unless product.has_only_default_variant %}
+    {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
+  {% endunless %}
+  <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
+  <div class="drawer__inner">
+    <button
+      class="drawer__close-btn"
+      aria-controls="{{ modal_id }}"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {% render 'icon-close' %}
+    </button>
+    {%- render 'loading-spinner' -%}
+    <div class="drawer__body v-scrollable h-full quick-view__content"></div>
+  </div>
+</quick-view-modal>

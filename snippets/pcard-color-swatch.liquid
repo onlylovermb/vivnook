@@ -1,0 +1,78 @@
+{%- liquid
+  assign swatch_trigger = settings.color_swatch_trigger | downcase
+  assign swatch_file_extension = 'png'
+  assign swatch_count = 0
+-%}
+{%- for option in product.options_with_values -%}
+  {%- liquid
+    assign option_name = option.name | downcase
+    assign is_color = false
+
+    if swatch_trigger contains option_name
+      assign is_color = true
+    elsif swatch_trigger contains 'color' and option_name contains 'colour'
+      assign is_color = true
+    endif
+
+    # Skip if it's not a color option
+    unless is_color
+      continue
+    endunless
+
+    assign option_index = forloop.index0
+    assign value = ''
+    assign max_swatch_count = settings.pcard_maximum_swatches_to_show
+  -%}
+  <div class="product-card__swatches flex flex-wrap items-center gap-2">
+    <ul class="swatches swatches--product-card flex flex-wrap items-center{% if settings.pcard_swatches_type == 'variant_image' %} swatches--variant-image{% endif %}">
+      {%- for variant in product.variants -%}
+        {%- liquid
+          assign value = variant.options[option_index]
+        -%}
+        {%- unless values contains value -%}
+          {%- liquid
+            assign values = values | join: ',' | append: ',' | append: value | split: ','
+            assign swatch_count = swatch_count | plus: 1
+            assign swatch_title = product.title | append: ' - ' | append: value
+            assign swatch_url = variant.url
+
+            assign swatch = blank
+            if value.swatch != blank
+              assign swatch = value.swatch
+            endif
+
+            if settings.pcard_swatches_type == 'variant_image' and variant.image
+              assign swatch = variant
+            endif
+
+            assign swatches = swatch
+            if settings.pcard_swatches_type == 'color_swatch'
+              assign swatches = ''
+            endif
+          -%}
+          {%- if swatch_count <= max_swatch_count -%}
+            <li data-tooltip>
+              {%- render 'swatch',
+                href: swatch_url,
+                title: swatch_title,
+                value: value,
+                file_extension: swatch_file_extension,
+                swatch: swatches,
+                tooltip: value
+              -%}
+            </li>
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+    {%- if swatch_count > max_swatch_count -%}
+      <a
+        href="{{ product.url }}"
+        class="reversed-link"
+        aria-controls="{{ quick_view_modal_id }}"
+        aria-expanded="false"
+        >+{{ swatch_count | minus: max_swatch_count -}}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endfor -%}

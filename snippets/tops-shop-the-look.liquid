@@ -1,0 +1,74 @@
+<div class="tops-look" data-tops-look>
+  <h2>Shop the Look</h2>
+  <div class="tops-look__panel">
+    <div class="tops-look__grid">
+      {% assign handles = 'scrub-top,fanny-bag™,scrub-pants™' | split: ',' %}
+      {% assign total = 0 %}
+      {% for handle in handles %}
+        {% assign item = all_products[handle] %}
+        {% if item == blank and handle == 'fanny-bag' %}{% assign item = all_products['fanny-pack'] %}{% endif %}
+        {% if item == blank %}{% continue %}{% endif %}
+        {% assign selected = item.selected_or_first_available_variant %}
+        {% assign display_title = item.title %}
+        {% if forloop.first %}{% assign display_title = 'EverTrue™ Scrub Top' %}{% endif %}
+        {% assign total = total | plus: selected.price %}
+
+        {% assign is_fanny = false %}
+        {% if item.handle contains 'fanny' or handle contains 'fanny' %}
+          {% assign is_fanny = true %}
+        {% endif %}
+
+        {% assign selected_img = selected.featured_image | default: item.featured_image %}
+        {% if is_fanny %}
+          {% assign sel_color = selected.title | downcase %}
+          {% if sel_color contains 'black' and settings.vivnook_look_fanny_black != blank %}
+            {% assign selected_img = settings.vivnook_look_fanny_black %}
+          {% elsif sel_color contains 'navy' and settings.vivnook_look_fanny_navy_blue != blank %}
+            {% assign selected_img = settings.vivnook_look_fanny_navy_blue %}
+          {% elsif sel_color contains 'burgundy' and settings.vivnook_look_fanny_burgundy != blank %}
+            {% assign selected_img = settings.vivnook_look_fanny_burgundy %}
+          {% endif %}
+        {% endif %}
+
+        <article class="tops-look__item">
+          <a href="{{ item.url }}" data-look-details>
+            {{- selected_img | image_url: width: 500 | image_tag: loading: 'lazy', widths: '180, 300, 500', sizes: '160px' -}}
+          </a>
+          <h3>{{ display_title | escape }}</h3>
+          <div class="tops-look__select-wrap" data-look-select-wrap>
+            <select aria-label="{{ item.title | escape }} variant" data-look-select data-product-url="{{ item.url }}">
+              {% for variant in item.variants %}
+                {% assign var_img = variant.featured_image | default: item.featured_image %}
+                {% if is_fanny %}
+                  {% assign var_color = variant.title | downcase %}
+                  {% if var_color contains 'black' and settings.vivnook_look_fanny_black != blank %}
+                    {% assign var_img = settings.vivnook_look_fanny_black %}
+                  {% elsif var_color contains 'navy' and settings.vivnook_look_fanny_navy_blue != blank %}
+                    {% assign var_img = settings.vivnook_look_fanny_navy_blue %}
+                  {% elsif var_color contains 'burgundy' and settings.vivnook_look_fanny_burgundy != blank %}
+                    {% assign var_img = settings.vivnook_look_fanny_burgundy %}
+                  {% endif %}
+                {% endif %}
+                <option
+                  value="{{ variant.id }}"
+                  data-price="{{ variant.price }}"
+                  data-available="{{ variant.available }}"
+                  data-image="{{ var_img | image_url: width: 500 }}"
+                  {% if variant.id == selected.id %}selected{% endif %}
+                  {% unless variant.available %}class="is-sold-out"{% endunless %}
+                >
+                  {{- variant.title | escape -}}
+                </option>
+              {% endfor %}
+            </select>
+            <span class="tops-look__strike" aria-hidden="true">
+              <span class="tops-look__strike-text" data-look-strike-text></span>
+            </span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="tops-look__footer"><span>Total: <strong data-look-total>{{ total | money }}</strong></span><button type="button" data-look-add>Add the Look to Cart</button></div>
+    <p data-look-status role="status" hidden></p>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+{%- liquid
+  assign chart_kind = blank
+  if product.template_suffix == 'scrub-top'
+    assign chart_kind = 'top'
+  elsif product.template_suffix == 'scrub-pants'
+    assign chart_kind = 'pant'
+  elsif product.template_suffix == 'signature-look'
+    assign chart_kind = 'signature-look'
+  endif
+
+  if top_bust_image != blank
+    assign top_bust_src = top_bust_image | image_url: width: 1200
+  else
+    assign top_bust_src = 'vivnook-size-guide-top-bust.png' | asset_url
+  endif
+  if shared_waist_image != blank
+    assign shared_waist_src = shared_waist_image | image_url: width: 1200
+  else
+    assign shared_waist_src = 'vivnook-size-guide-shared-waist.png' | asset_url
+  endif
+  if pant_hip_image != blank
+    assign pant_hip_src = pant_hip_image | image_url: width: 1200
+  else
+    assign pant_hip_src = 'vivnook-size-guide-pant-hip.png' | asset_url
+  endif
+  if pant_inseam_image != blank
+    assign pant_inseam_src = pant_inseam_image | image_url: width: 1200
+  else
+    assign pant_inseam_src = 'vivnook-size-guide-pant-inseam.png' | asset_url
+  endif
+-%}
+{%- if chart_kind != blank -%}
+  <style>.vivnook-smart-size-chart__unit-groups{display:flex;gap:.6rem}.vivnook-smart-size-chart__measure-card img{aspect-ratio:146/186;object-fit:contain}.vivnook-smart-size-chart__edit-icon{display:grid;flex:0 0 auto;width:2.2rem;height:2.2rem;place-items:center;color:#667085}.vivnook-smart-size-chart__edit-icon svg{width:100%;height:100%}.vivnook-smart-size-chart__reference{margin:0 0 2.4rem}.vivnook-smart-size-chart__reference h3{margin:0 0 1.2rem;font-size:1.4rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}.vivnook-smart-size-chart__reference-labels{display:flex;justify-content:space-between;gap:1.5rem;margin-bottom:.7rem;color:rgba(var(--color-foreground),.78);font-size:1.25rem}.vivnook-smart-size-chart__reference-labels span:first-child{color:rgb(var(--color-foreground));font-weight:600}.vivnook-smart-size-chart__reference-bar{display:flex;width:100%;height:.5rem;overflow:hidden;background:rgba(var(--color-foreground),.12);border-radius:.1rem}.vivnook-smart-size-chart__reference-bar span{display:block;height:100%}.vivnook-smart-size-chart__reference-bar span:first-child{background:rgb(var(--color-foreground))}.vivnook-smart-size-chart__reference-bar span:last-child{background:rgba(var(--color-foreground),.28)}@media(max-width:749px){.vivnook-smart-size-chart__unit-groups{gap:.35rem}.vivnook-smart-size-chart__units{height:3rem;padding:.15rem}.vivnook-smart-size-chart__units button{width:2.8rem!important;min-width:2.8rem!important;height:2.7rem!important;font-size:1rem!important;line-height:2.7rem!important}.vivnook-smart-size-chart__reference{margin-bottom:2rem}.vivnook-smart-size-chart__reference h3{font-size:1.25rem}.vivnook-smart-size-chart__reference-labels{font-size:1.15rem}}</style>
+  <basic-modal
+    id="VivnookSmartSizeChart-{{ section_id }}"
+    class="drawer modal vivnook-smart-size-chart"
+    style="--modal-width: 82rem;"
+    data-vivnook-smart-size-chart
+    data-default-kind="{{ chart_kind }}"
+    data-top-bust-src="{{ top_bust_src }}"
+    data-shared-waist-src="{{ shared_waist_src }}"
+    data-pant-hip-src="{{ pant_hip_src }}"
+    data-pant-inseam-src="{{ pant_inseam_src }}"
+    {%- if chart_kind == 'top' or chart_kind == 'signature-look' %}
+      data-top-recommendation-src="{{ 'vivnook-size-recommendation-top.json' | asset_url }}"
+    {%- endif %}
+    {%- if chart_kind == 'pant' or chart_kind == 'signature-look' %}
+      data-pant-recommendation-src="{{ 'vivnook-size-recommendation-pant.json' | asset_url }}"
+    {%- endif %}
+  >
+    <div class="fixed-overlay" aria-controls="VivnookSmartSizeChart-{{ section_id }}"></div>
+    <div class="drawer__inner">
+      <button class="drawer__close-btn" type="button" aria-controls="VivnookSmartSizeChart-{{ section_id }}" aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon-close' %}
+      </button>
+      <div class="drawer__body v-scrollable h-full vivnook-smart-size-chart__body">
+        <header class="vivnook-smart-size-chart__header">
+          <h2 class="h2" data-vivnook-chart-title>Size Chart</h2>
+          <div class="vivnook-smart-size-chart__unit-groups" aria-label="Measurement units">
+            <div class="vivnook-smart-size-chart__units" role="group" aria-label="Length unit">
+              <button type="button" data-vivnook-chart-unit="in" aria-pressed="false">IN</button>
+              <button type="button" data-vivnook-chart-unit="cm" aria-pressed="true">CM</button>
+            </div>
+            <div class="vivnook-smart-size-chart__units" role="group" aria-label="Weight unit">
+              <button type="button" data-vivnook-chart-weight-unit="lb" aria-pressed="false">LB</button>
+              <button type="button" data-vivnook-chart-weight-unit="kg" aria-pressed="true">KG</button>
+            </div>
+          </div>
+        </header>
+
+        <button type="button" class="vivnook-smart-size-chart__profile" data-vivnook-chart-profile aria-label="Edit your fit profile" aria-controls="VivnookFitProfile-{{ section_id }}">
+          <span><span data-vivnook-chart-profile-summary></span></span>
+          <span class="vivnook-smart-size-chart__edit-icon" aria-hidden="true">{% render 'icon-pencil', size: 'medium' %}</span>
+        </button>
+
+        <section class="vivnook-smart-size-chart__reference" data-vivnook-size-reference hidden>
+          <h3>Size Reference</h3>
+          <div class="vivnook-smart-size-chart__reference-labels">
+            <span data-vivnook-size-reference-primary></span>
+            <span data-vivnook-size-reference-secondary></span>
+          </div>
+          <div class="vivnook-smart-size-chart__reference-bar" data-vivnook-size-reference-bar role="img" aria-label="">
+            <span data-vivnook-size-reference-primary-bar></span>
+            <span data-vivnook-size-reference-secondary-bar></span>
+          </div>
+          <p class="vivnook-smart-size-chart__fit-guidance" data-vivnook-size-reference-fit-guidance></p>
+        </section>
+
+        <div class="vivnook-smart-size-chart__toolbar">
+          <span data-vivnook-chart-measurement-label>Size Chart</span>
+          <label>
+            <span class="visually-hidden">Regional Size</span>
+            <select data-vivnook-chart-region aria-label="Regional Size">
+              <option value="au" selected>AU/UK</option>
+              <option value="us">US/CA</option>
+              <option value="eu">EU</option>
+              <option value="jp">JP</option>
+            </select>
+          </label>
+        </div>
+        <div class="vivnook-smart-size-chart__table-wrap">
+          <table>
+            <thead><tr data-vivnook-chart-head></tr></thead>
+            <tbody data-vivnook-chart-body></tbody>
+          </table>
+        </div>
+
+        <section class="vivnook-smart-size-chart__measure">
+          <h3>How To Measure</h3>
+          <div class="vivnook-smart-size-chart__measure-grid" data-vivnook-measure-grid></div>
+        </section>
+      </div>
+    </div>
+  </basic-modal>
+{%- endif -%}

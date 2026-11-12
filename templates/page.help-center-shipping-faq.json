@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_RMt9fT": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .vn-faq{--burg:#7d203b;--ink:#111;--line:#e5e5e5;background:#f7f7f7;color:var(--ink);padding:42px 5vw 72px;font-family:inherit}.vn-faq__wrap{max-width:1180px;margin:auto}.vn-faq__crumbs{font-size:13px;color:#777;margin-bottom:34px}.vn-faq__crumbs a{color:inherit}.vn-faq__head{display:flex;justify-content:space-between;align-items:end;gap:24px;border-bottom:1px solid var(--line);padding-bottom:28px}.vn-faq h1{font-size:clamp(34px,5vw,58px);margin:0;letter-spacing:-.04em}.vn-faq__toggle{display:flex;gap:6px}.vn-faq__toggle button{border:1px solid #ccc;background:#fff;padding:10px 14px;cursor:pointer}.vn-faq__toggle button.is-active{background:#111;color:#fff}.vn-faq__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}.vn-faq__card{background:#fff;padding:25px;text-decoration:none;color:inherit;box-shadow:0 6px 18px #00000010}.vn-faq__card h2{font-size:20px;line-height:1.25;margin:0 0 10px}.vn-faq__card p{margin:0;color:#666;line-height:1.55}.vn-faq__list{display:none;margin-top:28px}.vn-faq__list a{display:block;background:#fff;border-bottom:1px solid var(--line);padding:20px;text-decoration:none;color:inherit;font-size:18px}.vn-faq__root{display:none}@media(max-width:749px){.vn-faq{padding:32px 18px 52px}.vn-faq__head{display:block}.vn-faq__toggle{margin-top:20px}.vn-faq__grid{grid-template-columns:1fr}.vn-faq__toggle button{flex:1}}\n</style>\n<section class=\"vn-faq\"><div class=\"vn-faq__wrap\">\n  <nav class=\"vn-faq__crumbs\"><a href=\"/pages/help-center\">Help Center Home</a> / <a href=\"/pages/shipping\">Shipping</a> / Shipping FAQ</nav>\n  <div class=\"vn-faq__head\"><h1>Shipping FAQ</h1><div class=\"vn-faq__toggle\"><button class=\"is-active\" type=\"button\" data-view=\"grid\">Grid</button><button type=\"button\" data-view=\"list\">List</button></div></div>\n  <div class=\"vn-faq__grid\" data-faq-grid>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-shipping-delivery-times\"><h2>How long does shipping take?</h2><p>Processing times and estimated transit times by destination.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-shipping-rates\"><h2>What are your shipping rates?</h2><p>Free-shipping thresholds and standard rates.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-track-order\"><h2>How can I track my order?</h2><p>Tracking emails and delivery updates.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-change-address\"><h2>Can I change my shipping address?</h2><p>What to do before your order is dispatched.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-where-we-ship\"><h2>Where do you ship?</h2><p>Available destinations and delivery restrictions.</p></a>\n    <a class=\"vn-faq__card\" href=\"/pages/help-center-taxes-duties\"><h2>What taxes and duties will I pay?</h2><p>How taxes are calculated and shown at checkout.</p></a>\n  </div>\n  <div class=\"vn-faq__list\" data-faq-list></div>\n</div></section>\n<script>(function(){var g=document.querySelector('[data-faq-grid]'),l=document.querySelector('[data-faq-list]'),buttons=document.querySelectorAll('[data-view]');if(!g||!l)return;function set(v){buttons.forEach(function(b){b.classList.toggle('is-active',b.dataset.view===v)});if(v==='list'){l.innerHTML='';g.querySelectorAll('a').forEach(function(a){var x=document.createElement('a');x.href=a.href;x.textContent=a.querySelector('h2').textContent;l.appendChild(x)});g.style.display='none';l.style.display='block'}else{g.style.display='grid';l.style.display='none'}}buttons.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.view)})})})();</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_RMt9fT"
+  ]
+}

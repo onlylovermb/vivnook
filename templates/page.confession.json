@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_w8XYrr": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_npVei3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Welcom to The Vivnook Universe",
+            "heading_size": "hd1",
+            "heading_tag": "h2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_gm97iD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A little corner for healthcare workers to share the moments only we understand.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_npVei3",
+        "text_gm97iD"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/confession_banner.jpg",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 15,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "mobile_height": "extra-large",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    },
+    "vivnook_identity_card": {
+      "type": "vivnook-identity-card-generator",
+      "settings": {
+        "subtitle": "OFFICIAL VIVNOOK ON-CALL BADGE ISSUANCE",
+        "heading_size": "h1",
+        "introduction": "<p>Show the world your healthcare identity. Find the character that feels a little like you.</p>",
+        "benefit_item_1": "A recognized title in the Vivnook Universe",
+        "benefit_item_2": "A custom badge that speaks your unexpressed clinical truth",
+        "benefit_item_3": "A secret file about you, waiting in your inbox",
+        "benefit_item_4": "Your digital passport to an exclusive healthcare community",
+        "benefit_item_5": "A daily reminder to pause, off-load, and celebrate yourself",
+        "congratulations": "<p>Welcome to The Nook. You are officially recognized as the identity on your card.</p>",
+        "complete_message": "<p>Your place in The Nook is saved for this visit.</p>",
+        "activated_heading": "OFFICIALLY ON-CALL.\nYOU’RE ONE OF US NOW.",
+        "activated_subtitle": "Your place in the Vivnook Universe is locked in.",
+        "activated_body": "Your custom On-Call Badge has been activated and sent to your inbox. Wear your title with pride, embrace the daily chaos, and remember to live, love, and celebrate every shift.",
+        "shuffle_label": "REROLL",
+        "claim_label": "UNLOCK",
+        "activate_endpoint": "/apps/vivnook-identity/activate",
+        "retrieve_endpoint": "/apps/vivnook-identity/retrieve",
+        "retrieve_consume_endpoint": "/apps/vivnook-identity/retrieve/consume",
+        "claim_position_label": "Claim position",
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "lookbook_cards_6AXGyH": {
+      "type": "lookbook-cards",
+      "blocks": {
+        "product_list_F67t9a": {
+          "type": "product_list",
+          "settings": {
+            "product_list": [],
+            "image": "shopify://shop_images/1_212cc246-fa55-44f9-9bdf-3c340a7d70fd.png",
+            "heading": "Shop this look",
+            "heading_size": "h5"
+          }
+        },
+        "product_list_CATNdh": {
+          "type": "product_list",
+          "settings": {
+            "product_list": [],
+            "image": "shopify://shop_images/2_f3087234-ee7c-4d75-a80b-c581b7b345eb.png",
+            "heading": "Shop this look",
+            "heading_size": "h5"
+          }
+        },
+        "product_list_AXXAdU": {
+          "type": "product_list",
+          "settings": {
+            "product_list": [],
+            "image": "shopify://shop_images/3_5e880f2e-ba5a-4d7c-b7a5-f3ffe1e2a332.png",
+            "heading": "Shop this look",
+            "heading_size": "h5"
+          }
+        }
+      },
+      "block_order": [
+        "product_list_F67t9a",
+        "product_list_CATNdh",
+        "product_list_AXXAdU"
+      ],
+      "name": "t:sections.lookbook-cards.name",
+      "settings": {
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "heading": "Selected Submissions",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "show_button_on_section_heading": true,
+        "image_width": 148,
+        "columns": 3,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "pcard_image_ratio": "",
+        "swipe_on_mobile": true,
+        "padding_top": 34,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "contact_form_DeL8CX": {
+      "type": "contact-form",
+      "blocks": {
+        "custom_field_PKgnP3": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "phone",
+            "heading": "Phone",
+            "placeholder": "Your placeholder",
+            "required": false,
+            "full_width": true,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        }
+      },
+      "block_order": [
+        "custom_field_PKgnP3"
+      ],
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "heading": "Confession Entrance",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "heading_highlight_style": "none",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_w8XYrr",
+    "vivnook_identity_card",
+    "lookbook_cards_6AXGyH",
+    "contact_form_DeL8CX"
+  ]
+}

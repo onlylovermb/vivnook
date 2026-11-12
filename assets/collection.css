@@ -1,0 +1,186 @@
+.collection__content {
+  --facet-width: clamp(300px, 18vw, 330px);
+  gap: 3rem;
+}
+.collection__content #FacetFiltersContainer {
+  flex: 0 0 var(--facet-width);
+}
+.collection__toolbar {
+  background: rgb(var(--color-background));
+  padding-block: 1.2rem;
+  margin-block-end: 1.2rem;
+}
+.collection .card-promotion,
+.collection .card-promotion__media {
+  height: 100%;
+}
+
+#ProductGridWrapper.show-toolbar {
+  margin-block-start: -1.2rem;
+}
+
+#ProductsList.f-grid-1-cols .image-column {
+  display: none;
+}
+
+.facet-accordion-details .accordion-details__summary {
+  padding-block: 2.4rem;
+}
+.facet-accordion-details .accordion-details__content {
+  padding-bottom: 2.4rem;
+  margin-block-start: -0.8rem;
+}
+.facet-accordion-details .accordion-details__content--price {
+  margin-block-start: 0;
+}
+.facet-accordion-details:nth-child(2) .accordion-details__summary {
+  padding-block-start: 0;
+}
+.facet-accordion-details:last-child {
+  border-bottom: 0;
+}
+
+.facet-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  height: 0.4rem;
+  vertical-align: top;
+  margin: 0;
+}
+.facet-range__max {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+.facet-range-wrapper {
+  --range-min: 0%;
+  --range-max: 100%;
+  background: linear-gradient(to var(--transform-origin-end), rgb(var(--color-border)) var(--range-min), rgb(var(--color-foreground)) var(--range-min), rgb(var(--color-foreground)) var(--range-max), rgb(var(--color-border)) var(--range-max));
+  border-radius: 0.125rem;
+  height: 0.4rem;
+}
+.facet-range__symbol {
+  position: absolute;
+  inset-inline-start: 1.6rem;
+}
+.facet-range__input {
+  padding-inline-start: 3rem;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  text-align: end;
+}
+.facet-range__input::-webkit-inner-spin-button, .facet-range__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.facet-range::-webkit-slider-thumb {
+  -webkit-margin-before: -6px;
+  -webkit-appearance: none;
+  background-color: rgb(var(--color-foreground));
+  border-radius: 100%;
+  box-shadow: none;
+  cursor: pointer;
+  height: 16px;
+  margin-block-start: -6px;
+  position: relative;
+  width: 16px;
+  z-index: 1;
+}
+.facet-range::-webkit-slider-runnable-track {
+  background-color: #ccc;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 4px;
+  width: 100%;
+}
+.facet-range::-moz-range-thumb {
+  background-color: rgb(var(--color-background));
+  border: 2px solid rgb(var(--color-foreground));
+  border-radius: 100%;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+.facet-range::-moz-range-progress, .facet-range::-moz-range-track {
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 4px;
+  width: 100%;
+}
+.facet-range::-webkit-slider-runnable-track {
+  background: none;
+}
+.facet-range::-moz-range-progress {
+  background-color: rgb(var(--color-foreground));
+}
+.facet-range::-moz-range-track {
+  background-color: rgb(var(--border-color));
+}
+.facet-range::-webkit-slider-thumb {
+  pointer-events: auto;
+}
+.facet-range::-moz-range-thumb {
+  pointer-events: auto;
+}
+.facet-range::-moz-range-progress, .facet-range::-moz-range-track {
+  background: none;
+}
+@media not screen and (pointer: fine) {
+  .facet-range::-webkit-slider-thumb {
+    height: 20px;
+    margin-block-start: -9px;
+    width: 20px;
+  }
+  .facet-range::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.facet-remove {
+  height: auto;
+  font-weight: inherit;
+  padding-inline: 1.6rem;
+  padding-block: 0.3rem;
+}
+.facet-remove .swatch-color {
+  --swatch-size: 1.6rem;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .facet-short {
+    --icon-size: 0.7rem;
+  }
+  .facet-short select {
+    border: 0;
+    background-color: transparent;
+    width: var(--width);
+    padding: 0;
+    line-height: 1.625;
+    border-radius: 0;
+  }
+  .facet-short select ~ .icon {
+    inset-inline-end: 0;
+  }
+}
+
+.facet-drawer-button {
+  height: auto;
+  padding-inline: 1.6rem;
+  padding-block: 0.6rem;
+  line-height: 1.625;
+}
+
+.facet-short-drawer {
+  padding-block-end: 2.4rem;
+  margin-block-end: 2.4rem;
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+
+.facets-active {
+  margin-block-start: -0.4rem;
+  margin-block-end: 2.4rem;
+}

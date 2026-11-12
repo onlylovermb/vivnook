@@ -1,0 +1,9 @@
+{%- if image != blank -%}
+  {
+    "src": {{ image | image_url: width: 1600 | json }},
+    "width": {{ image.width | json }},
+    "height": {{ image.height | json }}
+  }
+{%- else -%}
+  null
+{%- endif -%}

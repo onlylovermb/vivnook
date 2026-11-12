@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "h1",
+        "heading_tag": "h1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_6c7kR6": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .vn-kb{--burg:#7d203b;--ink:#111;--line:#e5e5e5;background:#f7f7f7;color:var(--ink);padding:48px 5vw 72px;font-family:inherit}.vn-kb__wrap{max-width:1180px;margin:auto}.vn-kb__crumbs{font-size:13px;color:#777;margin-bottom:42px}.vn-kb__crumbs a{color:inherit}.vn-kb h1{font-size:clamp(36px,5vw,64px);margin:0 0 14px;letter-spacing:-.04em}.vn-kb__lead{font-size:18px;color:#555;max-width:680px;line-height:1.6}.vn-kb__table{width:100%;border-collapse:collapse;background:#fff;margin:42px 0 56px;box-shadow:0 6px 18px #00000012}.vn-kb__table th,.vn-kb__table td{text-align:left;padding:18px 20px;border-bottom:1px solid var(--line);font-size:15px}.vn-kb__table th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;background:#111;color:#fff}.vn-kb__section{border-top:1px solid var(--line);padding-top:34px}.vn-kb__section h2{font-size:30px;margin:0 0 22px}.vn-kb__articles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.vn-kb__article{display:block;background:#fff;padding:24px;text-decoration:none;color:inherit;box-shadow:0 5px 16px #0000000d;transition:.2s}.vn-kb__article:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00000014}.vn-kb__article h3{font-size:19px;margin:0 0 8px}.vn-kb__article p{margin:0;color:#666;line-height:1.5}.vn-kb__cta{text-align:center;border-top:1px solid var(--line);margin-top:58px;padding-top:42px}.vn-kb__button{display:inline-flex;background:#111;color:#fff;padding:14px 24px;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-size:12px}@media(max-width:749px){.vn-kb{padding:32px 18px 52px}.vn-kb__table{font-size:13px}.vn-kb__table th,.vn-kb__table td{padding:13px 10px}.vn-kb__articles{grid-template-columns:1fr}.vn-kb__lead{font-size:16px}}\n</style>\n<section class=\"vn-kb\"><div class=\"vn-kb__wrap\">\n  <nav class=\"vn-kb__crumbs\"><a href=\"/pages/help-center\">Help Center Home</a> / Shipping</nav>\n  <h1>Shipping</h1>\n  <p class=\"vn-kb__lead\">Find answers about shipping rates, delivery times, order tracking and delivery restrictions.</p>\n  <table class=\"vn-kb__table\"><thead><tr><th>Shipping destination</th><th>Estimated transit time</th><th>Additional duties or taxes</th></tr></thead><tbody>\n    <tr><td>United States</td><td>7–12 business days</td><td>Calculated at checkout where required</td></tr>\n    <tr><td>Australia</td><td>8–12 business days</td><td>Calculated at checkout where required</td></tr>\n    <tr><td>Europe</td><td>6–10 business days</td><td>Calculated at checkout where required</td></tr>\n    <tr><td>Selected Asian countries</td><td>3–5 business days</td><td>Calculated at checkout where required</td></tr>\n  </tbody></table>\n  <div class=\"vn-kb__section\"><h2>Shipping FAQ</h2><div class=\"vn-kb__articles\">\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-shipping-faq\"><h3>View all shipping questions</h3><p>Browse the complete Shipping FAQ.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-shipping-delivery-times\"><h3>How long does shipping take?</h3><p>Processing times and estimated transit times by destination.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-shipping-rates\"><h3>What are your shipping rates?</h3><p>Free-shipping thresholds and standard rates.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-track-order\"><h3>How can I track my order?</h3><p>Tracking emails and delivery updates.</p></a>\n    <a class=\"vn-kb__article\" href=\"/pages/help-center-change-address\"><h3>Can I change my shipping address?</h3><p>What to do before your order is dispatched.</p></a>\n  </div></div>\n  <div class=\"vn-kb__cta\"><h2>Need more help?</h2><p>Our team is here to help with your delivery questions.</p><a class=\"vn-kb__button\" href=\"/pages/contact\">Contact Us</a></div>\n</div></section>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_6c7kR6"
+  ]
+}

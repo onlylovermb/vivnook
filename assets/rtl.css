@@ -1,0 +1,69 @@
+[dir=rtl] {
+  --transform-origin-start: right;
+  --transform-origin-end: left;
+  /*
+   * Components
+   */
+  /*
+   * Sections
+   */
+}
+[dir=rtl] .flip-x {
+  transform: scaleX(1);
+}
+[dir=rtl] .rtl-flip-x {
+  transform: scaleX(-1);
+}
+[dir=rtl] .icon-slider-prev,
+[dir=rtl] .icon-slider-next,
+[dir=rtl] .icon-arrow,
+[dir=rtl] .icon-arrow-up-left {
+  transform: scaleX(-1);
+}
+[dir=rtl] .-rotate-90,
+[dir=rtl] .disclosure__toggle svg {
+  transform: rotate(90deg);
+}
+[dir=rtl] .pagination__item--previous svg {
+  transform: rotate(0);
+}
+[dir=rtl] input:is([type=checkbox], [type=radio]):after {
+  transform: rotate(-43deg);
+}
+[dir=rtl] .tooltip {
+  --translate-x: 50%;
+}
+[dir=rtl] .locale-selectors__selector {
+  background-position: left 10px center !important;
+  padding: 0.3em 0.5em 0.3em 28px !important;
+}
+[dir=rtl] .locale-selectors__label + .locale-selectors__label {
+  margin: 0.5em 0.5em 0 0 !important;
+}
+[dir=rtl] .drawer:not([active]).drawer--left .drawer__inner {
+  --translate-x: 100%;
+}
+[dir=rtl] .drawer:not([active]).drawer--right .drawer__inner {
+  --translate-x: -100%;
+}
+[dir=rtl] .product-card {
+  --pcard-quickview-offset: -15px;
+}
+[dir=rtl] .scrolling-promotion--left .promotion--animated {
+  animation-name: scrolling-left-rtl;
+}
+[dir=rtl] .scrolling-promotion--right .promotion--animated {
+  animation-name: scrolling-right-rtl;
+}
+[dir=rtl] .image-comparison[data-direction=horizontal] .image-comparison__after {
+  clip-path: inset(0px var(--percent, 50%) 0px 0px);
+}
+[dir=rtl] .article-navigation__prev svg {
+  transform: scaleX(1);
+}
+[dir=rtl] .subscription-popup__teaser {
+  right: 0;
+  left: auto;
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
+}

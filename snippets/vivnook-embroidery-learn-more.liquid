@@ -1,0 +1,48 @@
+{%- liquid
+  assign logo_description = product.metafields.vivnook.embroidery_learn_more_logo_description.value | default: settings.vivnook_embroidery_logo_description
+  assign text_description = product.metafields.vivnook.embroidery_learn_more_text_description.value | default: settings.vivnook_embroidery_text_description
+  assign icon_description = product.metafields.vivnook.embroidery_learn_more_icon_description.value | default: settings.vivnook_embroidery_icon_description
+  assign logo_image = product.metafields.vivnook.embroidery_learn_more_logo_image.value | default: settings.vivnook_embroidery_logo_image | default: product.featured_image
+  assign text_image = product.metafields.vivnook.embroidery_learn_more_text_image.value | default: settings.vivnook_embroidery_text_image | default: product.featured_image
+  assign icon_image = product.metafields.vivnook.embroidery_learn_more_icon_image.value | default: settings.vivnook_embroidery_icon_image | default: product.featured_image
+  assign embroidery_types = 'text,icon,logo' | split: ','
+-%}
+
+<dialog
+  id="{{ dialog_id }}"
+  class="vivnook-embroidery-dialog vivnook-embroidery-dialog--learn"
+  aria-labelledby="{{ dialog_id }}-title"
+  data-vivnook-dialog
+>
+  <div class="vivnook-embroidery-dialog__surface">
+    <header class="vivnook-embroidery-dialog__header">
+      <p class="vivnook-embroidery-dialog__brand">VIVNOOK</p>
+      <button class="vivnook-embroidery-dialog__close" type="button" data-vivnook-close aria-label="Close embroidery information">×</button>
+    </header>
+    <div class="vivnook-embroidery-learn">
+      <div class="vivnook-embroidery-learn__heading">
+        <h2 id="{{ dialog_id }}-title">Embroidery, your way.</h2>
+      </div>
+
+      <div class="vivnook-embroidery-learn__tabs" role="tablist" aria-label="Embroidery information">
+        {%- for type in embroidery_types -%}
+          <button
+            id="{{ dialog_id }}-tab-{{ type }}"
+            type="button"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="{{ dialog_id }}-panel-{{ type }}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            data-vivnook-tab="{{ type }}"
+          >{{ type | upcase }}</button>
+        {%- endfor -%}
+      </div>
+
+      <div class="vivnook-embroidery-learn__panels">
+        {%- render 'vivnook-embroidery-learn-panel', dialog_id: dialog_id, type: 'text', image: text_image, description: text_description, active: true -%}
+        {%- render 'vivnook-embroidery-learn-panel', dialog_id: dialog_id, type: 'icon', image: icon_image, description: icon_description -%}
+        {%- render 'vivnook-embroidery-learn-panel', dialog_id: dialog_id, type: 'logo', image: logo_image, description: logo_description -%}
+      </div>
+    </div>
+  </div>
+</dialog>

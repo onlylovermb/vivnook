@@ -1,0 +1,169 @@
+{%- liquid
+  assign modal_id = 'VivnookEmbroideryModal-' | append: section_id
+  assign preview_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+  assign preview_scenes = 'overview,text,iconLogo' | split: ','
+-%}
+
+<div class="vivnook-embroidery" data-vivnook-embroidery-root data-product-id="{{ product.id }}" data-section-id="{{ section_id }}" data-initial-variant-id="{{ product.selected_or_first_available_variant.id }}" data-vivnook-embroidery-host="{{ host_type | default: 'standard' }}">
+  <div class="vivnook-embroidery__entry">
+    <div class="vivnook-embroidery__entry-heading">
+      <div class="vivnook-embroidery__entry-title">
+        <p>{% if host_type == 'signature-look' %}Personalize{% else %}Personalize{% endif %}</p>
+        <button class="vivnook-embroidery__customize-trigger" type="button" data-vivnook-open="{{ modal_id }}" data-vivnook-overview-trigger hidden>Customize</button>
+      </div>
+    </div>
+    <button class="vivnook-embroidery__entry-card" type="button" data-vivnook-open="{{ modal_id }}" data-vivnook-entry-default>
+      <span>Bespoke Embroidery</span>
+      <span class="vivnook-embroidery__entry-price">From $8.00{% unless host_type == 'signature-look' %} <span aria-hidden="true">›</span>{% endunless %}</span>
+    </button>
+    {% if host_type == 'cart' %}
+    <div class="vivnook-embroidery__summaries" data-vivnook-summaries hidden>
+      <div class="vivnook-embroidery__summary" data-vivnook-summary="text" hidden>
+        <div class="vivnook-embroidery__summary-copy">
+          <div class="vivnook-embroidery__summary-title"><strong>TEXT</strong></div>
+          <span data-vivnook-summary-lines></span>
+          <small data-vivnook-summary-details></small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span>+$10.00</span>
+          <input type="checkbox" data-vivnook-inclusion="text" aria-label="Include TEXT embroidery when adding to cart">
+        </label>
+      </div>
+      <div class="vivnook-embroidery__summary" data-vivnook-summary="icon" hidden>
+        <div class="vivnook-embroidery__summary-copy">
+          <div class="vivnook-embroidery__summary-title"><strong>ICON</strong></div>
+          <span data-vivnook-icon-summary-label></span>
+          <small>Left Sleeve</small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span>+$8.00</span>
+          <input type="checkbox" data-vivnook-inclusion="icon" aria-label="Include ICON embroidery when adding to cart">
+        </label>
+      </div>
+      <div class="vivnook-embroidery__summary" data-vivnook-summary="logo" hidden>
+        <div class="vivnook-embroidery__summary-copy">
+          <div class="vivnook-embroidery__summary-title"><strong>LOGO</strong></div>
+          <span data-vivnook-logo-summary-name></span>
+          <small data-vivnook-logo-summary-details></small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span data-vivnook-logo-summary-price></span>
+          <input type="checkbox" data-vivnook-inclusion="logo" aria-label="Include LOGO embroidery when adding to cart">
+        </label>
+      </div>
+    </div>
+    {% else %}
+    <div class="vivnook-embroidery__summaries vivnook-embroidery__summaries--product" data-vivnook-summaries hidden>
+      <div class="vivnook-embroidery__summary vivnook-embroidery__summary--product" data-vivnook-summary="text" hidden>
+        <div class="vivnook-embroidery__summary-preview" data-vivnook-summary-preview="text" aria-hidden="true"></div>
+        <div class="vivnook-embroidery__summary-copy">
+          <span data-vivnook-summary-lines></span>
+          <small data-vivnook-summary-details></small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span>$10.00</span>
+          <input type="checkbox" data-vivnook-inclusion="text" aria-label="Include TEXT embroidery when adding to cart">
+        </label>
+      </div>
+      <div class="vivnook-embroidery__summary vivnook-embroidery__summary--product" data-vivnook-summary="icon" hidden>
+        <div class="vivnook-embroidery__summary-preview" data-vivnook-summary-preview="icon" aria-hidden="true"></div>
+        <div class="vivnook-embroidery__summary-copy">
+          <span data-vivnook-icon-summary-label></span>
+          <small data-vivnook-icon-summary-details></small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span>$8.00</span>
+          <input type="checkbox" data-vivnook-inclusion="icon" aria-label="Include ICON embroidery when adding to cart">
+        </label>
+      </div>
+      <div class="vivnook-embroidery__summary vivnook-embroidery__summary--product" data-vivnook-summary="logo" hidden>
+        <div class="vivnook-embroidery__summary-preview" data-vivnook-summary-preview="logo" aria-hidden="true"></div>
+        <div class="vivnook-embroidery__summary-copy">
+          <span data-vivnook-logo-summary-name></span>
+          <small data-vivnook-logo-summary-details></small>
+        </div>
+        <label class="vivnook-embroidery__summary-toggle">
+          <span data-vivnook-logo-summary-price></span>
+          <input type="checkbox" data-vivnook-inclusion="logo" aria-label="Include LOGO embroidery when adding to cart">
+        </label>
+      </div>
+    </div>
+    <div class="vivnook-embroidery__summary-note" data-vivnook-summary-note hidden>
+      <em>Please note:</em>
+      <span>Personalized embroidery items cannot be returned or exchanged. Delivery takes up to 2 weeks, including for expedited delivery.</span>
+    </div>
+    {% endif %}
+  </div>
+
+  <template data-vivnook-embroidery-template>
+  <dialog id="{{ modal_id }}" class="vivnook-embroidery-dialog vivnook-embroidery-dialog--configurator" aria-labelledby="{{ modal_id }}-title" data-vivnook-dialog>
+    <div class="vivnook-embroidery-dialog__surface">
+      <header class="vivnook-embroidery-dialog__header">
+        <button class="vivnook-embroidery-dialog__back" type="button" data-vivnook-dialog-back><span aria-hidden="true">←</span><span>Back</span></button>
+        <p class="vivnook-embroidery-dialog__brand">VIVNOOK</p>
+        <button class="vivnook-embroidery-dialog__close" type="button" data-vivnook-close aria-label="Close embroidery configurator">×</button>
+      </header>
+
+      <div class="vivnook-embroidery-configurator">
+        <div class="vivnook-embroidery-configurator__preview" data-vivnook-preview-space data-scene="overview">
+          <div class="vivnook-embroidery-preview-track" data-vivnook-preview-track>
+            {%- for scene in preview_scenes -%}
+              <div class="vivnook-embroidery-preview-slide" data-vivnook-preview-slide="{{ scene }}">
+                <img
+                  data-vivnook-preview-image
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  decoding="async"
+                  {% if preview_image != blank %}
+                    width="{{ preview_image.width }}"
+                    height="{{ preview_image.height }}"
+                  {% endif %}
+                >
+                  
+                {%- if scene == 'text' or scene == 'overview' -%}
+          <div class="vivnook-embroidery-preview-text" data-vivnook-preview-text hidden aria-hidden="true"><span data-vivnook-preview-line="line1"></span><span data-vivnook-preview-line="line2"></span></div>
+               {%- endif -%}
+
+               {%- if scene == 'iconLogo' or scene == 'overview' -%}
+          <div class="vivnook-embroidery-preview-icon" data-vivnook-preview-icon hidden aria-hidden="true"></div>
+            {%- endif -%}
+
+            {%- if scene == 'iconLogo' or scene == 'overview' -%}
+  <div class="vivnook-embroidery-preview-logo" data-vivnook-preview-logo hidden aria-hidden="true">
+    <img alt="" loading="lazy" decoding="async">
+  </div>
+{%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+          <div class="vivnook-embroidery-configurator__preview-meta"><span>{{ product.title }}</span><span data-vivnook-variant-title>{{ product.selected_or_first_available_variant.title }}</span></div>
+        </div>
+
+        <div class="vivnook-embroidery-configurator__panel">
+          <div class="vivnook-embroidery-configurator__intro" data-vivnook-types-intro>
+            <p class="vivnook-embroidery__eyebrow">Personalize your uniform</p>
+            <h2 id="{{ modal_id }}-title">Add Embroidery</h2>
+            <p>Choose a personalization type to begin.</p>
+          </div>
+          <div class="vivnook-embroidery-options" data-vivnook-types-view aria-label="Embroidery types">
+            {%- render 'vivnook-embroidery-option-row', type: 'text', name: 'TEXT', price: '$10', edit_price: '+$10.00' -%}
+            {%- render 'vivnook-embroidery-option-row', type: 'icon', name: 'ICON', price: '$8', edit_price: '+$8.00' -%}
+            {%- render 'vivnook-embroidery-option-row', type: 'logo', name: 'LOGO', price: 'From $20', edit_price: '' -%}
+          </div>
+          {%- render 'vivnook-embroidery-text-configurator', modal_id: modal_id -%}
+          {%- render 'vivnook-embroidery-icon-configurator' -%}
+          {%- render 'vivnook-embroidery-logo-configurator', modal_id: modal_id -%}
+          <footer class="vivnook-embroidery-configurator__footer"><button class="vivnook-embroidery__confirm" type="button" disabled>Confirm</button></footer>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  </template>
+  <script type="application/json" data-vivnook-product-json>{{ product | json }}</script>
+  {%- if host_type == 'signature-look' and host_product != blank -%}
+    <script type="application/json" data-vivnook-host-product-json>{{ host_product | json }}</script>
+  {%- endif -%}
+  <script type="application/json" data-vivnook-preview-config>{%- render 'vivnook-embroidery-preview-config', product: product -%}</script>
+  <script type="application/json" data-vivnook-icon-catalog>{%- render 'vivnook-embroidery-icon-catalog' -%}</script>
+</div>

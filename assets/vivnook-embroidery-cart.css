@@ -1,0 +1,310 @@
+/* Cart design reference */
+.cart-drawer__body{overflow-x:hidden;padding-block-start:0!important;padding-inline-start:16px!important;padding-inline-end:10px!important}
+.cart-drawer:has(.free-shipping-goal--done) .cart-drawer__items-stack{gap:0!important}
+.cart-drawer .cart-drawer__items-stack > .free-shipping-goal--done{margin-top:1px!important;margin-bottom:21px!important}
+.cart-drawer .free-shipping-goal--done .free-shipping-goal__label--success > span:last-child{font-size:14px!important}
+.cart-drawer .cart-drawer__footer{gap:0!important;border-top:0!important;padding:0 16px 16px!important}
+.cart-drawer .drawer__footer-head{display:block!important;padding:14px 0 0!important;border-bottom:0!important}.cart-drawer .cart-drawer__addons{padding-block-end:21px!important;border-bottom:0.5px solid #000!important}
+.cart-drawer .drawer__footer-body > .grid{gap:0!important}
+.cart-drawer .drawer__footer-body .discounts,.cart-drawer .drawer__footer-body .tax-note{display:none!important}
+.cart-drawer .cart-drawer__addons > .flex{justify-content:center!important;gap:50px!important;flex-wrap:nowrap!important}.cart-drawer .cart-drawer__addons button{white-space:nowrap!important}.cart-drawer .drawer__footer-body .totals{margin-top:21px}
+.cart-drawer .drawer__footer-body .totals__subtotal{font-size:23px!important;font-weight:700!important}
+.cart-drawer .drawer__footer-body .totals__subtotal-value{font-size:16px!important;font-weight:400!important}
+.cart-drawer .drawer__footer-buttons{width:100%;margin-top:16px!important}
+.cart-drawer .drawer__footer-buttons .btn--primary{width:100%;min-height:43px!important;flex:1 1 100%!important;background:#881537!important;color:#fff!important;font-size:16px!important;font-weight:700!important}
+.cart-drawer .cart-drawer-products-recommendation{margin-top:16px!important;padding:16px;background:#f4f4f4;border-radius:5px}
+.cart-drawer .cart-drawer-products-recommendation__header p{margin:0;font-size:23px!important;font-weight:700!important}
+.cart-drawer .cart-drawer-products-recommendation .product-card [class*="rating"],
+.cart-drawer .cart-drawer-products-recommendation .product-card [class*="review"],
+.cart-drawer .cart-drawer-products-recommendation .product-card .spr-badge{display:none!important}
+.cart-drawer cart-items > ul{gap:10px!important}
+.cart-drawer .drawer__header.cart-drawer__header .drawer__heading,
+.cart-drawer .drawer__header.cart-drawer__header .drawer__heading > span,
+.cart-drawer .drawer__header.cart-drawer__header .drawer__heading cart-count,
+.cart-drawer .drawer__header.cart-drawer__header .drawer__heading cart-count > span{font-size:21px!important;font-weight:700!important;line-height:1.15!important}
+.cart-drawer .drawer__header.cart-drawer__header{padding:16px!important}
+.signature-look-cart-group{gap:32px!important}
+.signature-look-cart-group__header{display:flex;align-items:center;justify-content:space-between}
+.signature-look-cart-group__title{font-size:22px!important;font-weight:700!important}
+.signature-look-cart-group__remove{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0!important;background:transparent!important;box-shadow:none!important;color:#222}
+.signature-look-cart-group__remove svg{width:32px;height:26px}
+.signature-look-cart-group__members{display:flex;flex-direction:column;gap:8px!important}
+.signature-look-cart-group .cart-item--signature-look-member{gap:0!important}
+.signature-look-cart-group .signature-look-cart-group__member-quantity{display:none!important}
+.signature-look-cart-group .cart-item__product{width:400px;max-width:100%;height:115px;min-height:115px;box-sizing:border-box;padding:9px 16px;background:#f4f4f4;border-radius:5px;display:flex;align-items:center;gap:32px;overflow:hidden}
+.signature-look-cart-group .cart-item__media{width:97px!important;height:97px!important;flex:0 0 97px!important;border-radius:5px;overflow:hidden}
+.signature-look-cart-group .cart-item__media img{width:100%;height:100%;object-fit:cover}
+.signature-look-cart-group .cart-item__details{min-width:0;flex:1;gap:0!important}
+.signature-look-cart-group .cart-item__title{font-size:16px!important;line-height:1.4;font-weight:700!important}
+.signature-look-cart-group .cart-item__options{font-size:16px;line-height:1.4;font-weight:700;color:#222}
+.vivnook-cart-embroidery-link,.vivnook-cart-length-option{width:min(342px,100%);height:38px;min-height:38px;box-sizing:border-box;border:1px solid #222;border-radius:5px;display:grid;align-items:center;color:#222;font-size:16px;text-decoration:none;margin-top:6px}
+.vivnook-cart-embroidery-link{display:flex;gap:10px;padding:0 10px;font-family:inherit;font-weight:300;letter-spacing:normal;text-align:left;white-space:nowrap;background:transparent;cursor:pointer}
+.vivnook-cart-embroidery-link span{letter-spacing:normal}
+.vivnook-cart-embroidery-link span:first-child{flex:1;min-width:0}
+.vivnook-cart-embroidery-link span:first-child,.vivnook-cart-length-option span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vivnook-cart-length-option{display:flex;gap:10px;padding:0 10px;white-space:nowrap}
+.vivnook-cart-length-option span:nth-child(2){flex:1;min-width:0}
+.vivnook-cart-checkbox{width:20px;height:20px;padding:0;border:1px solid #777;border-radius:5px;display:block;position:relative;z-index:5;pointer-events:auto!important;background:#fff!important;appearance:none!important;box-shadow:none!important;cursor:pointer}
+.vivnook-cart-checkbox:checked{background:#fff!important}
+.vivnook-cart-checkbox.is-checked::after,.vivnook-cart-checkbox:checked::after{content:"";position:absolute;width:6px;height:11px;left:5px;top:0;border:solid #000;border-width:0 2px 2px 0;transform:rotate(35deg)}
+.vivnook-cart-info-wrap{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.vivnook-cart-info{width:24px;height:24px;padding:0;border:0;background:transparent;color:#777;font-size:19px;line-height:1;cursor:help}
+.vivnook-cart-length-option.is-requested .vivnook-cart-info{color:#9b1f3d!important}
+.vivnook-cart-length-option.is-requested .vivnook-cart-info:hover,
+.vivnook-cart-length-option.is-requested .vivnook-cart-info.is-hovered{color:#777!important}
+.vivnook-cart-info-tooltip{position:absolute;z-index:20;right:0;top:calc(100% + 10px);bottom:auto;width:min(360px,calc(100vw - 32px));min-width:0;padding:18px 20px;border:1px solid #ddd;border-radius:3px;background:#fff;color:#333;box-shadow:0 0 12px rgb(0 0 0 / 80%);font-size:14px;font-weight:400;line-height:1.5;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;text-decoration:none!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,visibility .15s ease}
+.vivnook-cart-info-tooltip::after{content:"";position:absolute;right:8px;top:-8px;width:15px;height:15px;background:#fff;border-left:1px solid #ddd;border-top:1px solid #ddd;transform:rotate(45deg)}
+.vivnook-cart-info-wrap:hover .vivnook-cart-info-tooltip,.vivnook-cart-info-wrap:focus-within .vivnook-cart-info-tooltip{opacity:1;visibility:visible}
+.vivnook-cart-info.is-tooltip-visible + .vivnook-cart-info-tooltip{opacity:1;visibility:visible}
+html.vivnook-length-info-seen .vivnook-cart-length-option .vivnook-cart-info{color:#777!important}
+.vivnook-cart-view-details{display:block;margin-top:4px;text-align:right;color:#222;font-size:12px!important;line-height:1.2;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.signature-look-cart-group__actions{display:flex!important;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:14px;border-bottom:0.5px solid #707070}
+.signature-look-cart-group__quantity-select{position:relative;width:114px;height:40px;color:#222;font-size:14px;font-weight:400}
+.signature-look-cart-group__quantity-toggle{width:100%;height:100%;box-sizing:border-box;border:1px solid #222;border-radius:5px;display:flex;align-items:center;padding:0 12px;background:#fff;color:inherit;font:inherit;cursor:pointer}
+.signature-look-cart-group__quantity-value{width:28px;margin-left:12px;text-align:center}
+.signature-look-cart-group__quantity-caret{width:0;height:0;margin-left:auto;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid currentColor;pointer-events:none}
+.signature-look-cart-group__quantity-menu{position:absolute;z-index:30;top:calc(100% + 2px);left:0;width:100%;box-sizing:border-box;border:1px solid #222;border-radius:5px;background:#fff;overflow:hidden}
+.signature-look-cart-group__quantity-option{display:block;width:100%;height:32px;padding:0;border:0;background:#fff;color:#222;font:inherit;text-align:center;cursor:pointer}
+.signature-look-cart-group__quantity-option:hover,.signature-look-cart-group__quantity-option:focus-visible,.signature-look-cart-group__quantity-option.is-selected{background:#f4f4f4;color:#222}
+.signature-look-cart-group__price{font-size:16px!important;font-weight:400!important}
+.signature-look-cart-group__price s{color:#aaa}
+.cart-drawer .cart-item__action,.cart-drawer .cart-item__prices{display:none!important}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action{display:flex!important;align-items:center;justify-content:space-between;width:100%;padding-top:16px;border-top:0}
+.cart-drawer .cart-item--standalone-look-product .cart-item__product{position:relative;margin-bottom:56px}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action{position:absolute;z-index:3;left:0;right:0;top:calc(100% + 10px);height:40px;padding:0!important;flex-direction:row!important;align-items:center!important}
+.cart-drawer .cart-item--standalone-look-product .cart-item__remove{display:none!important}
+.cart-drawer .cart-item--standalone-look-product .cart-item__details .cart-item__prices{display:block!important;position:absolute;right:0;top:calc(100% + 10px);z-index:4}
+.cart-drawer .cart-item--standalone-look-product .cart-item__prices{display:block!important;margin-left:auto}
+.cart-drawer .cart-item--standalone-look-product .cart-item__prices,.cart-drawer .cart-item--standalone-look-product .cart-item__prices .price{font-weight:700!important}
+.cart-drawer .cart-item--standalone-look-product .cart-quantity{display:flex!important;width:114px;height:40px;border:1px solid #222;border-radius:5px;align-items:center;justify-content:space-between}
+.cart-drawer .cart-item--standalone-look-product .cart-quantity .quantity__button{display:flex!important;align-items:center;justify-content:center;width:32px;height:100%;padding:0}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity{position:relative;width:105px;height:40px;border:1px solid #222;border-radius:5px;justify-content:flex-start;padding-left:7px;background:#fff}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity{box-sizing:border-box!important;flex:0 0 105px!important;overflow:hidden!important}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity::before{content:'Qty:';font-size:14px;margin-right:19px}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity::after{content:'';position:absolute;right:8px;top:14px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #222;pointer-events:none}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity .quantity__button{display:none!important}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity .quantity__input{box-sizing:border-box!important;flex:0 0 16px!important;width:16px!important;height:100%;padding:0!important;border:0!important;outline:0!important;background:transparent;font-size:14px;text-align:center}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity .quantity__input{box-shadow:none!important;border-radius:0!important;appearance:none!important}
+.standalone-quantity-menu{position:absolute;z-index:50;top:calc(100% + 4px);left:0;width:105px;border:1px solid #222;border-radius:5px;background:#fff;overflow:hidden}
+.standalone-quantity-menu button{display:block;width:100%;height:32px;border:0;background:#fff;font:inherit;text-align:center;cursor:pointer}
+.standalone-quantity-menu button:hover,.standalone-quantity-menu button:focus-visible{background:#f4f4f4}
+.cart-drawer .cart-item--standalone-look-product .cart-item__action .cart-quantity{display:none!important}
+.standalone-quantity-wrap{display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;width:105px;height:40px;padding:0 7px;border:1px solid #222;border-radius:5px;background:#fff;color:#222;font:14px inherit;cursor:pointer}
+.standalone-quantity-wrap{position:relative}
+.standalone-quantity-select{display:block;width:42px;height:36px;padding:0;border:0;outline:0!important;background:#fff;color:#222;font:14px inherit;text-align:center;appearance:auto;cursor:pointer}
+.standalone-quantity-select[hidden]{display:none!important}
+.standalone-quantity-trigger{display:block;width:42px;height:36px;padding:0;border:0;outline:0!important;background:#fff;color:#222;font:14px inherit;text-align:center;cursor:pointer}
+.standalone-quantity-trigger:focus,.standalone-quantity-trigger:focus-visible{outline:0!important;box-shadow:none!important}
+.standalone-quantity-select:focus,.standalone-quantity-select:focus-visible{outline:0!important;box-shadow:none!important}
+.standalone-quantity-select option:checked,.standalone-quantity-select option:hover,.standalone-quantity-select option:focus{background:#fff!important;background-color:#fff!important;color:#222!important;box-shadow:inset 0 0 0 9999px #fff!important;text-align:center}
+
+.cart-item--embroidery-service{margin-top:32px}
+.cart-item--embroidery-service .cart-item__product{background:#f4f4f4;border-radius:5px}
+@media(max-width:749px){
+ .signature-look-cart-group{gap:24px!important}
+ .signature-look-cart-group .cart-item__product{height:115px;min-height:115px;padding:9px 12px;gap:16px}
+ .signature-look-cart-group .cart-item__media{width:97px!important;height:97px!important;flex-basis:97px!important}
+ .vivnook-cart-embroidery-link,.vivnook-cart-length-option{width:100%;max-width:100%;font-size:clamp(11px,3.2vw,16px)}
+ .vivnook-cart-length-option{gap:5px;padding-right:5px;padding-left:5px}
+}
+
+/* Fix the final thumbnail dimensions for all cart products and breakpoints. */
+.cart-drawer .cart-item .cart-item__media,
+.cart .cart-item .cart-item__media{
+ width:97px!important;min-width:97px!important;max-width:97px!important;
+ height:97px!important;min-height:97px!important;max-height:97px!important;
+ flex:0 0 97px!important;aspect-ratio:1!important;box-sizing:border-box;
+}
+.cart-drawer .cart-item .cart-item__media img,
+.cart .cart-item .cart-item__media img{
+ display:block;width:100%!important;height:100%!important;object-fit:cover;
+}
+
+/* One bottom row for variant information and product details in every cart. */
+.vivnook-cart-item-footer{display:flex;align-items:baseline;justify-content:space-between;gap:8px;width:100%;min-width:0;margin-top:auto}
+.vivnook-cart-item-footer__variants{min-width:0}
+.vivnook-cart-item-footer .vivnook-cart-view-details{flex-shrink:0;margin-top:0}
+.cart-drawer .cart-item__details > .grid{display:flex;flex-direction:column;min-width:0;height:100%}
+.signature-look-cart-group .cart-item__details{align-self:stretch}
+.cart-drawer .vivnook-cart-item-footer{padding-top:4px}
+.signature-look-cart-group .cart-item__product{padding-left:10px}
+.signature-look-cart-group .cart-item__product{overflow:visible}
+@media(min-width:750px){
+ .signature-look-cart-group .cart-item__product{width:100%}
+}
+.signature-look-cart-item__remove{display:none}
+.cart-drawer .cart-item--standalone-look-product .cart-item__product{position:relative;width:400px;max-width:100%;min-height:115px;box-sizing:border-box;padding:9px 16px 9px 10px;background:#f4f4f4;border-radius:5px;overflow:visible}
+.cart-drawer .cart-item--standalone-look-product .cart-item__product{width:100%;max-width:100%}
+/* Separate every top-level product or The Look block, regardless of cart order. */
+.cart-drawer cart-items > ul > .cart-item--standalone-look-product + :is(.cart-item--standalone-look-product,.signature-look-cart-group),
+.cart-drawer cart-items > ul > .cart-item--embroidery-service + :is(.cart-item--standalone-look-product,.signature-look-cart-group){
+  margin-top:10px!important;padding-top:10px!important;border-top:0.5px solid #707070;
+}
+/* The quantity action is positioned below its card; reclaim only its unused
+   legacy spacer so the divider sits 10px below the control. */
+.cart-drawer cart-items > ul > .cart-item--standalone-look-product + :is(.cart-item--standalone-look-product,.signature-look-cart-group){margin-top:-18px!important}
+.cart-drawer .cart-item--standalone-look-product .signature-look-cart-item__remove{position:absolute;z-index:2;top:5px;right:8px;display:flex;align-items:center;justify-content:center;width:32px;height:26px;padding:0;border:0;background:transparent;color:#222}
+.cart-drawer .cart-item--standalone-look-product .signature-look-cart-item__remove svg{width:32px;height:26px}
+
+/* Fanny packs use a vertical title, color and details stack. */
+.cart-drawer .cart-item[data-handle*="fanny"] .cart-item__details > .grid{gap:0;justify-content:center}
+.cart-drawer .cart-item[data-handle*="fanny"] .vivnook-cart-item-footer{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:16px;margin-top:13px;padding-top:0}
+.cart-drawer .cart-item[data-handle*="fanny"] .vivnook-cart-view-details{text-align:left}
+
+/* Shared cart typography, including individual products and look members. */
+:is(.cart-drawer,.cart) .cart-item .cart-item__title,
+:is(.cart-drawer,.cart) .cart-item .cart-item__option-value{font-size:14px!important;font-weight:700!important}
+:is(.cart-drawer,.cart) .cart-item .vivnook-cart-view-details{font-size:12px!important;font-weight:400!important}
+:is(.cart-drawer,.cart) .cart-item .vivnook-cart-embroidery-link,
+:is(.cart-drawer,.cart) .cart-item .vivnook-cart-embroidery-link span{font-size:14px!important;font-weight:400!important}
+:is(.cart-drawer,.cart) .cart-item .vivnook-cart-length-option span:nth-child(2){font-size:14px!important;font-weight:400!important;text-decoration:underline}
+.signature-look-cart-group .cart-item__product{gap:16px}
+:is(.cart-drawer,.cart) .cart-item .cart-item__title,
+:is(.cart-drawer,.cart) .cart-item .cart-item__option-value{color:#000!important}
+.signature-look-cart-group .vivnook-cart-embroidery-link,
+.signature-look-cart-group .vivnook-cart-length-option{width:calc(100% + 6px);max-width:none}
+@media(max-width:749px){
+ .signature-look-cart-group .vivnook-cart-embroidery-link,
+ .signature-look-cart-group .vivnook-cart-length-option{width:calc(100% + 2px)}
+}
+:is(.cart-drawer,.cart) .cart-item .vivnook-cart-embroidery-link span:last-child{font-size:0!important;position:relative;display:block;flex:0 0 8px;width:8px;height:16px}
+.vivnook-cart-embroidery-link span:last-child::before{content:"";position:absolute;width:6px;height:6px;left:0;top:4px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
+.signature-look-cart-group .vivnook-cart-embroidery-link span:last-child{display:none!important}
+
+/* The configurator is mounted in the cart so its dialog opens over the drawer. */
+.vivnook-cart-embroidery-modal-host .vivnook-embroidery__entry{display:none}
+
+/* Align each scrub option frame to the thumbnail centre, with its title 8px above. */
+.signature-look-cart-group .cart-item__details > .grid{gap:0;justify-content:center}
+.signature-look-cart-group .cart-item__details > .grid > :first-child{margin-bottom:6px}
+.signature-look-cart-group .cart-item__details > .grid > .vivnook-cart-embroidery-link,
+.signature-look-cart-group .cart-item__details > .grid > .vivnook-cart-length-option{margin-bottom:10px}
+.signature-look-cart-group .cart-item__details > .grid > .cart-item__options:empty{display:none}
+.signature-look-cart-group .vivnook-cart-item-footer{margin-top:0;padding-top:0}
+
+/* Keep the The Look heading exactly 16px above its first product card. */
+.signature-look-cart-group{display:flex;flex-direction:column;gap:0!important}
+.signature-look-cart-group__header{margin-bottom:16px}
+.cart-drawer .signature-look-cart-group__header{margin-top:0!important;padding-top:0!important}
+.cart-drawer cart-items > ul > .cart-item--standalone-look-product + .signature-look-cart-group > .signature-look-cart-group__header{margin-top:10px!important}
+.cart-drawer .signature-look-cart-group__title{margin:0!important}
+
+/* Keep product-detail links above the cart layout layers. */
+:is(.cart-drawer,.cart) .cart-item a.cart-item__title,
+:is(.cart-drawer,.cart) .cart-item a.vivnook-cart-view-details{position:relative;z-index:1;pointer-events:auto}
+
+/* Mobile carts use an 8px image-to-content gap and compact option-copy. */
+@media(max-width:749px){
+ .signature-look-cart-group .cart-item__product,
+ .cart-drawer .cart-item--standalone-look-product .cart-item__product{gap:8px!important}
+ .signature-look-cart-group .vivnook-cart-embroidery-link,
+ .signature-look-cart-group .vivnook-cart-length-option,
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link,
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-length-option{font-size:12px!important}
+ .signature-look-cart-group .vivnook-cart-embroidery-link,
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link{gap:5px;padding-right:5px}
+ .signature-look-cart-group .vivnook-cart-embroidery-link > span:last-child,
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link > span:last-child{flex-basis:6px;width:6px}
+ .signature-look-cart-group .vivnook-cart-embroidery-link > span,
+ .signature-look-cart-group .vivnook-cart-length-option > span:not(.vivnook-cart-info-wrap),
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link > span,
+ .cart-drawer .cart-item--standalone-look-product .vivnook-cart-length-option > span:not(.vivnook-cart-info-wrap){font-size:12px!important}
+}
+
+/* Embroidery belongs after The Look quantity/price, inside its boundary. */
+.signature-look-cart-group--personalized{border-bottom:0.5px solid #707070;padding-bottom:41px}
+.signature-look-cart-group--personalized .signature-look-cart-group__actions{border-bottom:0}
+.signature-look-cart-group--personalized > .cart-item--embroidery-service{border-bottom:0}
+[data-vivnook-cart-editor]{display:contents!important}
+[data-vivnook-cart-editor] .vivnook-embroidery{margin:0!important;padding:0!important;border:0!important;border-bottom:0!important;height:0!important;min-height:0!important;max-height:0!important}
+[data-vivnook-cart-editor] .vivnook-embroidery__entry{display:none!important}
+
+/* Bespoke Embroidery detail cards follow the supplied design reference. */
+.signature-look-cart-group--personalized > .vivnook-embroidery-cart__heading{
+  margin:0 0 16px;padding:0;font-size:22px;line-height:1.2;font-weight:700;
+}
+.cart-drawer cart-items > ul > .vivnook-embroidery-cart__heading{
+  margin:0 0 16px;padding:0;font-size:22px;line-height:1.2;font-weight:700;
+}
+.vivnook-embroidery-cart__heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.vivnook-embroidery-cart__remove{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px 0 -8px auto;padding:0;border:0!important;background:transparent!important;color:#222;cursor:pointer}
+.vivnook-embroidery-cart__remove svg{width:32px;height:26px}
+.cart-drawer cart-items > ul > .vivnook-embroidery-cart__heading + .cart-item--embroidery-service{margin-top:0}
+.cart-drawer cart-items > ul > .cart-item--embroidery-service + .cart-item--embroidery-service{margin-top:6px}
+.signature-look-cart-group--personalized > .signature-look-cart-group__actions{padding-bottom:14px}
+.signature-look-cart-group--personalized > .cart-item--embroidery-service{
+  display:flex;flex-direction:column;gap:6px;margin:0!important;padding:0;background:transparent;
+}
+.signature-look-cart-group--personalized > .cart-item--embroidery-service + .cart-item--embroidery-service{margin-top:0!important}
+.signature-look-cart-group--personalized > .cart-item--embroidery-service + .cart-item--embroidery-service{margin-top:6px!important}
+.vivnook-embroidery-service__heading{
+  display:flex;align-items:baseline;justify-content:space-between;width:100%;
+  font-size:16px;line-height:1.2;font-weight:700;text-decoration:none;
+}
+.signature-look-cart-group--personalized > .cart-item--embroidery-service .vivnook-embroidery-service__heading{margin:0}
+.vivnook-embroidery-service__heading span:first-child{text-decoration:underline;text-underline-offset:2px}
+.vivnook-embroidery-service__heading span:last-child{font-weight:400;text-decoration:none!important;text-decoration-line:none!important}
+.cart-drawer .cart-item--embroidery-service .cart-item__product{
+  position:relative;width:100%;min-height:115px;height:115px;padding:9px 16px;background:#f4f4f4;border-radius:8px;
+  display:flex;align-items:center;gap:32px;overflow:visible;
+}
+.cart-drawer .cart-item--embroidery-service .cart-item__media{
+  width:123px!important;height:123px!important;min-width:123px!important;max-width:123px!important;
+  flex:0 0 123px!important;border-radius:4px;background:#eee;overflow:hidden;
+}
+.cart-drawer .cart-item--embroidery-service .cart-item__media img{object-fit:contain;background:#eee}
+.vivnook-embroidery-preview{width:97px;height:97px;min-width:97px;flex:0 0 97px;border-radius:5px;background:#6c80bd;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#fff;text-align:center}
+.vivnook-embroidery-preview[data-embroidery-garment-color*="Black"],
+.vivnook-embroidery-preview[data-embroidery-garment-color*="black"]{background:#202020}
+.vivnook-embroidery-preview[data-embroidery-garment-color*="Burgundy"],
+.vivnook-embroidery-preview[data-embroidery-garment-color*="burgundy"]{background:#7f2d3f}
+.vivnook-embroidery-preview[data-embroidery-garment-color*="Navy"],
+.vivnook-embroidery-preview[data-embroidery-garment-color*="navy"]{background:#24355f}
+.vivnook-embroidery-preview[data-embroidery-garment-color*="White"],
+.vivnook-embroidery-preview[data-embroidery-garment-color*="white"]{background:#f4f4f4;color:#111}
+.vivnook-embroidery-preview--text{flex-direction:column;font-size:14px;line-height:1.15}
+.vivnook-embroidery-preview--text[data-embroidery-preview-color*="Black"]{color:#000}
+.vivnook-embroidery-preview--logo img{width:100%;height:100%;object-fit:contain;padding:8px}
+.vivnook-embroidery-preview--logo[data-embroidery-preview-color*="Black"] img{filter:grayscale(1)}
+.vivnook-embroidery-preview--logo_bw img{filter:grayscale(1)}
+.vivnook-embroidery-preview--icon img{width:100%;height:100%;object-fit:contain;padding:16px}
+.vivnook-embroidery-preview--icon svg{width:54%;height:54%;fill:currentColor}
+.cart-drawer .cart-item--embroidery-service .cart-item__details{align-self:center;gap:0!important}
+.cart-drawer .cart-item--embroidery-service .cart-item__details > .grid > :first-child,
+.cart-drawer .cart-item--embroidery-service .vivnook-cart-item-footer,
+.cart-drawer .cart-item--embroidery-service .vivnook-embroidery-cart__quantity{display:none!important}
+.cart-drawer .cart-item--embroidery-service .cart-item__options{font-size:14px;line-height:1.45;font-weight:400;color:#222}
+.cart-drawer .cart-item--embroidery-service .cart-item__options dt,
+.cart-drawer .cart-item--embroidery-service .cart-item__options dd{font-size:14px;font-weight:400}
+.cart-drawer .cart-item--embroidery-service .cart-item__options dt{display:inline}
+.cart-drawer .cart-item--embroidery-service .cart-item__options > div{display:block}
+.cart-drawer .cart-item--embroidery-service .cart-item__options dt,
+.cart-drawer .cart-item--embroidery-service .cart-item__options dd{display:inline;margin:0}
+.cart-drawer .cart-item--embroidery-service .cart-item__options dt{font-weight:400}
+.cart-drawer .cart-item--embroidery-service .vivnook-embroidery-logo-preview{display:none!important}
+.cart-drawer .cart-item--embroidery-service .vivnook-embroidery-cart__relation{display:none}
+.cart-drawer .cart-item--embroidery-service .vivnook-embroidery-service__quantity{
+  position:absolute;z-index:1;right:16px;top:50%;transform:translateY(-50%);
+  color:#222;font-size:14px;font-weight:400;line-height:1.45;white-space:nowrap;
+}
+.cart-drawer .cart-item--embroidery-service[data-embroidery-service-type="LOGO_DIGITIZATION"]{display:none!important}
+.cart-drawer .cart-item--embroidery-digitization{display:none!important}
+.vivnook-embroidery-service__heading span{display:inline-block}
+.vivnook-embroidery-service__heading span:last-child{margin-left:auto;padding-left:16px}
+@media(max-width:749px){
+  .signature-look-cart-group--personalized > .cart-item--embroidery-service{padding-left:0}
+  .cart-drawer .cart-item--embroidery-service .cart-item__product{min-height:115px;height:115px;padding:9px 12px;gap:8px}
+  .cart-drawer .cart-item--embroidery-service .vivnook-embroidery-service__quantity{right:12px}
+  .cart-drawer .cart-item--embroidery-service .cart-item__media{width:123px!important;height:123px!important;flex-basis:123px!important}
+}
+
+/* The entire quantity box opens the 1�C9 menu, with a visible black caret. */
+.standalone-quantity-wrap > span{position:relative;z-index:1;pointer-events:none}
+.standalone-quantity-trigger{position:absolute;inset:0;box-sizing:border-box;width:100%;height:100%;padding:0 22px 0 48px;background:transparent;border-radius:inherit}
+.standalone-quantity-trigger::after{content:"";position:absolute;right:9px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid #000}
+.standalone-quantity-menu[hidden]{display:none!important}
+
+/* Raise the open menu's stacking ancestors above later cart rows. */
+:is(.cart-drawer,.cart) .cart-item:has(.standalone-quantity-menu:not([hidden])){position:relative;z-index:20}
+:is(.cart-drawer,.cart) .cart-item__action:has(.standalone-quantity-menu:not([hidden])){z-index:20}
+.standalone-quantity-wrap:has(.standalone-quantity-menu:not([hidden])){z-index:20}

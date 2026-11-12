@@ -1,0 +1,15 @@
+{{ 'section-vivnook-fabric-laboratory.css' | asset_url | stylesheet_tag }}
+{% style %}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+.vivnook-fabric-lab,.vivnook-fabric-lab *{font-family:'Open Sans',Arial,sans-serif!important}
+{% endstyle %}
+<section class="vivnook-fabric-lab" aria-label="{{ section.settings.aria_label | escape }}">
+  <div class="vivnook-fabric-lab__left">
+    <div class="vivnook-fabric-lab__intro"><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.intro | escape | newline_to_br }}</p></div>
+    <div class="vivnook-fabric-lab__feature">{% if section.settings.feature_image != blank %}{{ section.settings.feature_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '50vw' }}{% else %}{{ 'lifestyle-2' | placeholder_svg_tag }}{% endif %}<div class="vivnook-fabric-lab__feature-copy">{% for block in section.blocks %}<div class="vivnook-fabric-lab__item" {{ block.shopify_attributes }}><strong>{{ block.settings.title | escape }}</strong><p>{{ block.settings.text | escape | newline_to_br }}</p></div>{% endfor %}</div></div>
+  </div>
+  <div class="vivnook-fabric-lab__image">{% if section.settings.right_image != blank %}{{ section.settings.right_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '700, 1000, 1400, 1800', sizes: '50vw' }}{% else %}{{ 'lifestyle-1' | placeholder_svg_tag }}{% endif %}</div>
+</section>
+{% schema %}
+{"name":"EverTrue fabric lab","settings":[{"type":"text","id":"aria_label","label":"Accessibility label","default":"EverTrue fabric laboratory"},{"type":"text","id":"heading","label":"Heading","default":"The Fabric Laboratory"},{"type":"textarea","id":"intro","label":"Intro text","default":"Introducing EverTrue™ textile technology. A luxury curation of high-performance healthcare textiles custom-engineered to breathe, stretch, and endure through the most high-intensity shifts. Where clinical utility meets an avant-garde silhouette."},{"type":"image_picker","id":"feature_image","label":"Left lower image"},{"type":"image_picker","id":"right_image","label":"Right image"}],"blocks":[{"type":"feature","name":"Feature text","settings":[{"type":"text","id":"title","label":"Title","default":"01 / Ultra 4-Way Stretch Apparel"},{"type":"textarea","id":"text","label":"Text","default":"Fluid, Adaptive Movement That Retains Its Structural Silhouette All Day Long."}]}],"max_blocks":4,"presets":[{"name":"EverTrue fabric lab","blocks":[{"type":"feature"},{"type":"feature"},{"type":"feature"},{"type":"feature"}]}]}
+{% endschema %}

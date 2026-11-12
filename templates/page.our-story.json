@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_story": {
+      "type": "about-story",
+      "settings": {
+        "aria_label": "About Vivnook",
+        "hero_image": "shopify://shop_images/our_story_banner.webp",
+        "hero_heading": "Workwear That Feels More Like You",
+        "hero_position_y_desktop": 63,
+        "pockets_image": "shopify://shop_images/f241909c5a37a8cea0eb5d978adba78c.webp",
+        "pockets_heading": "The Paradox Of Pockets: Reimagining Storage For The Modern Shift",
+        "pockets_body": "<p>At Vivnook, we believe your workwear should empower your day, not drag you down. For years, the industry’s only solution for storage was adding more pockets—a design built for convenience that ultimately became a compromise, leaving scrubs heavy, bulky, and misshapen. We once watched an ICU nurse return home after a grueling 12-hour shift and collapse onto her living room floor from sheer exhaustion. Before she could even rest, she faced the frustrating chore of manually emptying over ten stuffed, sagging pockets just to do her laundry. That moment redefined our purpose. We set out to prove that powerful functionality and a sharp, streamlined fit can coexist. You shouldn’t have to sacrifice style to stay efficient.</p>",
+        "dentist_image": "shopify://shop_images/story.webp",
+        "dentist_heading": "From A Dentist’s Wardrobe To A Vision For The World",
+        "dentist_body": "<p>The spark for Vivnook happened through a simple, lifelong observation. Our co-founder, a Parsons graduate, spent her childhood watching her mother navigate a 30-year career as a clinical dentist. Her mother always appreciated personal style, yet while her wardrobe featured an extensive, expressive collection of shoes, her white lab coat remained completely unchanged for an entire decade. Growing up, the realization became clear: shoes were the only part of her daily attire that escaped rigid uniform codes. They were her only outlet for individual expression on shift. We founded Vivnook to prove that this unyielding monotony didn’t have to be the norm—and that modern healthcare professionals deserve a system built around both form and function.</p>",
+        "vibrant_image": "shopify://shop_images/story3.webp",
+        "vibrant_heading": "Celebrating The Vibrant Soul Underneath The Uniform",
+        "vibrant_body": "<p>Vivnook exists to honor the authentic individuals behind the profession. We believe that underneath every serious, mission-driven shift, your personal identity should never be erased. We respect the solemn professionalism required by your field with a sophisticated, monochromatic exterior. At the same time, we give the right of self-expression back to you. We celebrate your passion for life, ensuring that you can feel completely like yourself while caring for others.</p>",
+        "bulk_image": "shopify://shop_images/story_2.webp",
+        "bulk_heading": "Extra Ten Pockets, Zero Extra Bulk",
+        "bulk_body": "<p>We refuse to accept that functionality must come at the cost of a messy, sagging silhouette. Vivnook completely re-engineered the anatomy of medical apparel. By migrating the entire utility system into a color-matched, highly ergonomic carry pack, we delivered a streamlined, drawstring-free waistband. In hidden corners, we introduced an unexpected contrast lining—leaving the choice of self-expression entirely in your hands. Designed separately, styled together.</p>",
+        "features_heading": "Re-Architecting How You Move Through High-Intensity Shifts",
+        "one": "shopify://shop_images/our_story_1.webp",
+        "feature_one_title": "The Fabric Shield: Golden Ratio Elasticity",
+        "feature_one_body": "An ultra-elastic 89% Poly and 11% Spandex blend delivering fluid four-way stretch for frantic runs and deep bends. Infused with antistatic tech that actively repels pet hair and lint—a gentle pat maintains a crisp look all day.",
+        "two": "shopify://shop_images/our_story_z2.webp",
+        "feature_two_title": "The Cordless Era: Streamlined Fit",
+        "feature_two_body": "We completely eliminated clumsy, slipping cords. Engineered with a sleek, high-resilience band that precision-grips your torso with zero bunching. Combined with free custom-hemming, it ensures the uniform fits you flawlessly.",
+        "three": "shopify://shop_images/our_story_z3.webp",
+        "feature_three_title": "The 3-Second Rule: Defeating The Black",
+        "feature_three_body": "Traditional pockets are chaotic black holes. Our carry solution migrates the entire storage system into an ergonomic waist pack with internal elastic tool slots, allowing effortless one-handed blind retrieval in under 3 seconds.",
+        "four": "shopify://shop_images/our_story_z4.webp",
+        "feature_four_title": "Infection Control: Medical-Grade Armor",
+        "feature_four_body": "Built to ruthlessly endure high-temperature 60°C laundering without ever fading. The utility pack is 100% waterproof inside and out, fearlessly resisting fluid splashes and continuous medical-grade Clinell Wipes decontaminations.",
+        "learn_more_label": "Learn More",
+        "learn_more_url": "shopify://products/vivnook-signature-look™",
+        "mobile_footer_gap": 48
+      }
+    }
+  },
+  "order": [
+    "about_story"
+  ]
+}

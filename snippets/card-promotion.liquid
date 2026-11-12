@@ -1,0 +1,98 @@
+{%- liquid
+  assign layout = layout | default: 'space-between'
+  assign image_ratio = image_ratio | default: '1/1'
+  if image_ratio == 'adapt'
+    if image == blank
+      assign image_ratio = '1/1'
+    else
+      assign image_ratio = image.aspect_ratio
+    endif
+
+    if image_mobile == blank
+      assign image_mobile_ratio = image_ratio
+    else
+      assign image_mobile_ratio = image_mobile.aspect_ratio
+    endif
+  endif
+
+  assign description_size = description_size | default: 'text-base'
+-%}
+
+{%- if link -%}
+  <a
+    href="{{ link }}"
+    class="card-promotion__link focus-inset w-full h-full block"
+    aria-label="{{ heading | default: shop.name }}"
+  >
+{%- endif -%}
+<div class="card-promotion card-promotion--layout-{{ layout }} card-media--{{ content_spacing }} blocks-radius relative overflow-hidden color-{{ color_scheme }} hover-wrapper">
+  <div class="card-promotion__image relative overflow-hidden w-full h-full">
+    <motion-element class="block h-full" data-motion="zoom-out">
+      <picture
+        class="card-promotion__media media-wrapper h-full{% if image == blank %} bg-none{% endif %}"
+        style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"
+      >
+        {%- if image != blank -%}
+          {%- if image_mobile -%}
+            <source
+              media="(max-width: 767px)"
+              srcset="{{ image_mobile | image_url: width: '400x' }} 400w, {{ image_mobile | image_url: width: '600x' }} 600w, {{ image_mobile | image_url: width: '800x' }} 800w, {{ image_mobile | image_url: width: '1000x' }} 1000w"
+              width="{{ image_mobile.width }}"
+              height="{{ image_mobile.height }}"
+            >
+          {%- endif -%}
+          {{
+            image
+            | image_url: width: 1100
+            | image_tag:
+              loading: 'lazy',
+              class: 'motion-reduce absolute inset-0 w-full h-full hover-scale-up',
+              widths: '165, 360, 535, 750, 940, 1100',
+              is: 'image-lazy'
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg hover-scale-up' }}
+        {%- endif -%}
+
+        {% if image_overlay_opacity and image_overlay_opacity > 0 %}
+          <div
+            class="bg-overlay"
+            style="--color-overlay-alpha: {{ image_overlay_opacity }};"
+          ></div>
+        {% endif %}
+      </picture>
+    </motion-element>
+  </div>
+  {%- if heading != blank or description != blank or button_label != blank or subheading != blank -%}
+    <div class="card-promotion__content content-overlay text-{{ content_alignment }} items-{{ content_alignment | replace: 'left', 'start' | replace: 'right', 'end' }}{% if layout == 'space-between' %} justify-between{% endif %}">
+      {%- if subheading != blank -%}
+        <p class="m-0 text-subheading card-promotion__subheading">{{ subheading }}</p>
+      {%- endif -%}
+      <div class="card-promotion__text">
+        {%- if heading != blank -%}
+          <h3 class="card-promotion__heading {{ heading_size }}">
+            {% render 'highlight-text', text: heading, style: heading_highlight_style %}
+          </h3>
+        {%- endif -%}
+        {%- if description != blank -%}
+          <div class="card-promotion__description rte {{ description_size }}">{{ description }}</div>
+        {%- endif -%}
+      </div>
+      {%- if button_label != blank -%}
+        <div class="card-promotion__button{% if layout == 'vertical-split' %} flex-1 flex items-end{% endif %}">
+          <button
+            class="btn {{ button_style }}"
+            {% unless link %}
+              disabled
+            {% endunless %}
+          >
+            {{ button_label }}
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+{%- if link -%}
+  </a>
+{%- endif -%}

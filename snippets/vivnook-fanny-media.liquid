@@ -1,0 +1,9 @@
+<div class="vn-fanny__media">
+  {% if video != blank %}
+    {{ video | video_tag: image_size: '1500x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata' }}
+  {% elsif image != blank %}
+    {{ image | image_url: width: 2000 | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500, 2000', sizes: '(max-width: 749px) 100vw, 50vw' }}
+  {% elsif request.design_mode %}
+    <div class="vn-fanny__placeholder">{{ 'product-1' | placeholder_svg_tag }}<span>{{ label | escape }} — select media</span></div>
+  {% endif %}
+</div>

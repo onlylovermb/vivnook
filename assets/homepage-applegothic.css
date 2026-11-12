@@ -1,0 +1,11 @@
+body.template-index,
+body.template-index * {
+  font-family: AppleGothic, "Apple Gothic", Arial, sans-serif !important;
+}
+
+body.template-index .btn,
+body.template-index .button,
+body.template-index a.button {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
