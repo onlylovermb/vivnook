@@ -161,7 +161,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
           this.elements.activationEmail.value = profile.email;
           this.lastIdentityId = identity.id;
           this.setStage('activated');
-          this.scheduleBadgeDownloadPreparation();
           this.announce(`Welcome back, ${profile.displayName}. Your identity has been restored.`);
         } catch { this.announce('Your Profile is saved, but the badge artwork could not be restored. Please refresh to try again.'); }
         finally { if (revision === this.profileRevision) this.profilePending = false; }
@@ -549,7 +548,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
             this.elements.name.textContent = member.firstName;
             this.emit('vivnook:identity-claimed', { identity: this.selectedIdentity });
             this.setStage('activated');
-            this.scheduleBadgeDownloadPreparation();
             this.announce(`Welcome to The Nook, ${member.firstName}.`);
             return;
           }
@@ -590,7 +588,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
           this.emit('vivnook:identity-claimed', { identity: this.selectedIdentity });
           // Profile consumers read the shared abstraction. Never broadcast email/consent globally.
           this.setStage('activated');
-          this.scheduleBadgeDownloadPreparation();
           this.announce(`Welcome to The Nook, ${member.firstName}.`);
         } catch (error) {
           this.elements.activationError.textContent = error.message || 'We could not activate your badge right now. Please try again.';
@@ -615,11 +612,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         const artworkFilename = identity && (identity.assets?.badge_front_high_res || identity.download_image || this.getArtworkFilename(identity));
         if (!identity || !badgeName || !artworkFilename) return null;
         return { identity, badgeName, artworkFilename, key: `${identity.id}:${badgeName}:${artworkFilename}` };
-      }
-
-      scheduleBadgeDownloadPreparation() {
-        const schedule = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 500));
-        schedule(() => void this.prepareBadgeDownload().catch(() => null));
       }
 
       prepareBadgeDownload() {
