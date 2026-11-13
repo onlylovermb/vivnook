@@ -14,36 +14,6 @@
       return;
     }
 
-    const trigger = event.target.closest?.('.tops-quantity__trigger');
-    if (trigger) {
-      const quantity = trigger.closest('.product-form__quantity .quantity');
-      const root = trigger.closest(selector);
-      const menu = quantity?.querySelector('.tops-quantity__menu');
-      if (root && menu) {
-        event.preventDefault();
-        event.stopPropagation();
-        menu.hidden = !menu.hidden;
-        trigger.setAttribute('aria-expanded', String(!menu.hidden));
-      }
-      return;
-    }
-    const option = event.target.closest?.('.tops-quantity__menu [data-quantity]');
-    if (!option) return;
-    const quantity = option.closest('.product-form__quantity .quantity');
-    const root = option.closest(selector);
-    const input = quantity?.querySelector('input[name="quantity"]') || root?.querySelector('.product-form__quantity input[name="quantity"]');
-    const quantityTrigger = quantity?.querySelector('.tops-quantity__trigger');
-    if (!root || !quantity || !quantityTrigger) return;
-    event.preventDefault();
-    event.stopPropagation();
-    if (input) {
-      input.value = option.dataset.quantity;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-    const value = quantityTrigger.querySelector('strong');
-    if (value) value.textContent = option.dataset.quantity;
-    option.closest('.tops-quantity__menu').hidden = true;
-    quantityTrigger.setAttribute('aria-expanded', 'false');
   });
   const cartRequest = async () => {
     const response = await fetch(`${FoxTheme.routes.cart_url}.js?_=${Date.now()}`, {
@@ -67,25 +37,6 @@
   function enhance() {
     const root = document.querySelector(selector);
     if (!root) return;
-    const quantity = root.querySelector('.product-form__quantity .quantity');
-    if (quantity && !quantity.dataset.lookQuantityReady) {
-      quantity.dataset.lookQuantityReady = 'true';
-      const input = quantity.querySelector('input[name="quantity"]');
-      const current = input?.value || '1';
-      quantity.innerHTML = `<button type="button" class="tops-quantity__trigger" aria-haspopup="listbox" aria-expanded="false"><span>Qty:</span><strong>${current}</strong><span class="tops-quantity__caret" aria-hidden="true"></span></button><div class="tops-quantity__menu" role="listbox" hidden>${Array.from({length:9},(_,i)=>`<button type="button" role="option" data-quantity="${i+1}">${i+1}</button>`).join('')}</div>`;
-      quantity.append(input);
-      const trigger = quantity.querySelector('.tops-quantity__trigger');
-      const menu = quantity.querySelector('.tops-quantity__menu');
-      const value = trigger.querySelector('strong');
-      trigger.addEventListener('click', event => {
-        event.preventDefault();
-        event.stopPropagation();
-        menu.hidden = !menu.hidden;
-        trigger.setAttribute('aria-expanded', String(!menu.hidden));
-      });
-      menu.addEventListener('click', event => { const option = event.target.closest('[data-quantity]'); if (!option) return; input.value = option.dataset.quantity; value.textContent = option.dataset.quantity; menu.hidden = true; trigger.setAttribute('aria-expanded','false'); input.dispatchEvent(new Event('change',{bubbles:true})); });
-      document.addEventListener('click', event => { if (!quantity.contains(event.target)) { menu.hidden = true; trigger.setAttribute('aria-expanded','false'); } });
-    }
     const picker = root.querySelector('.product__block--variant_picker');
     if (root.matches('[data-url*="scrub-top"], [data-url*="scrub-pants"]') && picker && !picker.querySelector('.tops-find-size')) {
       const button = document.createElement('button');

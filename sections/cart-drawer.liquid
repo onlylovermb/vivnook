@@ -626,20 +626,6 @@
                           {% endif %}
 
                           {%- unless is_gift_wrap_item -%}
-                            {%- if is_standalone_look_product -%}
-                              {%- liquid
-                                assign standalone_quantity_max = 10
-                                if item.quantity > standalone_quantity_max
-                                  assign standalone_quantity_max = item.quantity
-                                endif
-                                if item.variant.quantity_rule.max != null and item.variant.quantity_rule.max > standalone_quantity_max
-                                  assign standalone_quantity_max = item.variant.quantity_rule.max
-                                endif
-                              -%}
-                              <label class="standalone-quantity-wrap"><span>Qty:</span><select class="standalone-quantity-select" name="updates[]" aria-label="Quantity for {{ item.product.title | escape }}" data-index="{{ item.index | plus: 1 }}">
-                                {%- for quantity_option in (1..standalone_quantity_max) -%}<option value="{{ quantity_option }}"{% if quantity_option == item.quantity %} selected{% endif %}>{{ quantity_option }}</option>{%- endfor -%}
-                              </select></label>
-                            {%- endif -%}
                             <quantity-input class="cart-quantity quantity">
                               <label class="visually-hidden" for="Quantity-{{ section.id }}-{{ item.index | plus: 1 }}"></label>
                               <button type="button" name="minus" class="quantity__button" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">

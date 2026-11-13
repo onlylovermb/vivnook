@@ -458,7 +458,7 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
   @media (hover: hover) {
     :is(.vivnook-embroidery__entry-card, .vivnook-cart-embroidery-link):enabled:hover,
     .tops-look [data-look-select]:enabled:hover,
-    [data-vivnook-product-layout] :is(.look-quantity-select, .quantity):has(> :is(.look-quantity-select__trigger, .tops-quantity__trigger, .quantity__button):enabled:hover),
+    [data-vivnook-product-layout] .look-quantity-select:has(> .look-quantity-select__trigger:enabled:hover),
     product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"]:not(:checked, :disabled, .disabled, [aria-disabled="true"]) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]):hover,
     product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value li:not(.disabled, .sold-out, .globo-out-of-stock, [aria-disabled="true"]):not(:has(input:is(:checked, :disabled, .disabled, [aria-disabled="true"]))) .swatch-anchor:not(.disabled, .sold-out, [aria-disabled="true"]):hover {
       background-color: var(--secondary-action-hover-background) !important;
@@ -655,8 +655,8 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
   }
 
   [data-vivnook-product-layout] .product-form__buttons :is(
-    .product-form__submit, .product-form__quantity, .quantity, .quantity__button,
-    .quantity__input, .tops-quantity__trigger, .look-quantity-select, .look-quantity-select__trigger
+    .product-form__submit, .product-form__quantity, .quantity,
+    .tops-quantity__trigger, .look-quantity-select, .look-quantity-select__trigger
   ) {
     box-sizing: border-box;
     height: var(--product-purchase-height) !important;
@@ -772,4 +772,78 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
 .header__menu [data-scrubs-dropdown] > .dropdown .dropdown__nav > li > p > a:is(:hover, :focus-visible) {
   background-color: #f8edf0;
   color: #851238;
+}
+
+/* Use the same glyph and click area for every quantity stepper. */
+@layer vivnook-button-colors {
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:not(.cart-quantity-gift-wrap) > .quantity__button {
+    display: grid !important;
+    place-items: center;
+    width: 32px !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:not(.cart-quantity-gift-wrap) > .quantity__input {
+    padding-inline: 32px !important;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:not(.cart-quantity-gift-wrap) > .quantity__button > svg {
+    display: none !important;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:not(.cart-quantity-gift-wrap) > .quantity__button::before {
+    content: "";
+    grid-area: 1 / 1;
+    width: 12px;
+    height: 1.5px;
+    background-color: currentColor;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:not(.cart-quantity-gift-wrap) > .quantity__button[name="plus"]::after {
+    content: "";
+    grid-area: 1 / 1;
+    width: 1.5px;
+    height: 12px;
+    background-color: currentColor;
+  }
+}
+
+/* Paint the frame and hover fill on the same box. Children fit inside its border. */
+@layer vivnook-button-colors {
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:has(> .quantity__input):not(.cart-quantity-gift-wrap) {
+    box-sizing: border-box;
+    border: 1px solid var(--product-control-border, #b8b8b8) !important;
+    box-shadow: none !important;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:has(> .quantity__input):not(.cart-quantity-gift-wrap) > :is(.quantity__button, .quantity__input) {
+    box-sizing: border-box;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+    .quantity:has(> .quantity__input):not(.cart-quantity-gift-wrap) > :is(.quantity__button, .quantity__input):focus-visible {
+    outline: 2px solid currentColor !important;
+    outline-offset: -4px;
+  }
+
+  @media (hover: hover) {
+    :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)
+      .quantity:not(.cart-quantity-gift-wrap):has(> :is(.quantity__input, .quantity__button):enabled:hover) {
+      background-color: var(--secondary-action-hover-background, #fff0f4) !important;
+    }
+  }
 }

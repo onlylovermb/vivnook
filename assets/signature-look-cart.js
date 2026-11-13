@@ -47,9 +47,6 @@
   const groupMarkup = (instance, items) => {
     const quantity = Number(items[0].dataset.quantity || 1);
     const total = items.reduce((sum, item) => sum + Number(item.dataset.finalLinePrice || 0), 0);
-    const quantityOptions = Array.from({ length: 10 }, (_, index) => index + 1)
-      .map((value) => `<button type="button" class="signature-look-cart-group__quantity-option${value === quantity ? ' is-selected' : ''}" data-signature-look-quantity="${value}">${value}</button>`)
-      .join('');
     const group = document.createElement('li');
     group.className = 'signature-look-cart-group';
     group.dataset.signatureLookGroup = instance;
@@ -66,13 +63,10 @@
       </div>
       <ul class="signature-look-cart-group__members" aria-label="Items included in The Look"></ul>
       <div class="signature-look-cart-group__actions">
-        <div class="signature-look-cart-group__quantity-select">
-          <button type="button" class="signature-look-cart-group__quantity-toggle" data-signature-look-quantity-toggle aria-haspopup="listbox" aria-expanded="false">
-          <span>Qty:</span>
-          <span class="signature-look-cart-group__quantity-value">${quantity}</span>
-          <span class="signature-look-cart-group__quantity-caret" aria-hidden="true"></span>
-          </button>
-          <div class="signature-look-cart-group__quantity-menu" role="listbox" hidden>${quantityOptions}</div>
+        <div class="quantity signature-look-cart-group__quantity">
+          <button type="button" class="quantity__button" name="minus" aria-label="Decrease quantity">−</button>
+          <input type="number" class="quantity__input" data-signature-look-quantity min="1" step="1" required inputmode="numeric" aria-label="The Look quantity" value="${quantity}">
+          <button type="button" class="quantity__button" name="plus" aria-label="Increase quantity">+</button>
         </div>
         <span class="signature-look-cart-group__price">${formatMoney(total)}</span>
       </div>`;
@@ -199,6 +193,8 @@
       FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart });
     } catch (error) {
       window.alert(error.message || 'Unable to update THE LOOK. Please try again.');
+      const input = group.querySelector('[data-signature-look-quantity]');
+      if (input) input.value = input.defaultValue;
       group.removeAttribute('aria-busy');
     } finally {
       updating = false;
@@ -213,24 +209,15 @@
       return;
     }
     const group = event.target.closest('[data-signature-look-group]');
-    const quantityToggle = event.target.closest('[data-signature-look-quantity-toggle]');
-    const quantityOption = event.target.closest('[data-signature-look-quantity]');
-    if (quantityToggle) {
-      const menu = quantityToggle.closest('.signature-look-cart-group__quantity-select')?.querySelector('.signature-look-cart-group__quantity-menu');
-      const shouldOpen = menu?.hidden;
-      document.querySelectorAll('.signature-look-cart-group__quantity-menu').forEach((item) => { item.hidden = true; });
-      document.querySelectorAll('[data-signature-look-quantity-toggle]').forEach((item) => item.setAttribute('aria-expanded', 'false'));
-      if (menu && shouldOpen) { menu.hidden = false; quantityToggle.setAttribute('aria-expanded', 'true'); }
-      return;
-    }
-    if (quantityOption && group) {
-      const quantity = Number(quantityOption.dataset.signatureLookQuantity);
-      if (Number.isSafeInteger(quantity) && quantity > 0) updateGroup(group, quantity);
-      return;
-    }
-    if (!group) {
-      document.querySelectorAll('.signature-look-cart-group__quantity-menu').forEach((item) => { item.hidden = true; });
-      document.querySelectorAll('[data-signature-look-quantity-toggle]').forEach((item) => item.setAttribute('aria-expanded', 'false'));
+    if (!group) return;
+    const stepButton = event.target.closest('.signature-look-cart-group__quantity .quantity__button');
+    if (stepButton) {
+      if (updating) return;
+      const input = group.querySelector('[data-signature-look-quantity]');
+      const previous = input.value;
+      if (stepButton.name === 'plus') input.stepUp();
+      else input.stepDown();
+      if (input.value !== previous) input.dispatchEvent(new Event('change', { bubbles: true }));
       return;
     }
     const remove = event.target.closest('[data-signature-look-remove]');
@@ -239,6 +226,19 @@
     if (remove) {
       updateGroup(group, 0);
     }
+  });
+
+  document.addEventListener('change', (event) => {
+    const input = event.target.closest('[data-signature-look-quantity]');
+    if (!input) return;
+    const group = input.closest('[data-signature-look-group]');
+    const previous = Number(group.querySelector(MEMBER_SELECTOR)?.dataset.quantity || 1);
+    const quantity = input.valueAsNumber;
+    if (!input.validity.valid || !Number.isSafeInteger(quantity) || updating) {
+      input.value = previous;
+      return;
+    }
+    if (quantity !== previous) updateGroup(group, quantity);
   });
 
   document.addEventListener('cart:updated', (event) => buildGroups(event.detail?.cart));

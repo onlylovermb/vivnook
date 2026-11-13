@@ -1,49 +1,4 @@
 (() => {
-  // Delegate the quantity interaction so it survives Shopify/app DOM rebuilds.
-  if (!window.vivnookLookQuantityDelegated) {
-    window.vivnookLookQuantityDelegated = true;
-    document.addEventListener('click', (event) => {
-      const trigger = event.target.closest?.('.look-quantity-select__trigger');
-      if (trigger) {
-        const picker = trigger.closest('[data-look-quantity-picker]');
-        const menu = picker?.querySelector('.look-quantity-select__menu');
-        if (!menu) return;
-        event.preventDefault();
-        event.stopPropagation();
-        const willOpen = menu.hidden;
-        document.querySelectorAll('.look-quantity-select__menu').forEach((m) => {
-          if (m !== menu) {
-            m.hidden = true;
-            m.closest('[data-look-quantity-picker]')?.querySelector('.look-quantity-select__trigger')?.setAttribute('aria-expanded', 'false');
-          }
-        });
-        menu.hidden = !willOpen;
-        trigger.setAttribute('aria-expanded', String(willOpen));
-        return;
-      }
-      const option = event.target.closest?.('[data-look-quantity-option]');
-      if (option) {
-        const picker = option.closest('[data-look-quantity-picker]');
-        const select = picker?.querySelector('select[name="quantity"]');
-        const value = picker?.querySelector('[data-look-quantity-value]');
-        const quantityTrigger = picker?.querySelector('.look-quantity-select__trigger');
-        const menu = picker?.querySelector('.look-quantity-select__menu');
-        if (!picker || !select || !quantityTrigger || !menu) return;
-        event.preventDefault();
-        event.stopPropagation();
-        select.value = option.dataset.lookQuantityOption;
-        if (value) value.textContent = select.value;
-        select.dispatchEvent(new Event('change', { bubbles: true }));
-        menu.hidden = true;
-        quantityTrigger.setAttribute('aria-expanded', 'false');
-        return;
-      }
-      document.querySelectorAll('.look-quantity-select__menu:not([hidden])').forEach((menu) => {
-        menu.hidden = true;
-        menu.closest('[data-look-quantity-picker]')?.querySelector('.look-quantity-select__trigger')?.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
   const initialize = (scope = document) => {
     scope.querySelectorAll('[data-look-design], product-info[data-url*="scrub-pants"], product-info[data-url="/products/scrub-top"]').forEach((root) => {
       if (root.dataset.lookInitialized) return;

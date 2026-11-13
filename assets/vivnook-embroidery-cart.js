@@ -272,18 +272,20 @@
   };
 
   const handleQuantityChange = (event) => {
-    const standaloneSelect = event.target.closest('.standalone-quantity-select');
+    const standaloneSelect = event.target.closest('.cart-item--standalone-look-product .cart-quantity input');
     if (standaloneSelect) {
       const standaloneItem = standaloneSelect.closest('.cart-item[data-cart-item-key]');
       const groupId = standaloneItem?.dataset.embroideryGroupId;
-      const quantity = Number.parseInt(standaloneSelect.value, 10);
-      if (!standaloneItem || !Number.isSafeInteger(quantity) || quantity < 1) return;
+      const quantity = standaloneSelect.valueAsNumber;
+      event.stopImmediatePropagation();
+      if (!standaloneItem || !standaloneSelect.validity.valid || !Number.isSafeInteger(quantity) || quantity < 0) {
+        standaloneSelect.value = standaloneSelect.defaultValue;
+        return;
+      }
       if (!groupId) {
-        event.stopImmediatePropagation();
         updateGroup({ [standaloneItem.dataset.cartItemKey]: quantity }, standaloneSelect);
         return;
       }
-      event.stopImmediatePropagation();
       const updates = {};
       const sourceLookInstance = standaloneItem.dataset.signatureLookInstance || '';
       const sourceIsInsideLook = Boolean(standaloneItem.closest('.signature-look-cart-group'));
@@ -292,7 +294,7 @@
         Boolean(member.closest('.signature-look-cart-group')) === sourceIsInsideLook
       ).forEach((member) => {
         const policy = SERVICE_QUANTITY_POLICY[member.dataset.embroideryServiceType];
-        updates[member.dataset.cartItemKey] = policy === 'perGroup' ? 1 : quantity;
+        updates[member.dataset.cartItemKey] = policy === 'perGroup' && quantity > 0 ? 1 : quantity;
       });
       updateGroup(updates, standaloneSelect);
       return;
@@ -314,7 +316,7 @@
       const updates = {};
       uniqueItems(groupItems(item.dataset.embroideryGroupId)).forEach((member) => {
         const policy = SERVICE_QUANTITY_POLICY[member.dataset.embroideryServiceType];
-        updates[member.dataset.cartItemKey] = policy === 'perGroup' ? 1 : quantity;
+        updates[member.dataset.cartItemKey] = policy === 'perGroup' && quantity > 0 ? 1 : quantity;
       });
       updateGroup(updates, input);
     }, 300));
@@ -453,88 +455,6 @@
     updateDiscounts(discountCodesFromDrawer(button.closest('.cart__discount')), button);
   };
 
-  const toggleStandaloneQuantityMenu = (event) => {
-    // Custom select triggers and options handle their own clicks. Let them
-    // reach the target before the legacy capture handler stops propagation.
-    if (event.target.closest('.standalone-quantity-wrap')) return;
-    const standalone = event.target.closest('.cart-item--standalone-look-product');
-    const quantity = standalone?.querySelector('.cart-item__action .cart-quantity');
-    if (!standalone || !quantity) return;
-    if (event.target.closest('.standalone-quantity-select')) return;
-    if (!event.target.closest('.cart-item__action')) return;
-    event.stopImmediatePropagation();
-    event.stopPropagation();
-    const arrow = event.target.closest('.cart-quantity');
-    if (!arrow) return;
-    event.preventDefault();
-    let menu = quantity.querySelector('.standalone-quantity-menu');
-    if (!menu) {
-      menu = document.createElement('div');
-      menu.className = 'standalone-quantity-menu';
-      menu.innerHTML = Array.from({ length: 9 }, (_, index) => `<button type="button" data-standalone-quantity="${index + 1}">${index + 1}</button>`).join('');
-      quantity.appendChild(menu);
-      menu.hidden = false;
-      return;
-    }
-    const option = event.target.closest('[data-standalone-quantity]');
-    if (option) {
-      const input = quantity.querySelector('.quantity__input');
-      input.value = option.dataset.standaloneQuantity;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-      menu.remove();
-    } else {
-      document.querySelectorAll('.standalone-quantity-menu').forEach((item) => { if (item !== menu) item.remove(); });
-      menu.hidden = !menu.hidden;
-    }
-  };
-
-  const enhanceStandaloneQuantitySelects = () => {
-    document.querySelectorAll('.standalone-quantity-select').forEach((select) => {
-      if (select.dataset.customQuantityReady) return;
-      const wrap = select.closest('.standalone-quantity-wrap');
-      if (!wrap) return;
-      select.dataset.customQuantityReady = 'true';
-      select.hidden = true;
-      const trigger = document.createElement('button');
-      trigger.type = 'button';
-      trigger.className = 'standalone-quantity-trigger';
-      trigger.textContent = select.value;
-      trigger.setAttribute('aria-label', select.getAttribute('aria-label') || 'Quantity');
-      trigger.setAttribute('aria-haspopup', 'listbox');
-      trigger.setAttribute('aria-expanded', 'false');
-      const menu = document.createElement('div');
-      menu.className = 'standalone-quantity-menu';
-      menu.hidden = true;
-      menu.setAttribute('role', 'listbox');
-      [...select.options].filter((option) => Number(option.value) >= 1 && Number(option.value) <= 9).forEach((option) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.textContent = option.textContent;
-        button.dataset.standaloneQuantity = option.value;
-        button.setAttribute('role', 'option');
-        menu.appendChild(button);
-      });
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        document.querySelectorAll('.standalone-quantity-menu').forEach((other) => { if (other !== menu) other.hidden = true; });
-        menu.hidden = !menu.hidden;
-        trigger.setAttribute('aria-expanded', String(!menu.hidden));
-      });
-      menu.addEventListener('click', (event) => {
-        const option = event.target.closest('[data-standalone-quantity]');
-        if (!option) return;
-        select.value = option.dataset.standaloneQuantity;
-        trigger.textContent = select.value;
-        menu.hidden = true;
-        trigger.setAttribute('aria-expanded', 'false');
-        select.dispatchEvent(new Event('change', { bubbles: true }));
-      });
-      wrap.insertBefore(trigger, select);
-      wrap.appendChild(menu);
-    });
-  };
-
   const removeLegacyDigitizationFees = () => {
     const updates = {};
     document.querySelectorAll('.cart-item[data-embroidery-service-type="LOGO_DIGITIZATION"][data-cart-item-key]').forEach((item) => {
@@ -582,15 +502,12 @@
   }, true);
   document.addEventListener('submit', handleDiscountSubmit, true);
   document.addEventListener('click', handleDiscountRemove, true);
-  document.addEventListener('click', toggleStandaloneQuantityMenu, true);
   document.addEventListener('cart:updated', () => {
-    enhanceStandaloneQuantitySelects();
     observeCartRegions();
     document.querySelectorAll(CART_REGION_SELECTOR).forEach(scheduleArrange);
   });
   document.addEventListener('shopify:section:load', (event) => { observeCartRegions(event.target); });
   observeCartRegions();
-  enhanceStandaloneQuantitySelects();
   removeLegacyDigitizationFees();
 
   const saveConfiguration = async (root, configuration) => {

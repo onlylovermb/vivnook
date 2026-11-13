@@ -115,12 +115,6 @@ product-info[data-url="/products/scrub-top"] .product-form__buttons{display:grid
 product-info[data-url="/products/scrub-top"] .product-form__buttons .tpo_option-set-wrapper{display:none!important;}
 product-info[data-url="/products/scrub-top"] .product-form__quantity{display:block!important;flex:0 0 32%;}
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity{display:flex;align-items:center;justify-content:space-between;width:100%;height:80px;min-height:80px;border:1px solid #555;border-radius:8px;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button{display:flex;align-items:center;justify-content:center;width:64px;height:100%;padding:0;border:0;background:transparent;color:#111;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button{display:none;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::before{content:"Qty:";font-size:18px;margin-left:26px;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::after{content:"";width:0;height:0;margin-right:22px;border-left:11px solid transparent;border-right:11px solid transparent;border-top:14px solid #222;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__button svg{width:22px;height:22px;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__input{flex:0 0 48px!important;width:48px!important;height:100%;padding:0!important;border:0!important;box-shadow:none!important;outline:0!important;background:transparent!important;text-align:center;font-size:22px;}
 product-info[data-url="/products/scrub-top"] .product-form__submit{width:100%;background:#881337!important;color:#fff!important;border:0;border-radius:8px!important;min-height:80px;font-size:28px;font-weight:700;}
 product-info[data-url="/products/scrub-top"] .tops-shipping{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin:0 0 30px;}
 product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(.tops-shipping){margin-top:-16px!important;}
@@ -181,9 +175,6 @@ product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-card{min
 product-info[data-url="/products/scrub-top"] .product-form__buttons{gap:calc(12px * var(--tops-scale));padding-top:0;margin-top:calc(32px * var(--tops-scale));}
 product-info[data-url="/products/scrub-top"] .product-form__buttons .product-form__buttons{display:flex;margin:0;padding:0;}
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity,product-info[data-url="/products/scrub-top"] .product-form__submit{height:calc(47px * var(--tops-scale));min-height:calc(47px * var(--tops-scale));border-radius:4px!important;font-size:calc(16px * var(--tops-scale));}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::before{font-size:calc(16px * var(--tops-scale));margin-left:12px;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity::after{margin-right:12px;border-left-width:6px;border-right-width:6px;border-top-width:7px;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity__input{flex:1 1 auto!important;width:2ch!important;min-width:0;font-size:calc(16px * var(--tops-scale));}
 product-info[data-url="/products/scrub-top"] .tops-shipping{font-size:calc(16px * var(--tops-scale));}
 }
 @media(min-width:1600px){product-info[data-url="/products/scrub-top"]{--tops-scale:1;}}
@@ -280,7 +271,6 @@ product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:h
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:has(.tops-quantity__menu)::after{display:none!important;}
 product-info[data-url="/products/scrub-top"] .tops-quantity__trigger{font-size:12px!important;font-weight:400!important;}
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity{position:relative;}
-product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity>input[name="quantity"]{display:none!important;}
 product-info[data-url="/products/scrub-top"] .tops-quantity__trigger strong{font-weight:400;}
 product-info[data-url="/products/scrub-top"] .tops-quantity__caret{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #242424;}
 product-info[data-url="/products/scrub-top"] .tops-quantity__menu{position:absolute;z-index:20;left:50%;right:auto;top:100%;bottom:auto;width:100%!important;left:0!important;right:0!important;transform:none!important;transform:translateX(-50%);display:grid;border:.5px solid #707070;background:#fff;}
@@ -502,7 +492,6 @@ product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[d
 product-info[data-url*="scrub-pants"] .globo-swatch-product-detail .swatch--gl[data-option-index="1"] .value li:has(input:checked) .swatch-anchor{border:1px solid #111;background:#000;color:#fff;padding:0;}
 /* Use the same compact quantity dropdown as Scrub Tops on the fanny pack page. */
 product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:47px;border:1px solid #2f2f2f;border-radius:4px;background:#fff;}
-product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity>input[name="quantity"]{display:none!important;}
 product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product-form__quantity .quantity .tops-quantity__trigger{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;height:100%;padding:0;border:0;background:transparent;font:400 16px/1.2 var(--font-body-family);cursor:pointer;}
 product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__trigger strong{font-weight:400;}
 product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .tops-quantity__caret{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #242424;}
@@ -685,13 +674,6 @@ product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-price > 
   }
 }
 @media(max-width:767px){
-  body.product-template.fanny-pack .product-form__buttons input[type="number"],
-  body.product-template.fanny-pack .product-form__buttons input[name="quantity"]{
-    display:none!important;
-    visibility:hidden!important;
-    width:0!important;
-    height:0!important;
-  }
   body.product-template.fanny-pack .product-form__buttons quantity-input.quantity,
   body.product-template.fanny-pack .product-form__buttons .quantity-input.quantity{
     position:relative!important;
@@ -775,8 +757,7 @@ product-info[data-url="/products/scrub-top"] .vivnook-embroidery__entry-price > 
   }
 }
 @media(max-width:767px){
-  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .tpo_option-set-wrapper,
-  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .quantity>input[name="quantity"]{
+  product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .tpo_option-set-wrapper{
     display:none!important;
   }
   product-info:is([data-url*="fanny-bag"],[data-url*="fanny-pack"]) .product__block--buy_buttons .product-form__buttons,
@@ -1082,10 +1063,6 @@ product-info[data-url*="scrub-pants"] .product-form__buttons > .tpo_option-set-w
   }
 }
 @media (max-width: 767px){
-  product-info[data-url*="scrub-pants"] .product-form__buttons .quantity__input,
-  product-info[data-url*="scrub-pants"] .product-form__buttons input[name="quantity"]{
-    display:none!important;
-  }
   product-info[data-url*="scrub-pants"] .product-form__buttons .tops-quantity__trigger{
     position:relative!important;
     z-index:2!important;
