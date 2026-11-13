@@ -76,3 +76,23 @@
 /* The Look: constrain the right lower copy separately from its image. */
 #MainContent .vivnook-product-video-split__product h2,#MainContent .vivnook-product-video-split__product p{width:100%;max-width:var(--pvs-right-text-width,520px)!important;margin-left:auto!important;margin-right:auto!important}
 @media(max-width:749px){#MainContent .vivnook-product-video-split__product h2,#MainContent .vivnook-product-video-split__product p{max-width:var(--pvs-right-text-width-mobile,330px)!important}}
+
+#MainContent .vivnook-product-video-split--work-system {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+@media (max-width: 749px) {
+  #MainContent .vivnook-product-video-split--work-system {
+    height: auto !important;
+  }
+
+  .vivnook-product-video-split--work-system .vivnook-product-video-split__media {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .vivnook-product-video-split--work-system :is(.vivnook-product-video-split__product, .vivnook-product-video-split__product-inner) {
+    height: auto;
+  }
+}

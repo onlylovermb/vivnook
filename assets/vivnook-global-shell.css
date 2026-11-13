@@ -6,6 +6,27 @@
 .vivnook-fabric-lab,.vivnook-fabric-lab *,.vivnook-atelier-concierge,.vivnook-atelier-concierge *,.vivnook-finale-banner,.vivnook-finale-banner *{font-family:'Open Sans',Arial,sans-serif!important}
 @media(min-width:750px){.vivnook-fabric-lab{height:auto!important;min-height:min(56.25vw,960px)!important;align-items:stretch!important}.vivnook-fabric-lab__left{height:auto!important}.vivnook-fabric-lab__image{height:auto!important;min-height:100%!important;align-self:stretch!important}}
 
+@layer vivnook-button-colors {
+  .tops-look [data-look-select] {
+    box-sizing: border-box;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding-block: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .tops-look [data-look-select],
+  .tops-look .tops-look__strike-text {
+    font-size: 11px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 /* Style the expanded picker while preserving native form and keyboard behavior. */
 @supports (appearance: base-select) and selector(select::picker(select)) {
   select:not([multiple], [size], [hidden], .localization-selector) {
@@ -35,6 +56,45 @@
     white-space: normal;
   }
 
+  @layer vivnook-button-colors {
+    .tops-look [data-look-select] {
+      display: flex !important;
+      align-items: center;
+      gap: 4px;
+      padding: 0 6px !important;
+      background-image: none !important;
+      line-height: 1.2;
+    }
+  }
+
+  .tops-look [data-look-select] > button {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  .tops-look [data-look-select]::picker-icon {
+    flex: none;
+    margin: 0;
+  }
+
+  .tops-look [data-look-select] selectedcontent {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .tops-look [data-look-select] option + option {
+    margin-block-start: 2px;
+  }
+
   select:not([multiple], [size], [hidden], .localization-selector) option:checked {
     background: #f8edf0;
     color: #851238;
@@ -53,6 +113,10 @@
 
 /* Shared appearance for quantity menus whose positioning is set by each component. */
 @layer vivnook-quantity-appearance {
+  [data-vivnook-product-layout] :is(.look-quantity-select__trigger, .tops-quantity__trigger) > strong {
+    font-size: 14px !important;
+  }
+
   :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu):not([hidden]) {
     padding: 4px !important;
     border: 1px solid #e3dedb !important;
@@ -63,11 +127,20 @@
   }
 
   :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu) button {
-    min-height: 34px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    padding-block: 0 !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
     border: 0 !important;
     border-radius: 4px !important;
     background: transparent !important;
     color: #292929 !important;
+  }
+
+  :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu) button + button {
+    margin-block-start: 4px !important;
   }
 
   :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu) button:is(:hover, :focus-visible, [aria-selected="true"]) {
@@ -82,13 +155,9 @@
   }
 }
 
-/* Align the outer cart button with the header's logo inset. */
+/* Align the right-hand controls with the header's logo inset. */
 .header-section .header__icons--right .header__buttons {
   margin-inline-end: 0;
-}
-
-.header-section .header-mobile--left .header__icons--right .cart-drawer-button {
-  order: 1;
 }
 
 /* The homepage hero is full width; services, identity card, and FAQ set their own gutters. */
@@ -102,6 +171,11 @@ body.product-template #MainContent,
   #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section:not(:has(.vivnook-atelier-concierge, .vivnook-identity-card-generator, .vivnook-faq-contact)) {
     padding-inline: 40px;
   }
+}
+
+body.product-template .vivnook-finale-banner__details--separate {
+  margin-inline: auto;
+  text-align: center;
 }
 
 /* Separate the last content section from the footer group. */
@@ -169,7 +243,7 @@ body.product-template #MainContent,
 
 /* Shared action colors take precedence over legacy component overrides. */
 @layer vivnook-button-colors {
-  :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button) {
+  :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .vivnook-scrubs-feature__content > a, .vivnook-faq-contact__intro > a) {
     --action-background: #a1264e;
     --action-foreground: #fff;
     --action-border: #a1264e;
@@ -191,9 +265,14 @@ body.product-template #MainContent,
     border-color: var(--action-border) !important;
   }
 
+  product-info :is(.tops-find-size, .look-find-size),
+  product-info :is(.tops-find-size, .look-find-size) > span:first-child {
+    text-transform: none !important;
+  }
+
   product-info :is(.tops-find-size, .look-find-size):not(.sticky-atc-bar .product-form__submit) {
-    --action-border: var(--size-option-border);
-    --action-hover-border: var(--size-option-border);
+    --action-border: var(--product-control-border);
+    --action-hover-border: var(--product-control-border);
   }
 
   [data-vivnook-product-layout] .product-form__submit {
@@ -203,6 +282,48 @@ body.product-template #MainContent,
     --action-hover-background: #68102e;
     --action-hover-foreground: #fff;
     --action-hover-border: #68102e;
+  }
+
+  [data-vivnook-product-layout] :is(.product-form__submit, [data-look-add]) {
+    --action-border: var(--product-control-border);
+    --action-hover-border: var(--product-control-border);
+    border: 1px solid var(--product-control-border) !important;
+  }
+
+  [data-vivnook-product-layout] :is(
+    .look-quantity-select,
+    .quantity,
+    [data-look-select]
+  ) {
+    border: 1px solid var(--product-control-border) !important;
+  }
+
+  [data-vivnook-product-layout] .quantity,
+  [data-vivnook-product-layout] .quantity__input:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+
+  [data-vivnook-product-layout] .look-quantity-select__trigger {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .has-dropdown-menu [data-vivnook-product-layout] .look-quantity-select {
+    z-index: 0 !important;
+  }
+
+  [data-vivnook-product-layout] .quantity .tops-quantity__trigger {
+    border: 0 !important;
+  }
+
+  [data-vivnook-product-layout] :is(.tops-quantity__menu, .look-quantity-select__menu):not([hidden]) {
+    border-color: var(--product-control-border) !important;
+  }
+
+  @supports selector(select::picker(select)) {
+    [data-vivnook-product-layout] [data-look-select]::picker(select) {
+      border-color: var(--product-control-border);
+    }
   }
 
   :is(.btn--primary, .btn--secondary)::before,
@@ -216,15 +337,15 @@ body.product-template #MainContent,
   }
 
   @media (hover: hover) {
-    :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .open-size-chart, .tops-find-size, .look-find-size, .about-features__learn):not(:disabled, [aria-disabled="true"], .disabled):hover {
+    :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .vivnook-scrubs-feature__content > a, .vivnook-faq-contact__intro > a, .open-size-chart, .tops-find-size, .look-find-size, .about-features__learn):not(:disabled, [aria-disabled="true"], .disabled):hover {
       background-color: var(--action-hover-background) !important;
       color: var(--action-hover-foreground) !important;
       border-color: var(--action-hover-border, var(--action-hover-foreground, var(--action-border))) !important;
       filter: none !important;
     }
 
-    :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button):not(:disabled, [aria-disabled="true"], .disabled):hover {
-      border-color: var(--action-hover-background) !important;
+    :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .vivnook-scrubs-feature__content > a, .vivnook-faq-contact__intro > a):not(:disabled, [aria-disabled="true"], .disabled):hover {
+      border-color: var(--action-hover-border, var(--action-hover-background)) !important;
     }
 
     .product-form__input--button:not(.look-size__options, [data-vivnook-recommendation-anchor], [data-vivnook-size-options]) input:not(:checked, :disabled, .disabled) + label:not(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):hover {
@@ -239,6 +360,7 @@ body.product-template #MainContent,
 }
 
 :root {
+  --product-control-border: #b8b8b8;
   --secondary-action-hover-background: #f8edf0;
   --secondary-action-hover-foreground: #851238;
 }
@@ -246,7 +368,6 @@ body.product-template #MainContent,
 /* Share dimensions between the size options and the sizing action. */
 product-info {
   --size-option-height: 27px;
-  --size-option-border: #b8b8b8;
   --size-option-active-background: #a1264e;
   --size-option-radius: 4px;
 }
@@ -276,7 +397,7 @@ product-info {
 
   product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"] + label,
   product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value .swatch-anchor {
-    border: 1px solid var(--size-option-border) !important;
+    border: 1px solid var(--product-control-border) !important;
   }
 }
 
@@ -298,7 +419,7 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
 }
 
 :is(.look-size__options, fieldset.product-form__input--button[data-vivnook-recommendation-anchor]) > input[type="radio"]:not(:disabled, .disabled) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]) {
-  border: 1px solid var(--size-option-border) !important;
+  border: 1px solid var(--product-control-border) !important;
   background-color: #fff !important;
   color: #000 !important;
 }
@@ -310,11 +431,18 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
     color: #fff !important;
   }
 
+  :is(.vivnook-embroidery__entry-card, .vivnook-cart-embroidery-link) {
+    border: 1px solid var(--product-control-border) !important;
+  }
+
   @media (hover: hover) {
+    :is(.vivnook-embroidery__entry-card, .vivnook-cart-embroidery-link):enabled:hover,
+    .tops-look [data-look-select]:enabled:hover,
+    [data-vivnook-product-layout] :is(.look-quantity-select, .quantity):has(> :is(.look-quantity-select__trigger, .tops-quantity__trigger, .quantity__button):enabled:hover),
     product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"]:not(:checked, :disabled, .disabled, [aria-disabled="true"]) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]):hover,
     product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value li:not(.disabled, .sold-out, .globo-out-of-stock, [aria-disabled="true"]):not(:has(input:is(:checked, :disabled, .disabled, [aria-disabled="true"]))) .swatch-anchor:not(.disabled, .sold-out, [aria-disabled="true"]):hover {
-      background-color: var(--size-option-active-background) !important;
-      color: #fff !important;
+      background-color: var(--secondary-action-hover-background) !important;
+      color: var(--secondary-action-hover-foreground) !important;
     }
   }
 
@@ -332,7 +460,7 @@ product-info :is(.tops-find-size, .look-find-size):not([hidden]) {
   width: 100%;
   margin-top: 4px !important;
   padding: 0 calc(26px * var(--find-size-scale)) !important;
-  border: 1px solid var(--size-option-border) !important;
+  border: 1px solid var(--product-control-border) !important;
   background: #fff;
   color: #111;
   font: 400 12px/1.4 var(--font-body-family) !important;
@@ -379,6 +507,24 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
   product-info .globo-swatch-product-detail [data-vivnook-recommendation-anchor] .name-option,
   product-info .globo-swatch-product-detail [data-vivnook-recommendation-anchor] .name-variant {
     font-size: var(--scrub-size-heading-size) !important;
+  }
+}
+
+/* Keep purchase information within the gallery row on desktop. */
+@media (min-width: 1024px) {
+  [data-vivnook-product-layout] > .product--columns.product--media-has-many > .product__info-wrapper {
+    align-self: stretch !important;
+  }
+
+  [data-vivnook-product-layout] > .product--columns.product--media-has-many .product__media-gallery.sticky-element {
+    position: static;
+  }
+
+  [data-vivnook-product-layout] > .product--columns.product--media-has-many .product__info-container.sticky-element {
+    position: sticky;
+    max-height: calc(100vh - var(--header-height, 106px) - 4rem);
+    max-height: calc(100dvh - var(--header-height, 106px) - 4rem);
+    overflow-y: auto;
   }
 }
 
@@ -508,7 +654,7 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
   [data-vivnook-product-layout] .tops-look {
     margin-block-start: 0 !important;
     padding-block-start: var(--product-group-gap) !important;
-    border-block-start: 1px solid #dedede !important;
+    border-block-start: 1px solid #000 !important;
   }
 
   [data-vivnook-product-layout] .tops-look > h2 {
@@ -518,6 +664,12 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
 
   [data-vivnook-product-layout] .product__block--buy_buttons .product-form__submit {
     border-radius: 4px !important;
+  }
+
+  [data-vivnook-product-layout] .product__block--buy_buttons .product-form__submit,
+  [data-vivnook-product-layout] .product__block--buy_buttons .product-form__submit > span:first-child {
+    font: 700 14px/1.2 var(--font-body-family) !important;
+    text-transform: none !important;
   }
 
   [data-vivnook-product-layout] .product__blocks > .product__block--collapsible_tab:not(

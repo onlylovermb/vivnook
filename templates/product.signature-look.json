@@ -190,7 +190,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "enable_sticky_info": false,
+        "enable_sticky_info": true,
         "media_size": "large",
         "gallery_layout": "columns",
         "mobile_thumbnails": "show",

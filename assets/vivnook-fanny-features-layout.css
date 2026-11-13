@@ -36,6 +36,18 @@
   z-index: 1;
 }
 
+/* The video fills the Work System row while the copy can grow. */
+.vn-fanny__row--work_system > .vn-fanny__media:first-child {
+  aspect-ratio: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.vn-fanny__row--work_system > .vn-fanny__media:first-child > video {
+  position: absolute;
+  inset: 0;
+}
+
 /* The uploaded work-system video contains a dark edge in its final pixels. */
 .vn-fanny__row--work_system > .vn-fanny__media:first-child video {
   width: calc(100% + 2px);
@@ -43,6 +55,10 @@
 }
 
 @media (max-width: 749px) {
+  .vn-fanny__row--work_system > .vn-fanny__media:first-child {
+    margin-right: 0;
+  }
+
   .vn-fanny__row--image_pair {
     grid-template-columns: 1fr;
     display: flex !important;

@@ -37,6 +37,7 @@
           <h3>{{ display_title | escape }}</h3>
           <div class="tops-look__select-wrap" data-look-select-wrap>
             <select aria-label="{{ item.title | escape }} variant" data-look-select data-product-url="{{ item.url }}">
+              <button type="button"><selectedcontent></selectedcontent></button>
               {% for variant in item.variants %}
                 {% assign var_img = variant.featured_image | default: item.featured_image %}
                 {% if is_fanny %}
