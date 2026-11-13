@@ -29,6 +29,7 @@
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   {% if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants' or product.template_suffix == 'signature-look' or product.template_suffix == 'fanny-pack' %}data-vivnook-product-layout{% endif %}
+  {% if product.template_suffix == 'signature-look' %}data-vivnook-sticky-look{% endif %}
   data-update-url="true"
   {% if product.template_suffix == 'signature-look' or product.template_suffix == 'scrub-pants' %}data-look-design{% endif %}
   data-url="{{ product.url }}"
