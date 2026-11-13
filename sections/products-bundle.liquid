@@ -44,9 +44,24 @@
             assign image_key = 'image'
           endif
           assign model_image = section.settings[image_key]
+          assign use_navy_pack_photo = false
+          if is_homepage and number == 2
+            if model_image == blank or model_image.src contains '01bda95402d418bba30bb9c26a6fdd75.webp'
+              assign use_navy_pack_photo = true
+              assign navy_pack_photo = 'vivnook-look-navy-with-pack.webp'
+            endif
+          endif
         %}
-        <div class="look-bundle__model{% if model_image == blank %} look-bundle__empty{% endif %}" data-model {% if image_count > 0 %}hidden{% endif %}>
-          {% if model_image != blank %}
+        <div class="look-bundle__model{% if model_image == blank and use_navy_pack_photo == false %} look-bundle__empty{% endif %}" data-model {% if image_count > 0 %}hidden{% endif %}>
+          {% if use_navy_pack_photo %}
+            <img
+              src="{{ navy_pack_photo | asset_url }}"
+              width="2048"
+              height="2830"
+              loading="lazy"
+              alt="Model wearing navy scrubs and a matching fanny pack"
+            >
+          {% elsif model_image != blank %}
             {{ model_image | image_url: width: 1800 | image_tag: widths: '400, 750, 1100, 1500, 1800', sizes: '(min-width: 750px) 48vw, 100vw', loading: 'lazy' }}
           {% else %}
             {{ 'collection-1' | placeholder_svg_tag }}
