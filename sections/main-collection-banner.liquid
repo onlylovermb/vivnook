@@ -48,8 +48,10 @@
     assign color_inherit = true
   endif
 
-  assign fetchpriority = 'low'
-  if section.index < 3
+  assign image_loading = 'lazy'
+  assign fetchpriority = 'auto'
+  if section.location == 'template' and section.index != nil and section.index < 3
+    assign image_loading = 'eager'
     assign fetchpriority = 'high'
   endif
 %}
@@ -63,7 +65,7 @@
       {%- if section.settings.show_collection_image -%}
         {%- if banner -%}
           {% assign alt_image = banner.alt | default: collection.title | escape %}
-          {%- capture sizes -%}min({{ settings.page_width }}, 100vw){%- endcapture -%}
+          {%- capture sizes -%}min(1410px, 100vw){%- endcapture -%}
           <parallax-element
             class="flex overflow-hidden{% if color_inherit %} blocks-radius{% endif %}"
             {% if section.settings.enable_parallax %}
@@ -79,6 +81,7 @@
                   <source
                     media="(max-width: 767px)"
                     srcset="{{ banner_mobile | image_url: width: '400x' }} 400w, {{ banner_mobile | image_url: width: '600x' }} 600w, {{ banner_mobile | image_url: width: '800x' }} 800w, {{ banner_mobile | image_url: width: '1000x' }} 1000w"
+                    sizes="{{ sizes }}"
                     width="{{ banner_mobile.width }}"
                     height="{{ banner_mobile.height }}"
                   >
@@ -87,7 +90,7 @@
                   banner
                   | image_url: width: banner.width
                   | image_tag:
-                    loading: 'lazy',
+                    loading: image_loading,
                     fetchpriority: fetchpriority,
                     sizes: sizes,
                     width: banner.width,
@@ -107,7 +110,7 @@
           </parallax-element>
         {%- else -%}
           {% assign alt_image = collection.title | escape %}
-          {%- capture sizes -%}min({{ settings.page_width }}, 100vw){%- endcapture -%}
+          {%- capture sizes -%}min({{ 1410 }}, 100vw){%- endcapture -%}
           <parallax-element
             class="flex overflow-hidden{% if color_inherit %} blocks-radius{% endif %}"
             {% if section.settings.enable_parallax %}

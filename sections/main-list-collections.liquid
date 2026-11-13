@@ -37,7 +37,7 @@
   endif
 -%}
 {%- capture image_sizes -%}
-(max-width: 767px) calc((100vw - 3rem) / {{ columns_mobile_int }}), (max-width: 1023px) calc((100vw - 3rem) / {{ columns_tablet }}), calc(min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }} )
+(max-width: 767px) calc((100vw - 3rem) / {{ columns_mobile_int }}), (max-width: 1023px) calc((100vw - 3rem) / {{ columns_tablet }}), calc(min(100vw, {{ 1410 }}px) / {{ columns_desktop }} )
 {%- endcapture -%}
 <div
   class="section section-{{ section.id }} section--padding collection-list-template"

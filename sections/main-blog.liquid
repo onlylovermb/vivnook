@@ -69,7 +69,7 @@
                             style="--aspect-ratio: {{ image_ratio }};"
                           {% endif %}
                         >
-                          {%- capture sizes -%}min({{ settings.page_width }}, 100vw){%- endcapture -%}
+                          {%- capture sizes -%}min({{ 1410 }}, 100vw){%- endcapture -%}
                           {{-
                             featured_post.image
                             | image_url: width: featured_post.image.width

@@ -1,4 +1,6 @@
-{{ 'vivnook-home-rebuild.css' | asset_url | stylesheet_tag }}
+{%- unless request.page_type == 'index' -%}
+  {{ 'vivnook-home-rebuild.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
 {% style %}
   #shopify-section-{{ section.id }} .home-rebuild-hero__media,
   #shopify-section-{{ section.id }} .home-rebuild-hero__media > img {
@@ -15,9 +17,9 @@
     {% assign hero_fallback_image = section.settings.image | default: section.settings.mobile_image %}
     <picture class="home-rebuild-hero__media">
       {% if section.settings.mobile_image != blank %}
-        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w, {{ section.settings.mobile_image | image_url: width: 1600 }} 1600w" sizes="100vw">
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w, {{ section.settings.mobile_image | image_url: width: 1600 }} 1600w" sizes="100vw">
       {% endif %}
-      {{ hero_fallback_image | image_url: width: 2400 | image_tag: loading: 'lazy', fetchpriority: 'high', widths: '600,1000,1600,2000,2400', sizes: '100vw' }}
+      {{ hero_fallback_image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,1000,1600,2000,2400', sizes: '100vw' }}
     </picture>
   {% endif %}
   <div class="home-rebuild-hero__copy"><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.body | escape }}</p><a href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a></div>

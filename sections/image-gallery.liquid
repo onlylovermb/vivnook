@@ -20,7 +20,7 @@
 {%- capture image_sizes -%}
 (max-width: 767px) calc((100vw - 30px) / {{ columns_mobile }}),
 (max-width: 1023px) calc((100vw - 30px) / {{ columns_tablet }}),
-{{ settings.page_width | divided_by: columns_desktop }}px
+{{ 1410 | divided_by: columns_desktop }}px
 {%- endcapture -%}
 {{ 'section-image-gallery.css' | asset_url | stylesheet_tag }}
 {% render 'divider',

@@ -33,7 +33,7 @@
 {%- capture pcard_image_sizes -%}
 (max-width: 767px) calc((100vw - 30px) / {{ columns_mobile }}),
 (max-width: 1023px) calc(({{ col_products_width }} / 100 - 30px) / {{ columns_tablet }}),
-calc({{ settings.page_width }} * {{ col_products_width }} / 100 / {{ columns_desktop }})
+calc({{ 1410 }} * {{ col_products_width }} / 100 / {{ columns_desktop }})
 {%- endcapture -%}
 <div
   class="section section--product-list-with-details section--padding page-width color-{{ section.settings.color_scheme }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
@@ -90,7 +90,7 @@ calc({{ settings.page_width }} * {{ col_products_width }} / 100 / {{ columns_des
                     endif
                   -%}
                   {%- capture product_media_sizes -%}
-                  (max-width: 1023px) calc((100vw - 3rem) / {{ media_columns }}), calc(min(100vw, {{ settings.page_width }}px) * {{ col_details_width }} / 100 / {{ media_columns }})
+                  (max-width: 1023px) calc((100vw - 3rem) / {{ media_columns }}), calc(min(100vw, {{ 1410 }}px) * {{ col_details_width }} / 100 / {{ media_columns }})
                 {%- endcapture -%}
                   <div class="plwd-product__block plwd-product__medias f-grid f-grid--gap-extra-small f-grid--row-gap-inherit f-grid-{{ media_columns }}-cols">
                     {%- for image in product_images -%}

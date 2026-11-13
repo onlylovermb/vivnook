@@ -1,4 +1,6 @@
-{{ 'section-about-story.css' | asset_url | stylesheet_tag }}
+{%- unless request.page_type == 'page' and template.suffix == 'our-story' -%}
+  {{ 'section-about-story.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
 {%- assign hero_y_desktop = section.settings.hero_position_y_desktop -%}
 {%- if hero_y_desktop == blank -%}
   {%- assign hero_y_desktop = 50 -%}
@@ -22,7 +24,7 @@
 <section class="about-story" aria-label="{{ section.settings.aria_label | escape }}" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;">
   <div class="about-story__hero">
     {% if section.settings.hero_image != blank %}
-      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'about-story__image', widths: '960,1440,1920,2400' }}
+      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', class: 'about-story__image', widths: '480,750,960,1440,1920,2400', sizes: '100vw' }}
     {% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
     <div class="about-story__hero-copy" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;"><h1>{{ section.settings.hero_heading }}</h1></div>
   </div>
@@ -37,7 +39,7 @@
     {% assign body = section.settings[body_key] %}
     <div class="about-story__row about-story__row--{{ row }} {% if row == 'dentist' or row == 'bulk' %}about-story__row--text-first{% endif %}">
       <div class="about-story__media">
-        {% if image != blank %}{{ image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'about-story__image', widths: '640,960,1280,1600' }}{% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
+        {% if image != blank %}{{ image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'about-story__image', widths: '480,640,960,1280,1600', sizes: '(max-width: 767px) 100vw, 50vw' }}{% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
       </div>
       <div class="about-story__copy"><div class="about-story__copy-inner"><h2>{{ heading }}</h2><div class="about-story__body">{{ body }}</div></div></div>
     </div>
@@ -52,7 +54,7 @@
         {% assign title_key = 'feature_' | append: key | append: '_title' %}
         {% assign body_key = 'feature_' | append: key | append: '_body' %}
         <article class="about-feature" tabindex="0">
-          <div class="about-feature__media">{% if image != blank %}{{ image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'about-feature__image', widths: '360,600,800,1000' }}{% else %}<div class="about-feature__image about-feature__image--empty"></div>{% endif %}</div>
+          <div class="about-feature__media">{% if image != blank %}{{ image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'about-feature__image', widths: '360,600,800,1000', sizes: '(max-width: 767px) 100vw, 25vw' }}{% else %}<div class="about-feature__image about-feature__image--empty"></div>{% endif %}</div>
           <div class="about-feature__overlay"><button class="about-feature__toggle" type="button" aria-expanded="false"><span class="about-feature__arrow" aria-hidden="true">⌃</span><span class="about-feature__title">{{ section.settings[title_key] }}</span></button><div class="about-feature__body">{{ section.settings[body_key] }}</div></div>
         </article>
       {% endfor %}

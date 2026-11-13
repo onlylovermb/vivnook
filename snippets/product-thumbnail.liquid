@@ -30,7 +30,7 @@
   assign fetchpriority = 'low'
   assign image_loading = 'lazy'
 
-  if position < desktop_columns
+  if position == 0
     assign fetchpriority = 'high'
     assign image_loading = 'eager'
   endif
@@ -39,9 +39,9 @@
 -%}
 {%- capture sizes -%}
 {%- if desktop_columns > 1 -%}
-(max-width: 768px) calc(100vw - 3rem), calc(((min({{ settings.page_width | plus: 30 }}px, 100vw) * {{ media_width }}) - 4.5rem - {{ desktop_columns | times: 1 | minus: 1 }}rem) / {{ desktop_columns }})
+(max-width: 768px) calc(100vw - 3rem), calc(((min({{ 1410 | plus: 30 }}px, 100vw) * {{ media_width }}) - 4.5rem - {{ desktop_columns | times: 1 | minus: 1 }}rem) / {{ desktop_columns }})
 {%- else -%}
-(max-width: 768px) calc(100vw - 3rem), calc(((min({{ settings.page_width | plus: 30 }}px, 100vw) * {{ media_width }}) - 4.5rem) / {{ desktop_columns }})
+(max-width: 768px) calc(100vw - 3rem), calc(((min({{ 1410 | plus: 30 }}px, 100vw) * {{ media_width }}) - 4.5rem) / {{ desktop_columns }})
 {%- endif -%}
 {%- endcapture -%}
 <div
@@ -119,11 +119,15 @@
           show_play_button: true
         -%}
       {%- else -%}
-        <motion-element data-motion="zoom-out-sm" class="product__media media-wrapper">
+        {%- if position == 0 -%}
+          <div class="product__media media-wrapper">
+        {%- else -%}
+          <motion-element data-motion="zoom-out-sm" class="product__media media-wrapper">
+        {%- endif -%}
           <img
             src="{{ media.preview_image | image_url: width: 1946 }}"
             srcset="{{ media.preview_image | image_url: width: 400 }} 400w, {{ media.preview_image | image_url: width: 620 }} 620w, {{ media.preview_image | image_url: width: 810 }} 810w, {{ media.preview_image | image_url: width: 980 }} 980w, {{ media.preview_image | image_url: width: 1240 }} 1240w, {{ media.preview_image | image_url: width: 1380 }} 1380w, {{ media.preview_image | image_url: width: 1620 }} 1620w, {{ media.preview_image | image_url: width: 1946 }} 1946w"
-            sizes="(max-width: 768px) calc(100vw - 3rem), 50vw"
+            sizes="{{ sizes | strip }}"
             width="{{ media.preview_image.width }}"
             height="{{ media.preview_image.height }}"
             alt="{{ media_alt }}"
@@ -131,7 +135,11 @@
             fetchpriority="{{ fetchpriority }}"
             decoding="async"
           >
-        </motion-element>
+        {%- if position == 0 -%}
+          </div>
+        {%- else -%}
+          </motion-element>
+        {%- endif -%}
         {%- if enable_image_zoom -%}
           <span
             class="product__media-icon"

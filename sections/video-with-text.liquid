@@ -36,7 +36,7 @@
           {% endif %}
         >
           <motion-element data-motion="zoom-out" class="relative block media media--adapt">
-            {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+            {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ 1410 }}px, 100vw){% endif %}{%- endcapture -%}
             {%- render 'video',
               sizes: sizes,
               video: section.settings.video,

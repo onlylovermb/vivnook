@@ -34,9 +34,9 @@
 (max-width: 767px) calc((100vw - 38px) / {{ columns_mobile }}),
 (max-width: 1279px) calc((100vw - 90px) / {{ columns_tablet }}),
 {%- if enable_filtering -%}
-  calc({{ settings.page_width}}px / {{ columns_desktop | plus: 1 }})
+  calc({{ 1410}}px / {{ columns_desktop | plus: 1 }})
 {%- else -%}
-{{ settings.page_width | divided_by: columns_desktop }}px
+{{ 1410 | divided_by: columns_desktop }}px
 {%- endif -%}
 {%- endcapture -%}
 <div

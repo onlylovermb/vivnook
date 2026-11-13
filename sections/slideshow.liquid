@@ -117,7 +117,7 @@
                     {%- endif -%}
                     {%- if background_default != blank or background_mobile != blank -%}
                       {%- capture sizes -%}
-                        {%- if section.settings.container == 'full' -%}{%- if section.settings.layout == 'centered' -%}70vw{%- else -%}100vw{%- endif -%}{%- else -%}min({{ settings.page_width }}, 100vw){%- endif -%}
+                        {%- if section.settings.container == 'full' -%}{%- if section.settings.layout == 'centered' -%}70vw{%- else -%}100vw{%- endif -%}{%- else -%}min({{ 1410 }}, 100vw){%- endif -%}
                       {%- endcapture -%}
                       <motion-element
                         class="w-full h-full block{% if background_default == blank %} md:hidden{% endif %}"

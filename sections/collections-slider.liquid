@@ -22,7 +22,7 @@
   endif
 -%}
 {%- capture image_sizes -%}
-(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) calc((100vw - 3rem) / 2), calc(min(100vw, {{ settings.page_width }}px) / 2)
+(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) calc((100vw - 3rem) / 2), calc(min(100vw, {{ 1410 }}px) / 2)
 {%- endcapture -%}
 {%- for block in section.blocks -%}
   {%- liquid

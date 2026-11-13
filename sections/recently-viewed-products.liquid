@@ -19,7 +19,7 @@
 {%- capture image_sizes -%}
 (max-width: 767px) calc((100vw - 30px) / {{ columns_mobile }}),
 (max-width: 1023px) calc((100vw - 30px) / {{ columns_tablet }}),
-{{ settings.page_width | divided_by: columns }}px
+{{ 1410 | divided_by: columns }}px
 {%- endcapture -%}
 <script src="{{ 'recently-viewed-products.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-slider.js' | asset_url }}" defer="defer"></script>

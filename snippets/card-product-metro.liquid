@@ -146,7 +146,7 @@
     {%- capture current_image_sizes -%}
     (max-width: 767px) calc(100vw - 30px),
     (max-width: 1023px) calc(((100vw - 30px) / {{ columns_tablet }}) * 2),
-    {{ settings.page_width | divided_by: columns_desktop | times: 2 }}px
+    {{ 1410 | divided_by: columns_desktop | times: 2 }}px
     {%- endcapture -%}
   {%- endif -%}
 {% endcomment %}

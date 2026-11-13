@@ -7,7 +7,7 @@
   <div class="vivnook-product-video-split__product">
     <div class="vivnook-product-video-split__product-inner">
       {% if product_image != blank %}
-        {{ product_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 700, 1000, 1200', sizes: '50vw', class: 'vivnook-product-video-split__product-image' }}
+        {{ product_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 700, 1000, 1200', sizes: '(max-width: 749px) 82vw, 41vw', class: 'vivnook-product-video-split__product-image' }}
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'vivnook-product-video-split__product-image vivnook-product-video-split__placeholder' }}
       {% endif %}
@@ -18,19 +18,53 @@
       {% endif %}
     </div>
   </div>
-  <div class="vivnook-product-video-split__media">
-    {% if section.settings.video != blank %}
-      {{ section.settings.video | video_tag: autoplay: section.settings.video_autoplay, loop: section.settings.video_loop, muted: section.settings.video_muted, controls: section.settings.video_controls, image_size: '1600x' }}
-    {% elsif section.settings.video_url != blank %}
-      <video src="{{ section.settings.video_url }}" {% if section.settings.video_autoplay %}autoplay{% endif %} {% if section.settings.video_loop %}loop{% endif %} {% if section.settings.video_muted %}muted{% endif %} {% if section.settings.video_controls %}controls{% endif %} playsinline></video>
+  <vivnook-utility-media class="vivnook-product-video-split__media">
+    {% if section.settings.video != blank or section.settings.video_url != blank %}
+      {%- capture video_markup -%}
+        {% if section.settings.video != blank %}
+          {{ section.settings.video | video_tag: autoplay: section.settings.video_autoplay, loop: section.settings.video_loop, muted: section.settings.video_muted, controls: section.settings.video_controls, image_size: '1600x' }}
+        {% else %}
+          <video src="{{ section.settings.video_url | escape }}" {% if section.settings.video_autoplay %}autoplay{% endif %} {% if section.settings.video_loop %}loop{% endif %} {% if section.settings.video_muted %}muted{% endif %} {% if section.settings.video_controls %}controls{% endif %} preload="metadata" playsinline></video>
+        {% endif %}
+      {%- endcapture -%}
+      <template>{{ video_markup }}</template>
+      <noscript>{{ video_markup | remove: ' autoplay="autoplay"' | remove: ' autoplay' }}</noscript>
     {% elsif section.settings.media_image != blank %}
-      {{ section.settings.media_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 1000, 1400, 1600', sizes: '50vw' }}
+      {{ section.settings.media_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 1000, 1400, 1600', sizes: '(max-width: 749px) 100vw, 50vw' }}
     {% else %}
       {{ 'lifestyle-1' | placeholder_svg_tag }}
     {% endif %}
     {% if section.settings.media_overlay_text != blank %}<p class="vivnook-product-video-split__overlay">{{ section.settings.media_overlay_text | escape | newline_to_br }}</p>{% endif %}
-  </div>
+  </vivnook-utility-media>
 </section>
+
+{% javascript %}
+  if (!customElements.get('vivnook-utility-media')) {
+    customElements.define('vivnook-utility-media', class extends HTMLElement {
+      connectedCallback() {
+        const template = this.querySelector('template');
+        if (!template) return;
+
+        if (!('IntersectionObserver' in window)) {
+          template.replaceWith(template.content.cloneNode(true));
+          return;
+        }
+
+        this.observer = new IntersectionObserver(([entry]) => {
+          if (!entry.isIntersecting) return;
+          this.observer.disconnect();
+          template.replaceWith(template.content.cloneNode(true));
+        }, { rootMargin: '240px 0px' });
+        this.observer.observe(this);
+      }
+
+      disconnectedCallback() {
+        this.observer?.disconnect();
+      }
+    });
+  }
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "Product + video split",

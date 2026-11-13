@@ -100,7 +100,7 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="product flex flex-wrap {{ product_class }}">
     {%- if product.media.size > 0 -%}
-      <motion-element data-motion="fade-up" data-motion-delay="50" class="product__media-wrapper w-full relative">
+      <div class="product__media-wrapper w-full relative">
         {% render 'product-media-gallery',
           enable_sticky_info: enable_sticky_info,
           media_layout: media_layout,
@@ -108,9 +108,9 @@
           variant_images: variant_images,
           enable_image_zoom: enable_image_zoom
         %}
-      </motion-element>
+      </div>
     {% elsif section.settings.default_product_image != blank %}
-      <motion-element data-motion="fade-up" data-motion-delay="50" class="product__media-wrapper w-full relative">
+      <div class="product__media-wrapper w-full relative">
         <div class="media-wrapper blocks-radius" style="--aspect-ratio: 1;">
           {{
             section.settings.default_product_image
@@ -118,15 +118,15 @@
             | image_tag: loading: 'lazy', widths: '300, 600, 1000', is: 'image-lazy'
           }}
         </div>
-      </motion-element>
+      </div>
     {%- endif -%}
-    <motion-element data-motion="fade-up" data-motion-delay="100" class="block product__info-wrapper w-full">
+    <div class="block product__info-wrapper w-full">
       {% render 'product-information-blocks',
         enable_sticky_info: enable_sticky_info,
         update_browser_history: true,
         context: 'main-product'
       %}
-    </motion-element>
+    </div>
   </div>
   {%- if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants' or product.template_suffix == 'signature-look' -%}
     {% render 'vivnook-fit-profile', product: product, section_id: section.id %}

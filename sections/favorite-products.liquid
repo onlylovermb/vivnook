@@ -57,7 +57,7 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {%- capture product_image_sizes -%}
-            (max-width: 767px) 70px, calc((min(100vw, {{ settings.page_width }}px) - 40px) / 2 * 0.66)
+            (max-width: 767px) 70px, calc((min(100vw, {{ 1410 }}px) - 40px) / 2 * 0.66)
             {%- endcapture -%}
             {%- for block in section.blocks -%}
               {%- liquid
@@ -90,7 +90,7 @@
                       endif
                     -%}
                     {%- capture image_sizes -%}
-                    (max-width: 767px) calc(100vw - 3rem), calc(min(100vw, {{ settings.page_width }}px) / 2)
+                    (max-width: 767px) calc(100vw - 3rem), calc(min(100vw, {{ 1410 }}px) / 2)
                     {%- endcapture -%}
                     <div
                       class="w-full media-wrapper hover-wrapper blocks-radius{% if image == blank %} bg-none{% endif %}"

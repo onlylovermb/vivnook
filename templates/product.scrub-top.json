@@ -21,7 +21,7 @@
         "tops_design_assets": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{ 'tops-product-info.css' | asset_url | stylesheet_tag }}{{ 'signature-look-design.css' | asset_url | stylesheet_tag }}<script src=\"{{ 'tops-product-info.js' | asset_url }}\" defer></script><script src=\"{{ 'signature-look-design.js' | asset_url }}\" defer></script>"
+            "custom_liquid": "<script src=\"{{ 'tops-product-info.js' | asset_url }}\" defer></script><script src=\"{{ 'signature-look-design.js' | asset_url }}\" defer></script>"
           }
         },
         "badges": {

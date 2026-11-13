@@ -265,7 +265,7 @@
                 {%- if block.settings.card_width == 'narrow' -%}
                 (max-width: 767px) calc(100vw - 3rem), 400px
                 {%- else -%}
-                (max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) calc((100vw - 3rem) / 2), calc(min(100vw, {{ settings.page_width }}px) * {{ block_width_int }})
+                (max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) calc((100vw - 3rem) / 2), calc(min(100vw, {{ 1410 }}px) * {{ block_width_int }})
                 {%- endif -%}
                 {%- endcapture -%}
                 <div class="custom-card-collection card-width-{{ block.settings.card_width }}">

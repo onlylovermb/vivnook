@@ -40,7 +40,7 @@
             style="--aspect-ratio: {{ image_ratio }};"
           {% endif %}
         >
-          {%- capture sizes -%}min({{ settings.page_width }}, 100vw){%- endcapture -%}
+          {%- capture sizes -%}min({{ 1410 }}, 100vw){%- endcapture -%}
           {{-
             article.image
             | image_url: width: article.image.width

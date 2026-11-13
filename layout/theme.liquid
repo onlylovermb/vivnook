@@ -178,21 +178,11 @@ document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth +
       endif
     -%}
 
-    {%- if request.page_type == 'product' and product.template_suffix == 'scrub-pants' -%}
-      {%- comment -%}
-        Prioritize the Globo product styling chunks used by scrub pants.
-        These versioned URLs match the active Globo embed observed in the
-        2026-11-11 performance trace; refresh them if the app extension updates.
-      {%- endcomment -%}
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.base_styles.75a4f1a914f056f92432.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_styles.5421c7f90f91ec6a58a5.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_customize_styles_new.06aad072135460d63f1c.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.649.91fe3a07fc903cc3e90a.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.424.4e20e3b7443c182e4b2f.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_styles.255556113c8ecc187a27.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_customize_styles_new.7464820bd50bffa582d6.js">
-      <link rel="preload" as="script" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_styles_new.874ca7793c5d0f0e3fe6.js">
-      <link rel="preload" as="style" href="https://cdn.shopify.com/extensions/01a1c8b3-baf3-77e7-bfe5-9a4495849d9a/glo-color-swatch-281/assets/globo.swatch.bundle.product_groups_styles.a58b540cfdd5a812f745.css">
+    {%- if request.page_type == 'product' and product.template_suffix == 'signature-look' -%}
+      <link rel="preload" as="style" href="{{ 'signature-look-design.css' | asset_url }}">
+    {%- endif -%}
+    {%- if request.page_type == 'page' and template.suffix == 'our-story' -%}
+      {{ 'section-about-story.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
     {{ content_for_header }}
@@ -221,6 +211,7 @@ document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth +
     {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
     {%- if request.page_type == 'index' -%}
       {{ 'homepage-applegothic.css' | asset_url | stylesheet_tag }}
+      {{ 'vivnook-home-rebuild.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
     {%- render 'vivnook-image-skeleton' -%}
   </head>
@@ -231,7 +222,7 @@ document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth +
 
 
   <body
-    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}{% unless settings.enable_animation %} disable-animations{% endunless %}{% unless settings.enable_hover_image %} disable-hover-image{% endunless %}"
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--slightly{% if request.design_mode %} shopify-design-mode{% endif %}{% unless settings.enable_animation %} disable-animations{% endunless %}{% unless settings.enable_hover_image %} disable-hover-image{% endunless %}"
     {% unless request.page_type == 'product' %}
     data-initializing
     {% endunless %}

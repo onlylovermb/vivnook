@@ -36,7 +36,7 @@
           class="block relative overflow-hidden w-full h-full media mb:media--{{ mobile_height }}{% if desktop_height == 'adapt' %} media--adapt{% else %} media--{{ desktop_height }}{% endif %}"
         >
           {%- if section.settings.image != blank -%}
-            {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+            {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ 1410 }}px, 100vw){% endif %}{%- endcapture -%}
             <picture class="media-wrapper media--height block w-full h-full relative overflow-hidden">
               {%- if section.settings.image_mobile -%}
                 <source
