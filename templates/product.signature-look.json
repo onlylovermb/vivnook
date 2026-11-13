@@ -55,9 +55,9 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_type": "color_swatch",
+            "swatch_type": "shopify_swatch",
             "button_style": "circle",
-            "button_size": 38,
+            "button_size": 20,
             "size_title": "size",
             "size_chart_from_page": "product-size-chart"
           }

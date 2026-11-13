@@ -124,11 +124,15 @@
         root.hide()?.then(() => fitModal.show(event.currentTarget));
       });
       const fitModal = document.getElementById(root.querySelector('[data-vivnook-chart-profile]').getAttribute('aria-controls'));
+      let savedReturnKind;
+      fitModal?.addEventListener('vivnook:fit-profile-saved', () => {
+        savedReturnKind = fitModal.dataset.vivnookReturnChartKind;
+      });
       fitModal?.addEventListener('modal:handleAfterHide', () => {
-        const returnKind = fitModal.dataset.vivnookReturnChartKind;
-        if (!returnKind) return;
+        const returnKind = savedReturnKind;
+        savedReturnKind = undefined;
         delete fitModal.dataset.vivnookReturnChartKind;
-        this.open(returnKind, root.querySelector('[data-vivnook-chart-profile]'));
+        if (returnKind) this.open(returnKind, fitModal.activeElement);
       });
       document.addEventListener('vivnook:fit-profile-updated', () => {
         const preferences = window.VivnookFitProfile.load().preferences;

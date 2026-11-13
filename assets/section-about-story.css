@@ -44,13 +44,14 @@ section.about-story .about-story__row{min-height:var(--story-row-desktop-height,
 /* Mobile only: move the hero heading into a dedicated blank panel between the first two images. */
 @media(max-width:767px){section.about-story .about-story__hero{overflow:visible;margin-bottom:var(--about-mobile-title-panel-height,150px)}section.about-story .about-story__hero-copy{left:0;right:0;top:100%;width:100%;max-width:none;height:var(--about-mobile-title-panel-height,150px);padding:16px 24px;transform:none;display:flex;align-items:center;justify-content:center;background:#f1f1f1;color:#202b35;text-align:center}section.about-story .about-story__hero .about-story__hero-copy h1{margin:0;color:#202b35!important;font-size:var(--about-mobile-title-panel-font-size,32px)!important;line-height:1.2;text-shadow:none!important}}
 
-/* Fill the viewport below the announcement bar and navigation. */
+/* Match the hero height to the story images. */
 section.about-story .about-story__hero {
-  min-height: max(360px, calc(100svh - var(--header-height, 64px) - var(--header-offset-top, 0px)));
+  min-height: var(--story-row-desktop-height, 41.6667vw);
 }
 
 @media (max-width: 767px) {
   section.about-story .about-story__hero {
+    min-height: var(--story-row-mobile-image-height, 62vw);
     margin-bottom: 0;
     overflow: hidden;
   }
@@ -99,5 +100,67 @@ section.about-story .about-story__hero {
 @media (max-width: 749px) {
   .about-story > .about-story__hero + .about-story__row {
     margin-block-start: 20px;
+  }
+}
+
+.about-story__hero:has(.about-story__hero-title-accent)::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(75deg, rgb(22 14 18 / 60%), transparent 76%);
+  pointer-events: none;
+}
+
+section.about-story .about-story__hero-copy:has(.about-story__hero-title-accent) {
+  z-index: 2;
+  left: clamp(24px, 7vw, 112px);
+  max-width: calc(100% - 48px);
+}
+
+section.about-story .about-story__hero h1:has(.about-story__hero-title-accent) {
+  font-size: clamp(29px, 4.2vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-shadow: none;
+}
+
+.about-story__hero-title-main,
+.about-story__hero-title-accent {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .about-story__hero-title-main {
+    font-size: 0.85em;
+  }
+}
+
+section.about-story .about-story__hero .about-story__hero-title-accent {
+  margin-top: 0.08em;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 1.16em;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+@media (max-width: 767px) {
+  .about-story__hero:has(.about-story__hero-title-accent)::before {
+    background: linear-gradient(0deg, rgb(22 14 18 / 68%), transparent 80%);
+  }
+
+  section.about-story .about-story__hero-copy:has(.about-story__hero-title-accent) {
+    inset: auto 0 0;
+    max-width: none;
+    justify-content: flex-start;
+    padding: 16px 24px;
+    background: none;
+    text-align: left;
+  }
+
+  section.about-story .about-story__hero .about-story__hero-copy h1:has(.about-story__hero-title-accent) {
+    font-size: clamp(24px, 6.5vw, 44px) !important;
+    text-shadow: none !important;
   }
 }

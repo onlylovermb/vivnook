@@ -30,6 +30,7 @@
             <details
               is="details-dropdown"
               level="top"
+              {% if link_title_handle == 'scrubs' %}data-scrubs-dropdown{% endif %}
               trigger="{{ section.settings.menu_trigger }}"
               {{ block.shopify_attributes }}
             >

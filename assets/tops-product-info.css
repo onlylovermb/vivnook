@@ -2095,39 +2095,6 @@ product-info[data-url*="scrub-pants"] .product-form__submit {
   }
 }
 
-/* Scrub Pants mobile: Find My Size button styling */
-@media (max-width: 767px) {
-  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size {
-    display: flex !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    max-height: 36px !important;
-    padding: 0 16px !important;
-    box-sizing: border-box !important;
-    border: 1px solid #000000 !important;
-    border-radius: 4px !important;
-    background: #ffffff !important;
-    color: #000000 !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size > span:first-child {
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    color: #000000 !important;
-  }
-  product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) .tops-find-size > span[aria-hidden="true"] {
-    color: #000000 !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-  }
-}
 /* The Look product names: responsive mobile typography */
 /* The Look product names: responsive mobile typography */
 

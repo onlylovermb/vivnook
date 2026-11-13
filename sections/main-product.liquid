@@ -28,6 +28,7 @@
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
+  {% if product.template_suffix == 'scrub-top' or product.template_suffix == 'scrub-pants' or product.template_suffix == 'signature-look' or product.template_suffix == 'fanny-pack' %}data-vivnook-product-layout{% endif %}
   data-update-url="true"
   {% if product.template_suffix == 'signature-look' or product.template_suffix == 'scrub-pants' %}data-look-design{% endif %}
   data-url="{{ product.url }}"
@@ -37,9 +38,9 @@
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-  {% unless product.has_only_default_variant %}
+  {% if product.has_only_default_variant == false or product.template_suffix == 'signature-look' %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
-  {% endunless %}
+  {% endif %}
   {%- assign has_models = product.media | where: 'media_type', 'model' | first -%}
   {%- if has_models -%}
     <link

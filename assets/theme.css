@@ -3748,6 +3748,15 @@ input:is([type=radio])::after {
   transform: scale(1);
 }
 
+:is(.vivnook-fit-profile, .vivnook-smart-size-chart) > :is(.drawer__inner, .fixed-overlay) {
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+:is(.vivnook-fit-profile, .vivnook-smart-size-chart) .drawer__close-btn:hover svg {
+  transform: none;
+}
+
 .drawer--basic .drawer__body,
 .modal .drawer__body {
   padding: var(--modal-gap);

@@ -294,3 +294,47 @@
     min-height: var(--bundle-mobile-left-height, 600px) !important;
   }
 }
+
+/* Give the three homepage features at least one screen below the sticky header. */
+#MainContent {
+  --home-feature-viewport: calc(100svh - var(--header-height, 64px));
+}
+
+@media (min-width: 750px) {
+  #MainContent .products-bundle-section .look-bundle--homepage {
+    height: max(var(--bundle-desktop-height, 720px), var(--home-feature-viewport)) !important;
+  }
+
+  #MainContent .vivnook-product-video-split,
+  #MainContent .vivnook-scrubs-feature {
+    min-height: var(--home-feature-viewport);
+  }
+}
+
+@media (max-width: 749px) {
+  #MainContent .products-bundle-section .look-bundle--homepage .look-bundle__models {
+    height: max(var(--bundle-mobile-left-height, 600px), var(--home-feature-viewport)) !important;
+  }
+
+  #MainContent .vivnook-product-video-split,
+  #MainContent .vivnook-scrubs-feature {
+    min-height: var(--home-feature-viewport);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #MainContent .home-feature--revealed {
+    animation: home-feature-reveal 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@keyframes home-feature-reveal {
+  from {
+    translate: 0 28px;
+    opacity: 0.65;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}

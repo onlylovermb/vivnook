@@ -76,7 +76,7 @@
             <span><strong>{{ label }}:</strong> <span data-look-selected-size>—</span></span>
             <button type="button" class="look-size__chart" data-look-chart="{{ kind }}" aria-haspopup="dialog">Size Chart</button>
           </div>
-          <div class="look-size__options">
+          <div class="look-size__options product-form__input--button">
             {%- for size in sizes -%}
               {%- liquid
                 assign is_size_unavailable = false
@@ -111,10 +111,12 @@
               >
               <label
                 for="Look-{{ section.id }}-{{ kind }}-{{ size }}"
+                data-tooltip
                 class="{% if is_size_unavailable %}signature-look-option--unavailable signature-look-option--size disabled{% endif %}"
                 {% if is_size_unavailable %}aria-disabled="true"{% endif %}
               >
                 {{- size -}}
+                <span class="tooltip pointer-events-none" aria-hidden="true">{{ size | escape }}</span>
               </label>
             {%- endfor -%}
           </div>

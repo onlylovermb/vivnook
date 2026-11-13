@@ -40,9 +40,6 @@
 [data-look-design] .look-size{border:0;padding:0;margin:16px 0 0;min-width:0}
 [data-look-design] .look-size__heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:18px!important;line-height:1;margin:0 0 8px!important;padding:0}
 [data-look-design] .look-size__chart{font:400 12px/1 var(--font-body-family);font-size:12px!important;height:auto;min-height:0;padding:0;background:none;border:0;cursor:pointer}
-[data-look-design] .look-size__options{margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:calc(7px * var(--look-scale));position:relative}
-[data-look-design] .look-size__options label{display:grid;place-items:center;min-height:calc(38px * var(--look-scale));border:.5px solid #707070;border-radius:4px;font-size:calc(16px * var(--look-scale));font-weight:700;cursor:pointer;position:relative}
-[data-look-design] .look-size__options input:checked+label{border-color:#242424;box-shadow:inset 0 0 0 1px #242424;background:#f4f4f4}
 [data-look-design] .look-size__options input:focus-visible+label{outline:2px solid #881337;outline-offset:3px}
 [data-look-design] .look-size__options input:disabled+label,
 [data-look-design] .look-size__options label:is(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]) {
@@ -75,9 +72,7 @@
   border-radius: inherit !important;
   z-index: 2 !important;
 }
-[data-look-design] .look-find-size{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:calc(47px * var(--look-scale));margin-top:4px!important;padding:8px calc(26px * var(--look-scale));border:1px solid #2f2f2f;border-radius:4px;background:#fff;font:400 calc(16px * var(--look-scale))/1.4 var(--font-body-family);cursor:pointer}
 /* Use a stroked chevron instead of a font glyph for consistent 0.5px lines. */
-[data-look-design] .look-find-size>span[aria-hidden="true"]{display:inline-block;flex-shrink:0;width:12px;height:20px;vertical-align:middle;font-size:0;line-height:0;color:#707070;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='20' viewBox='0 0 12 20'%3E%3Cpath d='M3 5l5 5-5 5' fill='none' stroke='%23707070' stroke-width='.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px 20px no-repeat}
 [data-look-design] .vivnook-embroidery{padding:0 0 16px!important;margin:16px 0 16px!important;border-bottom:1px solid #707070!important}
 [data-look-design] .vivnook-embroidery__entry-heading{margin-bottom:calc(16px * var(--look-scale))}
 [data-look-design] .vivnook-embroidery__entry-title p{font:700 16px/1.4 var(--font-body-family)!important}
@@ -173,7 +168,6 @@ product-info[data-url*="scrub-pants"] .look-quantity-select__menu{z-index:100;po
   [data-look-design] .product .product__media-wrapper,[data-look-design] .product .product__info-wrapper{width:100%;max-width:none;padding:0}
   [data-look-design] .product__media-gallery-viewer-wrap{padding-bottom:0!important}
   [data-look-design] .product__info-wrapper{margin-top:0!important;padding-top:0!important}
-  [data-look-design] .look-size__options label,[data-look-design] .look-find-size{min-height:44px}
   [data-look-design] .product-form__submit,[data-look-design] .quantity{min-height:36px;height:36px;max-height:36px}
   [data-look-design] .look-size__chart{padding:0}
 }
@@ -366,42 +360,6 @@ product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input{w
 product-info[data-url*="scrub-pants"] .vivnook-length-adjustment__option input:checked::after{width:5px!important;height:9px!important;left:4px!important;top:1px!important;border-width:0 2px 2px 0!important}
 [data-look-design], [data-look-design] *{font-family:Helvetica,Arial,sans-serif!important}
 @media(max-width:767px){
-  body.product-template.signature-look .look-size__options label,
-  body.signature-look .look-size__options label{
-    height:32px!important;
-    min-height:32px!important;
-    max-height:32px!important;
-    box-sizing:border-box!important;
-  }
-}
-@media(max-width:767px){
-  body.product-template.signature-look .look-size__options input:checked+label,
-  body.signature-look .look-size__options input:checked+label{
-    background:#000!important;
-    color:#fff!important;
-    border-color:#000!important;
-    box-shadow:none!important;
-  }
-}
-@media(max-width:767px){
-  body.product-template.signature-look .look-size__options,
-  body.signature-look .look-size__options{
-    gap:12px!important;
-  }
-  body.product-template.signature-look .look-size__options label,
-  body.signature-look .look-size__options label{
-    border-radius:5px!important;
-    font-weight:700!important;
-  }
-}
-body.product-template.signature-look .look-size__options input:checked+label,
-body.signature-look .look-size__options input:checked+label{
-  background:#000!important;
-  color:#fff!important;
-  border-color:#000!important;
-  box-shadow:none!important;
-}
-@media(max-width:767px){
   body.product-template.signature-look .product__media-gallery-viewer-wrap .swiper-pagination,
   body.signature-look .product__media-gallery-viewer-wrap .swiper-pagination,
   body.product-template.signature-look .product__media-gallery-viewer-wrap .slider-controls .swiper-pagination,
@@ -420,73 +378,6 @@ body.signature-look .look-size__options input:checked+label{
    THE LOOK: EXACT PARITY WITH SCRUB TOPS & UNIFIED 16PX SPACING
    ======================================================== */
 
-/* 1. Size option boxes on The Look: exactly match Scrub Tops */
-[data-look-design] .look-size__options,
-body.product-template.signature-look .look-size__options,
-body.signature-look .look-size__options {
-  display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 7px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-[data-look-design] .look-size__options label,
-body.product-template.signature-look .look-size__options label,
-body.signature-look .look-size__options label {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
-  height: 29px !important;
-  min-height: 29px !important;
-  max-height: 29px !important;
-  line-height: 29px !important;
-  border: 0.5px solid #707070 !important;
-  border-radius: 4px !important;
-  background-color: #fff !important;
-  color: #000 !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  font-family: Helvetica, Arial, sans-serif !important;
-  cursor: pointer !important;
-  position: relative !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
-}
-
-@media (hover: hover) {
-  [data-look-design] .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover,
-  body.product-template.signature-look .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover,
-  body.signature-look .look-size__options label:not(.signature-look-option--unavailable):not(.disabled):not([aria-disabled="true"]):hover {
-    background-color: #000 !important;
-    color: #fff !important;
-    border-color: #000 !important;
-  }
-}
-
-[data-look-design] .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled),
-body.product-template.signature-look .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled),
-body.signature-look .look-size__options input:checked:not(:disabled):not(.disabled) + label:not(.signature-look-option--unavailable):not(.disabled) {
-  background-color: #000 !important;
-  color: #fff !important;
-  border: 0.5px solid #000 !important;
-  border-color: #000 !important;
-  box-shadow: none !important;
-}
-
-/* Tooltips disabled to match Scrub Tops */
-[data-look-design] .look-size__options .look-size__tooltip,
-body.product-template.signature-look .look-size__options .look-size__tooltip,
-body.signature-look .look-size__options .look-size__tooltip,
-[data-look-design] .look-size__options [data-tooltip]::before,
-[data-look-design] .look-size__options [data-tooltip]::after {
-  display: none !important;
-  content: none !important;
-}
-
 /* Ensure Size Chart matches Scrub Tops */
 [data-look-design] .look-size__chart,
 body.product-template.signature-look .look-size__chart,
@@ -501,27 +392,6 @@ body.signature-look .look-size__chart {
 }
 
 @media (max-width: 767px) {
-  [data-look-design] .look-size__options,
-  body.product-template.signature-look .look-size__options,
-  body.signature-look .look-size__options {
-    gap: 5px !important;
-  }
-  [data-look-design] .look-size__options label,
-  body.product-template.signature-look .look-size__options label,
-  body.signature-look .look-size__options label {
-    height: 27px !important;
-    min-height: 27px !important;
-    max-height: 27px !important;
-    line-height: 27px !important;
-    font-size: 12px !important;
-    border: 0.5px solid #707070 !important;
-    border-radius: 4px !important;
-  }
-  [data-look-design] .look-size__options .look-size__tooltip,
-  body.product-template.signature-look .look-size__options .look-size__tooltip,
-  body.signature-look .look-size__options .look-size__tooltip {
-    display: none !important;
-  }
   [data-look-design] .look-size__chart,
   body.product-template.signature-look .look-size__chart,
   body.signature-look .look-size__chart {
@@ -738,22 +608,6 @@ body.product-template.signature-look product-info .vivnook-embroidery__entry-car
 body.signature-look product-info .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"],
 [data-vivnook-embroidery-host="signature-look"] .vivnook-embroidery__entry-card .vivnook-embroidery__entry-price > span[aria-hidden="true"] {
   display: none !important;
-}
-
-/* 4. Find My Size button on The Look */
-[data-look-design] .look-find-size,
-body.product-template.signature-look .look-find-size,
-body.signature-look .look-find-size {
-  box-sizing: border-box !important;
-  height: 36px !important;
-  min-height: 36px !important;
-  max-height: 36px !important;
-  padding: 0 16px !important;
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  font-family: Helvetica, Arial, sans-serif !important;
-  border-radius: 4px !important;
-  margin-top: 4px !important;
 }
 
 /* 5. The Look horizontal dividers: exactly 16px above & 16px below */

@@ -226,7 +226,13 @@ class DetailsDropdown extends HTMLDetailsElement {
       document.body.classList.add(this.classes.bodyClass);
       this.setAttribute('open', '');
       this.summaryElement.setAttribute('open', '');
-      setTimeout(() => this.contentElement.setAttribute('open', ''), 100);
+      if (this.hasAttribute('data-scrubs-dropdown')) {
+        this.contentElement.setAttribute('open', '');
+      } else {
+        setTimeout(() => {
+          if (this.open) this.contentElement.setAttribute('open', '');
+        }, 100);
+      }
 
       // Add event listeners
       document.addEventListener('click', this.handleOutsideClick);
@@ -269,41 +275,43 @@ class DetailsDropdown extends HTMLDetailsElement {
   }
 
   async showWithTransition() {
+    const compact = this.hasAttribute('data-scrubs-dropdown');
     FoxTheme.Motion.animate(
       this.contentElement,
       { opacity: [0, 1], visibility: 'visible' },
       {
-        duration: FoxTheme.config.motionReduced ? 0 : 0.6,
+        duration: FoxTheme.config.motionReduced ? 0 : compact ? 0.16 : 0.6,
         easing: [0.7, 0, 0.2, 1],
-        delay: FoxTheme.config.motionReduced ? 0 : 0.1,
+        delay: FoxTheme.config.motionReduced || compact ? 0 : 0.1,
       }
     );
-    const translateY = this.level === 'top' ? '-105%' : '2rem';
+    const translateY = compact ? '-6px' : this.level === 'top' ? '-105%' : '2rem';
     return FoxTheme.Motion.animate(
       this.contentElement.firstElementChild,
       { transform: [`translateY(${translateY})`, 'translateY(0)'] },
       {
-        duration: FoxTheme.config.motionReduced ? 0 : 0.6,
+        duration: FoxTheme.config.motionReduced ? 0 : compact ? 0.16 : 0.6,
         easing: [0.7, 0, 0.2, 1],
       }
     ).finished;
   }
 
   async hideWithTransition() {
+    const compact = this.hasAttribute('data-scrubs-dropdown');
     FoxTheme.Motion.animate(
       this.contentElement,
       { opacity: 0, visibility: 'hidden' },
       {
-        duration: FoxTheme.config.motionReduced ? 0 : 0.3,
+        duration: FoxTheme.config.motionReduced ? 0 : compact ? 0.12 : 0.3,
         easing: [0.7, 0, 0.2, 1],
       }
     );
-    const translateY = this.level === 'top' ? '-105%' : '2rem';
+    const translateY = compact ? '-6px' : this.level === 'top' ? '-105%' : '2rem';
     return FoxTheme.Motion.animate(
       this.contentElement.firstElementChild,
       { transform: `translateY(${translateY})` },
       {
-        duration: FoxTheme.config.motionReduced ? 0 : 0.6,
+        duration: FoxTheme.config.motionReduced ? 0 : compact ? 0.12 : 0.6,
         easing: [0.7, 0, 0.2, 1],
       }
     ).finished;

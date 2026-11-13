@@ -292,6 +292,7 @@
     draftProfile = { ...state.profile };
     renderPdpState();
     document.dispatchEvent(new CustomEvent('vivnook:fit-profile-updated', { detail: { state: normalize(state) } }));
+    modal?.dispatchEvent(new Event('vivnook:fit-profile-saved'));
     const purchase = pendingPurchase;
     pendingPurchase = null;
     const hidden = modal?.hide();

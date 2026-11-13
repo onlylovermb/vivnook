@@ -26,7 +26,14 @@
     {% if section.settings.hero_image != blank %}
       {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', class: 'about-story__image', widths: '480,750,960,1440,1920,2400', sizes: '100vw' }}
     {% else %}<div class="about-story__image about-story__image--empty"></div>{% endif %}
-    <div class="about-story__hero-copy" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;"><h1>{{ section.settings.hero_heading }}</h1></div>
+    <div class="about-story__hero-copy" style="--about-hero-y-desktop: {{ hero_y_desktop }}%;"><h1>
+      {%- if section.settings.hero_heading == 'Workwear That Feels More Like You' -%}
+        <span class="about-story__hero-title-main">Workwear That Feels</span>
+        <em class="about-story__hero-title-accent">More Like You</em>
+      {%- else -%}
+        {{ section.settings.hero_heading | escape }}
+      {%- endif -%}
+    </h1></div>
   </div>
 
   {% assign rows = 'pockets|dentist|vibrant|bulk' | split: '|' %}
