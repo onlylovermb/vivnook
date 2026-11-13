@@ -111,12 +111,10 @@
               >
               <label
                 for="Look-{{ section.id }}-{{ kind }}-{{ size }}"
-                data-tooltip
                 class="{% if is_size_unavailable %}signature-look-option--unavailable signature-look-option--size disabled{% endif %}"
                 {% if is_size_unavailable %}aria-disabled="true"{% endif %}
               >
                 {{- size -}}
-                <span class="tooltip pointer-events-none" aria-hidden="true">{{ size | escape }}</span>
               </label>
             {%- endfor -%}
           </div>

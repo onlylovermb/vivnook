@@ -103,6 +103,7 @@
       -%}
       <{{ tag_fieldset }}
         class="{{ wrap_class }}"
+        {% if attach_size_chart or option_name_downcase == 'size' %}data-vivnook-size-options{% endif %}
         {% if vivnook_fit_kind != blank %}data-vivnook-recommendation-anchor="{{ vivnook_fit_kind }}"{% endif %}
         {% if picker_type == 'color' %}
           data-swatch-type="{{ block.settings.swatch_type }}"

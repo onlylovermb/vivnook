@@ -181,8 +181,8 @@ body.product-template #MainContent,
     --action-background: #fff;
     --action-foreground: #292929;
     --action-border: #767676;
-    --action-hover-background: #f8edf0;
-    --action-hover-foreground: #851238;
+    --action-hover-background: var(--secondary-action-hover-background);
+    --action-hover-foreground: var(--secondary-action-hover-foreground);
   }
 
   :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .open-size-chart, .tops-find-size, .look-find-size, .about-features__learn) {
@@ -191,7 +191,7 @@ body.product-template #MainContent,
     border-color: var(--action-border) !important;
   }
 
-  product-info :is(.tops-find-size, .look-find-size) {
+  product-info :is(.tops-find-size, .look-find-size):not(.sticky-atc-bar .product-form__submit) {
     --action-border: var(--size-option-border);
     --action-hover-border: var(--size-option-border);
   }
@@ -227,7 +227,7 @@ body.product-template #MainContent,
       border-color: var(--action-hover-background) !important;
     }
 
-    .product-form__input--button:not(.look-size__options, [data-vivnook-recommendation-anchor]) input:not(:checked, :disabled, .disabled) + label:not(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):hover {
+    .product-form__input--button:not(.look-size__options, [data-vivnook-recommendation-anchor], [data-vivnook-size-options]) input:not(:checked, :disabled, .disabled) + label:not(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):hover {
       background-color: #f8edf0 !important;
       color: #851238 !important;
     }
@@ -238,10 +238,16 @@ body.product-template #MainContent,
   }
 }
 
+:root {
+  --secondary-action-hover-background: #f8edf0;
+  --secondary-action-hover-foreground: #851238;
+}
+
 /* Share dimensions between the size options and the sizing action. */
 product-info {
   --size-option-height: 27px;
-  --size-option-border: #000;
+  --size-option-border: #b8b8b8;
+  --size-option-active-background: #a1264e;
   --size-option-radius: 4px;
 }
 
@@ -268,7 +274,8 @@ product-info {
     border-radius: var(--size-option-radius) !important;
   }
 
-  product-info .globo-swatch-product-detail .swatch--gl[data-option-index="1"] li:not(.disabled, .sold-out, [aria-disabled="true"]):not(:has(input:is(:disabled, .disabled))) .swatch-anchor:not(.disabled, .sold-out, [aria-disabled="true"]) {
+  product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"] + label,
+  product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value .swatch-anchor {
     border: 1px solid var(--size-option-border) !important;
   }
 }
@@ -296,23 +303,24 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
   color: #000 !important;
 }
 
-:is(.look-size__options, fieldset.product-form__input--button[data-vivnook-recommendation-anchor]) > input[type="radio"]:checked:not(:disabled, .disabled) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]) {
-  background-color: #000 !important;
-  color: #fff !important;
-  border-color: #000 !important;
-}
-
-@media (hover: hover) {
-  :is(.look-size__options, fieldset.product-form__input--button[data-vivnook-recommendation-anchor]) > input[type="radio"]:not(:disabled, .disabled) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]):hover {
-    background-color: #000 !important;
+@layer vivnook-button-colors {
+  product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"]:checked:not(:disabled, .disabled, [aria-disabled="true"]) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]),
+  product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value li:not(.disabled, .sold-out, .globo-out-of-stock, [aria-disabled="true"]):has(input:checked:not(:disabled, .disabled, [aria-disabled="true"])) .swatch-anchor:not(.disabled, .sold-out, [aria-disabled="true"]) {
+    background-color: var(--size-option-active-background) !important;
     color: #fff !important;
-    border-color: #000 !important;
   }
-}
 
-.look-size__options > input:focus-visible + label .tooltip {
-  --scale: 1;
-  opacity: 1;
+  @media (hover: hover) {
+    product-info :is(.look-size__options, .product-form__input--button[data-vivnook-size-options]) > input[type="radio"]:not(:checked, :disabled, .disabled, [aria-disabled="true"]) + label:not(.disabled, [aria-disabled="true"], .sold-out, [data-disabled="true"]):hover,
+    product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .value li:not(.disabled, .sold-out, .globo-out-of-stock, [aria-disabled="true"]):not(:has(input:is(:checked, :disabled, .disabled, [aria-disabled="true"]))) .swatch-anchor:not(.disabled, .sold-out, [aria-disabled="true"]):hover {
+      background-color: var(--size-option-active-background) !important;
+      color: #fff !important;
+    }
+  }
+
+  product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .attr-title-hover {
+    display: none !important;
+  }
 }
 
 product-info :is(.tops-find-size, .look-find-size):not([hidden]) {
