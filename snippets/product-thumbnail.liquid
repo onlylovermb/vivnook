@@ -98,8 +98,15 @@
           </button>
         {%- endif -%}
       {%- when 'video' -%}
+        {%- liquid
+          assign replacement_video_url = nil
+          if media.id == 46646754508915
+            assign replacement_video_url = 'fanny-signature-utility.mp4' | asset_url
+          endif
+        -%}
         {%- render 'video',
           video: media,
+          replacement_video_url: replacement_video_url,
           muted: true,
           autoplay: true,
           controls: true,

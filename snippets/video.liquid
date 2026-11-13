@@ -46,7 +46,9 @@
   >
     {{- poster -}}
     <template>
-      {%- if video != blank -%}
+      {%- if replacement_video_url != blank -%}
+        <video src="{{ replacement_video_url | escape }}" playsinline autoplay{% if muted %} muted{% endif %}{% if loop %} loop{% endif %}{% if controls %} controls{% endif %} preload="none"></video>
+      {%- elsif video != blank -%}
         {{-
           video
           | video_tag:

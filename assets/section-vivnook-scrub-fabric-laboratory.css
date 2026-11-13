@@ -13,7 +13,7 @@
 .vivnook-fabric-lab__intro>p{font-size:var(--fabric-lab-intro-text-size,16px);font-weight:var(--fabric-lab-intro-text-weight,400)}
 .vivnook-fabric-lab__item strong{font-size:var(--fabric-lab-feature-title-size,16px);font-weight:var(--fabric-lab-feature-title-weight,400)}
 .vivnook-fabric-lab__item p{font-size:var(--fabric-lab-feature-text-size,16px);font-weight:var(--fabric-lab-feature-text-weight,400)}
-.vivnook-fabric-lab__image{height:100%}
+.vivnook-fabric-lab__image{width:100%;min-width:0;height:100%}
 @media(max-width:749px){
   .vivnook-fabric-lab{height:auto}
   .vivnook-fabric-lab h2{font-size:var(--fabric-lab-intro-title-size-mobile,26px)}

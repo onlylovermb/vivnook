@@ -28,7 +28,11 @@
   {% for block in section.blocks %}
     <div class="vn-fanny__row vn-fanny__row--{{ block.type }}" {{ block.shopify_attributes }}>
       {% if block.type == 'work_system' %}
-        {% render 'vivnook-fanny-media', video: block.settings.video, image: block.settings.poster, kind: 'video', label: 'Left video' %}
+        <div class="vn-fanny__media">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="{{ 'fanny-work-system.mp4' | asset_url }}" type="video/mp4">
+          </video>
+        </div>
         <div class="vn-fanny__system" style="--fanny-right-image-height:{{ block.settings.right_image_height }}px;--fanny-right-image-height-mobile:{{ block.settings.right_image_height_mobile }}px;--fanny-right-image-zoom:{{ block.settings.right_image_zoom | divided_by: 100.0 }};--fanny-right-image-zoom-mobile:{{ block.settings.right_image_zoom_mobile | divided_by: 100.0 }};--fanny-right-image-y:{{ block.settings.right_image_vertical_position }}px;--fanny-right-image-y-mobile:{{ block.settings.right_image_vertical_position_mobile }}px;--fanny-right-heading-size:{{ block.settings.right_heading_size }}px;--fanny-right-heading-size-mobile:{{ block.settings.right_heading_size_mobile }}px;--fanny-right-heading-weight:{{ block.settings.right_heading_weight }};--fanny-right-heading-weight-mobile:{{ block.settings.right_heading_weight_mobile }};--fanny-right-body-size:{{ block.settings.right_body_size }}px;--fanny-right-body-size-mobile:{{ block.settings.right_body_size_mobile }}px;--fanny-right-body-weight:{{ block.settings.right_body_weight }};--fanny-right-body-weight-mobile:{{ block.settings.right_body_weight_mobile }};--fanny-right-text-y:{{ block.settings.right_text_vertical_position }}px;--fanny-right-text-y-mobile:{{ block.settings.right_text_vertical_position_mobile }}px;--fanny-right-text-width:{{ block.settings.right_text_width }}px;--fanny-right-text-width-mobile:{{ block.settings.right_text_width_mobile }}px;">
           <div class="vn-fanny__small">{% render 'vivnook-fanny-media', image: block.settings.image, label: 'Small image' %}</div>
           <div class="vn-fanny__copy">{% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}{{ block.settings.text }}</div>

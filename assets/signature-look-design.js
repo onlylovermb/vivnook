@@ -44,18 +44,6 @@
       });
     });
   }
-  const observeLookInfo = (scope = document) => {
-    scope.querySelectorAll('[data-vivnook-sticky-look] .product__info-container.sticky-element').forEach((panel) => {
-      const updateHeight = () => {
-        panel.style.setProperty('--look-info-height', `${panel.getBoundingClientRect().height}px`);
-      };
-      const observer = new ResizeObserver(updateHeight);
-      observer.observe(panel, { box: 'border-box' });
-      panel.closest('.shopify-section')?.addEventListener('shopify:section:unload', () => observer.disconnect(), { once: true });
-      updateHeight();
-    });
-  };
-
   const initialize = (scope = document) => {
     scope.querySelectorAll('[data-look-design], product-info[data-url*="scrub-pants"], product-info[data-url="/products/scrub-top"]').forEach((root) => {
       if (root.dataset.lookInitialized) return;
@@ -212,7 +200,6 @@
   enhanceStickyQuantity();
   new MutationObserver(enhanceStickyQuantity).observe(document.body,{childList:true,subtree:true});
   initialize();
-  observeLookInfo();
   // The compact sticky bar is a shortcut to the look's size selectors rather
   // than a second checkout action.
   document.addEventListener('click', (event) => {
@@ -225,8 +212,5 @@
     target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     target?.querySelector('input:not(:disabled)')?.focus({ preventScroll: true });
   });
-  document.addEventListener('shopify:section:load', (event) => {
-    initialize(event.target);
-    observeLookInfo(event.target);
-  });
+  document.addEventListener('shopify:section:load', (event) => initialize(event.target));
 })();

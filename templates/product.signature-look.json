@@ -234,7 +234,7 @@
         "heading_weight": "400",
         "body_weight": "400",
         "button_weight": "400",
-        "video": "shopify://files/videos/红色替换.mp4",
+        "use_work_system_video": true,
         "video_url": "",
         "media_overlay_text": "",
         "video_autoplay": true,

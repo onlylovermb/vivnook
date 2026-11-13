@@ -40,6 +40,18 @@ if (!customElements.get('product-info')) {
       connectedCallback() {
         this.initializeProductSwapUtility();
 
+        const stickyPanel = this.matches('[data-vivnook-product-layout]') && this.querySelector(
+          ':scope > .product--columns.product--media-has-many > .product__info-wrapper > .product__info-container.sticky-element'
+        );
+        if (stickyPanel) {
+          const updateHeight = () => {
+            stickyPanel.style.setProperty('--product-info-height', `${stickyPanel.getBoundingClientRect().height}px`);
+          };
+          this.stickyInfoObserver = new ResizeObserver(updateHeight);
+          this.stickyInfoObserver.observe(stickyPanel, { box: 'border-box' });
+          updateHeight();
+        }
+
         this.onVariantChangeUnsubscriber = FoxTheme.pubsub.subscribe(
           FoxTheme.pubsub.PUB_SUB_EVENTS.optionValueSelectionChange,
           this.handleOptionValueChange.bind(this)
@@ -54,6 +66,7 @@ if (!customElements.get('product-info')) {
       }
 
       disconnectedCallback() {
+        this.stickyInfoObserver?.disconnect();
         this.onVariantChangeUnsubscriber();
         this.cartUpdateUnsubscriber?.();
       }

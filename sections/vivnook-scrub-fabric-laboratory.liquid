@@ -10,7 +10,9 @@
     {% elsif section.settings.video_url != blank %}
       <video src="{{ section.settings.video_url | escape }}" autoplay loop muted controls playsinline preload="metadata" aria-label="EverTrue fabric in motion"></video>
     {% elsif section.settings.video_required %}
-      {% if request.design_mode %}<p class="vivnook-fabric-lab__video-note">Select the fabric video in this section?s settings.</p>{% endif %}
+      <video autoplay loop muted playsinline preload="metadata" aria-label="EverTrue fabric in motion">
+        <source src="{{ 'fanny-work-system.mp4' | asset_url }}" type="video/mp4">
+      </video>
     {% elsif section.settings.right_image != blank %}
       {{ section.settings.right_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '700, 1000, 1400, 1800', sizes: '50vw' }}
     {% else %}
