@@ -3607,6 +3607,10 @@ input:is([type=radio])::after {
   transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
   transform: translate(var(--translate-x), var(--translate-y));
 }
+:is(.search-drawer, .cart-drawer) > :is(.drawer__inner, .fixed-overlay) {
+  transition-duration: 180ms;
+  transition-timing-function: ease-out;
+}
 .drawer--left .drawer__inner {
   --translate-y: 0;
   --translate-x: -100%;
@@ -7008,11 +7012,6 @@ input[type='reset'],
   border-radius: 5px !important;
 }
 /* Fanny Pack product overrides: target the live encoded product URL directly. */
-body:has(product-info[data-url*="fanny-bag"]) .section--breadcrumb{padding:0!important;margin:0!important;min-height:0!important;}
-body:has(product-info[data-url*="fanny-bag"]) .section--breadcrumb .page-width{padding:0 3.5% 5px 8px!important;min-height:0!important;}
-body:has(product-info[data-url*="fanny-bag"]) .section--breadcrumb .breadcrumbs{padding:0!important;margin:0!important;}
-/* Match Scrub Tops: keep a header-to-breadcrumb breathing room, then only 5px before the gallery. */
-body:has(product-info[data-url*="fanny-bag"]) .section--breadcrumb .page-width{padding-top:24px!important;padding-bottom:5px!important;}
 body:has(product-info[data-url*="fanny-bag"]) product-info{padding-top:0!important;}
 body:has(product-info[data-url*="fanny-bag"]) .product__block--buy_buttons .product-form__buttons{display:grid!important;grid-template-columns:32% minmax(0,1fr)!important;gap:12px!important;width:100%!important;margin-top:32px!important;padding-top:0!important;}
 body:has(product-info[data-url*="fanny-bag"]) .product__block--buy_buttons .product-form__quantity,body:has(product-info[data-url*="fanny-bag"]) .product__block--buy_buttons .product-form__quantity .quantity,body:has(product-info[data-url*="fanny-bag"]) .product__block--buy_buttons .product-form__submit{height:36px!important;min-height:36px!important;max-height:36px!important;}

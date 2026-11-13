@@ -64,10 +64,8 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         );
         this.identities = [];
         this.identitiesPromise = null;
-        this.sharedAssetsPromise = null;
         this.artworkPreloads = new Map();
         this.preparedBadgeDownloads = new Map();
-        this.sharedAssets = {};
         this.selectedIdentity = null;
         this.coverSource = this.elements.image?.getAttribute('src');
         this.hasUserInteracted = false;
@@ -235,24 +233,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         }
       }
 
-      async loadSharedAssets() {
-        if (!this.dataset.cardAssetsUrl) return this.sharedAssets;
-        if (this.sharedAssetsPromise) return this.sharedAssetsPromise;
-
-        this.sharedAssetsPromise = (async () => {
-          try {
-            this.sharedAssets = await this.loadJsonOnce(this.dataset.cardAssetsUrl, 'Unable to load card assets.');
-            await this.renderSharedArtwork();
-          } catch (error) {
-            this.sharedAssets = {};
-          }
-
-          return this.sharedAssets;
-        })();
-
-        return this.sharedAssetsPromise;
-      }
-
       loadJsonOnce(url, errorMessage) {
         if (!url) return Promise.reject(new Error(errorMessage));
 
@@ -305,22 +285,17 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         try {
           const identities = await this.loadIdentities();
           const identity = this.drawIdentity(identities);
+          const artworkReady = await this.preloadArtwork(identity);
+          if (this.profilePending || this.verifiedProfileId) return;
           this.scheduleNextIdentityPreload(identities);
-
-          this.pendingIdentity = identity;
-          // Give the selected face request priority over the non-critical
-          // physical card back, so the first flip can land on its artwork.
-          void this.preloadArtwork(identity);
-          void this.loadSharedAssets();
 
           flipScheduled = true;
           this.playBadgeRotation(() => {
             if (this.profilePending || this.verifiedProfileId) return;
-            this.selectedIdentity = this.pendingIdentity;
-            this.renderIdentity(this.selectedIdentity, true);
+            this.selectedIdentity = identity;
+            this.renderIdentity(identity, artworkReady);
           }, () => {
-            if (this.profilePending || this.verifiedProfileId) { this.pendingIdentity = null; this.dataset.busy = 'false'; return; }
-            this.pendingIdentity = null;
+            if (this.profilePending || this.verifiedProfileId) { this.dataset.busy = 'false'; return; }
             this.lastIdentityId = identity.id;
             try { window.sessionStorage.setItem(this.storageKey, identity.id); } catch { /* Storage is optional for shuffle. */ }
             this.setStage('revealed');
@@ -329,7 +304,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
             this.dataset.busy = 'false';
           });
         } catch (error) {
-          this.pendingIdentity = null;
           this.setStage('error');
           this.announce('We could not load an identity. Please try again.');
         } finally {
@@ -367,17 +341,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         }
 
         this.setArtworkState('identity');
-      }
-
-      renderSharedArtwork() {
-        if (this.sharedAssets.badge_back && this.elements.badgeFlipper) {
-          this.elements.badgeFlipper.style.setProperty(
-            '--vivnook-badge-back-image',
-            `url("${this.resolveAsset(this.sharedAssets.badge_back)}")`
-          );
-        }
-
-        return this.preloadSharedAsset(this.sharedAssets.badge_back);
       }
 
       preloadDeferredImage(element) {
@@ -434,17 +397,6 @@ if (!customElements.get('vivnook-identity-card-generator')) {
             resolve(false);
           };
           image.alt = alt;
-          image.src = this.resolveAsset(filename);
-        });
-      }
-
-      preloadSharedAsset(filename) {
-        if (!filename) return Promise.resolve(false);
-
-        return new Promise((resolve) => {
-          const image = new Image();
-          image.onload = () => resolve(true);
-          image.onerror = () => resolve(false);
           image.src = this.resolveAsset(filename);
         });
       }
@@ -770,7 +722,7 @@ if (!customElements.get('vivnook-identity-card-generator')) {
 
         const preload = new Promise((resolve) => {
           const image = new Image();
-          image.onload = () => resolve(true);
+          image.onload = () => image.decode().then(() => resolve(true), () => resolve(false));
           image.onerror = () => resolve(false);
           image.src = this.resolveAsset(filename);
         });
@@ -807,12 +759,12 @@ if (!customElements.get('vivnook-identity-card-generator')) {
         badge.classList.remove('is-rotating');
         void badge.offsetWidth;
         badge.classList.add('is-rotating');
-        const midpointTimer = window.setTimeout(() => onMidpoint?.(), 275);
+        const midpointTimer = window.setTimeout(() => onMidpoint?.(), 180);
         window.setTimeout(() => {
           window.clearTimeout(midpointTimer);
           badge.classList.remove('is-rotating');
           onComplete?.();
-        }, 550);
+        }, 360);
       }
 
       emit(name, detail) {

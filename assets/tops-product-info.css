@@ -71,15 +71,8 @@
   }
 }
 
-/* Product breadcrumb to gallery spacing: keep only a 5px lower gap. */
-body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .breadcrumbs{padding-top:0!important;padding-bottom:0!important;}
-body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb{padding-top:0!important;padding-bottom:5px!important;margin-top:0!important;margin-bottom:0!important;min-height:0!important;}
-body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .page-width{padding-top:0!important;padding-bottom:0!important;min-height:0!important;}
 
 @media (min-width:1024px){
-  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb{margin-bottom:3px!important;}
-  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .page-width{padding-inline:8px 3.5%!important;padding-top:24px!important;padding-bottom:0!important;}
-  body:has(product-info:is([data-url*="fanny"],[data-url*="scrub-pants"])) .section--breadcrumb .breadcrumbs{padding-block:0!important;}
   /* Keep product title 3px below the gallery top, matching both product pages. */
   product-info:is([data-url*="fanny"],[data-url*="scrub-pants"]) .product__info-wrapper,
   product-info[data-url="/products/scrub-top"] .product__info-wrapper{align-self:start!important;margin-top:0!important;padding-top:0!important;}
@@ -282,20 +275,6 @@ product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .produ
 product-info[data-url="/products/scrub-top"] .product__block--buy_buttons .product-form__submit{height:36px!important;min-height:36px!important;max-height:36px!important}
 product-info[data-url="/products/scrub-top"] .product__block--custom_liquid:has(.tops-shipping){margin-bottom:0!important}
 product-info[data-url="/products/scrub-top"] .vivnook-inline-size-reference{padding:12px 16px!important;min-height:0!important;height:auto!important;row-gap:8px!important;align-content:start!important}
-body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .page-width {
-  padding-inline: 8px 3.5%;
-}
-body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .breadcrumbs {
-  padding-block: 0;
-}
-body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb {
-  margin-top: -13px;
-  margin-bottom: 10px;
-}
-body:has(product-info[data-url="/products/scrub-top"]) .section--breadcrumb .breadcrumbs {
-  position: relative;
-  top: 35px;
-}
 product-info[data-url="/products/scrub-top"] .tops-quantity__trigger{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;height:100%;border:0;background:transparent;font:400 23px/1 Helvetica,Arial,sans-serif;cursor:pointer;}
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:has(.tops-quantity__menu)::before,
 product-info[data-url="/products/scrub-top"] .product-form__quantity .quantity:has(.tops-quantity__menu)::after{display:none!important;}

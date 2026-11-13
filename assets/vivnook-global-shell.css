@@ -1,7 +1,216 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 .announcement-bar-section .announcement-bar{height:var(--announcement-height-desktop,50px)!important;min-height:0!important;padding-block:0!important;display:flex!important;align-items:center!important}
 .announcement-bar-section .announcement-bar__wrapper,.announcement-bar-section .swiper-wrapper,.announcement-bar-section .swiper-slide{height:100%!important}
-.header-section .header{height:var(--header-height-desktop,106px)!important;min-height:0!important;padding-block:0!important}
+.header-section .header{height:var(--header-height-desktop,106px)!important;min-height:0!important;padding-block:0!important;border-bottom:1px solid rgba(var(--color-foreground,0,0,0),0.12)}
 @media(max-width:749px){.announcement-bar-section .announcement-bar{height:var(--announcement-height-mobile,50px)!important;min-height:var(--announcement-height-mobile,50px)!important;padding-block:0!important;box-sizing:border-box!important}.announcement-bar-section .announcement-bar__wrapper,.announcement-bar-section .announcement-bar__wrapper .swiper-wrapper,.announcement-bar-section .announcement-bar__wrapper .swiper-slide{height:100%!important;min-height:0!important}.announcement-bar-section .announcement-bar__content{min-height:0!important;padding-block:0!important;display:flex;align-items:center;justify-content:center}.announcement-bar-section .announcement-bar__text{line-height:1.2!important}.header-section .header{height:var(--header-height-mobile,64px)!important;min-height:0!important;padding-block:0!important}}
 .vivnook-fabric-lab,.vivnook-fabric-lab *,.vivnook-atelier-concierge,.vivnook-atelier-concierge *,.vivnook-finale-banner,.vivnook-finale-banner *{font-family:'Open Sans',Arial,sans-serif!important}
 @media(min-width:750px){.vivnook-fabric-lab{height:auto!important;min-height:min(56.25vw,960px)!important;align-items:stretch!important}.vivnook-fabric-lab__left{height:auto!important}.vivnook-fabric-lab__image{height:auto!important;min-height:100%!important;align-self:stretch!important}}
+
+/* Style the expanded picker while preserving native form and keyboard behavior. */
+@supports (appearance: base-select) and selector(select::picker(select)) {
+  select:not([multiple], [size], [hidden], .localization-selector) {
+    appearance: base-select;
+    background-image: none;
+  }
+
+  select:not([multiple], [size], [hidden], .localization-selector)::picker(select) {
+    appearance: base-select;
+    box-sizing: border-box;
+    max-height: min(320px, 50dvh);
+    padding: 4px;
+    margin-block: 4px;
+    border: 1px solid #e3dedb;
+    border-radius: 6px;
+    background: #fff;
+    color: #292929;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 12%);
+    font: inherit;
+    overflow: auto;
+  }
+
+  select:not([multiple], [size], [hidden], .localization-selector) option {
+    min-height: 34px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: normal;
+  }
+
+  select:not([multiple], [size], [hidden], .localization-selector) option:checked {
+    background: #f8edf0;
+    color: #851238;
+  }
+
+  select:not([multiple], [size], [hidden], .localization-selector) option:enabled:is(:hover, :focus-visible) {
+    background: #f1e6ea;
+    color: #851238;
+  }
+
+  select:not([multiple], [size], [hidden], .localization-selector) option:is(:disabled, [data-available="false"]) {
+    color: #767676;
+    text-decoration: line-through;
+  }
+}
+
+/* Shared appearance for quantity menus whose positioning is set by each component. */
+@layer vivnook-quantity-appearance {
+  :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu):not([hidden]) {
+    padding: 4px !important;
+    border: 1px solid #e3dedb !important;
+    border-radius: 6px !important;
+    background: #fff !important;
+    color: #292929 !important;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 12%) !important;
+  }
+
+  :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu) button {
+    min-height: 34px !important;
+    border: 0 !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    color: #292929 !important;
+  }
+
+  :is(.tops-quantity__menu, .look-quantity-select__menu, .signature-look-cart-group__quantity-menu, .standalone-quantity-menu) button:is(:hover, :focus-visible, [aria-selected="true"]) {
+    background: #f8edf0 !important;
+    color: #851238 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-section .header.w-full {
+    padding-inline: 40px;
+  }
+}
+
+/* Align the outer cart button with the header's logo inset. */
+.header-section .header__icons--right .header__buttons {
+  margin-inline-end: 0;
+}
+
+.header-section .header-mobile--left .header__icons--right .cart-drawer-button {
+  order: 1;
+}
+
+/* The homepage hero is full width; services, identity card, and FAQ set their own gutters. */
+body.product-template #MainContent,
+#MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section:not(:has(.vivnook-atelier-concierge, .vivnook-identity-card-generator, .vivnook-faq-contact)) {
+  padding-inline: 16px;
+}
+
+@media (min-width: 1024px) {
+  body.product-template #MainContent,
+  #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section:not(:has(.vivnook-atelier-concierge, .vivnook-identity-card-generator, .vivnook-faq-contact)) {
+    padding-inline: 40px;
+  }
+}
+
+/* Separate the last content section from the footer group. */
+.site-wrapper > #MainContent {
+  margin-block-end: clamp(32px, 4vw, 64px);
+}
+
+.breadcrumbs--product {
+  align-items: center;
+  justify-content: flex-start;
+  padding-block: 16px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #595959;
+}
+
+.breadcrumbs--product .breadcrumbs--sep {
+  flex: none;
+  margin-inline: 8px;
+  color: #767676;
+}
+
+.breadcrumbs--product a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .breadcrumbs--product {
+    padding-block: 20px;
+    font-size: 14px;
+  }
+}
+
+/* Align the product breadcrumb and gallery to the shared MainContent gutters. */
+#MainContent .section--breadcrumb:has(.breadcrumbs--product) > .page-width {
+  padding-inline: 0;
+}
+
+#MainContent .shopify-section:has(.breadcrumbs--product) + .shopify-section > product-info.page-width {
+  max-width: none;
+  padding-inline: 0;
+  padding-block-start: 0;
+}
+
+@media (min-width: 1024px) {
+  .header-section .header__menu .menu__item {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .header-section .header__icons--right :is(.search-drawer-button, .cart-drawer-button) .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Shared action colors take precedence over legacy component overrides. */
+@layer vivnook-button-colors {
+  :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button) {
+    --action-background: #a1264e;
+    --action-foreground: #fff;
+    --action-border: #a1264e;
+    --action-hover-background: #68102e;
+    --action-hover-foreground: #fff;
+  }
+
+  :is(.btn--secondary, .open-size-chart, .look-find-size, .about-features__learn):not(.sticky-atc-bar .product-form__submit) {
+    --action-background: #fff;
+    --action-foreground: #292929;
+    --action-border: #767676;
+    --action-hover-background: #f8edf0;
+    --action-hover-foreground: #851238;
+  }
+
+  :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .open-size-chart, .look-find-size, .about-features__learn) {
+    background-color: var(--action-background) !important;
+    color: var(--action-foreground) !important;
+    border-color: var(--action-border) !important;
+  }
+
+  :is(.btn--primary, .btn--secondary)::before,
+  :is(.btn--primary, .btn--secondary)::after {
+    content: none !important;
+  }
+
+  :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .open-size-chart, .look-find-size, .about-features__learn):not(:disabled, [aria-disabled="true"]):focus-visible {
+    outline: 2px solid #881337 !important;
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) {
+    :is(.btn--primary, .btn--secondary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button, .open-size-chart, .look-find-size, .about-features__learn):not(:disabled, [aria-disabled="true"], .disabled):hover {
+      background-color: var(--action-hover-background) !important;
+      color: var(--action-hover-foreground) !important;
+      border-color: var(--action-hover-foreground, var(--action-border)) !important;
+      filter: none !important;
+    }
+
+    :is(.btn--primary, .sticky-atc-bar .product-form__submit, [data-look-add], .home-rebuild-hero__copy a, .vivnook-product-video-split__button):not(:disabled, [aria-disabled="true"], .disabled):hover {
+      border-color: var(--action-hover-background) !important;
+    }
+
+    :is(.look-size__options, .product-form__input--button) input:not(:checked, :disabled, .disabled) + label:not(.disabled, .signature-look-option--unavailable, [aria-disabled="true"]):hover {
+      background-color: #f8edf0 !important;
+      color: #851238 !important;
+    }
+
+    :is(.header__buttons > a, .header__buttons > button, .look-bundle__arrow, .slider-controls button):not(:disabled, [aria-disabled="true"], .swiper-button-disabled):hover {
+      color: #851238 !important;
+    }
+  }
+}

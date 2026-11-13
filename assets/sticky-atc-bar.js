@@ -311,7 +311,6 @@ if (!customElements.get('sticky-atc-bar')) {
           return video?.closest('section, [id^="shopify-section-"], .shopify-section') || video;
         };
         const syncTopPurchaseBar = () => {
-          const isSignatureLook = this.container.classList.contains('sticky-atc-bar--signature-look');
           const purchaseBlock = this.mainProductInfo?.querySelector(
             '.product__block--buy_buttons:not(.sticky-atc-bar .product__block--buy_buttons)'
           );
@@ -354,13 +353,10 @@ if (!customElements.get('sticky-atc-bar')) {
           }
 
           this.container.classList.toggle('sticky-atc-bar--show', isShown);
-          document.body.classList.toggle('signature-sticky-active', isShown && isSignatureLook);
-          this.setDesktopHeaderVisibility(isShown);
         };
         this.topPurchaseBarScrollHandler = syncTopPurchaseBar;
         isShown = false;
         this.container.classList.remove('sticky-atc-bar--show');
-        document.body.classList.remove('signature-sticky-active');
         window.addEventListener('scroll', syncTopPurchaseBar, { passive: true });
         window.addEventListener('resize', syncTopPurchaseBar, { passive: true });
         this.topPurchaseBarRefresh = window.setInterval(() => {
@@ -385,13 +381,6 @@ if (!customElements.get('sticky-atc-bar')) {
           : null;
         this.observeTarget = signaturePurchase || this.productFormActions;
         this.observer.observe(this.observeTarget);
-      }
-
-      setDesktopHeaderVisibility(show) {
-        const isMobile = window.matchMedia(FoxTheme.config.mediaQueryMobile).matches;
-        document.querySelectorAll('header.header, header[is="sticky-header"], .header').forEach((header) => {
-          header.style.setProperty('display', show && !isMobile ? 'none' : '', 'important');
-        });
       }
 
       checkDevice(e) {

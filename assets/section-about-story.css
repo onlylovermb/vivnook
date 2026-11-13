@@ -43,3 +43,61 @@ section.about-story .about-story__row{min-height:var(--story-row-desktop-height,
 
 /* Mobile only: move the hero heading into a dedicated blank panel between the first two images. */
 @media(max-width:767px){section.about-story .about-story__hero{overflow:visible;margin-bottom:var(--about-mobile-title-panel-height,150px)}section.about-story .about-story__hero-copy{left:0;right:0;top:100%;width:100%;max-width:none;height:var(--about-mobile-title-panel-height,150px);padding:16px 24px;transform:none;display:flex;align-items:center;justify-content:center;background:#f1f1f1;color:#202b35;text-align:center}section.about-story .about-story__hero .about-story__hero-copy h1{margin:0;color:#202b35!important;font-size:var(--about-mobile-title-panel-font-size,32px)!important;line-height:1.2;text-shadow:none!important}}
+
+/* Fill the viewport below the announcement bar and navigation. */
+section.about-story .about-story__hero {
+  min-height: max(360px, calc(100svh - var(--header-height, 64px) - var(--header-offset-top, 0px)));
+}
+
+@media (max-width: 767px) {
+  section.about-story .about-story__hero {
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+
+  section.about-story .about-story__hero-copy {
+    inset: auto 0 0;
+    height: auto;
+    padding: 48px 24px 32px;
+    background: linear-gradient(transparent, rgb(0 0 0 / 55%));
+  }
+
+  section.about-story .about-story__hero .about-story__hero-copy h1 {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 50%) !important;
+  }
+}
+
+.about-story {
+  --about-content-gutter: 16px;
+}
+
+@media (min-width: 1024px) {
+  .about-story {
+    --about-content-gutter: 40px;
+  }
+}
+
+.about-story > .about-story__row {
+  margin-inline: var(--about-content-gutter);
+}
+
+.about-story > .about-features {
+  padding-inline: var(--about-content-gutter);
+}
+
+@media (max-width: 767px) {
+  .about-story .about-features__track {
+    padding-inline: 0;
+  }
+}
+
+.about-story > .about-story__hero + .about-story__row {
+  margin-block-start: clamp(24px, 3vw, 48px);
+}
+
+@media (max-width: 749px) {
+  .about-story > .about-story__hero + .about-story__row {
+    margin-block-start: 20px;
+  }
+}

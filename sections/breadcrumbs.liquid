@@ -15,7 +15,7 @@
     {% endcapture %}
     <div class="page-width">
       <nav
-        class="breadcrumbs justify-center md:justify-{{ justify }}"
+        class="breadcrumbs {% if request.page_type == 'product' %}breadcrumbs--product{% else %}justify-center md:justify-{{ justify }}{% endif %}"
         role="navigation"
         aria-label="breadcrumbs"
       >
@@ -47,7 +47,7 @@
             {% endif %}
           {% endif %}
           <span aria-hidden="true" class="breadcrumbs--sep breadcrumbs--sep-last">{{ separator_icon }}</span>
-          <span class="breadcrumbs--last">{{ product.title }}</span>
+          <span class="breadcrumbs--last" aria-current="page">{{ product.title | escape }}</span>
         {% elsif template contains 'collection' and collection.handle %}
           {% if collection.handle != 'all' %}
             <span aria-hidden="true" class="breadcrumbs--sep">{{ separator_icon }}</span>

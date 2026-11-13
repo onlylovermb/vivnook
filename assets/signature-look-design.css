@@ -195,77 +195,15 @@ product-info[data-url*="scrub-pants"] .look-quantity-select__menu{z-index:100;po
     border-inline:0;
   }
 
-  /* Keep the mobile breadcrumb visible above The Look's gallery. */
-  body.product-template.signature-look .section--breadcrumb,
-  body.signature-look .section--breadcrumb,
-  body:has([data-look-design]) .section--breadcrumb{
-    position:relative!important;
-    z-index:2!important;
-    display:block!important;
-    visibility:visible!important;
-    opacity:1!important;
-    margin:0!important;
-    padding:0 0 5px!important;
-    min-height:0!important;
-    overflow:visible!important;
-  }
-  body.product-template.signature-look .section--breadcrumb .page-width,
-  body.signature-look .section--breadcrumb .page-width,
-  body:has([data-look-design]) .section--breadcrumb .page-width{
-    width:100%!important;
-    max-width:100%!important;
-    margin:0!important;
-    padding:0 16px!important;
-    min-height:0!important;
-  }
-  body.product-template.signature-look .section--breadcrumb .breadcrumbs,
-  body.signature-look .section--breadcrumb .breadcrumbs,
-  body:has([data-look-design]) .section--breadcrumb .breadcrumbs{
-    position:static!important;
-    top:auto!important;
-    display:flex!important;
-    width:100%!important;
-    min-height:0!important;
-    margin:0!important;
-    padding:0!important;
-    overflow:visible!important;
-    white-space:normal!important;
-  }
 }
 
-/* Match the product-page breadcrumb-to-gallery spacing used by scrub tops,
-   pants, and the fanny pack. The Look's own section padding was adding an
-   extra 16px on mobile and 24px on desktop after the breadcrumb. */
 @media(min-width:768px){
-  body:has([data-look-design]) .section--breadcrumb{
-    margin-top:0!important;
-    margin-bottom:3px!important;
-    padding-top:0!important;
-    padding-bottom:0!important;
-    min-height:0!important;
-  }
-  body:has([data-look-design]) .section--breadcrumb .page-width{
-    padding-inline:8px 3.5%!important;
-    padding-top:24px!important;
-    padding-bottom:0!important;
-    min-height:0!important;
-  }
-  body:has([data-look-design]) .section--breadcrumb .breadcrumbs{
-    padding-block:0!important;
-  }
   body:has([data-look-design]) [data-look-design]{
     padding-top:0!important;
   }
 }
 
 @media(max-width:767px){
-  body:has([data-look-design]) .section--breadcrumb{
-    margin-top:0!important;
-    margin-bottom:0!important;
-    padding-top:0!important;
-    padding-bottom:5px!important;
-    min-height:0!important;
-  }
   body:has([data-look-design]) [data-look-design]{
     padding-top:0!important;
   }
@@ -336,8 +274,6 @@ body:has(product-info[data-url="/products/scrub-top"]) .vivnook-embroidery__inli
 body:has(product-info[data-url*="scrub-pants"]) .vivnook-embroidery__inline-link{
   display:none!important;
 }
-.signature-sticky-active header.header{transform:translateY(-100%)!important;transition:transform .25s ease!important;pointer-events:none}
-.signature-sticky-active header.header + *{ }
 @media (min-width: 768px) {
   [data-look-design] .sticky-atc-bar--signature-look quantity-input,
   [data-look-design] .sticky-atc-bar--signature-look .quantity-input{display:flex!important;width:12.5rem!important;min-width:12.5rem!important;max-width:12.5rem!important;flex:0 0 12.5rem!important}

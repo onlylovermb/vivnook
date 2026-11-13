@@ -21,30 +21,12 @@ body.sticky-atc-bar-enabled {
   bottom: 0;
 }
 
-/* Desktop purchase bars sit at the top of the viewport. Their quantity
-   menus therefore open into the page below the bar. */
+/* Keep the purchase bar below the page content and clear of the navigation. */
 @media (min-width: 768px) {
-  body.sticky-atc-bar-enabled {
-    padding-bottom: 0;
-  }
-  .sticky-atc-bar {
-    top: 0;
-    bottom: auto;
-    transform: translate3d(0, -110%, 0);
-  }
-  .sticky-atc-bar--show,
-  .mobile-sticky-bar-down .sticky-atc-bar--show {
-    top: 0;
-    bottom: auto;
-    transform: translate3d(0, 0, 0);
-  }
   .sticky-atc-bar--signature-look .look-sticky-quantity__menu {
-    top: 100%;
-    bottom: auto;
+    top: auto;
+    bottom: 100%;
   }
-  /* Use the same compact desktop top-bar treatment as The Look for every
-     product. The selected variant remains synced from the main form, so the
-     hidden duplicate selector cannot drift from the product-page choice. */
   .sticky-atc-bar:not(.sticky-atc-bar--signature-look) {
     padding: 0;
     border-top: 1px solid #e5e5e5;
@@ -342,15 +324,13 @@ body.sticky-atc-bar-enabled {
 /* Signature Look desktop purchase bar */
 @media (min-width: 768px) {
   .sticky-atc-bar--signature-look {
-    top: 0;
-    bottom: auto;
     padding: 0;
     background: #fff;
     border-top: 1px solid #e5e5e5;
     box-shadow: 0 -4px 14px rgba(0,0,0,.08);
     z-index: 100;
   }
-  .sticky-atc-bar--signature-look:not(.sticky-atc-bar--show) { transform: translate3d(0, -110%, 0) !important; }
+  .sticky-atc-bar--signature-look:not(.sticky-atc-bar--show) { transform: translate3d(0, 110%, 0) !important; }
   .sticky-atc-bar--signature-look.sticky-atc-bar--show { transform: translate3d(0, 0, 0) !important; }
   .sticky-atc-bar--signature-look .sticky-atc-bar__inner {
     min-height: 56px;
@@ -686,4 +666,18 @@ html body [id^="QuantitySticky-"] .quantity {
     border: 0 !important;
     background: transparent !important;
   }
+}
+
+/* Keep the controls inside the bordered box and let its corners paint through. */
+.sticky-atc-bar [id^="QuantitySticky-"] .quantity > :is(.quantity__button, .quantity__input) {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.sticky-atc-bar [id^="QuantitySticky-"] .quantity > :is(.quantity__button, .quantity__input):focus-visible {
+  outline: 2px solid currentColor !important;
+  outline-offset: -4px;
 }

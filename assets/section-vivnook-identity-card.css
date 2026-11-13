@@ -560,7 +560,7 @@ vivnook-identity-card-generator[data-stage='shuffling'] .vivnook-identity-text-l
 }
 
 .vivnook-badge-flipper.is-rotating {
-  animation: vivnook-badge-rotation 550ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation: vivnook-badge-rotation 360ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
   will-change: transform;
 }
 
@@ -568,14 +568,8 @@ vivnook-identity-card-generator[data-stage='shuffling'] .vivnook-identity-text-l
   0% {
     transform: rotateY(0deg) translateZ(0);
   }
-  40% {
-    transform: rotateY(76deg) translateZ(42px);
-  }
-  50% {
-    transform: rotateY(112deg) translateZ(60px);
-  }
-  60% {
-    transform: rotateY(76deg) translateZ(42px);
+  48%, 52% {
+    transform: rotateY(90deg) translateZ(0);
   }
   100% {
     transform: rotateY(0deg) translateZ(0);
@@ -597,20 +591,6 @@ vivnook-identity-card-generator[data-stage='shuffling'] .vivnook-identity-text-l
 .vivnook-badge-card-face--front {
   transform: rotateY(0deg);
   background: transparent;
-}
-
-.vivnook-badge-flipper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border-radius: inherit;
-  background: var(--vivnook-badge-back-image) center / contain no-repeat;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: rotateY(180deg);
-  transform-style: preserve-3d;
-  pointer-events: none;
 }
 
 .vivnook-badge-card-face--front {

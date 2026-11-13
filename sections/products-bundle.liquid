@@ -1,6 +1,10 @@
 ﻿{{ 'section-products-bundle.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'vivnook-look-bundle.js' | asset_url }}?v=20261030-3" defer="defer"></script>
+<script src="{{ 'vivnook-look-bundle.js' | asset_url }}" defer="defer"></script>
 {%- liquid
+  assign is_homepage = false
+  if request.page_type == 'index'
+    assign is_homepage = true
+  endif
   assign has_products = false
   assign all_available = true
   assign image_count = 0
@@ -31,7 +35,7 @@
   }
 {% endstyle %}
 <div class="products-bundle page-width section--padding {{ section.settings.custom_class | escape }}">
-  <products-bundle class="look-bundle" data-look-bundle data-cover-black="{{ section.settings.cover_black | image_url: width: 800 }}" data-cover-navy="{{ section.settings.cover_navy | image_url: width: 800 }}" data-cover-burgundy="{{ section.settings.cover_burgundy | image_url: width: 800 }}">
+  <products-bundle class="look-bundle{% if is_homepage %} look-bundle--homepage{% endif %}" data-look-bundle data-cover-black="{{ section.settings.cover_black | image_url: width: 800 }}" data-cover-navy="{{ section.settings.cover_navy | image_url: width: 800 }}" data-cover-burgundy="{{ section.settings.cover_burgundy | image_url: width: 800 }}">
     <div class="look-bundle__models" aria-label="Model photographs">
       {% for number in (1..3) %}
         {% liquid
@@ -51,6 +55,9 @@
         {% assign image_count = image_count | plus: 1 %}
       {% endfor %}
       {% if image_count > 1 %}
+        {% if is_homepage %}
+          <button type="button" class="look-bundle__arrow look-bundle__autoplay" data-model-autoplay aria-label="Pause slideshow" hidden>II</button>
+        {% endif %}
         <div class="look-bundle__model-controls">
           <button type="button" class="look-bundle__arrow" data-model-step="-1" aria-label="Previous model photograph">{% render 'look-bundle-arrow', direction: 'left' %}</button>
           {% for number in (1..image_count) %}
@@ -84,6 +91,31 @@
               endif
             %}
             <article class="look-bundle__product" data-look-product data-block-id="{{ block.id }}" {{ block.shopify_attributes }} {% unless forloop.first %}inert aria-hidden="true"{% endunless %}>
+              {% if is_homepage and card_product != blank and is_bag_product == false %}
+                {% assign look_colors = 'black,navy,burgundy' | split: ',' %}
+                {% for color in look_colors %}
+                  {% assign color_image = nil %}
+                  {% for variant in card_product.variants %}
+                    {% assign variant_title = variant.title | downcase %}
+                    {% if variant_title contains color and variant.image != blank %}
+                      {% assign color_image = variant.image %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if color_image == blank %}
+                    {% for image in card_product.images %}
+                      {% assign image_label = image.alt | append: ' ' | append: image.src | split: '?' | first | downcase %}
+                      {% if image_label contains color %}
+                        {% assign color_image = image %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  {% if color_image != blank %}
+                    <span hidden data-look-color="{{ color }}" data-look-image="{{ color_image | image_url: width: 800 | escape }}"></span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
               <a class="look-bundle__product-image" {% if card_product != blank %}href="{{ card_product.url }}" aria-label="{{ card_product.title | escape }}"{% endif %}>
                 {% if is_bag_product %}
                   {% if section.settings.cover_black != blank %}{{ section.settings.cover_black | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-black' }}{% endif %}
@@ -96,11 +128,13 @@
                 {% if block.settings.caption != blank %}<p>{{ block.settings.caption | escape }}</p>{% elsif card_product == blank %}<p>Obsidian Black 脳 Barbie Pink</p>{% endif %}
                 {% if card_product != blank %}
                   {% if card_product.available %}
+                    {% unless is_homepage %}
                     <select name="id" data-look-variant-select aria-label="{{ card_product.title | escape }} variant" {% if card_product.has_only_default_variant %}hidden{% endif %}>
                       {% for variant in card_product.variants %}
                         <option value="{{ variant.id }}" data-variant-image="{% if variant.featured_image %}{{ variant.image | image_url: width: 800 }}{% endif %}" {% if variant == card_product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} - Sold out{% endunless %}</option>
                       {% endfor %}
                     </select>
+                    {% endunless %}
                   {% else %}<p>{{ 'products.product.sold_out' | t }}</p>{% endif %}
                 {% endif %}
               </div>
@@ -108,15 +142,19 @@
           {% endfor %}
         </div>
         {% if section.blocks.size > 1 %}
-          <button class="look-bundle__arrow look-bundle__previous" type="button" data-product-step="-1" aria-label="Previous product">{% render 'look-bundle-arrow', direction: 'left' %}</button>
+          <button class="look-bundle__arrow look-bundle__previous" type="button" data-product-step="-1"{% if is_homepage %} hidden{% endif %} aria-label="Previous product">{% render 'look-bundle-arrow', direction: 'left' %}</button>
           <button class="look-bundle__arrow look-bundle__next" type="button" data-product-step="1" aria-label="Next product">{% render 'look-bundle-arrow', direction: 'right' %}</button>
         {% endif %}
       </div>
       <div class="look-bundle__purchase products-bundle__button">
+        {% if is_homepage %}
+          <a class="btn btn--primary" href="{{ routes.root_url | append: '/products/vivnook-signature-look%E2%84%A2' | replace: '//products/', '/products/' }}">Show The Look</a>
+        {% else %}
         <div class="product-form__error-message alert alert--error" role="alert" hidden></div>
         <button type="button" class="btn btn--primary" data-bundle-add {% unless has_products and all_available %}disabled{% endunless %}>
           <span>{{ section.settings.button_label | escape }}</span>{% render 'loading-spinner' %}
         </button>
+        {% endif %}
       </div>
       <span class="visually-hidden" data-look-status aria-live="polite"></span>
     </div>

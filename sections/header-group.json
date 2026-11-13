@@ -182,8 +182,8 @@
         "show_social_media_icons": true,
         "enable_language_selector": true,
         "enable_country_selector": true,
-        "height_desktop": 44,
-        "height_mobile": 48,
+        "height_desktop": 64,
+        "height_mobile": 60,
         "padding_top": 16,
         "padding_bottom": 16
       }

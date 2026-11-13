@@ -2,13 +2,12 @@
 :root{--vivnook-home-background:#F4F4F4}
 .announcement-bar-section .announcement-bar{height:var(--announcement-height-desktop,50px)!important;min-height:0!important;padding-block:0!important;display:flex!important;align-items:center!important}
 .announcement-bar-section .announcement-bar__wrapper,.announcement-bar-section .swiper-wrapper,.announcement-bar-section .swiper-slide{height:100%!important}
-.header-section .header{height:var(--header-height-desktop,106px)!important;min-height:0!important;padding-block:0!important}
 .header-section:has(.header--transparent) .header{position:relative!important;background:#fff!important;color:#111!important;--header-background-opacity:1;--header-logo-opacity:1}
 .header-section .header__logo--image{--header-logo-opacity:1!important;color:#111!important}
 .header-section .header__logo--transparent{display:none!important}
 #MainContent{background:var(--vivnook-home-background)!important}
 #MainContent>.shopify-section{margin:0;clear:both}
-#MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:-34px!important;position:relative;z-index:1}
+#MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:clamp(24px, 3vw, 48px)!important;position:relative;z-index:1}
 #MainContent *,#MainContent *::before,#MainContent *::after{box-sizing:border-box}
 .home-rebuild-hero{position:relative;height:var(--home-hero-desktop-height,clamp(720px,48vw,980px));aspect-ratio:auto;overflow:hidden;color:#fff;background:#777}
 .home-rebuild-hero>img{width:100%;height:100%;object-fit:cover;display:block}
@@ -129,7 +128,7 @@
 @media(max-width:749px){
  #MainContent .vivnook-faq-contact{width:100%;margin:0;padding-block:70px;background:#EBEBEB!important}
  .home-rebuild-hero{height:var(--home-hero-mobile-height,680px)!important;aspect-ratio:auto!important}.home-rebuild-hero>img{object-position:50% 50%}.home-rebuild-hero__copy{bottom:7%}
- #MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:-20px!important}
+ #MainContent>.shopify-section:has(.home-rebuild-hero)+.shopify-section{margin-top:20px!important}
  #MainContent .vivnook-product-video-split{height:auto;grid-template-columns:1fr}
  #MainContent .vivnook-product-video-split__product{grid-column:1;grid-row:2;height:auto;min-height:480px;padding:32px 24px}
  #MainContent .vivnook-product-video-split__product-image{height:200px!important;flex-basis:200px}
@@ -143,6 +142,8 @@
  #MainContent .vivnook-scrubs-feature__content{padding:50px 24px;overflow:visible}
  #MainContent .vivnook-scrubs-feature__image--secondary{height:75vw;min-height:290px}
  #MainContent .vivnook-scrubs-feature__image--secondary{width:100vw!important;margin-left:calc(50% - 50vw)!important}
+ #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section .vivnook-scrubs-feature__image--secondary{width:100%!important;margin-inline:0!important}
+ #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section .vivnook-identity-card-generator__card-stage{width:100%;margin-inline:auto}
  #MainContent .vivnook-scrubs-feature__content a,#MainContent .vivnook-product-video-split__button{margin-top:30px}
  #MainContent .vivnook-atelier-concierge__grid{grid-template-columns:1fr;gap:50px}
  #MainContent .vivnook-customer-review{padding:55px 16px 16px}
@@ -195,7 +196,7 @@
 #MainContent .products-bundle-section .look-bundle__details h3{font-size:calc(23px * var(--bundle-product-title-desktop,1))!important;font-weight:var(--bundle-heading-weight,400)!important}
 #MainContent .products-bundle-section .look-bundle__details p,
 #MainContent .products-bundle-section .look-bundle__details select{font-size:calc(16px * var(--bundle-body-desktop,1))!important;font-weight:var(--bundle-body-weight,400)!important}
-#MainContent .products-bundle-section .look-bundle__purchase{transform:translateY(var(--bundle-button-desktop-y,0px))!important}
+#MainContent .products-bundle-section .look-bundle:not(.look-bundle--homepage) .look-bundle__purchase{transform:translateY(var(--bundle-button-desktop-y,0px))!important}
 #MainContent .products-bundle-section .look-bundle__purchase .btn{width:var(--bundle-button-desktop-width,250px)!important;height:var(--bundle-button-desktop-height,48px)!important;min-height:0!important;padding:0!important;font-size:calc(16px * var(--bundle-button-desktop,1))!important;font-weight:var(--bundle-body-weight,400)!important;display:inline-flex;align-items:center;justify-content:center}
 #MainContent .products-bundle-section.bundle-heading-weight-300 .look-bundle__heading,#MainContent .products-bundle-section.bundle-heading-weight-300 .look-bundle__details h3{font-weight:300!important}
 #MainContent .products-bundle-section.bundle-heading-weight-400 .look-bundle__heading,#MainContent .products-bundle-section.bundle-heading-weight-400 .look-bundle__details h3{font-weight:400!important}
@@ -203,7 +204,7 @@
   #MainContent .products-bundle-section .look-bundle__heading{font-size:30px!important}
   #MainContent .products-bundle-section .look-bundle__details h3{font-size:calc(18px * var(--bundle-product-title-mobile,.9))!important}
   #MainContent .products-bundle-section .look-bundle__details p,#MainContent .products-bundle-section .look-bundle__details select{font-size:calc(16px * var(--bundle-body-mobile,.9))!important}
-  #MainContent .products-bundle-section .look-bundle__purchase{transform:translateY(var(--bundle-button-mobile-y,0px))!important}
+  #MainContent .products-bundle-section .look-bundle:not(.look-bundle--homepage) .look-bundle__purchase{transform:translateY(var(--bundle-button-mobile-y,0px))!important}
   #MainContent .products-bundle-section .look-bundle__purchase .btn{width:var(--bundle-button-mobile-width,250px)!important;height:var(--bundle-button-mobile-height,48px)!important;font-size:calc(16px * var(--bundle-button-mobile,.9))!important}
 }
 
@@ -258,5 +259,38 @@
 @media (max-width: 749px) {
   #MainContent .products-bundle-section .look-bundle__heading {
     font-size: 27px !important;
+  }
+}
+/* Let the active product and link determine the height of the homepage panel. */
+#MainContent .products-bundle-section .products-bundle:has(.look-bundle--homepage),
+#MainContent .products-bundle-section .look-bundle--homepage,
+#MainContent .products-bundle-section .look-bundle--homepage .look-bundle__shop {
+  height: auto !important;
+}
+#MainContent .products-bundle-section .look-bundle--homepage .look-bundle__models {
+  height: auto !important;
+  min-height: var(--bundle-desktop-height, 720px) !important;
+}
+.look-bundle--homepage .look-bundle__track {
+  display: grid;
+  height: auto;
+}
+.look-bundle--homepage .look-bundle__product {
+  position: relative;
+  grid-area: 1 / 1;
+  align-self: start;
+}
+.look-bundle--homepage .look-bundle__product-image {
+  aspect-ratio: 2 / 3;
+}
+.look-bundle--homepage .look-bundle__product-image img {
+  height: 100%;
+}
+.look-bundle--homepage .look-bundle__purchase .btn {
+  max-width: 100%;
+}
+@media (max-width: 749px) {
+  #MainContent .products-bundle-section .look-bundle--homepage .look-bundle__models {
+    min-height: var(--bundle-mobile-left-height, 600px) !important;
   }
 }

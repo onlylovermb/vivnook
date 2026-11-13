@@ -91,9 +91,11 @@
   {%- if product.template_suffix == 'scrub-pants' -%}
     <script src="{{ 'tops-product-info.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
+  {%- if product.template_suffix == 'signature-look' or product.template_suffix == 'scrub-pants' -%}
+    <script src="{{ 'signature-look-design.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
   {%- if product.template_suffix == 'signature-look' -%}
     {{ 'signature-look-design.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'signature-look-design.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'signature-look.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 

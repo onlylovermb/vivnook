@@ -88,7 +88,6 @@
     <vivnook-identity-card-generator
       data-section-id="{{ section.id }}"
       data-identities-url="{{ 'vivnook-identities.json' | asset_url }}"
-      data-card-assets-url="{{ 'vivnook-card-assets.json' | asset_url }}"
       data-asset-url-template="{{ 'VIVNOOK_ASSET_FILENAME' | asset_url }}"
       data-activate-endpoint="{{ section.settings.activate_endpoint | default: '/apps/vivnook-identity/activate' | escape }}"
       data-retrieve-endpoint="{{ section.settings.retrieve_endpoint | default: '/apps/vivnook-identity/retrieve' | escape }}"
