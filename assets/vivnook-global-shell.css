@@ -160,14 +160,34 @@
   margin-inline-end: 0;
 }
 
+body.product-template {
+  --product-content-gutter: 16px;
+}
+
+@media (min-width: 1024px) {
+  body.product-template {
+    --product-content-gutter: 40px;
+  }
+}
+
+body.product-template #MainContent {
+  padding-inline: var(--product-content-gutter);
+}
+
+body.product-template .sticky-atc-bar--select-size {
+  padding-inline: 0;
+}
+
+body.product-template .sticky-atc-bar--select-size .sticky-atc-bar__inner {
+  padding-inline: var(--product-content-gutter) !important;
+}
+
 /* The homepage hero is full width; services, identity card, and FAQ set their own gutters. */
-body.product-template #MainContent,
 #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section:not(:has(.vivnook-atelier-concierge, .vivnook-identity-card-generator, .vivnook-faq-contact)) {
   padding-inline: 16px;
 }
 
 @media (min-width: 1024px) {
-  body.product-template #MainContent,
   #MainContent > .shopify-section:has(.home-rebuild-hero) ~ .shopify-section:not(:has(.vivnook-atelier-concierge, .vivnook-identity-card-generator, .vivnook-faq-contact)) {
     padding-inline: 40px;
   }
@@ -672,7 +692,7 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
   [data-vivnook-product-layout] .tops-look {
     margin-block-start: 0 !important;
     padding-block-start: var(--product-group-gap) !important;
-    border-block-start: 1px solid #000 !important;
+    border-block-start: 1px solid #707070 !important;
   }
 
   [data-vivnook-product-layout] .tops-look > h2 {
