@@ -1,0 +1,4 @@
+<picture>
+  <source media="(max-width: 749px)" srcset="{{ 'vivnook-fabric-mobile.webp' | asset_url | replace: '//cdn.shopify.com/', '/cdn/' }}">
+  {{ image | image_url: width: width | image_tag: loading: 'lazy', widths: widths, sizes: '50vw' }}
+</picture>

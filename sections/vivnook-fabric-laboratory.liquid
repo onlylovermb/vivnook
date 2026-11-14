@@ -6,7 +6,7 @@
 <section class="vivnook-fabric-lab" aria-label="{{ section.settings.aria_label | escape }}">
   <div class="vivnook-fabric-lab__left">
     <div class="vivnook-fabric-lab__intro"><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.intro | escape | newline_to_br }}</p></div>
-    <div class="vivnook-fabric-lab__feature">{% if section.settings.feature_image != blank %}{{ section.settings.feature_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '50vw' }}{% else %}{{ 'lifestyle-2' | placeholder_svg_tag }}{% endif %}<div class="vivnook-fabric-lab__feature-copy">{% for block in section.blocks %}<div class="vivnook-fabric-lab__item" {{ block.shopify_attributes }}><strong>{{ block.settings.title | escape }}</strong><p>{{ block.settings.text | escape | newline_to_br }}</p></div>{% endfor %}</div></div>
+    <div class="vivnook-fabric-lab__feature">{% if section.settings.feature_image != blank %}{% render 'vivnook-fabric-picture', image: section.settings.feature_image, width: 1600, widths: '600, 900, 1200, 1600' %}{% else %}{{ 'lifestyle-2' | placeholder_svg_tag }}{% endif %}<div class="vivnook-fabric-lab__feature-copy">{% for block in section.blocks %}<div class="vivnook-fabric-lab__item" {{ block.shopify_attributes }}><strong>{{ block.settings.title | escape }}</strong><p>{{ block.settings.text | escape | newline_to_br }}</p></div>{% endfor %}</div></div>
   </div>
   <div class="vivnook-fabric-lab__image">{% if section.settings.right_image != blank %}{{ section.settings.right_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '700, 1000, 1400, 1800', sizes: '50vw' }}{% else %}{{ 'lifestyle-1' | placeholder_svg_tag }}{% endif %}</div>
 </section>
