@@ -31,6 +31,38 @@ console.log(
     document.readyState != 'loading' ? callback() : document.addEventListener('DOMContentLoaded', callback);
   };
 
+  let lastFocusInput;
+  let pointerFocusTarget;
+
+  function clearPointerFocus() {
+    pointerFocusTarget?.removeAttribute('data-pointer-focus-transfer');
+    pointerFocusTarget = null;
+  }
+
+  document.addEventListener('pointerdown', () => {
+    lastFocusInput = 'pointer';
+  }, true);
+
+  document.addEventListener('keydown', (event) => {
+    if (!/^(Tab|Enter| |Escape|Arrow(Up|Down|Left|Right)|Home|End|PageUp|PageDown)$/.test(event.key)) return;
+    lastFocusInput = 'keyboard';
+    clearPointerFocus();
+  }, true);
+
+  document.addEventListener('focusout', (event) => {
+    if (event.target === pointerFocusTarget) clearPointerFocus();
+  }, true);
+
+  function transferFocus(element) {
+    if (lastFocusInput === 'pointer' && element.matches('button, a[href], summary')) {
+      clearPointerFocus();
+      pointerFocusTarget = element;
+      element.setAttribute('data-pointer-focus-transfer', '');
+    }
+    element.focus();
+    if (pointerFocusTarget === element && document.activeElement !== element) clearPointerFocus();
+  }
+
   FoxTheme.a11y = {
     trapFocusHandlers: {},
     getFocusableElements: (container) => {
@@ -75,7 +107,7 @@ console.log(
       document.addEventListener('focusout', FoxTheme.a11y.trapFocusHandlers.focusout);
       document.addEventListener('focusin', FoxTheme.a11y.trapFocusHandlers.focusin);
 
-      elementToFocus.focus();
+      transferFocus(elementToFocus);
 
       if (
         elementToFocus.tagName === 'INPUT' &&
@@ -90,7 +122,7 @@ console.log(
       document.removeEventListener('focusout', FoxTheme.a11y.trapFocusHandlers.focusout);
       document.removeEventListener('keydown', FoxTheme.a11y.trapFocusHandlers.keydown);
 
-      if (elementToFocus) elementToFocus.focus();
+      if (elementToFocus) transferFocus(elementToFocus);
     },
   };
 
