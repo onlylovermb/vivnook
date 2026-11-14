@@ -178,7 +178,7 @@
         "enable_transparent_header": true,
         "transparent_header_color": "#ffffff",
         "customer_account_menu": "customer-account-main-menu",
-        "logo_mobile_position": "left",
+        "logo_mobile_position": "center",
         "show_social_media_icons": true,
         "enable_language_selector": true,
         "enable_country_selector": true,

@@ -6316,11 +6316,6 @@ input:is([type=radio])::after {
 }
 @media (min-width: 768px) {
   .header__logo--image {
-    max-width: calc(var(--logo-width) * 0.85);
-  }
-}
-@media (min-width: 1280px) {
-  .header__logo--image {
     max-width: var(--logo-width);
   }
 }
@@ -6414,7 +6409,7 @@ input:is([type=radio])::after {
 }
 @media (max-width: 1023.98px) {
   .header-mobile--center {
-    --header-grid-template: "icons-left logo icons" / minmax(4rem, 1fr) auto minmax(6rem, 1fr);
+    --header-grid-template: "icons-left logo icons" / minmax(0, 1fr) fit-content(28%) minmax(0, 1fr);
     column-gap: 1.5rem;
   }
 }

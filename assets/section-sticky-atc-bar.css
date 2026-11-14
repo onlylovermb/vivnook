@@ -681,3 +681,42 @@ html body [id^="QuantitySticky-"] .quantity {
   outline: 2px solid currentColor !important;
   outline-offset: -4px;
 }
+
+@media (max-width: 767.98px) {
+  body:has(cart-drawer:not([hidden])) .sticky-atc-bar {
+    display: none !important;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__product {
+    display: flex !important;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__product-image {
+    display: block !important;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__product-info {
+    display: block !important;
+    min-width: 0;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__product-title {
+    margin: 0 0 2px;
+    font-size: 13px;
+    line-height: 1.25;
+  }
+
+  .sticky-atc-bar .sticky-atc-bar__product .f-price-item {
+    font-size: 13px;
+  }
+}
