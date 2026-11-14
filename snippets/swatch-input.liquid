@@ -50,12 +50,10 @@
 >
 <label
   for="{{ id }}"
-  title="{{ value }}"
   class="swatch-input__label relative"
   data-swatch-type="shopify_swatch"
-  data-tooltip
 >
-  <span class="tooltip pointer-events-none">{{ value | escape }}</span>
+  <span class="visually-hidden">{{ value | escape }}</span>
   <span
     class="swatch-color block"
     style="--swatch-background: {{ swatch_value }};{% if swatch_focal_point %} --swatch-focal-point: {{ swatch_focal_point }};{% endif %}"

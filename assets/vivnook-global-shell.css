@@ -157,7 +157,7 @@
 
 @media (max-width: 1023.98px) {
   .header-mobile--center:has(.header__icons--left .menu-drawer-button) {
-    --header-grid-template: "icons-left logo icons" / auto minmax(0, 1fr) auto;
+    --header-grid-template: "logo icons-left icons" / auto auto minmax(0, 1fr);
     column-gap: 12px;
   }
 
@@ -503,7 +503,7 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
     }
   }
 
-  product-info .globo-swatch-product-detail .swatch--gl:has(legend[data-name="Size"]) .attr-title-hover {
+  product-info .globo-swatch-product-detail .swatch--gl:has(legend:is([data-name="Size" i], [data-name="Color" i], [data-name="Colour" i])) .attr-title-hover {
     display: none !important;
   }
 }
