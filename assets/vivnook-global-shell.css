@@ -157,8 +157,12 @@
 
 @media (max-width: 1023.98px) {
   .header-mobile--center:has(.header__icons--left .menu-drawer-button) {
-    --header-grid-template: "logo icons-left icons" / auto auto minmax(0, 1fr);
+    --header-grid-template: "icons-left logo icons" / minmax(0, 1fr) auto minmax(0, 1fr);
     column-gap: 12px;
+  }
+
+  .header-section .header__icons--right .header__account {
+    display: none;
   }
 
   .header-mobile--center:has(.header__icons--left .menu-drawer-button) .header__icons--left .header__buttons {
