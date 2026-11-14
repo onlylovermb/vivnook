@@ -405,7 +405,7 @@
           id="ProductSubmitButton-{{ section_id }}"
           type="submit"
           name="add"
-          class="product-form__submit btn{% if show_dynamic_checkout %} btn--secondary{% else %} btn--primary{% endif %}"
+          class="product-form__submit btn{% if show_dynamic_checkout and product.template_suffix != 'scrub-pants' %} btn--secondary{% else %} btn--primary{% endif %}"
           {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
             disabled
           {% endif %}

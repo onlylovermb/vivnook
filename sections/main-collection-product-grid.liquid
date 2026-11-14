@@ -205,6 +205,10 @@
                 {%- elsif product_index < collection.products.size -%}
                   {%- assign product = collection.products[product_index] -%}
                   {%- assign product_number = product_index | plus: 1 -%}
+                  {%- if product.handle == 'vivnook-embroidery-service' -%}
+                    {%- assign product_index = product_number -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   {%- if is_metro -%}
                     <div class="f-column card">
                       {%- render 'card-product-metro',
