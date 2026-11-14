@@ -203,7 +203,7 @@ body.product-template .vivnook-finale-banner__details--separate {
   margin-block-end: clamp(32px, 4vw, 64px);
 }
 
-.breadcrumbs--product {
+:is(.breadcrumbs--product, .breadcrumbs--collection) {
   align-items: center;
   justify-content: flex-start;
   padding-block: 16px;
@@ -212,18 +212,18 @@ body.product-template .vivnook-finale-banner__details--separate {
   color: #595959;
 }
 
-.breadcrumbs--product .breadcrumbs--sep {
+:is(.breadcrumbs--product, .breadcrumbs--collection) .breadcrumbs--sep {
   flex: none;
   margin-inline: 8px;
   color: #767676;
 }
 
-.breadcrumbs--product a:hover {
+:is(.breadcrumbs--product, .breadcrumbs--collection) a:hover {
   text-decoration: underline;
 }
 
 @media (min-width: 1024px) {
-  .breadcrumbs--product {
+  :is(.breadcrumbs--product, .breadcrumbs--collection) {
     padding-block: 20px;
     font-size: 14px;
   }
@@ -868,4 +868,19 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
       background-color: var(--secondary-action-hover-background, #fff0f4) !important;
     }
   }
+}
+
+/* Keep keyboard focus visible on dialog dismiss controls. */
+:is(
+  .drawer__close-btn,
+  .drawer__close,
+  .vivnook-embroidery-dialog__close,
+  .vivnook-added-to-bag__close,
+  .vivnook-identity-card-generator__activation-close,
+  .nook-confession-close,
+  .pswp__button--close,
+  .pswp__button--close-zoom,
+  .password-modal__toggle:has(.password-modal__toggle-close)
+):is(:focus-visible, .focused:focus) {
+  outline-color: currentColor;
 }

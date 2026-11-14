@@ -56,7 +56,7 @@
 
 <div
   class="section--padding color-{{ section.settings.color_scheme }}"
-  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  style="--section-padding-top: {% if collection.handle == 'all' %}0{% else %}{{ section.settings.padding_top }}{% endif %}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="collection page-width">
     {%- paginate collection.products by section.settings.products_per_page -%}

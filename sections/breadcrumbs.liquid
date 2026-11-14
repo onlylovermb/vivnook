@@ -15,7 +15,7 @@
     {% endcapture %}
     <div class="page-width">
       <nav
-        class="breadcrumbs {% if request.page_type == 'product' %}breadcrumbs--product{% else %}justify-center md:justify-{{ justify }}{% endif %}"
+        class="breadcrumbs {% if request.page_type == 'product' %}breadcrumbs--product{% elsif request.page_type == 'collection' %}breadcrumbs--collection{% else %}justify-center md:justify-{{ justify }}{% endif %}"
         role="navigation"
         aria-label="breadcrumbs"
       >

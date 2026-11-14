@@ -10,6 +10,10 @@ if (!customElements.get('subscription-popup')) {
         super();
       }
 
+      get focusElement() {
+        return this;
+      }
+
       get requiresBodyAppended() {
         return false;
       }
