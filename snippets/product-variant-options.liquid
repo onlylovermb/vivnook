@@ -22,6 +22,9 @@
   assign image_size = block.settings.button_size | times: 1.5
   assign current_selected_variant = product.selected_or_first_available_variant
   assign rendered_values = option.values
+  if reverse_values
+    assign rendered_values = rendered_values | reverse
+  endif
 -%}
 
 {%- for value in rendered_values -%}

@@ -43,7 +43,10 @@
           assign vivnook_fit_kind = 'top'
         elsif attach_size_chart and product.template_suffix == 'scrub-pants'
           assign vivnook_fit_kind = 'pant'
-          assign reverse_size_values = false
+          assign first_size = option.values | first | downcase
+          if first_size == '2xl'
+            assign reverse_size_values = true
+          endif
         endif
 
         if block.settings.picker_type == 'button' and settings.color_swatch_trigger != blank

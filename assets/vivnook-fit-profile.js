@@ -203,29 +203,10 @@
     legend.append(actions);
     document.dispatchEvent(new CustomEvent('vivnook:recommendation-anchor-ready', { detail: { kind } }));
   };
-  const orderGloboPantSizes = (scope) => {
-    const sizeOrder = ['xs', 's', 'm', 'l', 'xl', '2xl'];
-    scope.querySelectorAll('.globo-swatch-product-detail .swatch--gl legend[data-name]').forEach((legend) => {
-      if (String(legend.dataset.name).trim().toLowerCase() !== 'size') return;
-      const list = legend.parentElement?.querySelector(':scope > ul.value');
-      if (!list) return;
-      const items = [...list.children];
-      const sizeOf = (item) => String(
-        item.querySelector('input')?.value || item.querySelector('label')?.textContent || item.textContent || ''
-      ).trim().toLowerCase().replace(/\s+/g, '');
-      const sorted = [...items].sort((a, b) => {
-        const aIndex = sizeOrder.indexOf(sizeOf(a));
-        const bIndex = sizeOrder.indexOf(sizeOf(b));
-        return (aIndex < 0 ? 99 : aIndex) - (bIndex < 0 ? 99 : bIndex);
-      });
-      if (sorted.some((item, index) => item !== items[index])) list.append(...sorted);
-    });
-  };
   const decorateGloboSelector = () => {
     const kind = roots[0]?.dataset.vivnookFitKind;
     if (!modalId || !['top', 'pant'].includes(kind)) return;
     document.querySelectorAll('product-info[id^="MainProduct"]:not([data-view-mode="quick-view"])').forEach((scope) => {
-      if (kind === 'pant') orderGloboPantSizes(scope);
       scope.querySelectorAll('.globo-swatch-product-detail .swatch--gl legend[data-name]').forEach((legend) => {
         if (String(legend.dataset.name).trim().toLowerCase() === 'size') createGloboActions(legend, kind, scope);
       });
@@ -338,40 +319,4 @@
     document.dispatchEvent(new CustomEvent('vivnook:fit-profile-updated', { detail: { state: normalize(state) } }));
   };
   window.VivnookFitProfile = Object.freeze({ version: VERSION, storageKey: STORAGE_KEY, load, isComplete, getSnapshot, setPreferences, getSizeReference: () => null });
-})();
-
-// Native variant picker size sorter for Pant Size: XS, S, M, L, XL, 2XL
-(function() {
-  function sortPantsNativeSizes() {
-    const fieldset = document.querySelector('product-info:is([data-url*="scrub-pants"], [data-url*="scrub-pant"], [data-product-id="8345533579379"]) fieldset.product-form__input--button');
-    if (!fieldset) return;
-    const sizeOrder = ['xs', 's', 'm', 'l', 'xl', '2xl'];
-    const inputs = [...fieldset.querySelectorAll('input[type="radio"]')];
-    if (inputs.length < 2) return;
-
-    // Collect pairs of (input, label)
-    const pairs = inputs.map(input => {
-      const label = input.id ? fieldset.querySelector(`label[for="${input.id}"]`) : input.nextElementSibling;
-      const sizeVal = (input.value || label?.textContent || '').trim().toLowerCase();
-      return { input, label, sizeVal };
-    });
-
-    pairs.sort((a, b) => {
-      const idxA = sizeOrder.indexOf(a.sizeVal);
-      const idxB = sizeOrder.indexOf(b.sizeVal);
-      return (idxA < 0 ? 99 : idxA) - (idxB < 0 ? 99 : idxB);
-    });
-
-    pairs.forEach(pair => {
-      fieldset.appendChild(pair.input);
-      if (pair.label) fieldset.appendChild(pair.label);
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', sortPantsNativeSizes);
-  } else {
-    sortPantsNativeSizes();
-  }
-  document.addEventListener('shopify:section:load', sortPantsNativeSizes);
 })();
