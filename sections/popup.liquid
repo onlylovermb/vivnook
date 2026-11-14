@@ -19,6 +19,9 @@
 {%- if should_show -%}
   {% style %}
     {{ 'subscription-popup.css' | inline_asset_content }}
+    .subscription-popup .drawer__close-btn {
+      border: 0;
+    }
   {% endstyle %}
   {%- liquid
     assign trigger_open = section.settings.trigger_open

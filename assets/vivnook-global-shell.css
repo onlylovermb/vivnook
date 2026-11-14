@@ -249,6 +249,17 @@ body.product-template .vivnook-finale-banner__details--separate {
   font-weight: 600;
 }
 
+@media (any-pointer: coarse) {
+  .menu-drawer :is(.menu-drawer__item-link, .menu-drawer__item-back-link) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu-drawer :is(.menu-drawer__item-link, .menu-drawer__item-back-link):active {
+    background-color: #f8edf0;
+    color: #a1264e;
+  }
+}
+
 @media (min-width: 1024px) {
   .header-section .header__menu .menu__item {
     font-size: 16px;

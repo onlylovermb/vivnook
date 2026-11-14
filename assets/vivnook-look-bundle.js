@@ -108,6 +108,35 @@
       scheduleAutoplay();
     }
 
+    const modelGallery = root.querySelector('.look-bundle__models');
+    if (root.classList.contains('look-bundle--homepage') && modelGallery && models.length > 1) {
+      let swipe;
+
+      modelGallery.addEventListener('pointerdown', (event) => {
+        if (event.pointerType !== 'touch' || !event.isPrimary || event.target.closest('button, a')) return;
+        swipe = { id: event.pointerId, x: event.clientX, y: event.clientY };
+        window.clearTimeout(autoplayTimer);
+      });
+
+      modelGallery.addEventListener('pointerup', (event) => {
+        if (swipe?.id !== event.pointerId) return;
+        const dx = event.clientX - swipe.x;
+        const dy = event.clientY - swipe.y;
+        swipe = undefined;
+        if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+          showModel(currentModel + (dx < 0 ? 1 : -1));
+        } else {
+          scheduleAutoplay();
+        }
+      });
+
+      modelGallery.addEventListener('pointercancel', (event) => {
+        if (swipe?.id !== event.pointerId) return;
+        swipe = undefined;
+        scheduleAutoplay();
+      });
+    }
+
     root.addEventListener('click', (event) => {
       const productLink = event.target.closest('.look-bundle__product a[href]');
       if (productLink) {

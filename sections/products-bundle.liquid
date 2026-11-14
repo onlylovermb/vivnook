@@ -85,6 +85,10 @@
     <div class="look-bundle__shop">
       <h2 class="look-bundle__heading">{{ section.settings.look_heading | escape }}</h2>
       <span class="look-bundle__rule" aria-hidden="true"></span>
+      {%- assign product_image_sizes = '(min-width: 750px) 18vw, 40vw' -%}
+      {%- if is_homepage -%}
+        {%- assign product_image_sizes = '(min-width: 750px) 18vw, 48vw' -%}
+      {%- endif -%}
       <div class="look-bundle__carousel" aria-label="Products in this look" aria-roledescription="carousel">
         <div class="look-bundle__track">
           {% for block in section.blocks %}
@@ -133,10 +137,10 @@
               {% endif %}
               <a class="look-bundle__product-image" {% if card_product != blank %}href="{{ card_product.url }}" aria-label="{{ card_product.title | escape }}"{% endif %}>
                 {% if is_bag_product %}
-                  {% if section.settings.cover_black != blank %}{{ section.settings.cover_black | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-black' }}{% endif %}
-                  {% if section.settings.cover_navy != blank %}{{ section.settings.cover_navy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-navy' }}{% endif %}
-                  {% if section.settings.cover_burgundy != blank %}{{ section.settings.cover_burgundy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-burgundy' }}{% endif %}
-                {% elsif display_image != blank %}{{ display_image | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: '(min-width: 750px) 18vw, 40vw', loading: 'lazy' }}{% endif %}
+                  {% if section.settings.cover_black != blank %}{{ section.settings.cover_black | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: product_image_sizes, loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-black' }}{% endif %}
+                  {% if section.settings.cover_navy != blank %}{{ section.settings.cover_navy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: product_image_sizes, loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-navy' }}{% endif %}
+                  {% if section.settings.cover_burgundy != blank %}{{ section.settings.cover_burgundy | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: product_image_sizes, loading: 'lazy', class: 'look-bundle__cover-image look-bundle__cover-burgundy' }}{% endif %}
+                {% elsif display_image != blank %}{{ display_image | image_url: width: 800 | image_tag: widths: '250, 400, 600, 800', sizes: product_image_sizes, loading: 'lazy' }}{% endif %}
               </a>
               <div class="look-bundle__details">
                 <h3>{% if card_product != blank %}<a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>{% else %}EverTrue Scrub Top{% endif %}</h3>

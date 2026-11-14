@@ -293,6 +293,28 @@
   #MainContent .products-bundle-section .look-bundle--homepage .look-bundle__models {
     min-height: var(--bundle-mobile-left-height, 600px) !important;
   }
+
+  .look-bundle--homepage .look-bundle__models {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .look-bundle--homepage .look-bundle__product {
+    left: 26%;
+    width: 48%;
+  }
+
+  .look-bundle--homepage .look-bundle__previous,
+  .look-bundle--homepage .look-bundle__next {
+    top: 36cqw;
+  }
+
+  .look-bundle--homepage .look-bundle__previous {
+    left: 20%;
+  }
+
+  .look-bundle--homepage .look-bundle__next {
+    left: 80%;
+  }
 }
 
 /* Give the three homepage features at least one screen below the sticky header. */

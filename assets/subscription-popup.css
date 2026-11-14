@@ -11,7 +11,7 @@
   top: 1.2rem;
   inset-inline-end: 1.2rem;
   background: rgb(var(--color-background));
-  border: 0.1rem solid rgb(var(--color-border));
+  border: 0;
   z-index: 9;
 }
 .subscription-popup .subscription-popup__blocks {
