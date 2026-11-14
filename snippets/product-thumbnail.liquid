@@ -102,6 +102,10 @@
           assign replacement_video_url = nil
           if media.id == 46646754508915
             assign replacement_video_url = 'fanny-signature-utility.mp4' | asset_url
+          elsif media.id == 46647341351027
+            assign replacement_video_url = 'fanny-navy-gallery.mp4' | asset_url | replace: '//cdn.shopify.com/', '/cdn/'
+          elsif media.id == 46647338434675
+            assign replacement_video_url = 'fanny-burgundy-gallery.mp4' | asset_url | replace: '//cdn.shopify.com/', '/cdn/'
           endif
         -%}
         {%- render 'video',
