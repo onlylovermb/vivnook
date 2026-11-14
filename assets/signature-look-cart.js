@@ -64,9 +64,9 @@
       <ul class="signature-look-cart-group__members" aria-label="Items included in The Look"></ul>
       <div class="signature-look-cart-group__actions">
         <div class="quantity signature-look-cart-group__quantity">
-          <button type="button" class="quantity__button" name="minus" aria-label="Decrease quantity">−</button>
+          <button type="button" class="quantity__button" name="minus" aria-label="Decrease quantity"></button>
           <input type="number" class="quantity__input" data-signature-look-quantity min="1" step="1" required inputmode="numeric" aria-label="The Look quantity" value="${quantity}">
-          <button type="button" class="quantity__button" name="plus" aria-label="Increase quantity">+</button>
+          <button type="button" class="quantity__button" name="plus" aria-label="Increase quantity"></button>
         </div>
         <span class="signature-look-cart-group__price">${formatMoney(total)}</span>
       </div>`;

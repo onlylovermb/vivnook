@@ -814,6 +814,28 @@ product-info :is(.tops-find-size, .look-find-size) > span[aria-hidden="true"] {
   }
 }
 
+/* The mobile sticky bar gives the input its own grid column. */
+@layer vivnook-button-colors {
+  @media (max-width: 767px) {
+    .sticky-atc-bar .sticky-atc-bar__inner .quantity:has(> .quantity__input) {
+      display: grid !important;
+      grid-template-columns: min(32px, 28%) minmax(0, 1fr) min(32px, 28%) !important;
+    }
+
+    .sticky-atc-bar .sticky-atc-bar__inner .quantity > .quantity__button {
+      position: static !important;
+      width: 100% !important;
+    }
+
+    .sticky-atc-bar .sticky-atc-bar__inner .quantity > .quantity__input {
+      grid-column: 2;
+      min-width: 0 !important;
+      width: 100% !important;
+      padding-inline: 0 !important;
+    }
+  }
+}
+
 /* Paint the frame and hover fill on the same box. Children fit inside its border. */
 @layer vivnook-button-colors {
   :is(.product-form__quantity, .sticky-atc-bar, .cart-drawer, .cart)

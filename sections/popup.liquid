@@ -17,8 +17,9 @@
   endif
 -%}
 {%- if should_show -%}
-  <link rel="stylesheet" href="{{ 'subscription-popup.css' | asset_url }}" media="print" onload="this.media='all'">
-  <noscript>{{ 'subscription-popup.css' | asset_url | stylesheet_tag }}</noscript>
+  {% style %}
+    {{ 'subscription-popup.css' | inline_asset_content }}
+  {% endstyle %}
   {%- liquid
     assign trigger_open = section.settings.trigger_open
     assign repeat_open = section.settings.repeat_open
