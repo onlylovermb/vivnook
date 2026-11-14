@@ -155,6 +155,21 @@
   }
 }
 
+@media (max-width: 1023.98px) {
+  .header-mobile--center:has(.header__icons--left .menu-drawer-button) {
+    --header-grid-template: "icons-left logo icons" / auto minmax(0, 1fr) auto;
+    column-gap: 12px;
+  }
+
+  .header-mobile--center:has(.header__icons--left .menu-drawer-button) .header__icons--left .header__buttons {
+    margin-inline-end: 0;
+  }
+
+  .header-mobile--center:has(.header__icons--left .menu-drawer-button) .header__icons--right .header__buttons {
+    margin-inline-start: 0;
+  }
+}
+
 /* Align the right-hand controls with the header's logo inset. */
 .header-section .header__icons--right .header__buttons {
   margin-inline-end: 0;
@@ -247,6 +262,17 @@ body.product-template .vivnook-finale-banner__details--separate {
 .menu-drawer__menus > li > .menu-drawer__item-link,
 .menu-drawer__menus > li > details > .menu-drawer__item-link {
   font-weight: 600;
+}
+
+@media (max-width: 1023.98px) {
+  .menu-drawer .menu-drawer__item-link {
+    min-block-size: 52px;
+    padding-block: 12px;
+  }
+
+  .menu-drawer .menu-drawer__item + .menu-drawer__item {
+    margin-block-start: 4px;
+  }
 }
 
 @media (any-pointer: coarse) {
