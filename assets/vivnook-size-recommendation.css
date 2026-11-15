@@ -9,9 +9,16 @@
 }
 
 /* The product-page theme overrides use display:grid!important. Preserve the
-   semantic hidden state until FIND MY SIZE has produced a recommendation. */
+   semantic hidden state when the profile or recommendation is unavailable. */
 .vivnook-inline-size-reference[hidden],
-.tops-find-size[hidden] {
+.tops-find-size[hidden],
+.look-find-size[hidden],
+html[data-vivnook-fit-profile-complete] product-info :is(.tops-find-size, .look-find-size),
+.vivnook-inline-size-reference:not([data-has-recommendation]) > :is(
+  .vivnook-smart-size-chart__reference-labels,
+  .vivnook-smart-size-chart__reference-bar,
+  .look-reference__note
+) {
   display: none !important;
 }
 

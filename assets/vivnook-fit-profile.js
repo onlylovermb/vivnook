@@ -126,6 +126,7 @@
   };
   const renderPdpState = () => {
     const complete = isComplete(state);
+    document.documentElement.toggleAttribute('data-vivnook-fit-profile-complete', complete);
     document.querySelectorAll('[data-vivnook-fit-hint]').forEach((node) => node.hidden = complete);
     document.querySelectorAll('[data-vivnook-fit-trigger]').forEach((node) => node.hidden = complete);
     document.querySelectorAll('[data-vivnook-size-chart-trigger]').forEach((node) => node.hidden = !complete);

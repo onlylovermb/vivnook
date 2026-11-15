@@ -254,27 +254,23 @@
   };
   const renderInlineReference = (kind) => {
     ownedInlineSections(kind).forEach((section) => {
-      // The modal controller may complete first. Use its canonical stored
-      // result when the inline event was missed during an async app rerender.
-      const isComplete = window.VivnookFitProfile?.isComplete ? window.VivnookFitProfile.isComplete() : false;
-      const normalized = isComplete
-        ? chartApi.normalizeRecommendation(
-            inlineResults[kind] || chartApi.getSizeReference?.(kind)
-          )
-        : null;
+      const isComplete = window.VivnookFitProfile?.isComplete() ?? false;
+      const result = inlineResults[kind];
+      const normalized = isComplete ? chartApi.normalizeRecommendation(result) : null;
 
-      const hasRecommendation = Boolean(normalized);
-      section.hidden = !hasRecommendation;
+      section.hidden = !isComplete;
+      section.toggleAttribute('data-has-recommendation', Boolean(normalized));
 
-      // Find my Size button visibility:
-      // When recommendation is shown, hide FIND MY SIZE.
-      // When recommendation is NOT shown, show FIND MY SIZE.
       const scope = section.closest('product-info') || currentProductScope();
-      scope.querySelectorAll('.tops-find-size').forEach((btn) => {
-        btn.hidden = hasRecommendation;
+      scope.querySelectorAll(`.tops-find-size, .look-find-size[data-look-find-size="${kind}"]`).forEach((button) => {
+        button.hidden = isComplete;
       });
 
-      if (!hasRecommendation) return;
+      const guidance = section.querySelector('[data-vivnook-inline-reference-fit-guidance]');
+      if (!normalized) {
+        guidance.textContent = '';
+        return;
+      }
 
       const [primary, secondary] = normalized.display;
       const primaryEl = section.querySelector('[data-vivnook-inline-reference-primary]');
@@ -285,10 +281,7 @@
       section.querySelector('[data-vivnook-inline-reference-secondary-bar]').style.width = `${secondary.percent}%`;
       section.querySelector('[data-vivnook-inline-reference-bar]')
         .setAttribute('aria-label', `${primary.size} ${primary.percent}%, ${secondary.size} ${secondary.percent}%`);
-      const guidance = section.querySelector('[data-vivnook-inline-reference-fit-guidance]');
-      if (guidance) {
-        guidance.textContent = `Fitted: ${normalized.fitGuidance.fitted} · Relaxed: ${normalized.fitGuidance.relaxed}`;
-      }
+      guidance.textContent = `Fitted: ${normalized.fitGuidance.fitted} · Relaxed: ${normalized.fitGuidance.relaxed}`;
     });
   };
   const relevantKinds = () => currentRoot()?.dataset.defaultKind === 'signature-look'
@@ -314,6 +307,9 @@
     const requestId = ++inlineRequestIds[kind];
     try {
       const isComplete = window.VivnookFitProfile?.isComplete ? window.VivnookFitProfile.isComplete() : false;
+      inlineResults[kind] = null;
+      mountInlineReferences();
+      renderInlineReference(kind);
       const result = isComplete ? await recommend({ kind, profile: window.VivnookFitProfile?.load()?.profile || null }) : null;
       if (inlineRequestIds[kind] !== requestId) return;
       // Render the PDP recommendation directly. The Smart Size Chart event is
