@@ -492,7 +492,8 @@ fieldset.product-form__input--button[data-vivnook-recommendation-anchor] > :not(
     color: #fff !important;
   }
 
-  :is(.vivnook-embroidery__entry-card, .vivnook-cart-embroidery-link) {
+  :is(.vivnook-embroidery__entry-card, .vivnook-cart-embroidery-link),
+  .cart-drawer .vivnook-cart-length-option {
     border: 1px solid var(--product-control-border) !important;
   }
 
