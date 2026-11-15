@@ -391,7 +391,7 @@
                                   {%- endunless -%}
                                 </div>
                                 {%- unless embroidery_role == 'service' -%}
-                                  <a class="vivnook-cart-view-details" href="{{ item.url }}">View Details</a>
+                                  <a class="vivnook-cart-view-details lg:hidden" href="{{ item.url }}">View Details</a>
                                 {%- endunless -%}
                               </div>
                               {%- if item.line_level_discount_allocations != blank -%}
@@ -535,7 +535,10 @@
                       </td>
 
                       <td class="cart-item__price hidden lg:table-cell">
-                        <div class="cart-item__prices">
+                        <div class="cart-item__prices cart-item__prices--with-details">
+                          {%- unless embroidery_role == 'service' -%}
+                            <a class="vivnook-cart-view-details" href="{{ item.url }}">View Details</a>
+                          {%- endunless -%}
                           <div class="price text-left flex-col flex font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
                             {%- liquid
                               assign money_price = item.original_price | money

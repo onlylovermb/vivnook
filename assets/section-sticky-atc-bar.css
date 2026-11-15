@@ -13,6 +13,12 @@ body.sticky-atc-bar-enabled {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 100%, 0);
 }
+body:is(.modal-show, .modal-showing) .sticky-atc-bar,
+body:has(cart-drawer:not([hidden]), basic-modal[data-vivnook-fit-profile-root]:not([hidden]), .drawer[open]:not([hidden]), #VivnookAddedToBag:not([hidden])) .sticky-atc-bar {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .sticky-atc-bar--show {
   transform: translate3d(0, 0, 0);
   bottom: var(--mobile-sticky-bar-height, 0px);
@@ -31,7 +37,6 @@ body.sticky-atc-bar-enabled {
     padding: 0;
     border-top: 1px solid #e5e5e5;
     box-shadow: 0 -4px 14px rgba(0, 0, 0, .08);
-    z-index: 100;
   }
   .sticky-atc-bar:not(.sticky-atc-bar--signature-look) .sticky-atc-bar__inner {
     min-height: 56px;
@@ -67,7 +72,6 @@ body.sticky-atc-bar-enabled {
   .sticky-atc-bar {
     top: auto;
     bottom: 0 !important;
-    z-index: 100;
     padding-inline: 0;
   }
   .sticky-atc-bar .sticky-atc-bar__inner {
@@ -328,7 +332,6 @@ body.sticky-atc-bar-enabled {
     background: #fff;
     border-top: 1px solid #e5e5e5;
     box-shadow: 0 -4px 14px rgba(0,0,0,.08);
-    z-index: 100;
   }
   .sticky-atc-bar--signature-look:not(.sticky-atc-bar--show) { transform: translate3d(0, 110%, 0) !important; }
   .sticky-atc-bar--signature-look.sticky-atc-bar--show { transform: translate3d(0, 0, 0) !important; }
@@ -683,10 +686,6 @@ html body [id^="QuantitySticky-"] .quantity {
 }
 
 @media (max-width: 767.98px) {
-  body:has(:is(cart-drawer, basic-modal[data-vivnook-fit-profile-root]):not([hidden])) .sticky-atc-bar {
-    display: none !important;
-  }
-
   .sticky-atc-bar .sticky-atc-bar__inner {
     flex-direction: column;
     align-items: stretch;

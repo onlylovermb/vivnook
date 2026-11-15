@@ -237,3 +237,28 @@
 .free-shipping-goal--done .progress-bar {
   display: none;
 }
+
+.cart .cart-item > :is(.cart-item__price, .cart-item__quantity, .cart-item__total) {
+  vertical-align: middle;
+}
+
+.cart .cart-item__prices--with-details {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.cart .cart-item__prices--with-details .vivnook-cart-view-details {
+  margin-block-start: 0;
+}
+
+@media (min-width: 1024px) {
+  .cart .vivnook-cart-item-footer .vivnook-cart-view-details {
+    display: none;
+  }
+}
+
+.cart .cart-quantity .quantity__input {
+  padding-block: 0 !important;
+  line-height: normal !important;
+}
