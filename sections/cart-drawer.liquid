@@ -414,7 +414,9 @@
                               {%- assign cart_embroidery_section_id = 'CartEmbroidery-' | append: item.index -%}
                               {%- assign cart_embroidery_modal_id = 'VivnookEmbroideryModal-' | append: cart_embroidery_section_id -%}
                               <button type="button" class="vivnook-cart-embroidery-link" data-vivnook-cart-embroidery-open="{{ cart_embroidery_modal_id }}">
-                                <span>Bespoke Embroidery</span><span>From $8.00</span>{% unless signature_bundle == 'signature-look' %}<span aria-hidden="true">&rsaquo;</span>{% endunless %}
+                                <span>Bespoke Embroidery</span>
+                                <span>From $8.00</span>
+                                <span class="vivnook-cart-embroidery-link__arrow" aria-hidden="true"></span>
                               </button>
                               <div data-vivnook-cart-editor data-development-store="{% if shop.permanent_domain == 'vivnook-sf-integration-dev.myshopify.com' %}true{% else %}false{% endif %}">
                                 {% render 'vivnook-embroidery-modal', product: item.product, section_id: cart_embroidery_section_id, host_type: 'cart' %}

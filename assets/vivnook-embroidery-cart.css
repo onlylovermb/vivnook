@@ -135,8 +135,7 @@ html.vivnook-length-info-seen .vivnook-cart-length-option .vivnook-cart-info{col
  .signature-look-cart-group .cart-item__product{width:100%}
 }
 .signature-look-cart-item__remove{display:none}
-.cart-drawer .cart-item--standalone-look-product .cart-item__product{position:relative;width:400px;max-width:100%;min-height:115px;box-sizing:border-box;padding:9px 16px 9px 10px;background:#f4f4f4;border-radius:5px;overflow:visible}
-.cart-drawer .cart-item--standalone-look-product .cart-item__product{width:100%;max-width:100%}
+.cart-drawer :is(.cart-item--standalone-look-product, .cart-item--signature-look-member[data-vivnook-garment-kind="top"]) .cart-item__product{position:relative;width:100%;max-width:100%;min-height:115px;box-sizing:border-box;padding:9px 16px 9px 10px;background:#f4f4f4;border-radius:5px;overflow:visible}
 /* Separate every top-level product or The Look block, regardless of cart order. */
 .cart-drawer cart-items > ul > .cart-item--standalone-look-product + :is(.cart-item--standalone-look-product,.signature-look-cart-group),
 .cart-drawer cart-items > ul > .cart-item--embroidery-service + :is(.cart-item--standalone-look-product,.signature-look-cart-group){
@@ -169,9 +168,8 @@ html.vivnook-length-info-seen .vivnook-cart-length-option .vivnook-cart-info{col
  .signature-look-cart-group .vivnook-cart-embroidery-link,
  .signature-look-cart-group .vivnook-cart-length-option{width:calc(100% + 2px)}
 }
-:is(.cart-drawer,.cart) .cart-item .vivnook-cart-embroidery-link span:last-child{font-size:0!important;position:relative;display:block;flex:0 0 8px;width:8px;height:16px}
-.vivnook-cart-embroidery-link span:last-child::before{content:"";position:absolute;width:6px;height:6px;left:0;top:4px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
-.signature-look-cart-group .vivnook-cart-embroidery-link span:last-child{display:none!important}
+.cart .cart-item .vivnook-cart-embroidery-link span:last-child,.cart-drawer .vivnook-cart-embroidery-link__arrow{font-size:0!important;position:relative;display:block;flex:0 0 8px;width:8px;height:16px}
+.cart .vivnook-cart-embroidery-link span:last-child::before,.cart-drawer .vivnook-cart-embroidery-link__arrow::before{content:"";position:absolute;width:6px;height:6px;left:0;top:4px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
 
 /* The configurator is mounted in the cart so its dialog opens over the drawer. */
 .vivnook-cart-embroidery-modal-host .vivnook-embroidery__entry{display:none}
@@ -184,23 +182,40 @@ html.vivnook-length-info-seen .vivnook-cart-length-option .vivnook-cart-info{col
 .signature-look-cart-group .cart-item__details > .grid > .cart-item__options:empty{display:none}
 .signature-look-cart-group .vivnook-cart-item-footer{margin-top:0;padding-top:0}
 
+.cart-drawer .cart-item[data-vivnook-garment-kind="top"] .cart-item__product {
+  align-items: center;
+}
+
+.cart-drawer .cart-item[data-vivnook-garment-kind="top"] .vivnook-cart-item-footer {
+  margin-block-start: 0;
+  padding-block-start: 0;
+}
+
 /* Keep the title, personalization option and variant together beside the thumbnail. */
 .cart-drawer .signature-look-cart-group .cart-item--signature-look-member .cart-item__product {
   height: auto;
 }
-.cart-drawer .signature-look-cart-group .cart-item--signature-look-member .cart-item__details {
+.cart-drawer :is(.signature-look-cart-group .cart-item--signature-look-member, .cart-item--standalone-look-product[data-vivnook-garment-kind="top"]) .cart-item__details {
   align-self: center;
   padding-block: 4px;
 }
-.cart-drawer .signature-look-cart-group .cart-item--signature-look-member .cart-item__details > .grid {
+.cart-drawer :is(.signature-look-cart-group .cart-item--signature-look-member, .cart-item--standalone-look-product[data-vivnook-garment-kind="top"]) .cart-item__details > .grid {
   height: auto;
   row-gap: 6px;
 }
-.cart-drawer .signature-look-cart-group .cart-item--signature-look-member .cart-item__details > .grid > :is(:first-child, .vivnook-cart-embroidery-link, .vivnook-cart-length-option) {
+.cart-drawer :is(.signature-look-cart-group .cart-item--signature-look-member, .cart-item--standalone-look-product[data-vivnook-garment-kind="top"]) .cart-item__details > .grid > :is(:first-child, .vivnook-cart-embroidery-link, .vivnook-cart-length-option) {
   margin-block: 0;
 }
-.cart-drawer .signature-look-cart-group .cart-item--signature-look-member [data-vivnook-cart-editor] {
+.cart-drawer :is(.signature-look-cart-group .cart-item--signature-look-member, .cart-item--standalone-look-product[data-vivnook-garment-kind="top"]) [data-vivnook-cart-editor] {
   display: contents;
+}
+
+.cart-drawer .cart-item--signature-look-member[data-vivnook-garment-kind="top"] .vivnook-cart-embroidery-link {
+  width: 100%;
+}
+
+.cart-drawer .vivnook-cart-embroidery-link > span:nth-child(2) {
+  flex-shrink: 0;
 }
 
 /* Keep the The Look heading exactly 16px above its first product card. */
@@ -224,8 +239,7 @@ html.vivnook-length-info-seen .vivnook-cart-length-option .vivnook-cart-info{col
  .cart-drawer .cart-item--standalone-look-product .vivnook-cart-length-option{font-size:12px!important}
  .signature-look-cart-group .vivnook-cart-embroidery-link,
  .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link{gap:5px;padding-right:5px}
- .signature-look-cart-group .vivnook-cart-embroidery-link > span:last-child,
- .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link > span:last-child{flex-basis:6px;width:6px}
+ .cart-drawer .vivnook-cart-embroidery-link__arrow{flex-basis:6px;width:6px}
  .signature-look-cart-group .vivnook-cart-embroidery-link > span,
  .signature-look-cart-group .vivnook-cart-length-option > span:not(.vivnook-cart-info-wrap),
  .cart-drawer .cart-item--standalone-look-product .vivnook-cart-embroidery-link > span,
