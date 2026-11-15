@@ -683,7 +683,7 @@ html body [id^="QuantitySticky-"] .quantity {
 }
 
 @media (max-width: 767.98px) {
-  body:has(cart-drawer:not([hidden])) .sticky-atc-bar {
+  body:has(:is(cart-drawer, basic-modal[data-vivnook-fit-profile-root]):not([hidden])) .sticky-atc-bar {
     display: none !important;
   }
 
