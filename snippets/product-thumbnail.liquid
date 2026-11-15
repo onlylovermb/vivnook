@@ -107,6 +107,9 @@
           elsif media.id == 46647338434675
             assign replacement_video_url = 'fanny-burgundy-gallery.mp4' | asset_url | replace: '//cdn.shopify.com/', '/cdn/'
           endif
+          if request.host == 'vivnook.com' or request.host == 'www.vivnook.com'
+            assign replacement_video_url = replacement_video_url | replace: '/cdn/s/files/1/0717/9645/7587/t/', '/cdn/shop/t/'
+          endif
         -%}
         {%- render 'video',
           video: media,

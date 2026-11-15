@@ -1,4 +1,10 @@
+{%- liquid
+  assign mobile_image_url = 'vivnook-fabric-mobile.webp' | asset_url | replace: '//cdn.shopify.com/', '/cdn/'
+  if request.host == 'vivnook.com' or request.host == 'www.vivnook.com'
+    assign mobile_image_url = mobile_image_url | replace: '/cdn/s/files/1/0717/9645/7587/t/', '/cdn/shop/t/'
+  endif
+-%}
 <picture>
-  <source media="(max-width: 749px)" srcset="{{ 'vivnook-fabric-mobile.webp' | asset_url | replace: '//cdn.shopify.com/', '/cdn/' }}">
+  <source media="(max-width: 749px)" srcset="{{ mobile_image_url | escape }}">
   {{ image | image_url: width: width | image_tag: loading: 'lazy', widths: widths, sizes: '50vw' }}
 </picture>
