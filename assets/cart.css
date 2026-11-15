@@ -258,7 +258,17 @@
   }
 }
 
-.cart .cart-quantity .quantity__input {
+.cart .cart-quantity:not(.cart-quantity-gift-wrap) {
+  height: 4rem;
+  align-items: center;
+}
+
+.cart .cart-quantity:not(.cart-quantity-gift-wrap) > .quantity__button {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.cart .cart-quantity > .quantity__input {
   padding-block: 0 !important;
   line-height: normal !important;
 }
