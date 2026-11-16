@@ -17,7 +17,7 @@
     {% assign hero_fallback_image = section.settings.image | default: section.settings.mobile_image %}
     <picture class="home-rebuild-hero__media">
       {% if section.settings.mobile_image != blank %}
-        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w, {{ section.settings.mobile_image | image_url: width: 1600 }} 1600w" sizes="100vw">
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 480 }} 480w, {{ section.settings.mobile_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_image | image_url: width: 960 }} 960w, {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w, {{ section.settings.mobile_image | image_url: width: 1600 }} 1600w" sizes="100vw">
       {% endif %}
       {{ hero_fallback_image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,1000,1600,2000,2400', sizes: '100vw' }}
     </picture>

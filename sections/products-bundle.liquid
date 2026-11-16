@@ -131,7 +131,13 @@
                     {% endfor %}
                   {% endif %}
                   {% if color_image != blank %}
-                    <span hidden data-look-color="{{ color }}" data-look-image="{{ color_image | image_url: width: 800 | escape }}"></span>
+                    {%- capture color_srcset -%}
+                      {{ color_image | image_url: width: 250 }} 250w,
+                      {{ color_image | image_url: width: 400 }} 400w,
+                      {{ color_image | image_url: width: 600 }} 600w,
+                      {{ color_image | image_url: width: 800 }} 800w
+                    {%- endcapture -%}
+                    <span hidden data-look-color="{{ color }}" data-look-image="{{ color_image | image_url: width: 800 | escape }}" data-look-srcset="{{ color_srcset | strip_newlines | escape }}"></span>
                   {% endif %}
                 {% endfor %}
               {% endif %}

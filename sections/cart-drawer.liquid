@@ -14,7 +14,40 @@
   {{ 'vivnook-embroidery-cart.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'vivnook-embroidery-cart.js' | asset_url }}" defer="defer"></script>
   {{ 'vivnook-embroidery.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'vivnook-embroidery.js' | asset_url }}" defer="defer"></script>
+  {%- if request.page_type == 'index' -%}
+    <script>
+      (() => {
+        let editorLoad;
+        document.addEventListener('click', async (event) => {
+          const trigger = event.target.closest?.('cart-drawer [data-vivnook-cart-embroidery-open]');
+          if (!trigger || window.VivnookEmbroideryUI) return;
+          event.preventDefault();
+          if (trigger.getAttribute('aria-busy') === 'true') return;
+          trigger.setAttribute('aria-busy', 'true');
+          editorLoad ||= new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = {{ 'vivnook-embroidery.js' | asset_url | json }};
+            script.onload = resolve;
+            script.onerror = () => {
+              script.remove();
+              reject();
+            };
+            document.head.appendChild(script);
+          });
+          try {
+            await editorLoad;
+            if (trigger.isConnected && window.VivnookEmbroideryUI) trigger.click();
+          } catch {
+            editorLoad = null;
+          } finally {
+            trigger.removeAttribute('aria-busy');
+          }
+        });
+      })();
+    </script>
+  {%- else -%}
+    <script src="{{ 'vivnook-embroidery.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
   <script src="{{ 'vivnook-embroidery-phase-0.js' | asset_url }}" defer="defer"></script>
   {{ 'signature-look-cart.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'signature-look-cart.js' | asset_url }}" defer="defer"></script>

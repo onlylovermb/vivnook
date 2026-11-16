@@ -11,6 +11,9 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let autoplayEnabled = !reducedMotion.matches;
     let autoplayTimer;
+    const modelGallery = root.querySelector('.look-bundle__models');
+    const observeAutoplay = autoplay && modelGallery && 'IntersectionObserver' in window;
+    let galleryVisible = !observeAutoplay;
     let currentProduct = 0;
     let currentModel = 0;
     const lookColors = ['black', 'navy', 'burgundy'];
@@ -20,7 +23,7 @@
       if (!sources.length || !image) return [];
       return [[product, {
         image,
-        colors: new Map(sources.map((source) => [source.dataset.lookColor, source.dataset.lookImage])),
+        colors: new Map(sources.map((source) => [source.dataset.lookColor, source.dataset])),
         original: Object.fromEntries(['src', 'srcset', 'sizes'].map((name) => [name, image.getAttribute(name)])),
       }]];
     }));
@@ -41,7 +44,7 @@
         if (homeImage) {
           const { image, colors, original } = homeImage;
           const source = colors.get(color);
-          const attributes = source ? { srcset: null, sizes: null, src: source } : original;
+          const attributes = source ? { sizes: original.sizes, srcset: source.lookSrcset, src: source.lookImage } : original;
           for (const [name, value] of Object.entries(attributes)) {
             if (value === null) image.removeAttribute(name);
             else if (image.getAttribute(name) !== value) image.setAttribute(name, value);
@@ -85,7 +88,7 @@
 
     function scheduleAutoplay() {
       window.clearTimeout(autoplayTimer);
-      if (!autoplay || !autoplayEnabled || document.hidden || !root.isConnected) return;
+      if (!autoplay || !autoplayEnabled || !galleryVisible || document.hidden || !root.isConnected) return;
       autoplayTimer = window.setTimeout(() => {
         if (!root.isConnected) return;
         showModel(currentModel + 1);
@@ -108,7 +111,6 @@
       scheduleAutoplay();
     }
 
-    const modelGallery = root.querySelector('.look-bundle__models');
     if (root.classList.contains('look-bundle--homepage') && modelGallery && models.length > 1) {
       let swipe;
 
@@ -165,6 +167,12 @@
     if (autoplay) {
       const listeners = new AbortController();
       const options = { signal: listeners.signal };
+      const observer = observeAutoplay ? new IntersectionObserver(([entry]) => {
+        galleryVisible = entry.isIntersecting;
+        if (!root.isConnected) observer.disconnect();
+        scheduleAutoplay();
+      }, { threshold: 0.15 }) : null;
+      observer?.observe(modelGallery);
       autoplay.hidden = false;
       updateAutoplayButton();
       document.addEventListener('visibilitychange', scheduleAutoplay, options);
@@ -177,6 +185,7 @@
       document.addEventListener('shopify:section:unload', (event) => {
         if (!event.target.contains(root)) return;
         window.clearTimeout(autoplayTimer);
+        observer?.disconnect();
         listeners.abort();
       }, options);
     }
